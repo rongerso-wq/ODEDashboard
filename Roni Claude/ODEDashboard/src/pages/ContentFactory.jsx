@@ -382,10 +382,16 @@ export default function ContentFactory() {
       let variantsWithText = postData.variants
 
       // Step 2: Generate images for each variant in parallel
-      const imagePromises = variantsWithText.map(async (variant) => {
+      const imagePromises = variantsWithText.map(async (variant, idx) => {
         try {
-          // Build a visual prompt based on the brief and copy
-          const visualPrompt = `Professional product photography for social media: ${form.promo}. ${form.product ? `Product: ${form.product}. ` : ''}Style: high-quality, appetizing, clean, professional. Hebrew/Middle Eastern context.`
+          // Build visual prompts (in English for better Flux understanding)
+          // Don't include Hebrew text in image prompts
+          const prompts = [
+            'Professional product photography for social media. High-quality, clean aesthetic. Professional lighting. Appetizing presentation.',
+            'Modern food or product photography for social media. Premium quality. Clean background. Professional style.',
+            'Social media content photography. Professional quality. Appetizing and attractive. Mediterranean or modern style.',
+          ]
+          const visualPrompt = prompts[idx % 3]
 
           const imgRes = await fetch('/api/generateImage', {
             method: 'POST',
