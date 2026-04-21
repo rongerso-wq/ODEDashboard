@@ -381,17 +381,18 @@ export default function ContentFactory() {
       const postData = await postRes.json()
       let variantsWithText = postData.variants
 
-      // Step 2: Generate images for each variant in parallel
-      const imagePromises = variantsWithText.map(async (variant, idx) => {
+      // Step 2: Generate images sequentially (Replicate free tier has rate limits)
+      const variantsWithImages = []
+      const prompts = [
+        'Professional product photography for social media. High-quality, clean aesthetic. Professional lighting. Appetizing presentation.',
+        'Modern food or product photography for social media. Premium quality. Clean background. Professional style.',
+        'Social media content photography. Professional quality. Appetizing and attractive. Mediterranean or modern style.',
+      ]
+
+      for (let i = 0; i < variantsWithText.length; i++) {
+        const variant = variantsWithText[i]
         try {
-          // Build visual prompts (in English for better Flux understanding)
-          // Don't include Hebrew text in image prompts
-          const prompts = [
-            'Professional product photography for social media. High-quality, clean aesthetic. Professional lighting. Appetizing presentation.',
-            'Modern food or product photography for social media. Premium quality. Clean background. Professional style.',
-            'Social media content photography. Professional quality. Appetizing and attractive. Mediterranean or modern style.',
-          ]
-          const visualPrompt = prompts[idx % 3]
+          const visualPrompt = prompts[i % 3]
 
           const imgRes = await fetch('/api/generateImage', {
             method: 'POST',
@@ -400,19 +401,23 @@ export default function ContentFactory() {
           })
 
           if (!imgRes.ok) {
-            console.warn('Image generation failed, using placeholder')
-            return { ...variant, image: 'https://via.placeholder.com/500x500?text=Image+Pending' }
+            console.warn(`Image ${i + 1} generation failed, using placeholder`)
+            variantsWithImages.push({ ...variant, image: 'https://via.placeholder.com/500x500?text=Image+Pending' })
+          } else {
+            const imgData = await imgRes.json()
+            variantsWithImages.push({ ...variant, image: imgData.imageUrl })
           }
-
-          const imgData = await imgRes.json()
-          return { ...variant, image: imgData.imageUrl }
         } catch (err) {
-          console.warn('Image generation error:', err)
-          return { ...variant, image: 'https://via.placeholder.com/500x500?text=Image+Error' }
+          console.warn(`Image ${i + 1} generation error:`, err)
+          variantsWithImages.push({ ...variant, image: 'https://via.placeholder.com/500x500?text=Image+Error' })
         }
-      })
 
-      const variantsWithImages = await Promise.all(imagePromises)
+        // Wait 1 second between requests to respect rate limits
+        if (i < variantsWithText.length - 1) {
+          await new Promise((resolve) => setTimeout(resolve, 1000))
+        }
+      }
+
       setVariants(variantsWithImages)
     } catch (err) {
       console.error('Generation error:', err)
