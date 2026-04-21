@@ -209,6 +209,13 @@ function Step3({ variants, loading, form, setForm, onNext, onBack }) {
               onClick={() => setForm((p) => ({ ...p, selectedVariant: v }))}
             >
               <div className="variant__media">
+                {v.image && !v.image.includes('placeholder') && !v.image.includes('Pending') && !v.image.includes('Error') ? (
+                  <img src={v.image} alt="variant" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                ) : (
+                  <span style={{ fontSize: 'var(--fs-12)', opacity: 0.5 }}>
+                    {v.image?.includes('Pending') ? 'טוען...' : v.image?.includes('Error') ? '⚠️' : 'תמונה'}
+                  </span>
+                )}
                 {form.selectedVariant?.id === v.id && (
                   <div
                     style={{
@@ -221,7 +228,6 @@ function Step3({ variants, loading, form, setForm, onNext, onBack }) {
                     <Check size={13} />
                   </div>
                 )}
-                <span style={{ fontSize: 'var(--fs-12)', opacity: 0.5 }}>תמונה</span>
               </div>
               <div className="variant__body">
                 <div className="variant__title">{v.title}</div>
@@ -353,7 +359,8 @@ export default function ContentFactory() {
     goTo(3)
 
     try {
-      const res = await fetch('/api/generatePost', {
+      // Step 1: Generate text variants with Claude
+      const postRes = await fetch('/api/generatePost', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify({
@@ -366,13 +373,41 @@ export default function ContentFactory() {
         }),
       })
 
-      if (!res.ok) {
-        const errData = await res.json()
-        throw new Error(errData.error || 'Failed to generate variants')
+      if (!postRes.ok) {
+        const errData = await postRes.json()
+        throw new Error(errData.error || 'Failed to generate text')
       }
 
-      const data = await res.json()
-      setVariants(data.variants)
+      const postData = await postRes.json()
+      let variantsWithText = postData.variants
+
+      // Step 2: Generate images for each variant in parallel
+      const imagePromises = variantsWithText.map(async (variant) => {
+        try {
+          // Build a visual prompt based on the brief and copy
+          const visualPrompt = `Professional product photography for social media: ${form.promo}. ${form.product ? `Product: ${form.product}. ` : ''}Style: high-quality, appetizing, clean, professional. Hebrew/Middle Eastern context.`
+
+          const imgRes = await fetch('/api/generateImage', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify({ prompt: visualPrompt }),
+          })
+
+          if (!imgRes.ok) {
+            console.warn('Image generation failed, using placeholder')
+            return { ...variant, image: 'https://via.placeholder.com/500x500?text=Image+Pending' }
+          }
+
+          const imgData = await imgRes.json()
+          return { ...variant, image: imgData.imageUrl }
+        } catch (err) {
+          console.warn('Image generation error:', err)
+          return { ...variant, image: 'https://via.placeholder.com/500x500?text=Image+Error' }
+        }
+      })
+
+      const variantsWithImages = await Promise.all(imagePromises)
+      setVariants(variantsWithImages)
     } catch (err) {
       console.error('Generation error:', err)
       setError(err.message || 'שגיאה ביצירה. נסה שוב.')
