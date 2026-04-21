@@ -1,6 +1,5 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
-import { ensureSeed, loadState, patchState, loadStateDecrypted, saveStateEncrypted } from '../lib/storage.js'
-import { authorize } from '../lib/authorization.js'
+import { ensureSeed, loadState, patchState, saveState } from '../lib/storage.js'
 
 const ClientContext = createContext(null)
 
@@ -10,27 +9,14 @@ export function ClientProvider({ children }) {
     return initial ?? loadState()
   })
 
-  // Persist whenever state changes (keep storage authoritative)
-  // Use encrypted storage for security
+  // Persist whenever state changes
   useEffect(() => {
     if (state) {
-      saveStateEncrypted(state).catch((err) => {
-        console.warn('[storage] encryption failed, falling back to unencrypted', err)
-        patchState(state) // Fallback to unencrypted
-      })
+      saveState(state)
     }
   }, [state])
 
   const setSelectedClientId = useCallback((id) => {
-    // Authorize access to client before allowing selection
-    if (id) {
-      try {
-        authorize('mutate:client', { clientId: id })
-      } catch (err) {
-        console.warn('[auth] unauthorized client access:', err.message)
-        return
-      }
-    }
     setState((prev) => ({ ...prev, selectedClientId: id ?? null }))
   }, [])
 

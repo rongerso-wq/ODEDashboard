@@ -363,6 +363,97 @@
   border: 1.5px solid var(--bg);
 }
 
+.topbar__user {
+  position: relative;
+}
+
+.topbar__user-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: 6px 10px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--border);
+  background: var(--bg);
+  font-size: var(--fs-13);
+  font-weight: var(--fw-medium);
+  cursor: pointer;
+  transition: background var(--t-fast) var(--ease-out),
+              border var(--t-fast) var(--ease-out);
+}
+
+.topbar__user-btn:hover {
+  background: var(--surface-2);
+  border-color: var(--border-strong);
+}
+
+.topbar__user-initial {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--text);
+  color: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--fs-12);
+  font-weight: var(--fw-semibold);
+  flex-shrink: 0;
+}
+
+.topbar__user-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  inset-inline-end: 0;
+  width: 280px;
+  background: var(--bg);
+  border: var(--hairline);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-3);
+  padding: var(--sp-12);
+  z-index: var(--z-overlay);
+  animation: menuIn var(--t-fast) var(--ease-out);
+}
+
+.topbar__user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: var(--sp-8);
+}
+
+.topbar__user-name {
+  font-size: var(--fs-13);
+  font-weight: var(--fw-semibold);
+  color: var(--text);
+}
+
+.topbar__user-email {
+  font-size: var(--fs-12);
+  color: var(--text-muted);
+  word-break: break-word;
+}
+
+.topbar__user-logout {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: var(--r-sm);
+  border: none;
+  background: transparent;
+  color: var(--text);
+  font-size: var(--fs-13);
+  font-weight: var(--fw-medium);
+  cursor: pointer;
+  transition: background var(--t-fast) var(--ease-out);
+}
+
+.topbar__user-logout:hover {
+  background: var(--surface-2);
+}
+
 /* ----------------- PageHeader ----------------- */
 
 .page-header {

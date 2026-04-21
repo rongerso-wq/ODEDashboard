@@ -6,5 +6,7 @@ export default defineConfig({
   server: {
     port: 5173,
     open: false,
+    // During development, proxy API calls to a local serverless function simulator
+    // For now, you'll test with real deployment to Vercel
   },
 })

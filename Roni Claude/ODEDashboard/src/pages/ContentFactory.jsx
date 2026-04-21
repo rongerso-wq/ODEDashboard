@@ -23,39 +23,6 @@ const STEPS = [
   { n: 4, title: 'שליחה',         hint: 'שלח לאישור' },
 ]
 
-/* ------------------------------------------------------------------ */
-/*  Mock generation                                                     */
-/* ------------------------------------------------------------------ */
-
-const VARIANT_TEMPLATES = [
-  {
-    titlePrefix: 'גרסה A — ישיר',
-    copyTemplate: (brief, client) =>
-      `${brief.promo}. אנחנו ב-${client.name} מאמינים שזה בדיוק מה שאתם צריכים.`,
-    ctaTemplate: (brief) => brief.cta || 'גלו עוד',
-  },
-  {
-    titlePrefix: 'גרסה B — סיפורי',
-    copyTemplate: (brief, client) =>
-      `כשאנחנו חושבים על ${brief.product || 'המוצר שלנו'}, אנחנו חושבים עליכם. ${brief.promo}.`,
-    ctaTemplate: () => 'קראו עוד',
-  },
-  {
-    titlePrefix: 'גרסה C — שאלתי',
-    copyTemplate: (brief, client) =>
-      `מחפשים ${brief.product || 'פתרון'}? ${brief.promo}. ${client.brandVoice[0] || 'אנחנו כאן'}.`,
-    ctaTemplate: (brief) => brief.cta || 'בואו נדבר',
-  },
-]
-
-function generateVariants(brief, client) {
-  return VARIANT_TEMPLATES.map((t, i) => ({
-    id: `var_${i}`,
-    title: t.titlePrefix,
-    copy: t.copyTemplate(brief, client),
-    cta: t.ctaTemplate(brief),
-  }))
-}
 
 function initials(name) {
   return name.split(/\s+/).map((w) => w[0]).join('').slice(0, 2).toUpperCase()
@@ -131,7 +98,7 @@ function Step1({ clients, form, setForm, onNext }) {
   )
 }
 
-function Step2({ client, form, setForm, onNext, onBack }) {
+function Step2({ client, form, setForm, onNext, onBack, error }) {
   const ready = form.promo.trim().length > 3
   return (
     <div className="wizard__panel">
@@ -139,6 +106,20 @@ function Step2({ client, form, setForm, onNext, onBack }) {
         <div className="wizard__panel-title">בריף יצירה</div>
         <div className="wizard__panel-hint">מה אתה רוצה לקדם? AI יתאים לטון של {client.name}</div>
       </div>
+
+      {error && (
+        <div style={{
+          padding: 'var(--sp-3)',
+          background: '#fef2f2',
+          border: '1px solid #fecaca',
+          borderRadius: 'var(--r-xs)',
+          color: '#991b1b',
+          fontSize: 'var(--fs-13)',
+          marginBottom: 'var(--sp-4)',
+        }}>
+          ⚠️ {error}
+        </div>
+      )}
 
       <div className="field">
         <label className="field__label">מה מקדמים? *</label>
@@ -357,6 +338,7 @@ export default function ContentFactory() {
   const [variants, setVariants] = useState([])
   const [loading, setLoading] = useState(false)
   const [sent, setSent] = useState(false)
+  const [error, setError] = useState('')
 
   const selectedClient = clients.find((c) => c.id === form.clientId)
 
@@ -365,13 +347,39 @@ export default function ContentFactory() {
   function handleStep1Next() { goTo(2) }
   function handleStep2Back() { goTo(1) }
 
-  function handleStep2Next() {
+  async function handleStep2Next() {
     setLoading(true)
+    setError('')
     goTo(3)
-    setTimeout(() => {
-      setVariants(generateVariants(form, selectedClient))
+
+    try {
+      const res = await fetch('/api/generatePost', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({
+          clientId: form.clientId,
+          type: form.contentType,
+          promo: form.promo,
+          product: form.product,
+          cta: form.cta,
+          clients,
+        }),
+      })
+
+      if (!res.ok) {
+        const errData = await res.json()
+        throw new Error(errData.error || 'Failed to generate variants')
+      }
+
+      const data = await res.json()
+      setVariants(data.variants)
+    } catch (err) {
+      console.error('Generation error:', err)
+      setError(err.message || 'שגיאה ביצירה. נסה שוב.')
+      goTo(2) // Go back to step 2 on error
+    } finally {
       setLoading(false)
-    }, 1600)
+    }
   }
 
   function handleStep3Back() { goTo(2) }
@@ -459,6 +467,7 @@ export default function ContentFactory() {
             setForm={setForm}
             onNext={handleStep2Next}
             onBack={handleStep2Back}
+            error={error}
           />
         )}
         {step === 3 && (

@@ -1,0 +1,98 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║         PHASE 6B — Real Claude AI for Content Factory                       ║
+║                     QUICK START (5 minutes)                                 ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+STEP 1 — Get API Key (1 minute)
+───────────────────────────────
+→ Go to: https://console.anthropic.com/account/keys
+→ Click "Create Key"
+→ Copy it (looks like: sk-ant-xxxxx...)
+→ Keep it safe!
+
+
+STEP 2 — Create .env.local file (2 minutes)
+──────────────────────────────────────────
+Open Notepad or your editor.
+Create a new file: .env.local
+Paste this (replace xxxxx with your real key):
+
+    ANTHROPIC_API_KEY=sk-ant-xxxxx...
+
+Save it in: C:\Users\litbe\Roni Claude\ODEDashboard\.env.local
+
+
+STEP 3 — Install Vercel CLI (1 minute, one time only)
+────────────────────────────────────────────────────
+Open Command Prompt and run:
+    npm install -g vercel
+
+
+STEP 4 — Run locally (1 minute)
+───────────────────────────────
+In Command Prompt:
+    cd "C:\Users\litbe\Roni Claude\ODEDashboard"
+    vercel dev
+
+Wait for:
+    Ready! Local app running on http://localhost:3000
+
+
+STEP 5 — Test it! (2 minutes)
+─────────────────────────────
+→ Open http://localhost:3000 in browser
+→ Click: יצירת תוכן (Content Factory)
+→ Pick a client (e.g., Mezza & Co)
+→ Pick a type (e.g., Reel)
+→ Write a brief (e.g., "תפריט סתיו חדש")
+→ Click: צור וריאנטים (Generate)
+→ WAIT 2-3 seconds...
+→ 3 REAL HEBREW POSTS by Claude appear! ✨
+
+
+OPTIONAL — Deploy to Vercel (3 minutes)
+────────────────────────────────────────
+When you're happy with local testing:
+
+    git add .
+    git commit -m "Phase 6b: Real Claude API"
+    git push
+
+Then:
+    vercel --prod
+
+Go to https://vercel.com/dashboard
+→ Find ODEDashboard project
+→ Settings → Environment Variables
+→ Add: ANTHROPIC_API_KEY = sk-ant-xxxxx...
+→ Save
+→ Redeploy: vercel --prod again
+
+Done! It's live.
+
+
+TROUBLESHOOTING
+───────────────
+Error: "API key not configured"
+  → Make sure .env.local file exists in project root
+  → Restart vercel dev after creating .env.local
+
+Error: "Failed to generate variants"
+  → Check if your API key is correct
+  → Check https://status.anthropic.com for outages
+  → Try again in a few seconds
+
+Generation takes 5+ seconds
+  → Normal during peak hours. Should be 2-3s average.
+
+Everything works locally but fails on Vercel
+  → Did you set ANTHROPIC_API_KEY in Vercel dashboard?
+  → Did you run "vercel --prod" after setting env var?
+
+
+FOR DETAILS
+───────────
+Read: PHASE_6B_SETUP.md (full guide)
+Read: PHASE_6B_SUMMARY.md (what changed)
+
+═══════════════════════════════════════════════════════════════════════════════

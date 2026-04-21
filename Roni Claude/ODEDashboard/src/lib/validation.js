@@ -92,6 +92,21 @@ export const AgencySettingsSchema = z.object({
     .max(20, 'מספר טלפון לא תקין'),
 })
 
+// Login validation
+export const LoginSchema = z.object({
+  email: z
+    .string()
+    .min(1, 'דוא״ל נדרש')
+    .email('דוא״ל לא תקין')
+    .max(255, 'דוא״ל לא יכול להיות יותר מ-255 תווים')
+    .toLowerCase(),
+  password: z
+    .string()
+    .min(1, 'סיסמה נדרשת')
+    .min(6, 'סיסמה חייבת להיות לפחות 6 תווים')
+    .max(128, 'סיסמה לא יכולה להיות יותר מ-128 תווים'),
+})
+
 // Validate and return result
 export function validateForm(schema, data) {
   try {
