@@ -209,13 +209,6 @@ function Step3({ variants, loading, form, setForm, onNext, onBack }) {
               onClick={() => setForm((p) => ({ ...p, selectedVariant: v }))}
             >
               <div className="variant__media">
-                {v.image && !v.image.includes('placeholder') && !v.image.includes('Pending') && !v.image.includes('Error') ? (
-                  <img src={v.image} alt="variant" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                ) : (
-                  <span style={{ fontSize: 'var(--fs-12)', opacity: 0.5 }}>
-                    {v.image?.includes('Pending') ? 'טוען...' : v.image?.includes('Error') ? '⚠️' : 'תמונה'}
-                  </span>
-                )}
                 {form.selectedVariant?.id === v.id && (
                   <div
                     style={{
@@ -228,6 +221,7 @@ function Step3({ variants, loading, form, setForm, onNext, onBack }) {
                     <Check size={13} />
                   </div>
                 )}
+                <span style={{ fontSize: 'var(--fs-12)', opacity: 0.5 }}>תמונה</span>
               </div>
               <div className="variant__body">
                 <div className="variant__title">{v.title}</div>
@@ -359,8 +353,8 @@ export default function ContentFactory() {
     goTo(3)
 
     try {
-      // Step 1: Generate text variants with Claude
-      const postRes = await fetch('/api/generatePost', {
+      // Generate text variants with Claude
+      const res = await fetch('/api/generatePost', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify({
@@ -373,52 +367,13 @@ export default function ContentFactory() {
         }),
       })
 
-      if (!postRes.ok) {
-        const errData = await postRes.json()
-        throw new Error(errData.error || 'Failed to generate text')
+      if (!res.ok) {
+        const errData = await res.json()
+        throw new Error(errData.error || 'Failed to generate variants')
       }
 
-      const postData = await postRes.json()
-      let variantsWithText = postData.variants
-
-      // Step 2: Generate images sequentially (Replicate free tier has rate limits)
-      const variantsWithImages = []
-      const prompts = [
-        'Professional product photography for social media. High-quality, clean aesthetic. Professional lighting. Appetizing presentation.',
-        'Modern food or product photography for social media. Premium quality. Clean background. Professional style.',
-        'Social media content photography. Professional quality. Appetizing and attractive. Mediterranean or modern style.',
-      ]
-
-      for (let i = 0; i < variantsWithText.length; i++) {
-        const variant = variantsWithText[i]
-        try {
-          const visualPrompt = prompts[i % 3]
-
-          const imgRes = await fetch('/api/generateImage', {
-            method: 'POST',
-            headers: { 'content-type': 'application/json' },
-            body: JSON.stringify({ prompt: visualPrompt }),
-          })
-
-          if (!imgRes.ok) {
-            console.warn(`Image ${i + 1} generation failed, using placeholder`)
-            variantsWithImages.push({ ...variant, image: 'https://via.placeholder.com/500x500?text=Image+Pending' })
-          } else {
-            const imgData = await imgRes.json()
-            variantsWithImages.push({ ...variant, image: imgData.imageUrl })
-          }
-        } catch (err) {
-          console.warn(`Image ${i + 1} generation error:`, err)
-          variantsWithImages.push({ ...variant, image: 'https://via.placeholder.com/500x500?text=Image+Error' })
-        }
-
-        // Wait 1 second between requests to respect rate limits
-        if (i < variantsWithText.length - 1) {
-          await new Promise((resolve) => setTimeout(resolve, 1000))
-        }
-      }
-
-      setVariants(variantsWithImages)
+      const data = await res.json()
+      setVariants(data.variants)
     } catch (err) {
       console.error('Generation error:', err)
       setError(err.message || 'שגיאה ביצירה. נסה שוב.')
