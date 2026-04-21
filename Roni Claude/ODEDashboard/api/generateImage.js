@@ -28,7 +28,7 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Prompt is required' })
     }
 
-    // Call Replicate API using Flux model
+    // Call Replicate API using Flux Schnell model (fast, free tier friendly)
     const replicateRes = await fetch('https://api.replicate.com/v1/predictions', {
       method: 'POST',
       headers: {
@@ -36,11 +36,10 @@ export default async function handler(req, res) {
         'content-type': 'application/json',
       },
       body: JSON.stringify({
-        version: 'fed869f0fd4a2b5f33a6a74bdc0cd67c8ce37b30c2e5d8e0faf72f3c00b1e0e7', // Flux model
+        model: 'black-forest-labs/flux-schnell',
         input: {
           prompt: prompt,
-          guidance: 3.5,
-          num_inference_steps: 20,
+          num_inference_steps: 4,
         },
       }),
     })
