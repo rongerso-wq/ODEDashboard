@@ -269,13 +269,13 @@ export default function Settings() {
           <div className="brand-item">
             <label>צבע ראשי</label>
             <div className="color-preview" style={{ backgroundColor: brandKit.primaryColor }}>
-              {brandKit.primaryColor}
+              <span style={{ direction: 'ltr', unicodeBidi: 'embed' }}>{brandKit.primaryColor}</span>
             </div>
           </div>
           <div className="brand-item">
             <label>צבע משני</label>
             <div className="color-preview" style={{ backgroundColor: brandKit.accentColor, color: '#000' }}>
-              {brandKit.accentColor}
+              <span style={{ direction: 'ltr', unicodeBidi: 'embed' }}>{brandKit.accentColor}</span>
             </div>
           </div>
           <div className="brand-item">

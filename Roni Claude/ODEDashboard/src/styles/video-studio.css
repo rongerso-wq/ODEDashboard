@@ -139,7 +139,7 @@
   background: var(--bg);
   border: 1px solid var(--border);
   border-radius: var(--r-xs);
-  transition: border-color var(--t-fast) var(--ease-out));
+  transition: border-color var(--t-fast) var(--ease-out);
 }
 
 .timeline-clip:hover {
@@ -192,7 +192,7 @@
   color: var(--text);
   font-size: var(--fs-12);
   cursor: pointer;
-  transition: all var(--t-fast) var(--ease-out));
+  transition: all var(--t-fast) var(--ease-out);
 }
 
 .btn-move:hover:not(:disabled) {
@@ -214,7 +214,7 @@
   color: #dc2626;
   font-size: var(--fs-12);
   cursor: pointer;
-  transition: all var(--t-fast) var(--ease-out));
+  transition: all var(--t-fast) var(--ease-out);
 }
 
 .btn-remove:hover {
@@ -237,7 +237,7 @@
   font-size: var(--fs-15);
   font-weight: var(--fw-semibold);
   cursor: pointer;
-  transition: opacity var(--t-fast) var(--ease-out));
+  transition: opacity var(--t-fast) var(--ease-out);
 }
 
 .btn-export:hover:not(:disabled) {
@@ -435,7 +435,7 @@
   font-size: var(--fs-15);
   font-weight: var(--fw-semibold);
   cursor: pointer;
-  transition: all var(--t-fast) var(--ease-out));
+  transition: all var(--t-fast) var(--ease-out);
 }
 
 .btn-cancel:hover {
@@ -452,7 +452,7 @@
   font-size: var(--fs-15);
   font-weight: var(--fw-semibold);
   cursor: pointer;
-  transition: opacity var(--t-fast) var(--ease-out));
+  transition: opacity var(--t-fast) var(--ease-out);
 }
 
 .btn-render:hover:not(:disabled) {
