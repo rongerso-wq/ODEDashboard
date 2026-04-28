@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom'
 import Sidebar from './Sidebar.jsx'
 import Topbar from './Topbar.jsx'
+import AuthorSignature from './AuthorSignature.jsx'
 import './layout.css'
 
 export default function AppShell() {
@@ -13,6 +14,7 @@ export default function AppShell() {
           <Outlet />
         </main>
       </div>
+      <AuthorSignature />
     </div>
   )
 }

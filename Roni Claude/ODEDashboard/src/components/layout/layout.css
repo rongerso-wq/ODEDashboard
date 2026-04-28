@@ -561,3 +561,46 @@
   .topbar__search { display: none; }
   .app-shell__content { padding: var(--sp-5) var(--sp-4); }
 }
+
+/* ----------------- Author signature watermark ----------------- */
+/* Strict B&W per design rules — muted Heebo prefix, Caveat handwritten name. */
+.author-signature {
+  position: fixed;
+  bottom: 14px;
+  inset-inline-end: 18px;
+  z-index: 50;
+  pointer-events: none;
+  direction: ltr;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  user-select: none;
+  -webkit-user-select: none;
+  white-space: nowrap;
+  opacity: 0.55;
+  transition: opacity 0.25s ease;
+}
+.author-signature:hover { opacity: 0.95; }
+.author-signature .sig-prefix {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-medium);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+}
+.author-signature .sig-name {
+  font-family: 'Caveat', cursive;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1;
+  color: var(--text);
+}
+@media (max-width: 520px) {
+  .author-signature { bottom: 8px; inset-inline-end: 10px; }
+  .author-signature .sig-prefix { display: none; }
+  .author-signature .sig-name { font-size: 18px; }
+}
+@media print {
+  .author-signature { display: none !important; }
+}
