@@ -19,7 +19,7 @@
   font-size: 14px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--accent-text);
 }
 .coach-title {
   gap: 10px;
@@ -149,19 +149,19 @@
 }
 .g-best .grade-badge,
 .grade-badge.g-best {
-  background: #2fa35b;
+  background: var(--gb-best);
 }
 .grade-badge.g-good {
-  background: #5b9c86;
+  background: var(--gb-good);
 }
 .grade-badge.g-inaccuracy {
-  background: #d9a521;
+  background: var(--gb-inacc);
 }
 .grade-badge.g-mistake {
-  background: #e27a2e;
+  background: var(--gb-mistake);
 }
 .grade-badge.g-blunder {
-  background: #d63d2e;
+  background: var(--gb-blunder);
 }
 
 /* Toggle switch */
@@ -209,7 +209,7 @@
   transform: translateX(20px);
 }
 .switch input:focus-visible + .switch-track {
-  outline: 3px solid var(--accent);
+  outline: 3px solid var(--accent-text);
   outline-offset: 2px;
 }
 

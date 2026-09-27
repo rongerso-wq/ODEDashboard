@@ -4,6 +4,7 @@ import type { Comment } from '../coach/commentary'
 import { IconBulb } from './Icons'
 import { EliasAvatar } from './Elias'
 import { useSay, useSpeaking } from '../lib/useVoice'
+import { spokenMove } from '../lib/speakable'
 import './CoachCard.css'
 
 const GRADE_BADGE: Record<Grade, string> = { best: '★', good: '✓', inaccuracy: '?!', mistake: '?', blunder: '??' }
@@ -11,7 +12,7 @@ const GRADE_BADGE: Record<Grade, string> = { best: '★', good: '✓', inaccurac
 /** A grade badge: coloured circle with ★ ✓ ?! ? ?? */
 export function GradeBadge({ grade, size = 34 }: { grade: Grade; size?: number }) {
   return (
-    <span className={`grade-badge g-${grade}`} style={{ width: size, height: size, fontSize: size * 0.46 }} aria-hidden="true">
+    <span className={`grade-badge g-${grade}`} style={{ width: size, height: size, fontSize: Math.max(12, size * 0.46) }} aria-hidden="true">
       {GRADE_BADGE[grade]}
     </span>
   )
@@ -42,7 +43,7 @@ export default function CoachCard(p: Props) {
   // Elias says each verdict, then his comment on the reply (queued so neither cuts the other off);
   // a hint interrupts, because the player asked for it.
   const san = p.feedback?.san ?? ''
-  const spokenSan = /^[a-h][1-8][+#]?$/.test(san) ? `Pawn to ${san}` : san // "g6" alone sounds unclear
+  const spokenSan = san ? spokenMove(san) : ''
   useSay(p.enabled && p.feedback ? `${spokenSan}. ${p.feedback.title}. ${p.feedback.text}` : null, undefined, { queue: true })
   useSay(p.enabled && p.commentary ? p.commentary.comment.text : null, p.commentary?.ply, { queue: true })
   useSay(p.hint?.text)

@@ -7,7 +7,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 NextMove is a chess app for ages 0–100 whose **first purpose is teaching**. It has an Academy of engine-verified lessons, play against 8 computer opponents with a live coach, post-game review, and puzzles, plus a spoken teacher persona ("Elias"). Everything is free with no ads, and nothing is locked. It's built with Vite + React 19 + TypeScript and runs as a static single-page app (no backend yet).
 
 - **Plan:** `C:\Users\litbe\.claude\plans\i-want-to-build-compiled-flute.md` (7 phases, one per turn; wait for the user's "go").
-- **Done:** phases 1–5 plus Elias and the opponent commentary.
+- **Done:** phases 1–5, Elias and the opponent commentary, My mistakes (spaced repetition), the installable offline app (PWA), a cleaner Home.
+- **Full QA in progress** (the user asked for everything to be covered; areas A–L in `QA-REPORT.md`):
+  - **Rounds 1–3 done:** rules/board/clock/bots · teaching/puzzles · voice/design/accessibility. 14 bugs found and fixed so far.
+  - **Next: Round 4** — H offline app & install · I data robustness (blocked/corrupt/full storage, rapid tapping, screen switching mid-move, back/forward, console errors on every screen) · J performance (Lighthouse performance, memory over a long session) · K content quality (read all lesson/hint/explanation text for typos and age-appropriateness) · L legal/store readiness (licences credited, privacy statement, kids-store rules such as the external Lichess links). Then a final summary and commit.
+  - Report each round in `QA-REPORT.md`, fix clear bugs, list decisions, then ask to commit.
+- **Open decisions for the user:** (1) keyboard/screen-reader play on the board (≈45 min; see QA G19); (2) the Stockfish GPL licence before an app-store release (publish the source, or swap engines); (3) bot strength labels are rough until real players test.
+- **Working style:** plain-language updates; ask before every commit (local commits only, never push); stage only `Roni Claude/NextMove` files by name (the git repo is the user's home folder).
 - **Online play (Phase 6) is dropped** by the user's decision (2026-09-27): no accounts, no backend, no Supabase. NextMove is positioned as *the free chess teacher for the whole family: no ads, no accounts, works offline*. Don't add online features or "Coming soon" teasers for them.
 - **On hold at the user's request:** a private Vercel test link and a tester scorecard for a side-by-side comparison with the Dr. Wolf app.
 - `README.md` is the unmodified Vite template.

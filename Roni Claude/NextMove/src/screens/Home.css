@@ -79,7 +79,7 @@
   display: grid;
   place-items: center;
   background: var(--accent-soft);
-  color: var(--accent);
+  color: var(--accent-text);
 }
 .tile-icon svg {
   width: 30px;

@@ -47,7 +47,7 @@
   font-weight: 800;
   letter-spacing: 0.07em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--accent-text);
 }
 .p-big {
   font-family: var(--font-display);
@@ -64,7 +64,7 @@
   align-items: center;
   gap: 6px;
   font-weight: 700;
-  color: var(--accent);
+  color: var(--accent-text);
 }
 .p-cta svg {
   width: 20px;
@@ -171,6 +171,8 @@
 }
 .p-credit a {
   color: inherit;
+  display: inline-block;
+  padding-block: 14px; /* 44px tap height for a small footer link */
 }
 
 /* Play screen */
@@ -293,7 +295,7 @@
   color: var(--muted);
 }
 .p-info a {
-  color: var(--accent);
+  color: var(--accent-text);
 }
 .p-chips {
   display: flex;
@@ -428,10 +430,10 @@
   color: #fff;
 }
 .rush-trail .ok {
-  background: #2fa35b;
+  background: var(--gb-best);
 }
 .rush-trail .bad {
-  background: #d63d2e;
+  background: var(--gb-blunder);
 }
 
 @media (max-width: 760px) {

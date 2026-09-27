@@ -128,16 +128,16 @@
   font-weight: 700;
 }
 .c-best {
-  color: #2fa35b;
+  color: var(--g-best);
 }
 .c-inaccuracy {
-  color: #d9a521;
+  color: var(--g-inacc);
 }
 .c-mistake {
-  color: #e27a2e;
+  color: var(--g-mistake);
 }
 .c-blunder {
-  color: #d63d2e;
+  color: var(--g-blunder);
 }
 
 .review-move {
@@ -169,19 +169,19 @@
   font-size: 14px;
 }
 .rm-grade.g-best {
-  color: #2fa35b;
+  color: var(--g-best);
 }
 .rm-grade.g-good {
-  color: #5b9c86;
+  color: var(--g-good);
 }
 .rm-grade.g-inaccuracy {
-  color: #d9a521;
+  color: var(--g-inacc);
 }
 .rm-grade.g-mistake {
-  color: #e27a2e;
+  color: var(--g-mistake);
 }
 .rm-grade.g-blunder {
-  color: #d63d2e;
+  color: var(--g-blunder);
 }
 .rm-eval {
   font-weight: 800;
@@ -204,7 +204,7 @@
 .next-mistake {
   justify-self: start;
   padding-inline: 4px;
-  color: var(--accent);
+  color: var(--accent-text);
 }
 
 .key-moments h2 {

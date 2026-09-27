@@ -53,7 +53,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--accent);
+  color: var(--accent-text);
 }
 
 .thinking {
@@ -154,16 +154,16 @@
   margin-inline-start: 1px;
 }
 .moves .g-best .sym {
-  color: #2fa35b;
+  color: var(--g-best);
 }
 .moves .g-inaccuracy .sym {
-  color: #d9a521;
+  color: var(--g-inacc);
 }
 .moves .g-mistake .sym {
-  color: #e27a2e;
+  color: var(--g-mistake);
 }
 .moves .g-blunder .sym {
-  color: #d63d2e;
+  color: var(--g-blunder);
 }
 .moves .san.current .sym {
   color: inherit;
@@ -231,7 +231,7 @@
   border: 2px solid var(--accent);
   font-family: var(--font-display);
   font-size: 40px;
-  color: var(--accent);
+  color: var(--accent-text);
 }
 .result-badge img {
   width: 62px;

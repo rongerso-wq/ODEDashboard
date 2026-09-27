@@ -75,7 +75,7 @@ function Player({ id }: { id: string }) {
         <VoiceToggle />
       </header>
 
-      <div className="lesson-progress" aria-label={`Step ${stepIdx + 1} of ${lesson.steps.length}`}>
+      <div className="lesson-progress" role="img" aria-label={`Step ${stepIdx + 1} of ${lesson.steps.length}`}>
         {lesson.steps.map((_, i) => (
           <span key={i} className={i < stepIdx || result !== null ? 'done' : i === stepIdx ? 'now' : ''} />
         ))}
@@ -700,7 +700,7 @@ function Complete({ lessonId, stars, kids, onAgain }: { lessonId: string; stars:
   return (
     <section className="complete" aria-live="polite">
       <Narrator text={praise} speakText={`${title}. ${praise}`} compact />
-      <div className="complete-stars" aria-label={`${stars} of 3 stars`}>
+      <div className="complete-stars" role="img" aria-label={`${stars} of 3 stars`}>
         {[1, 2, 3].map((n) => (
           <span key={n} className={n <= stars ? 'on' : ''} style={{ animationDelay: `${n * 0.15}s` }}>
             ★

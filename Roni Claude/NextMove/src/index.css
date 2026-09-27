@@ -17,6 +17,7 @@
   --faint: #9c8b73;
   --accent: #d4ad62;
   --accent-ink: #1b140d;
+  --accent-text: #d4ad62; /* accent used AS TEXT (must pass 4.5:1 on surfaces) */
   --accent-soft: rgba(212, 173, 98, 0.14);
   --good: #7fc48a;
   --danger: #e7806b;
@@ -38,6 +39,19 @@
   --tap: 48px;
   --fs-body: 16px;
 
+  /* grade colours for TEXT, ≥ 4.5:1 on the surfaces (QA G19) */
+  --g-best: #4cc27a;
+  --g-good: #6fc2a6;
+  --g-inacc: #e8b830;
+  --g-mistake: #f0954a;
+  --g-blunder: #ff7466;
+  /* grade BADGE backgrounds behind white symbols, ≥ 4.5:1 */
+  --gb-best: #1d7a44;
+  --gb-good: #3a7a66;
+  --gb-inacc: #946b00;
+  --gb-mistake: #b0540f;
+  --gb-blunder: #c0392b;
+
   color-scheme: dark;
 }
 
@@ -52,9 +66,11 @@
   --muted: #5e5068;
   --faint: #6f6178;
   --accent: #ff6b4a;
-  --accent-ink: #ffffff;
+  --accent-ink: #2d2238; /* dark text on bright coral: 5.3:1 (white was 2.8:1) */
+  --accent-text: #c2410c; /* coral text on white/cream: ≥ 4.6:1 */
   --accent-soft: rgba(255, 107, 74, 0.12);
-  --good: #1f9e8c;
+  --good: #15766a;
+  --danger: #bf3325;
 
   --sq-light: #fbf1dc;
   --sq-dark: #6fb8a3;
@@ -71,6 +87,12 @@
   --shadow: 0 16px 40px rgba(180, 110, 70, 0.22), 0 2px 6px rgba(120, 70, 40, 0.12);
   --tap: 58px;
   --fs-body: 17px;
+
+  --g-best: #1d7a44;
+  --g-good: #2f6f5c;
+  --g-inacc: #8a6400;
+  --g-mistake: #a8520e;
+  --g-blunder: #bf3325;
 
   color-scheme: light;
 }
@@ -115,7 +137,7 @@ h3 {
 }
 
 :focus-visible {
-  outline: 3px solid var(--accent);
+  outline: 3px solid var(--accent-text);
   outline-offset: 2px;
 }
 

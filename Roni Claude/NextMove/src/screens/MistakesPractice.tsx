@@ -87,7 +87,7 @@ export default function MistakesPractice() {
   return (
     <div className="page game mistakes">
       {header}
-      <div className="mk-progress" aria-label={`Card ${idx + 1} of ${queue.length}`}>
+      <div className="mk-progress" role="img" aria-label={`Card ${idx + 1} of ${queue.length}`}>
         {queue.map((_, i) => (
           <span key={i} className={i < idx ? (results[i] ? 'ok' : 'bad') : i === idx ? 'now' : ''} />
         ))}

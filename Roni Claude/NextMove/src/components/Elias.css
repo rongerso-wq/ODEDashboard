@@ -50,7 +50,7 @@
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--accent-text);
 }
 .narrator-body p {
   margin: 2px 0 0;
@@ -68,6 +68,8 @@
   flex: none;
   width: 44px;
   height: 44px;
+  min-width: 44px; /* never squeezed below the tap floor (QA F17) */
+  min-height: 44px;
   border-radius: 50%;
   border: 1px solid var(--line);
   background: var(--surface);

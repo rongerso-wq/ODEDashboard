@@ -87,7 +87,7 @@ export default function PuzzlesHome() {
                 <span className="p-theme-body">
                   <strong>{kids ? t.kids : t.title}</strong>
                   <span>{t.about}</span>
-                  <span className="p-theme-bar" aria-label={`${done} of ${set.length} solved`}>
+                  <span className="p-theme-bar" role="img" aria-label={`${done} of ${set.length} solved`}>
                     <i style={{ width: set.length ? `${(done / set.length) * 100}%` : 0 }} />
                   </span>
                 </span>

@@ -1,0 +1,3 @@
+# NextMove: allow indexing (decide before publishing whether the test link should be hidden)
+User-agent: *
+Allow: /

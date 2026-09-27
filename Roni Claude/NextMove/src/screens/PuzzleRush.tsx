@@ -132,7 +132,7 @@ export default function PuzzleRush() {
               <span className={`rush-time${left < 20_000 ? ' low' : ''}`}>
                 {mm}:{ss}
               </span>
-              <span className="rush-lives" aria-label={`${LIVES - strikes} lives left`}>
+              <span className="rush-lives" role="img" aria-label={`${LIVES - strikes} lives left`}>
                 {Array.from({ length: LIVES }, (_, i) => (
                   <i key={i} className={i < LIVES - strikes ? 'on' : ''}>
                     ♥
@@ -162,7 +162,7 @@ export default function PuzzleRush() {
                 <p>Puzzle {results.length + 1} · rating {current.rating}</p>
               </div>
             </div>
-            <div className="rush-trail" aria-label="Results so far">
+            <div className="rush-trail" role="img" aria-label="Results so far">
               {results.map((r, i) => (
                 <span key={i} className={r ? 'ok' : 'bad'}>
                   {r ? '✓' : '✗'}

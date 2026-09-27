@@ -5,6 +5,7 @@ import { GradeBadge } from '../components/CoachCard'
 import EvalGraph from '../components/EvalGraph'
 import { VoiceToggle } from '../components/Elias'
 import { useSay } from '../lib/useVoice'
+import { spokenMove } from '../lib/speakable'
 import { addCards, cardFromFeedback } from '../mistakes/deck'
 import { IconBack, IconFirst, IconLast, IconNext, IconPrev } from '../components/Icons'
 import { analyse, REVIEW, uciToSan, type Analysis } from '../coach/analysis'
@@ -176,7 +177,7 @@ function ReviewScreen({ game }: { game: ReviewGame }) {
         }`
       : null,
   )
-  useSay(fb && move ? `${mover}, ${fb.san}. ${gradeTitle(fb.grade, kids)}. ${shownText}` : null, ply)
+  useSay(fb && move ? `${mover}, ${spokenMove(fb.san)}. ${gradeTitle(fb.grade, kids)}. ${shownText}` : null, ply)
 
   return (
     <div className="page review">

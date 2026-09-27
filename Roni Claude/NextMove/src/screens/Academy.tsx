@@ -29,7 +29,7 @@ export default function Academy() {
           <h1 className="screen-title">Academy</h1>
         </div>
         <div className="topbar-actions">
-          <div className="star-total" aria-label={`${earned} of ${possible} stars`}>
+          <div className="star-total" role="img" aria-label={`${earned} of ${possible} stars`}>
             ★ {earned}
             <span>/{possible}</span>
           </div>

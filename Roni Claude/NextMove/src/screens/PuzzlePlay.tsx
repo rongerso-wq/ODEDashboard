@@ -157,7 +157,7 @@ export default function PuzzlePlay({ mode }: { mode: Mode }) {
           </div>
 
           {set && (
-            <div className="p-progress" aria-label={`${solvedCount} of ${set.length} solved`}>
+            <div className="p-progress" role="img" aria-label={`${solvedCount} of ${set.length} solved`}>
               <span>
                 {solvedCount} / {set.length} solved
               </span>

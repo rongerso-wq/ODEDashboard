@@ -34,14 +34,14 @@ export function PlayerStrip({
     <div className={`player${active ? ' active' : ''}`}>
       {avatar ?? <span className={`player-dot ${color}`} aria-hidden="true" />}
       <span className="player-name">{name}</span>
-      <span className="captured" aria-label={`${colorName(color)} has captured ${material.captured[color].length} pieces`}>
+      <span className="captured" role="img" aria-label={`${colorName(color)} has captured ${material.captured[color].length} pieces`}>
         {material.captured[color].map((t, i) => (
           <img key={i} src={pieceUrl({ type: t, color: other(color) })} alt="" />
         ))}
         {lead > 0 && <span className="lead">+{lead}</span>}
       </span>
       {thinking && active ? (
-        <span className="thinking" aria-label="thinking">
+        <span className="thinking" role="img" aria-label="thinking">
           <i />
           <i />
           <i />

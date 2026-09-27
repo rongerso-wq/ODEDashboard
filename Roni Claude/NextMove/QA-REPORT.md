@@ -73,3 +73,34 @@ Full QA started 2026-09-27. Areas A–L, run in four rounds. Legend: ✅ pass ·
 
 ### Testing hooks added
 - `Board` exposes `data-fen` / `data-orientation` (read-only) for browser QA robots; `PuzzleBoard` has `data-puzzle`.
+
+## Round 3: voice, design, accessibility
+
+### E13 Elias's voice ✅ (2 small fixes)
+- Every sentence sent to the voice was recorded across Academy, a lesson, a game with the coach, puzzles, Rush, review and My mistakes. He speaks on every screen and stays silent in Rush; no raw notation, symbols or "undefined" were ever read out ("Queen takes f7, checkmate", "Pawn to g6"); speech is cancelled on every screen change.
+- Mute (top-bar portrait) stops all speech and is saved; the 🔊 replay button still speaks once on request.
+- Fixed: lesson words in capitals ("CHECKMATE is…") are spoken as normal words (some voices spell capitals out). The review announced pawn moves as a bare "e4"; now "Pawn to e4", like the coach (`spokenMove`).
+- 📱 How he actually sounds on real phones still needs a human ear.
+
+### F15–F17 Layout, text size, tap targets ✅ (4 fixes)
+- An automatic inspector checked **13 screens × 2 styles × 4 sizes (360, 390, 768, 1366 px) = 104 combinations**: horizontal overflow, text below 12 px, tap targets below 44 px.
+- **Overflow: none anywhere.**
+- Fixed:
+  - the Classic/Kids switch buttons were 36 px tall on phones (invisible 44 px hit area added)
+  - "✓ Beaten" was 11 px text
+  - the small grade badges in key moments were 11.96 px
+  - the "Lichess puzzle database" link was 16 px tall
+  - the 🔊 replay button squeezed to 43 px on tablets
+- After the fixes, all 104 pass.
+
+### F18 Visual consistency ✅
+- Screenshots of the game at tablet size and of Home in both styles: consistent spacing, fonts, colours and icons.
+
+### G19 Accessibility 🐞 → fixed, ⚠️ one open item
+- Lighthouse (accessibility) on Home, lesson, game, setup, puzzles, puzzle, review and My mistakes, **in both Classic and Kids style: all 100/100** after these fixes:
+  - no `<main>` landmark (added once in `App`); `robots.txt` added
+  - 11 labelled visual indicators (progress dots, stars, lives, captured pieces…) had labels screen readers may ignore → `role="img"`
+  - recent-game buttons had a spoken name that didn't match their visible text (a problem for voice control) → the visible text is now the name
+  - **contrast:** the blunder red was 3.4:1 on the dark theme. **Kids mode's coral was 2.8:1** as text and behind white button text, and its green and red text were 3.3 and 2.7:1. New tokens: `--g-*` (grade text), `--gb-*` (badge backgrounds), `--accent-text` (accent used as text; deeper orange #c2410c in Kids). Kids buttons now use **dark text on the same bright coral (5.3:1)**, so the look stays playful. The Kids `--good`/`--danger` are darker; focus outlines use `--accent-text`. All text colours are now ≥ 4.5:1.
+- Keyboard: Tab order is sensible and the focus ring is clearly visible; `prefers-reduced-motion` is honoured.
+- ⚠️ **Open: the chessboard can't be used without a pointer.** There's no keyboard move entry, and screen readers hear only "Chess board". Blind and motor-impaired players can use menus, lessons and settings but can't move pieces. Suggested (≈45 min): arrow keys + Enter to move, with the position and moves announced to screen readers.

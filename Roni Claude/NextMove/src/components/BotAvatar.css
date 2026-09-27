@@ -45,7 +45,7 @@
 .bot-says .bubble strong {
   display: block;
   font-size: 13px;
-  color: var(--accent);
+  color: var(--accent-text);
   margin-bottom: 2px;
 }
 @keyframes bubble-in {

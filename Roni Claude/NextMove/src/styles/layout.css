@@ -61,6 +61,12 @@
   position: relative;
   transition: background 0.2s ease, color 0.2s ease;
 }
+/* invisible 44px hit area: the pill stays slim on narrow phones (QA F17) */
+.mode-switch button::after {
+  content: '';
+  position: absolute;
+  inset: -6px -2px;
+}
 .mode-switch button.on {
   background: var(--accent);
   color: var(--accent-ink);

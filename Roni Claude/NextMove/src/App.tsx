@@ -48,7 +48,10 @@ function Screen() {
 export default function App() {
   return (
     <SettingsProvider>
-      <Screen />
+      {/* the one main landmark, for screen-reader "skip to content" (QA G19) */}
+      <main>
+        <Screen />
+      </main>
       <UpdatePrompt />
     </SettingsProvider>
   )

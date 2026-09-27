@@ -115,7 +115,7 @@ export default function ComputerSetup() {
               <BotAvatar bot={b} size={56} />
               <span className="bot-name">{b.name}</span>
               <span className="bot-level">
-                <span className="pips" aria-label={`Level ${b.level} of 8`}>
+                <span className="pips" role="img" aria-label={`Level ${b.level} of 8`}>
                   {Array.from({ length: 8 }, (_, i) => (
                     <i key={i} className={i < b.level ? 'on' : ''} />
                   ))}
@@ -188,7 +188,7 @@ export default function ComputerSetup() {
               const b = botById(g.botId)
               return (
                 <li key={g.at}>
-                  <button onClick={() => reviewGame(g)} aria-label={`Review your game against ${b.name}`}>
+                  <button onClick={() => reviewGame(g)}>
                     <BotAvatar bot={b} size={32} />
                     <span className="recent-name">{b.name}</span>
                     <span className="recent-meta">

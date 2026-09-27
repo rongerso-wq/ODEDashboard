@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { sanToWords, speakable } from './speakable'
+import { sanToWords, speakable, spokenMove } from './speakable'
 
 describe('chess notation to speech', () => {
   it('reads moves as words', () => {
@@ -23,6 +23,18 @@ describe('chess notation to speech', () => {
     expect(speakable('3… Nf6')).toBe('Knight f6')
     expect(speakable('Next move: c5')).toBe('Next move: pawn to c5')
     expect(speakable('Attack it together — Scholar’s mate.')).toBe('Attack it together, Scholar’s mate.')
+  })
+
+  it('announces single moves the same way everywhere', () => {
+    expect(spokenMove('e4')).toBe('Pawn to e4')
+    expect(spokenMove('g6+')).toBe('Pawn to g6, check')
+    expect(spokenMove('Nf6')).toBe('Knight f6')
+    expect(spokenMove('exd5')).toBe('e pawn takes d5')
+  })
+
+  it('reads emphasised capitals as words', () => {
+    expect(speakable('CHECKMATE is check with no way out.')).toBe('checkmate is check with no way out.')
+    expect(speakable('A FORK attacks two pieces.')).toBe('A fork attacks two pieces.')
   })
 
   it('leaves normal words alone', () => {

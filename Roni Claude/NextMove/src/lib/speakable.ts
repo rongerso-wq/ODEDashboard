@@ -25,9 +25,16 @@ export function sanToWords(san: string): string {
 // A SAN token: piece moves, pawn moves/captures, castling, promotion (with optional move number "12." / "12…").
 const SAN = /\b(?:\d+\.{1,3}|\d+…\s?)?(O-O-O|O-O|[KQRBN][a-h]?[1-8]?x?[a-h][1-8](?:=[QRBN])?|[a-h]x[a-h][1-8](?:=[QRBN])?|[a-h][1-8]=[QRBN])[+#]?(?![\w-])/g
 
+/** A move as Elias announces it on its own: "Pawn to e4", "Knight f3", "Queen takes f7, checkmate". */
+export function spokenMove(san: string): string {
+  return /^[a-h][1-8][+#]?$/.test(san) ? `Pawn to ${san.replace(/[+#]/g, '')}${san.includes('#') ? ', checkmate' : san.includes('+') ? ', check' : ''}` : sanToWords(san)
+}
+
 export function speakable(text: string): string {
   return (
     text
+      // lesson emphasis in capitals ("CHECKMATE is…") — some voices spell capitals letter by letter
+      .replace(/\b[A-Z]{3,}\b/g, (w) => (w === w.toUpperCase() && !/^[A-H][1-8]$/.test(w) ? w.toLowerCase() : w))
       // moves like Nf3, exd5, O-O, e8=Q, Qxf7#
       .replace(SAN, (whole) => {
         const core = whole.replace(/^\d+(?:\.{1,3}|…)\s?/, '')
