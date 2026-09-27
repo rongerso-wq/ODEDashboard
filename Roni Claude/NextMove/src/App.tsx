@@ -14,6 +14,7 @@ import PuzzlePlay from './screens/PuzzlePlay'
 import { parsePuzzleRoute } from './puzzles/model'
 import PuzzleRush from './screens/PuzzleRush'
 import MistakesPractice from './screens/MistakesPractice'
+import UpdatePrompt from './components/UpdatePrompt'
 
 function Screen() {
   const route = useRoute()
@@ -48,6 +49,7 @@ export default function App() {
   return (
     <SettingsProvider>
       <Screen />
+      <UpdatePrompt />
     </SettingsProvider>
   )
 }

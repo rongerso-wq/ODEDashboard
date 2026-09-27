@@ -25,7 +25,15 @@ npm run verify:lessons       # Stockfish (in Node) checks every Academy lesson; 
 npm run puzzles              # rebuild src/puzzles/puzzles.json from the Lichess puzzle DB (network)
 npm run engine               # re-copy Stockfish WASM from node_modules into public/engine/
 node scripts/extract-pieces.mjs   # re-extract the cburnett piece SVGs into public/pieces/
+npm run icons                # regenerate public/icons/*.png (knight on brass) with sharp
+npm run build && npx vite preview --port 4273   # the only way to test the service worker / offline mode
 ```
+
+## Installable offline app (PWA)
+- **Setup:** `vite-plugin-pwa` in `vite.config.ts` writes the manifest and a Workbox service worker that **precaches everything**: engine WASM (~1.8 MB, hence `maximumFileSizeToCacheInBytes` 5 MB), the puzzles chunk, fonts, pieces and icons. That's about 41 files / 3.1 MB. The whole app works with no network (verified with the server shut down: home, fonts, puzzles, and the engine playing a move).
+- **Updates:** `registerType: 'prompt'`. `components/UpdatePrompt.tsx` shows "A new version is ready [Update] [Later]" and **never reloads on its own**, so a game in progress is safe. Cache versions come from the build's content hashes, so there's no manual version bump. Verify an update by rebuilding, re-serving, reloading the old tab and checking that the toast appears and the new bundle loads after Update.
+- **Dev mode:** the service worker exists only in production builds, never in `npm run dev`. Port 4199 is used by another local project; use 4273 for previews.
+- **Install:** `lib/install.ts` captures `beforeinstallprompt` (imported first in `main.tsx`) for the "Install NextMove" button in Settings. iOS has no prompt, so it shows Share → Add to Home Screen instead. Automated/test Chrome usually doesn't fire the event, so the fallback text appears there; the real prompt needs a normal browser. iOS home-screen tags and `apple-touch-icon` are in `index.html`.
 
 ## Architecture
 

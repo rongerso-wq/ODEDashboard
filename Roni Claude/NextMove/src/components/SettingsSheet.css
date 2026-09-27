@@ -32,6 +32,17 @@
   height: 24px;
   accent-color: var(--accent);
 }
+.sheet-install {
+  display: grid;
+  gap: 6px;
+  margin-top: 14px;
+  padding: 14px;
+  border-radius: var(--radius);
+  background: var(--surface-2);
+}
+.sheet-install .btn {
+  min-height: 50px;
+}
 .sheet-voice {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
