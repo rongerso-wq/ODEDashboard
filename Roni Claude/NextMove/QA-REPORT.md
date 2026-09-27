@@ -41,3 +41,35 @@ Full QA started 2026-09-27. Areas A–L, run in four rounds. Legend: ✅ pass ·
 
 ### B6 Engine failure ✅ (browser, network cut before the engine loads)
 - Within 2 s: "The chess engine couldn't start on this device, so Grandmaster Nova is playing random moves." The game continues (Nova played 1.a4) instead of hanging.
+
+## Round 2: teaching and puzzles
+
+### C7 Coach grading ✅ (real engine, `QA=1 npx vitest run src/coach/coach.qa`)
+- On 40 real puzzle positions: the correct move was graded best/good **40/40**; a legal move losing ≥ 3 pawns was graded mistake/blunder **40/40**.
+- Every explanation and all 120 hints (levels 1–3) are well-formed (no empty text, no "undefined", level 3 always has an arrow).
+
+### C8 Opponent commentary ✅
+- Fuzz test: 20 random games, every move commented in Classic and Kids wording. It never throws, never prints garbage, and every comment is under 220 characters. It costs ~6 ms per comment (rules-only), which is fine for one comment per move.
+- Content checks (Scholar's threat, check, fork, capture, attack, centre, castling) are in `commentary.test.ts`.
+
+### C9 Academy: every lesson played end to end 🐞 → fixed
+- A browser robot played all 40 lessons as a user would: taps Next, solves star hunts along the shortest route, plays the listed or any-mate moves (promotions through the picker), answers questions, and plays engine goals with Stockfish's moves.
+- **39/40 finished with 3★ at the first attempt.**
+- **Bug:** *Rule of the square* could never be completed. Catching the last pawn leaves K v K, a draw by the rules, and the goal check tested "draw → failed" before "all captured → won". So a perfect answer was told "The game ended in a draw. Try again." Fixed (the capture goal is checked first); the replay now gives "Caught it!" and 3★.
+- The lesson checker (`npm run verify:lessons`) and the rules tests were already green.
+
+### C10 Review ✅ (80-move game)
+- The analysis took 23 s with the progress bar shown.
+- The numbers agree with each other: your mistakes + blunders (2 + 4) = 6 key moments = 6 practice cards; graph markers (20) = both sides' ?!/?/?? counts.
+- The Last button jumps to the end. Reviewing the same game again adds no duplicate practice cards.
+
+### C11 My mistakes ✅
+- Verified when built (saving, engine-accepted alternatives, missed card back in the same session, spacing 1 → 3 days); the schedule is unit-tested.
+
+### D12 Puzzles 🐞 → fixed
+- The robot solved one puzzle in every one of the 14 themes (1–3-move solutions, including a promotion): all "Solved".
+- All 1,864 puzzles replay legally (unit test); Rush, rating and daily were verified in Phase 5.
+- **Bug:** "today" was the **UTC** date, so the puzzle of the day and the day streak rolled over at 03:00 in Israel (09:00 in Tokyo), not at midnight. Fixed: local calendar day, DST-safe "yesterday"; new `streak.test.ts` passes in Jerusalem, Tokyo and Los Angeles time zones.
+
+### Testing hooks added
+- `Board` exposes `data-fen` / `data-orientation` (read-only) for browser QA robots; `PuzzleBoard` has `data-puzzle`.

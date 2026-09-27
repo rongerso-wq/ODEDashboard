@@ -483,6 +483,12 @@ function GoalView({ step, kids, intro, coordinates, onDone, onMistake }: StepPro
       else lose(kids ? 'Oh no — you got checkmated! Try again.' : 'You were checkmated. Try again.')
       return true
     }
+    // Capturing the last enemy piece usually leaves K v K, a draw by the rules — for a
+    // "capture" goal that is the win, so it must be checked before the draw (QA C9).
+    if (g === 'capture' && countPieces(c, them) === 0) {
+      win()
+      return true
+    }
     if (c.isDraw()) {
       if (g === 'hold') win()
       else lose(c.isStalemate() ? (kids ? "Stalemate — it's a tie! Leave the king a square. Try again." : 'Stalemate — a draw. Always leave the king a square. Try again.') : 'The game ended in a draw. Try again.')
@@ -494,10 +500,6 @@ function GoalView({ step, kids, intro, coordinates, onDone, onMistake }: StepPro
     }
     if (g === 'promote' && countPieces(c, me, 'p') === 0 && !c.history({ verbose: true }).some((m) => m.color === me && m.promotion)) {
       lose(kids ? 'The pawn was captured. Try again!' : 'Your pawn was lost. Try again.')
-      return true
-    }
-    if (g === 'capture' && countPieces(c, them) === 0) {
-      win()
       return true
     }
     if ((g === 'capture' || g === 'hold') && lastBy === them && c.history({ verbose: true }).at(-1)?.promotion) {

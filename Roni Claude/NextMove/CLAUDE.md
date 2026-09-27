@@ -23,6 +23,7 @@ npx vitest run src/coach/commentary.test.ts   # one file
 npx vitest run -t "names a fork"              # one test by name
 npm run verify:lessons       # Stockfish (in Node) checks every Academy lesson; must print "0 problems"
 node scripts/qa-bot-strength.ts   # QA: the 8 bots' strength must rise level by level (~5 min)
+QA=1 npx vitest run src/coach/coach.qa   # QA: coach grading/hints with the real engine + commentary fuzz (~30 s)
 npm run puzzles              # rebuild src/puzzles/puzzles.json from the Lichess puzzle DB (network)
 npm run engine               # re-copy Stockfish WASM from node_modules into public/engine/
 node scripts/extract-pieces.mjs   # re-extract the cburnett piece SVGs into public/pieces/
@@ -152,6 +153,8 @@ npm run build && npx vite preview --port 4273   # the only way to test the servi
 - **Speech needs a real click:** use the MCP `click` tool, because synthetic clicks don't count as a user gesture. To see what Elias says, wrap `speechSynthesis.speak` to log `u.text`.
 - **Setting up states:** write the storage keys directly, e.g. `nextmove:computer-current` or `nextmove:review-game`. Navigate away first, because leaving a game saves it and would overwrite your injected save.
 - **Puzzle solutions:** in dev, `await import('/src/puzzles/puzzles.json')` plus the board's `data-puzzle` give you the answer.
+- **Robots:** `svg.board` carries `data-fen` and `data-orientation`, so a browser script can read the live position and play whole lessons, puzzles or games (import `/src/academy/lessons.ts`, `/src/engine/engine.ts`, and chess.js from `/node_modules/.vite/deps/chess__js.js` in dev). A full-Academy robot run is described in `QA-REPORT.md` (C9).
+- **Dates:** "today" must be the local calendar day (`puzzles/model.ts` `today()`), never `toISOString()` (that's UTC).
 
 ## Licensing
 - **Pieces:** cburnett (CC BY-SA 3.0), credited on Home.

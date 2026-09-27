@@ -178,6 +178,8 @@ export default function Board({
       <svg
         ref={svgRef}
         className={`board${drag?.moved ? ' dragging' : ''}`}
+        data-fen={fen /* read by browser QA scripts */}
+        data-orientation={orientation}
         viewBox={`0 0 ${8 * S} ${8 * S}`}
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}

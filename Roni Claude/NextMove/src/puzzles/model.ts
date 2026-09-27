@@ -74,7 +74,10 @@ const START: PuzzleStats = { rating: 800, games: 0, solved: [], tried: [], histo
 export const loadStats = (): PuzzleStats => ({ ...START, ...load<Partial<PuzzleStats>>('puzzle-stats', {}) })
 export const saveStats = (s: PuzzleStats) => save('puzzle-stats', s)
 
-export const today = (d = new Date()) => d.toISOString().slice(0, 10)
+/** The player's own calendar day, "YYYY-MM-DD" (local time, not UTC: the daily puzzle and the
+ *  streak roll over at the player's midnight — QA D12). */
+export const today = (d = new Date()) =>
+  `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
 
 /** Elo against the puzzle's rating; faster while the player's rating is still settling. */
 export function newRating(player: number, puzzle: number, won: boolean, games: number): number {
@@ -99,7 +102,8 @@ export function recordResult(p: Puzzle, success: boolean, rated: boolean): { sta
     if (!s.solved.includes(p.id)) s.solved = [...s.solved, p.id]
     const t = today()
     if (s.streak.last !== t) {
-      const yesterday = today(new Date(Date.now() - 86_400_000))
+      const now = new Date()
+      const yesterday = today(new Date(now.getFullYear(), now.getMonth(), now.getDate() - 1)) // DST-safe
       s.streak = { days: s.streak.last === yesterday ? s.streak.days + 1 : 1, last: t }
     }
   }
