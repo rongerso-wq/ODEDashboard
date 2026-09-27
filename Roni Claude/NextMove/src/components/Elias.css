@@ -1,0 +1,102 @@
+.elias {
+  flex: none;
+  display: inline-block;
+  border-radius: 50%;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+  position: relative;
+}
+.elias svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.elias.speaking {
+  box-shadow: 0 0 0 3px var(--accent), 0 3px 10px rgba(0, 0, 0, 0.3);
+  animation: elias-glow 1.2s ease-in-out infinite;
+}
+.elias.speaking .elias-jaw {
+  animation: elias-talk 0.28s ease-in-out infinite alternate;
+  transform-origin: 32px 34px;
+}
+@keyframes elias-talk {
+  to {
+    transform: translateY(1.4px) scaleY(1.04);
+  }
+}
+@keyframes elias-glow {
+  50% {
+    box-shadow: 0 0 0 6px var(--accent-soft), 0 3px 10px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.narrator {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.narrator-body {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 14px;
+  border-radius: 4px 16px 16px 16px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  animation: bubble-in 0.3s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+}
+.narrator-name {
+  display: block;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.narrator-body p {
+  margin: 2px 0 0;
+  font-size: 18px;
+  line-height: 1.5;
+}
+.narrator.compact .narrator-body p {
+  font-size: 16px;
+}
+:root[data-mode='kids'] .narrator-body p {
+  font-size: 20px;
+  font-weight: 500;
+}
+.narrator-replay {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  font-size: 18px;
+  display: grid;
+  place-items: center;
+}
+.voice-toggle {
+  padding: 0;
+}
+.voice-toggle.off .elias {
+  filter: grayscale(1) opacity(0.55);
+}
+.voice-toggle.off::after {
+  /* a slash over the portrait when muted */
+  content: '';
+  position: absolute;
+  width: 34px;
+  height: 3px;
+  background: var(--danger);
+  transform: rotate(-45deg);
+  border-radius: 2px;
+}
+.voice-toggle {
+  position: relative;
+}
+
+@media (max-width: 560px) {
+  .narrator-body p {
+    font-size: 17px;
+  }
+}

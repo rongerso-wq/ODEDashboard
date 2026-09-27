@@ -1,0 +1,188 @@
+/* NextMove design system.
+   Classic = dark walnut club room with brass accents.
+   Kids    = warm cream, coral + teal, rounder and bigger. Set via <html data-mode="kids">. */
+
+:root {
+  --font-display: 'Fraunces Variable', Georgia, serif;
+  --font-body: 'Inter Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --bg: #15100c;
+  --bg-glow: radial-gradient(1200px 700px at 20% -10%, #3a2818 0%, transparent 60%),
+    radial-gradient(900px 600px at 110% 110%, #2a1d12 0%, transparent 55%);
+  --surface: #211912;
+  --surface-2: #2b2118;
+  --line: #3d3024;
+  --text: #f3ebdd;
+  --muted: #c2b29a;
+  --faint: #9c8b73;
+  --accent: #d4ad62;
+  --accent-ink: #1b140d;
+  --accent-soft: rgba(212, 173, 98, 0.14);
+  --good: #7fc48a;
+  --danger: #e7806b;
+
+  --sq-light: #ecdcbc;
+  --sq-dark: #a97d58;
+  --coord-on-light: #8a6444;
+  --coord-on-dark: #f3e6cc;
+  --frame: linear-gradient(145deg, #4a3322, #2a1c12 60%, #3b2819);
+  --frame-line: #b8904f;
+  --hl-last: rgba(245, 205, 90, 0.42);
+  --hl-select: rgba(245, 205, 90, 0.62);
+  --dot: rgba(40, 24, 10, 0.34);
+  --check: #ff4d3a;
+
+  --radius: 14px;
+  --radius-lg: 22px;
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.45), 0 2px 6px rgba(0, 0, 0, 0.3);
+  --tap: 48px;
+  --fs-body: 16px;
+
+  color-scheme: dark;
+}
+
+:root[data-mode='kids'] {
+  --bg: #fff6ea;
+  --bg-glow: radial-gradient(900px 600px at 0% 0%, #ffe3cf 0%, transparent 60%),
+    radial-gradient(800px 600px at 100% 100%, #d9f3ee 0%, transparent 55%);
+  --surface: #ffffff;
+  --surface-2: #fff1e2;
+  --line: #f0dcc6;
+  --text: #2d2238;
+  --muted: #5e5068;
+  --faint: #6f6178;
+  --accent: #ff6b4a;
+  --accent-ink: #ffffff;
+  --accent-soft: rgba(255, 107, 74, 0.12);
+  --good: #1f9e8c;
+
+  --sq-light: #fbf1dc;
+  --sq-dark: #6fb8a3;
+  --coord-on-light: #3f8a76;
+  --coord-on-dark: #fbf1dc;
+  --frame: linear-gradient(145deg, #ffb48f, #ff8a65 55%, #ffa27e);
+  --frame-line: #fff3e4;
+  --hl-last: rgba(255, 196, 61, 0.5);
+  --hl-select: rgba(255, 170, 40, 0.7);
+  --dot: rgba(30, 60, 55, 0.32);
+
+  --radius: 20px;
+  --radius-lg: 28px;
+  --shadow: 0 16px 40px rgba(180, 110, 70, 0.22), 0 2px 6px rgba(120, 70, 40, 0.12);
+  --tap: 58px;
+  --fs-body: 17px;
+
+  color-scheme: light;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--bg-glow), var(--bg);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  min-height: var(--tap);
+  padding-inline: 20px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: transform 0.12s ease, background 0.2s ease, border-color 0.2s ease;
+}
+.btn:active {
+  transform: scale(0.97);
+}
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.btn-primary {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-color: transparent;
+  box-shadow: 0 6px 20px var(--accent-soft);
+}
+.btn-ghost {
+  background: transparent;
+}
+.icon-btn {
+  width: var(--tap);
+  height: var(--tap);
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  display: inline-grid;
+  place-items: center;
+  transition: transform 0.12s ease, background 0.2s ease;
+}
+.icon-btn:active {
+  transform: scale(0.94);
+}
+.icon-btn svg,
+.btn svg {
+  width: 22px;
+  height: 22px;
+}
+
+@media (hover: hover) {
+  .btn:hover:not(:disabled),
+  .icon-btn:hover {
+    border-color: var(--accent);
+  }
+  .btn-primary:hover:not(:disabled) {
+    filter: brightness(1.06);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

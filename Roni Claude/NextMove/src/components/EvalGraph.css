@@ -1,0 +1,47 @@
+.eval-graph {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 600 / 110;
+  border-radius: 12px;
+  cursor: pointer;
+  touch-action: manipulation;
+  border: 1px solid var(--line);
+}
+.eg-bg {
+  fill: #2a2420;
+}
+.eg-area {
+  fill: #f1e9da;
+}
+.eg-mid {
+  stroke: #9a8b77;
+  stroke-width: 1;
+  stroke-dasharray: 4 4;
+  vector-effect: non-scaling-stroke;
+}
+.eg-line {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+.eg-cursor {
+  stroke: var(--accent);
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+.eg-dot {
+  stroke: #fff;
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+.eg-dot.g-inaccuracy {
+  fill: #d9a521;
+}
+.eg-dot.g-mistake {
+  fill: #e27a2e;
+}
+.eg-dot.g-blunder {
+  fill: #d63d2e;
+}

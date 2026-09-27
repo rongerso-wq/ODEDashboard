@@ -1,0 +1,170 @@
+.board-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  padding: clamp(6px, 1.6%, 14px);
+  border-radius: var(--radius);
+  background: var(--frame);
+  box-shadow: var(--shadow), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+.board-frame::after {
+  /* thin brass line between frame and squares */
+  content: '';
+  position: absolute;
+  inset: calc(clamp(6px, 1.6%, 14px) - 3px);
+  border: 1.5px solid var(--frame-line);
+  border-radius: 4px;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.board {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 3px;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: pointer;
+}
+.board.dragging {
+  cursor: grabbing;
+}
+
+.coord {
+  font-family: var(--font-body);
+  font-size: 26px;
+  font-weight: 700;
+  pointer-events: none;
+  paint-order: stroke;
+  stroke: color-mix(in srgb, var(--sq-light) 40%, transparent);
+  stroke-width: 3px;
+}
+
+.piece {
+  pointer-events: none;
+  filter: drop-shadow(0 3px 2px rgba(0, 0, 0, 0.28));
+}
+.piece.slide {
+  animation: piece-slide 0.2s cubic-bezier(0.2, 0.8, 0.25, 1);
+}
+@keyframes piece-slide {
+  from {
+    transform: var(--from);
+  }
+}
+.piece.lifted {
+  opacity: 0.3;
+}
+.piece.ghost {
+  filter: drop-shadow(0 14px 10px rgba(0, 0, 0, 0.4));
+}
+
+.dest-dot {
+  fill: var(--dot);
+  pointer-events: none;
+}
+.dest-ring {
+  fill: none;
+  stroke: var(--dot);
+  stroke-width: 9;
+  pointer-events: none;
+}
+.hover-target {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.85);
+  stroke-width: 6;
+  pointer-events: none;
+}
+
+.check-glow {
+  pointer-events: none;
+  animation: check-pulse 1.4s ease-in-out infinite;
+}
+@keyframes check-pulse {
+  50% {
+    opacity: 0.65;
+  }
+}
+
+.star {
+  fill: #ffc83d;
+  stroke: #d08a00;
+  stroke-width: 3;
+  stroke-linejoin: round;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.3));
+  animation: star-bob 1.6s ease-in-out infinite;
+  transform-box: fill-box;
+}
+@keyframes star-bob {
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* Coach overlays */
+.arrow {
+  pointer-events: none;
+  opacity: 0.82;
+  stroke-linejoin: round;
+  stroke-width: 3;
+  animation: arrow-in 0.35s ease-out;
+}
+.arrow-good {
+  fill: #2fa35b;
+  stroke: #1d7a41;
+}
+.arrow-bad {
+  fill: #e0573f;
+  stroke: #b23a26;
+}
+.arrow-hint {
+  fill: #3b8fe0;
+  stroke: #276cb0;
+}
+@keyframes arrow-in {
+  from {
+    opacity: 0;
+  }
+}
+.mark {
+  pointer-events: none;
+  fill: none;
+  stroke-width: 8;
+  animation: mark-pulse 1.3s ease-in-out infinite;
+}
+.mark-hint {
+  stroke: #3b8fe0;
+  fill: rgba(59, 143, 224, 0.22);
+}
+.mark-good {
+  stroke: #2fa35b;
+}
+.mark-bad {
+  stroke: #e0573f;
+}
+@keyframes mark-pulse {
+  50% {
+    opacity: 0.55;
+  }
+}
+
+.promo-dim {
+  fill: rgba(10, 6, 3, 0.55);
+}
+.promo-option {
+  cursor: pointer;
+}
+.promo-option circle {
+  fill: #f8f1e3;
+  stroke: var(--accent);
+  stroke-width: 4;
+  transition: fill 0.15s ease;
+}
+@media (hover: hover) {
+  .promo-option:hover circle {
+    fill: #ffe9b8;
+  }
+}

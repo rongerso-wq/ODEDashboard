@@ -1,0 +1,75 @@
+.dialog.sheet {
+  text-align: start;
+  display: grid;
+  /* minmax(0, …): long voice names must not widen the panel past the screen */
+  grid-template-columns: minmax(0, 1fr);
+  gap: 4px;
+  width: min(460px, 100%);
+  max-height: calc(100dvh - 32px);
+  overflow: auto;
+}
+.sheet-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+.sheet-head h2 {
+  margin: 0 !important;
+}
+.sheet-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 52px;
+  border-bottom: 1px solid var(--line);
+  font-weight: 600;
+  cursor: pointer;
+}
+.sheet-row input[type='checkbox'] {
+  width: 24px;
+  height: 24px;
+  accent-color: var(--accent);
+}
+.sheet-voice {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 10px;
+  margin-top: 14px;
+  padding: 14px;
+  border-radius: var(--radius);
+  background: var(--surface-2);
+}
+.sheet-voice-head {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.sheet-voice-head p {
+  margin: 2px 0 0 !important;
+  font-size: 14px;
+}
+.sheet-field {
+  display: grid;
+  gap: 4px;
+  font-weight: 600;
+}
+.sheet-field select {
+  width: 100%;
+  min-width: 0;
+  text-overflow: ellipsis;
+  min-height: 48px;
+  padding: 0 10px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-weight: 500;
+}
+.sheet-note {
+  margin: 0 !important;
+  font-size: 13px;
+  color: var(--muted);
+}

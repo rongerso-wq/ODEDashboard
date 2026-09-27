@@ -1,0 +1,100 @@
+/* Shared app chrome: top bar, mode switch, page container. */
+.page {
+  max-width: 1180px;
+  margin-inline: auto;
+  padding-inline: 16px;
+  padding-block-end: 32px;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-block: 14px;
+}
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.logo {
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: linear-gradient(145deg, color-mix(in srgb, var(--accent) 80%, #fff), var(--accent));
+  box-shadow: 0 4px 14px var(--accent-soft);
+}
+.logo img {
+  width: 82%;
+  height: 82%;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.35));
+}
+.wordmark {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+
+.mode-switch {
+  display: inline-flex;
+  padding: 4px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+.mode-switch button {
+  min-height: calc(var(--tap) - 10px);
+  padding-inline: 16px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 15px;
+  position: relative;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.mode-switch button.on {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+@media (max-width: 480px) {
+  .topbar {
+    gap: 8px;
+  }
+  .brand {
+    gap: 8px;
+  }
+  .wordmark {
+    font-size: 21px;
+  }
+  .topbar-actions {
+    gap: 6px;
+  }
+  .topbar .icon-btn {
+    width: 44px;
+    height: 44px;
+  }
+  .mode-switch button {
+    min-height: 36px;
+    padding-inline: 11px;
+    font-size: 14px;
+  }
+}
+@media (max-width: 370px) {
+  .wordmark {
+    font-size: 18px;
+  }
+  .brand .logo {
+    width: 34px !important;
+    height: 34px !important;
+  }
+}

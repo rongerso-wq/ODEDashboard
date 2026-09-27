@@ -1,0 +1,50 @@
+// Turns on-screen text into something a speech voice reads naturally:
+// chess notation becomes words ("Qxf7#" -> "Queen takes f7, checkmate"), symbols and emoji go.
+
+const PIECE: Record<string, string> = { K: 'King', Q: 'Queen', R: 'Rook', B: 'Bishop', N: 'Knight' }
+
+/** One SAN move in words. */
+export function sanToWords(san: string): string {
+  const suffix = san.includes('#') ? ', checkmate' : san.includes('+') ? ', check' : ''
+  const s = san.replace(/[+#!?]/g, '')
+  if (s === 'O-O') return `castles kingside${suffix}`
+  if (s === 'O-O-O') return `castles queenside${suffix}`
+  const m = s.match(/^([KQRBN])?([a-h])?([1-8])?(x)?([a-h][1-8])(?:=([QRBN]))?$/)
+  if (!m) return san
+  const [, piece, fromFile, fromRank, takes, to, promo] = m
+  const words: string[] = []
+  if (piece) words.push(PIECE[piece])
+  else if (takes && fromFile) words.push(`${fromFile} pawn`)
+  const from = piece && (fromFile || fromRank) ? `${fromFile ?? ''}${fromRank ?? ''}` : ''
+  if (from) words.push(from) // "Knight b to d2"
+  words.push(takes ? `takes ${to}` : from ? `to ${to}` : to)
+  if (promo) words.push(`promotes to a ${PIECE[promo].toLowerCase()}`)
+  return words.join(' ') + suffix
+}
+
+// A SAN token: piece moves, pawn moves/captures, castling, promotion (with optional move number "12." / "12…").
+const SAN = /\b(?:\d+\.{1,3}|\d+…\s?)?(O-O-O|O-O|[KQRBN][a-h]?[1-8]?x?[a-h][1-8](?:=[QRBN])?|[a-h]x[a-h][1-8](?:=[QRBN])?|[a-h][1-8]=[QRBN])[+#]?(?![\w-])/g
+
+export function speakable(text: string): string {
+  return (
+    text
+      // moves like Nf3, exd5, O-O, e8=Q, Qxf7#
+      .replace(SAN, (whole) => {
+        const core = whole.replace(/^\d+(?:\.{1,3}|…)\s?/, '')
+        return sanToWords(core)
+      })
+      // single pawn moves after "Play"/"played"/"was"/"Better was" (e.g. "Better was d4.")
+      .replace(/\b(Play|play|played|was|with|Next move:|Your move:)\s([a-h][1-8])\b/g, '$1 pawn to $2')
+      // evaluations and symbols
+      .replace(/([+−-])(\d+)\.(\d)\b/g, (_, sign, a, b) => `${sign === '+' ? 'plus' : 'minus'} ${a} point ${b}`)
+      .replace(/−#(\d+)/g, 'mate in $1 against')
+      .replace(/#(\d+)/g, 'mate in $1')
+      .replace(/\?\?|\?!|(?<=\s)\?(?=\s)/g, '')
+      .replace(/→/g, ' to ')
+      .replace(/\s*[—–]\s*/g, ', ')
+      .replace(/½/g, 'a half')
+      .replace(/[★✓✗⭐🎉🌟🏆🏅⚡🔥]|\p{Extended_Pictographic}/gu, '')
+      .replace(/\s{2,}/g, ' ')
+      .trim()
+  )
+}

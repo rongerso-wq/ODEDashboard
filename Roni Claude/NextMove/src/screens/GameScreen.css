@@ -1,0 +1,206 @@
+.screen-title {
+  font-size: 24px;
+}
+
+.game-layout {
+  display: grid;
+  /* board column: as big as the viewport height allows (board + both player strips fit) */
+  grid-template-columns: max(360px, min(calc(100dvh - 215px), 780px, calc(100vw - 32px - 28px - 340px))) 340px;
+  justify-content: center;
+  gap: 28px;
+  align-items: start;
+}
+.board-col {
+  width: 100%;
+  display: grid;
+  gap: 8px;
+}
+
+.side {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 16px;
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  max-height: calc(100dvh - 110px);
+  position: sticky;
+  top: 16px;
+}
+.side .moves {
+  flex: 1;
+  min-height: 120px;
+}
+.side-moves {
+  flex: 1;
+  min-height: 110px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.side-moves .moves {
+  min-height: 0;
+}
+.side-bot .bot-says .bubble {
+  font-size: 14px;
+}
+
+.status {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  text-align: center;
+}
+.status.in-check {
+  color: #fff;
+  background: color-mix(in srgb, var(--check) 80%, #000);
+}
+
+.controls {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: 8px;
+}
+.change-opp {
+  min-height: 44px;
+  padding-inline: 14px;
+  font-size: 15px;
+}
+@media (max-width: 560px) {
+  /* icon only on phones; the label stays for screen readers */
+  .change-opp {
+    width: 44px;
+    padding: 0;
+  }
+  .change-opp span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+}
+.engine-warning {
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--danger) 18%, transparent);
+  font-size: 14px;
+}
+.ctrl {
+  min-height: 64px;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  transition: transform 0.12s ease, border-color 0.2s ease, background 0.2s ease;
+}
+.ctrl svg {
+  width: 24px;
+  height: 24px;
+}
+.ctrl:active:not(:disabled) {
+  transform: scale(0.95);
+}
+.ctrl:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.ctrl.confirming {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-color: transparent;
+}
+@media (hover: hover) {
+  .ctrl:hover:not(:disabled) {
+    border-color: var(--accent);
+  }
+}
+
+.toggles {
+  display: grid;
+  gap: 4px;
+}
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  font-size: 15px;
+  color: var(--muted);
+  cursor: pointer;
+}
+.toggle input {
+  width: 22px;
+  height: 22px;
+  accent-color: var(--accent);
+  flex: none;
+}
+
+/* Phones / narrow tablets: board full width, panel below it. */
+@media (max-width: 900px) {
+  .game-layout {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .board-col {
+    max-width: 640px;
+    margin-inline: auto;
+  }
+  .side {
+    position: static;
+    max-height: none;
+    padding: 12px;
+    max-width: 640px;
+    width: 100%;
+    margin-inline: auto;
+  }
+  .side .moves {
+    order: 3;
+    min-height: 0;
+    max-height: 180px;
+  }
+  /* phones: what matters now comes first — whose turn, the coach, the buttons */
+  .side-status {
+    order: 1;
+  }
+  .side-coach {
+    order: 2;
+  }
+  .side .controls {
+    order: 3;
+  }
+  .side-moves {
+    order: 4;
+    min-height: 0;
+    max-height: 180px;
+  }
+  .side-bot {
+    order: 5;
+  }
+  .status {
+    font-size: 18px;
+  }
+}
+@media (max-width: 480px) {
+  .game.page {
+    padding-inline: 8px;
+  }
+  .game .topbar {
+    padding-inline: 8px;
+  }
+  .screen-title {
+    font-size: 20px;
+  }
+}
