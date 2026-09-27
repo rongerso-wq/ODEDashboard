@@ -5,6 +5,7 @@ import { GradeBadge } from '../components/CoachCard'
 import EvalGraph from '../components/EvalGraph'
 import { VoiceToggle } from '../components/Elias'
 import { useSay } from '../lib/useVoice'
+import { addCards, cardFromFeedback } from '../mistakes/deck'
 import { IconBack, IconFirst, IconLast, IconNext, IconPrev } from '../components/Icons'
 import { analyse, REVIEW, uciToSan, type Analysis } from '../coach/analysis'
 import { explainMove, gradeTitle, type Feedback, type Voice } from '../coach/explain'
@@ -103,6 +104,18 @@ function ReviewScreen({ game }: { game: ReviewGame }) {
   const keyMoments = feedback
     .map((f, i) => ({ f, i }))
     .filter(({ f, i }) => f && (f.grade === 'mistake' || f.grade === 'blunder') && isMine(moves[i]))
+
+  // Once the analysis is done, your mistakes from this game go into "My mistakes"
+  // (only for games where "you" is one side; pass-and-play games have no single owner).
+  const [inDeck, setInDeck] = useState<number | null>(null)
+  useEffect(() => {
+    if (!complete || !game.me || inDeck !== null) return
+    const opponent = names[game.me === 'w' ? 'b' : 'w']
+    const cards = keyMoments.map(({ f }) => cardFromFeedback(f!, opponent)).filter((c) => c !== null)
+    addCards(cards)
+    setInDeck(cards.length)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [complete])
 
   // Keyboard: ← → to step through the game.
   useEffect(() => {
@@ -285,6 +298,11 @@ function ReviewScreen({ game }: { game: ReviewGame }) {
           {complete && keyMoments.length > 0 && (
             <section className="key-moments">
               <h2>Key moments</h2>
+              {!!inDeck && (
+                <button className="btn deck-link" onClick={() => navigate('/mistakes')}>
+                  📌 {inDeck} {kids ? 'saved to practise later' : `saved to My mistakes`}: practise now
+                </button>
+              )}
               <ul>
                 {keyMoments.map(({ f, i }) => (
                   <li key={i}>

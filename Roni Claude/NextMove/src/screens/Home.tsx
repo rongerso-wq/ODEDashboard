@@ -6,6 +6,7 @@ import { useSettings } from '../lib/settings'
 import Board from '../components/Board'
 import { EliasAvatar } from '../components/Elias'
 import SettingsSheet from '../components/SettingsSheet'
+import MistakesBanner from '../components/MistakesBanner'
 import './Home.css'
 
 const HERO_FEN = 'r1bqkbnr/pppp1ppp/2n5/4p3/2B1P3/5N2/PPPP1PPP/RNBQK2R b KQkq - 3 3'
@@ -118,6 +119,8 @@ export default function Home() {
           <Board fen={HERO_FEN} lastMove={{ from: 'f1', to: 'c4' }} animate={false} coordinates={false} />
         </div>
       </section>
+
+      <MistakesBanner kids={kids} />
 
       <nav className="cards" aria-label="Main menu">
         {CARDS.map((c) => (

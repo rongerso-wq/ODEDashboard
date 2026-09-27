@@ -13,6 +13,7 @@ import PuzzlesHome from './screens/PuzzlesHome'
 import PuzzlePlay from './screens/PuzzlePlay'
 import { parsePuzzleRoute } from './puzzles/model'
 import PuzzleRush from './screens/PuzzleRush'
+import MistakesPractice from './screens/MistakesPractice'
 
 function Screen() {
   const route = useRoute()
@@ -22,6 +23,8 @@ function Screen() {
   const puzzleMode = parsePuzzleRoute(route)
   if (puzzleMode) return <PuzzlePlay key={route} mode={puzzleMode} />
   switch (route) {
+    case '/mistakes':
+      return <MistakesPractice />
     case '/puzzles':
       return <PuzzlesHome />
     case '/puzzles/rush':

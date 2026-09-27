@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import Board from '../components/Board'
 import { IconArrow, IconBack } from '../components/Icons'
+import MistakesBanner from '../components/MistakesBanner'
 import { pieceUrl } from '../chess/pieces'
 import { dailyPuzzle, loadPuzzles, loadStats, themeSet, THEMES, today, type Puzzle } from '../puzzles/model'
 import { navigate } from '../lib/router'
@@ -34,6 +35,8 @@ export default function PuzzlesHome() {
           🔥 {stats.streak.days} <span>{stats.streak.days === 1 ? 'day' : 'days'}</span>
         </div>
       </header>
+
+      <MistakesBanner kids={kids} />
 
       <div className="p-top">
         <button className="p-card p-daily" onClick={() => navigate('/puzzles/daily')} disabled={!daily}>

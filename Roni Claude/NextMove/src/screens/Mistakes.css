@@ -1,0 +1,140 @@
+.mk-progress {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 14px;
+}
+.mk-progress span {
+  flex: 1;
+  min-width: 14px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--line);
+}
+.mk-progress .now {
+  background: color-mix(in srgb, var(--accent) 50%, var(--line));
+}
+.mk-progress .ok {
+  background: #2fa35b;
+}
+.mk-progress .bad {
+  background: #d63d2e;
+}
+
+.mk-side {
+  gap: 14px;
+}
+.mk-wait {
+  margin: 0;
+  color: var(--muted);
+  animation: think 1.4s ease-in-out infinite;
+}
+.mk-hint {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(59, 143, 224, 0.14);
+  border: 1px solid rgba(59, 143, 224, 0.45);
+}
+.mk-hint svg {
+  flex: none;
+  width: 20px;
+  height: 20px;
+}
+.mk-why {
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: var(--surface-2);
+  border-inline-start: 4px solid #e27a2e;
+}
+.mk-why span {
+  display: block;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.mk-why p {
+  margin: 4px 0 0;
+  line-height: 1.45;
+}
+.mk-actions {
+  display: grid;
+  gap: 10px;
+}
+.mk-actions .btn {
+  min-height: 54px;
+  font-size: 17px;
+}
+.mk-meta {
+  margin: 0;
+  font-size: 13px;
+  color: var(--faint);
+}
+.mk-board.s-right .board-frame {
+  box-shadow: var(--shadow), 0 0 0 4px rgba(47, 163, 91, 0.6);
+}
+.mk-board.s-shown .board-frame {
+  box-shadow: var(--shadow), 0 0 0 4px rgba(226, 122, 46, 0.6);
+}
+
+.mk-empty {
+  max-width: 620px;
+  margin: 12px auto 0;
+  display: grid;
+  gap: 16px;
+}
+.mk-stats {
+  display: flex;
+  gap: 18px;
+  color: var(--muted);
+}
+.mk-stats strong {
+  color: var(--text);
+  font-size: 20px;
+}
+.mk-empty .btn {
+  justify-self: start;
+  min-height: 54px;
+  padding-inline: 24px;
+}
+
+/* Home / Puzzles entry banner */
+.mk-banner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  margin: 0 0 16px;
+  padding: 14px 16px;
+  text-align: start;
+  border-radius: var(--radius-lg);
+  border: 1px solid color-mix(in srgb, #e27a2e 55%, var(--line));
+  background: linear-gradient(135deg, rgba(226, 122, 46, 0.14), transparent 70%), var(--surface);
+}
+.mk-banner strong {
+  display: block;
+  font-size: 17px;
+}
+.mk-banner span {
+  color: var(--muted);
+  font-size: 14px;
+}
+.mk-banner > div {
+  flex: 1;
+}
+.mk-banner > svg {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  color: var(--accent);
+}
+@media (hover: hover) {
+  .mk-banner:hover {
+    border-color: var(--accent);
+  }
+}

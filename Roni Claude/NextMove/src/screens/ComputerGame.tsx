@@ -22,6 +22,7 @@ import { useConfirm } from '../lib/useConfirm'
 import CoachCard from '../components/CoachCard'
 import { VoiceToggle } from '../components/Elias'
 import { commentOnMove } from '../coach/commentary'
+import { addCards, cardFromFeedback } from '../mistakes/deck'
 import { stop as stopVoice } from '../lib/voice'
 import type { BoardArrow, BoardMark } from '../components/Board'
 import { useCoach } from '../coach/useCoach'
@@ -128,6 +129,12 @@ function Game({ saved }: { saved: SavedComputerGame }) {
     const c = commentOnMove(lastMove, game.ply - 1, { bot: bot.name, kids })
     return c ? { san: lastMove.san, ply: game.ply, comment: c } : null
   }, [lastMove, botColor, game.ply, bot.name, kids])
+
+  // Every mistake the coach catches becomes a "My mistakes" practice card.
+  useEffect(() => {
+    const card = coach.feedback && cardFromFeedback(coach.feedback, bot.name)
+    if (card) addCards([card])
+  }, [coach.feedback, bot.name])
 
   // ---- saving: after every move, and when leaving the page ----
   const persistRef = useRef<() => void>(() => {})

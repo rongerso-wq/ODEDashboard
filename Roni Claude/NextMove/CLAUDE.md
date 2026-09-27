@@ -38,6 +38,7 @@ node scripts/extract-pieces.mjs   # re-extract the cburnett piece SVGs into publ
 | `/play/local` | Two players on one device |
 | `/play/computer`, `/play/computer/game` | Opponent setup, game against a bot |
 | `/review` | Post-game review |
+| `/mistakes` | My mistakes (spaced-repetition practice) |
 | `/puzzles`, `/puzzles/{daily\|rated\|theme/<id>}`, `/puzzles/rush` | Puzzles home, puzzle player, Puzzle Rush |
 
 - **Handing state between screens:** screens pass data through storage, not the URL. For example, the game-over dialog writes `review-game`, then navigates.
@@ -56,7 +57,7 @@ node scripts/extract-pieces.mjs   # re-extract the cburnett piece SVGs into publ
 **Settings and theming.** `lib/settings.tsx` persists these: `mode` (classic/kids), `sound`, `coordinates`, `coach`, `voice`, `voiceName`.
 - **Kids mode:** it's `<html data-mode="kids">`, which overrides the design tokens in `src/index.css`. It gives bigger tap targets (`--tap` 58px), a warmer palette and rounder corners, and components pick friendlier copy via a `kids` flag. Every feature must work in both modes.
 - **`:hover`:** rules live only inside `@media (hover: hover)`.
-- **Storage:** all goes through `lib/storage.ts` (try/catch, keys prefixed `nextmove:`). The keys are `settings`, `computer-current`, `computer-last`, `computer-history`, `review-game`, `academy-progress`, `puzzle-stats`.
+- **Storage:** all goes through `lib/storage.ts` (try/catch, keys prefixed `nextmove:`). The keys are `settings`, `computer-current`, `computer-last`, `computer-history`, `review-game`, `academy-progress`, `puzzle-stats`, `mistakes`.
 
 ## Subsystems
 
@@ -113,6 +114,16 @@ node scripts/extract-pieces.mjs   # re-extract the cburnett piece SVGs into publ
   - Rating is Elo against the puzzle's rating: start 800, K = 48/32/20 as games grow, and only the first attempt at a rated puzzle counts.
   - The daily puzzle is the same for everyone (a date hash over ratings 700–1400).
   - Puzzle Rush is 3 minutes and 3 lives. Its target rating rises 55 per solve and falls back to the *nearest* rating, never a random one.
+
+### My mistakes (`src/mistakes/deck.ts`, `screens/MistakesPractice.tsx`, route `/mistakes`)
+- **Cards:** every coach verdict graded mistake or blunder becomes a card (`cardFromFeedback`): the position before the move, the engine's best move, the played move, and the coach's "why".
+  - **Sources:** added live by `ComputerGame` (the coach card shows "Saved to My mistakes") and by `Review` once its analysis is complete. Only games with an owner are used (`game.me`), not pass-and-play.
+  - **Uniqueness:** the id is the FEN (without move counters) plus the best move, so a card is never duplicated. The deck is capped at 200 cards; mastered ones are dropped first.
+- **Scheduling:** Leitner boxes with `INTERVALS` of 0 / 1 / 3 / 7 / 21 / 60 days.
+  - Solved at the first try (no wrong move, no hint) → up one box. Otherwise → box 0, practised again at the end of the same session.
+  - Box 5 = mastered; the card leaves the queue.
+- **Answers:** the stored move or any mate is accepted instantly. Any other move is judged by a fresh `Engine` (depth 12): within 40 cp of the stored best eval counts as correct ("Qe7 works as well. I had g6 in mind…"). Reasons come from `hintFor` (rules-based), so no engine is needed to explain.
+- **Entry points:** `MistakesBanner` on Home and Puzzles (shown only when cards are due), and the "N saved" button in Review's key moments. Storage key: `mistakes`.
 
 ### Elias, the voice
 - **The voice** (`lib/voice.ts`): browser `speechSynthesis` only (free, offline, no key).

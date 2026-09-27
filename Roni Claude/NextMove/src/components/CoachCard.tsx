@@ -78,6 +78,9 @@ export default function CoachCard(p: Props) {
                 {p.feedback.san} — {p.feedback.title}
               </strong>
               <p>{p.feedback.text}</p>
+              {(p.feedback.grade === 'mistake' || p.feedback.grade === 'blunder') && p.feedback.bestSan && (
+                <span className="saved-note">📌 {p.kids ? 'Saved to your oops moments to practise later' : 'Saved to My mistakes for practice'}</span>
+              )}
             </div>
           </div>
         ) : (

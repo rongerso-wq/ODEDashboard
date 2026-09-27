@@ -95,6 +95,13 @@
   font-size: 15px;
   line-height: 1.45;
 }
+.saved-note {
+  display: block;
+  margin-top: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+}
 .coach-hint {
   padding: 10px 12px;
   border-radius: 12px;
