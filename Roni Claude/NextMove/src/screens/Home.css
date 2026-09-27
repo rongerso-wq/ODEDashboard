@@ -1,187 +1,120 @@
 .home {
-  max-width: 1180px;
+  max-width: 1080px;
   margin-inline: auto;
   padding-inline: 16px;
-  padding-block-end: 40px;
+  padding-block-end: 32px;
 }
 
+/* Hero: a headline, one line, one button — and the board as the picture. */
 .hero {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: 1fr 0.9fr;
   gap: clamp(24px, 5vw, 64px);
   align-items: center;
-  padding-block: clamp(20px, 5vw, 56px) clamp(24px, 4vw, 44px);
-}
-.eyebrow {
-  margin: 0 0 10px;
-  color: var(--accent);
-  font-weight: 700;
-  font-size: 14px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  padding-block: clamp(24px, 6vw, 64px) clamp(28px, 5vw, 52px);
 }
 .hero h1 {
-  font-size: clamp(38px, 6.2vw, 68px);
-  line-height: 1.02;
+  font-size: clamp(44px, 7vw, 80px);
+  line-height: 1;
   font-variation-settings: 'SOFT' 50, 'WONK' 0;
 }
 :root[data-mode='kids'] .hero h1 {
   font-variation-settings: 'SOFT' 100, 'WONK' 1;
 }
 .lede {
-  margin: 18px 0 26px;
-  max-width: 34em;
-  font-size: clamp(16px, 1.6vw, 19px);
+  margin: 14px 0 28px;
+  font-size: clamp(17px, 1.8vw, 20px);
   color: var(--muted);
-}
-.meet-elias {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin: -8px 0 24px;
-  color: var(--muted);
-  font-size: 15px;
-}
-.meet-elias strong {
-  color: var(--text);
-}
-.hero-ctas {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
 }
 .hero-cta {
-  min-height: calc(var(--tap) + 6px);
-  padding-inline: 28px;
-  font-size: 17px;
+  min-height: calc(var(--tap) + 8px);
+  padding-inline: 30px;
+  font-size: 18px;
 }
 .hero-board {
-  max-width: 440px;
+  max-width: 420px;
   width: 100%;
   justify-self: end;
   transform: rotate(-2deg);
   pointer-events: none;
 }
 
-.cards {
+/* Menu: four big tiles, icon + a few words. */
+.tiles {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 14px;
 }
-.card {
-  grid-column: span 2;
+.tile {
   display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  padding: 20px;
-  min-height: 132px;
-  text-align: start;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  min-height: 150px;
+  padding: 20px 12px;
   border-radius: var(--radius-lg);
   border: 1px solid var(--line);
   background: var(--surface);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.03) inset;
   transition: transform 0.15s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
-.card-learn,
-.card-computer {
-  grid-column: span 3;
+.tile-learn {
+  background: linear-gradient(160deg, var(--accent-soft), transparent 75%), var(--surface);
+  border-color: color-mix(in srgb, var(--accent) 50%, var(--line));
 }
-.card-learn {
-  background: linear-gradient(135deg, var(--accent-soft), transparent 70%), var(--surface);
-  border-color: color-mix(in srgb, var(--accent) 45%, var(--line));
-}
-.card:active:not(:disabled) {
-  transform: scale(0.985);
-}
-.card:disabled {
-  cursor: default;
-}
-.card:disabled .card-icon,
-.card:disabled .card-title {
-  opacity: 0.75;
+.tile:active {
+  transform: scale(0.97);
 }
 @media (hover: hover) {
-  .card:hover:not(:disabled) {
+  .tile:hover {
     border-color: var(--accent);
     transform: translateY(-2px);
     box-shadow: var(--shadow);
   }
 }
-.card-icon {
-  flex: none;
-  width: 52px;
-  height: 52px;
-  border-radius: 14px;
+.tile-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 18px;
   display: grid;
   place-items: center;
   background: var(--accent-soft);
   color: var(--accent);
 }
-.card-icon svg {
-  width: 28px;
-  height: 28px;
+.tile-icon svg {
+  width: 30px;
+  height: 30px;
 }
-.card-body {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  flex: 1;
-}
-.card-title {
+.tile-title {
   font-family: var(--font-display);
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 600;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px;
-}
-.card-text {
-  color: var(--muted);
-  font-size: 15px;
-}
-.card-go {
-  flex: none;
-  width: 24px;
-  height: 24px;
-  color: var(--accent);
-  align-self: center;
-}
-.soon {
-  font-family: var(--font-body);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  padding: 3px 9px;
-  border-radius: 999px;
-  border: 1px solid var(--line);
-  color: var(--muted);
+  text-align: center;
+  line-height: 1.15;
 }
 
 .home-foot {
   margin-top: 28px;
   color: var(--faint);
-  font-size: 13px;
+  font-size: 12px;
   text-align: center;
 }
 
 @media (max-width: 860px) {
   .hero {
     grid-template-columns: 1fr;
+    text-align: center;
+    justify-items: center;
   }
+  /* on phones the tiles are the picture: skip the board so the menu is on the first screen */
   .hero-board {
-    justify-self: center;
-    max-width: 360px;
-    transform: rotate(-1.5deg);
+    display: none;
   }
-  .cards {
-    grid-template-columns: 1fr;
+  .tiles {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
   }
-  .card,
-  .card-learn,
-  .card-computer {
-    grid-column: auto;
-    min-height: 0;
+  .tile {
+    min-height: 132px;
   }
 }

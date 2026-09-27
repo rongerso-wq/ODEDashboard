@@ -8,7 +8,7 @@ NextMove is a chess app for ages 0–100 whose **first purpose is teaching**. It
 
 - **Plan:** `C:\Users\litbe\.claude\plans\i-want-to-build-compiled-flute.md` (7 phases, one per turn; wait for the user's "go").
 - **Done:** phases 1–5 plus Elias and the opponent commentary.
-- **Next:** Phase 6, online play with Supabase (needs the user's project URL + anon key).
+- **Online play (Phase 6) is dropped** by the user's decision (2026-09-27): no accounts, no backend, no Supabase. NextMove is positioned as *the free chess teacher for the whole family: no ads, no accounts, works offline*. Don't add online features or "Coming soon" teasers for them.
 - **On hold at the user's request:** a private Vercel test link and a tester scorecard for a side-by-side comparison with the Dr. Wolf app.
 - `README.md` is the unmodified Vite template.
 
