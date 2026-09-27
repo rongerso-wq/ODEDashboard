@@ -10,6 +10,8 @@ export type SearchResult = { bestmove: string | null; lines: Line[] }
 
 export type SearchOptions = {
   skill?: number // Stockfish "Skill Level" 0–20
+  /** play at roughly this rating (Stockfish UCI_LimitStrength/UCI_Elo, 1320–3190); overrides skill */
+  elo?: number
   depth?: number
   movetime?: number // ms
   multipv?: number
@@ -110,7 +112,10 @@ export class Engine {
   }
 
   private async run(fen: string, opts: SearchOptions): Promise<SearchResult> {
-    let changed = this.setOption('Skill Level', opts.skill ?? 20)
+    // Skill Level alone barely weakens play at bot depths (QA B4); a rating limit really does.
+    let changed = this.setOption('UCI_LimitStrength', opts.elo ? 'true' : 'false')
+    if (opts.elo) changed = this.setOption('UCI_Elo', Math.max(1320, Math.min(3190, opts.elo))) || changed
+    changed = this.setOption('Skill Level', opts.elo ? 20 : (opts.skill ?? 20)) || changed
     changed = this.setOption('MultiPV', opts.multipv ?? 1) || changed
     if (changed) await this.sync()
 

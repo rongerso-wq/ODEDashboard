@@ -63,7 +63,7 @@ export const BOTS: Bot[] = [
     greet: { classic: 'Diagonals are my favourite. Good luck!', kids: 'Zoom! I move on diagonals. Good luck!' },
     onWin: 'Ha! The long diagonal strikes again.',
     onLose: "Well played — I didn't see that coming.",
-    randomness: 0.2,
+    randomness: 0.25,
     search: { skill: 1, depth: 3 },
   },
   {
@@ -78,8 +78,8 @@ export const BOTS: Bot[] = [
     greet: { classic: "Let's see what you've got.", kids: "I'm strong like a castle! Let's go!" },
     onWin: 'Steady wins the race. Try again?',
     onLose: 'Impressive. You earned that one.',
-    randomness: 0.08,
-    search: { skill: 3, depth: 5 },
+    randomness: 0,
+    search: { elo: 1320, movetime: 400 },
   },
   {
     id: 'quinn',
@@ -93,8 +93,8 @@ export const BOTS: Bot[] = [
     greet: { classic: 'I know my openings. Do you?', kids: 'A queen never gives up. Ready?' },
     onWin: 'The queen keeps her crown. For now.',
     onLose: 'Brilliant! You outplayed me.',
-    randomness: 0.03,
-    search: { skill: 6, depth: 8 },
+    randomness: 0,
+    search: { elo: 1420, movetime: 400 },
   },
   {
     id: 'professor',
@@ -109,7 +109,7 @@ export const BOTS: Bot[] = [
     onWin: 'A good lesson — study it and come back stronger.',
     onLose: 'Excellent. I have nothing left to teach you… almost.',
     randomness: 0,
-    search: { skill: 10, depth: 10, movetime: 700 },
+    search: { elo: 1650, movetime: 600 },
   },
   {
     id: 'kasimir',
@@ -124,7 +124,7 @@ export const BOTS: Bot[] = [
     onWin: 'Precision wins games.',
     onLose: 'A master-class. My respect.',
     randomness: 0,
-    search: { skill: 15, depth: 14, movetime: 1000 },
+    search: { elo: 2000, movetime: 900 },
   },
   {
     id: 'nova',

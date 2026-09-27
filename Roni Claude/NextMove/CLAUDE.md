@@ -22,6 +22,7 @@ npm test                     # vitest run: all unit tests
 npx vitest run src/coach/commentary.test.ts   # one file
 npx vitest run -t "names a fork"              # one test by name
 npm run verify:lessons       # Stockfish (in Node) checks every Academy lesson; must print "0 problems"
+node scripts/qa-bot-strength.ts   # QA: the 8 bots' strength must rise level by level (~5 min)
 npm run puzzles              # rebuild src/puzzles/puzzles.json from the Lichess puzzle DB (network)
 npm run engine               # re-copy Stockfish WASM from node_modules into public/engine/
 node scripts/extract-pieces.mjs   # re-extract the cburnett piece SVGs into public/pieces/
@@ -70,7 +71,8 @@ npm run build && npx vite preview --port 4273   # the only way to test the servi
 ## Subsystems
 
 ### Bots, clock, saved games
-- **Bots** (`engine/bots.ts`): 8 opponents, Pip … Grandmaster Nova. Even Stockfish Skill 0 is too strong for beginners, so the low bots play `randomMove()` with probability `randomness`. Strength labels are rough and shown as "≈".
+- **Bots** (`engine/bots.ts`): 8 opponents, Pip … Grandmaster Nova. Even Stockfish Skill 0 is too strong for beginners, so the low bots (Pip, Nora, Benny) play `randomMove()` with probability `randomness`. Rosa … Master Kasimir use a rating limit (`search.elo` → `UCI_LimitStrength`/`UCI_Elo`, which goes no lower than 1320), because Skill Level barely weakens play at these depths. Strength labels are rough and shown as "≈".
+- **After changing any bot setting**, run `node scripts/qa-bot-strength.ts` (about 5 min): the average centipawn loss must fall at every level. Neighbours vary by about ±50 between runs, so run it twice.
 - **Clock** (`chess/clock.ts`): pure functions (tested) plus `useClock`. The clock starts on the first move, and the first move is free. On timeout the game is a draw if the side with time left has too few pieces to ever checkmate (`timeoutOutcome`).
 - **Saved games** (`chess/saved.ts`): `computer-current` holds the unfinished game (SAN + paused clock), saved after every move, on `pagehide` and on unmount. `computer-history` keeps the last 30 results. Take-backs and hints only exist in games without a clock.
 
