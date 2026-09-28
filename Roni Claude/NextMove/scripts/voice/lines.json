@@ -1,0 +1,2290 @@
+[
+ {
+  "key": "b872b05d14",
+  "text": "(A rook can never take back diagonally!)"
+ },
+ {
+  "key": "93a0e5551e",
+  "text": "(Tip for your own games: give your king some air.)"
+ },
+ {
+  "key": "de213cc518",
+  "text": "2) develop your knights and bishops quickly."
+ },
+ {
+  "key": "5fe4c4fd13",
+  "text": "3) castle early to keep your king safe."
+ },
+ {
+  "key": "dbf404f627",
+  "text": "A bishop that starts on a dark square stays on dark squares for the whole game."
+ },
+ {
+  "key": "0630c2ebi",
+  "text": "A brand-new queen!"
+ },
+ {
+  "key": "ad0cbcbe1t",
+  "text": "A discovered attack: moving one piece opens the line for another."
+ },
+ {
+  "key": "c2c56a021s",
+  "text": "A fork is one piece attacking two enemy pieces at the same time."
+ },
+ {
+  "key": "a295e62c29",
+  "text": "A fork is when one piece attacks two pieces at once, like a fork with two prongs!"
+ },
+ {
+  "key": "4d698fa91n",
+  "text": "A king behind an unmoved row of pawns has no escape square."
+ },
+ {
+  "key": "f16078ce2c",
+  "text": "A king on the sixth row in front of its pawn always wins (except with an edge pawn)."
+ },
+ {
+  "key": "9e1d2d95n",
+  "text": "A pawn becomes a queen."
+ },
+ {
+  "key": "e982f9cf1i",
+  "text": "A pawn fork: whichever piece moves, you win the other."
+ },
+ {
+  "key": "83d4ba9015",
+  "text": "A pawn moves straight forward one square."
+ },
+ {
+  "key": "6b7486d7o",
+  "text": "A piece that can't move."
+ },
+ {
+  "key": "ab6919292n",
+  "text": "A pin is when a piece is stuck: if it moves, the piece behind it (like the king) gets attacked!"
+ },
+ {
+  "key": "feda080b2w",
+  "text": "A pin: a piece cannot move away because it would expose a more valuable piece behind it, often the king."
+ },
+ {
+  "key": "bc9ba7f2z",
+  "text": "A pinned piece is a sitting target."
+ },
+ {
+  "key": "aab4ef7d15",
+  "text": "A rook on the back row can checkmate him."
+ },
+ {
+  "key": "6fa632b41o",
+  "text": "A rook or queen on the back rank can then deliver checkmate."
+ },
+ {
+  "key": "7223d7c83k",
+  "text": "A skewer is a pin in reverse: you attack a valuable piece (often the king), it has to move, and you capture the piece behind it."
+ },
+ {
+  "key": "e06e6b452f",
+  "text": "A skewer: you attack the king, he runs away, and you catch the piece hiding behind him!"
+ },
+ {
+  "key": "c1c5b1c6e",
+  "text": "A sneaky rule!"
+ },
+ {
+  "key": "2f0bd19c1c",
+  "text": "a6: the Najdorf, a favourite of world champions."
+ },
+ {
+  "key": "51bed3b51d",
+  "text": "After d4 d5, attack the d5 pawn with your c-pawn."
+ },
+ {
+  "key": "46a29d09w",
+  "text": "After e4 e5, which move is best?"
+ },
+ {
+  "key": "13be3eec1h",
+  "text": "After Knight f3 and Knight c6, the bishop goes to b5."
+ },
+ {
+  "key": "ce0a8486u",
+  "text": "Almost always, choose a queen."
+ },
+ {
+  "key": "6a6c46aa18",
+  "text": "Always ask: what is my opponent threatening?"
+ },
+ {
+  "key": "72f724d31w",
+  "text": "Always leave the enemy king a square to move to, or it is stalemate!"
+ },
+ {
+  "key": "99eaa6c7v",
+  "text": "Always leave the king a square."
+ },
+ {
+  "key": "731d38f19",
+  "text": "And here?"
+ },
+ {
+  "key": "b3288835y",
+  "text": "And now, checkmate, or just check?"
+ },
+ {
+  "key": "1afe0c081e",
+  "text": "Answer e4 with a small pawn step that prepares d5."
+ },
+ {
+  "key": "e53b3d2a12",
+  "text": "Answer e4 with the c-pawn, one square."
+ },
+ {
+  "key": "ad57eddfq",
+  "text": "Answer e4 with the c-pawn."
+ },
+ {
+  "key": "36e1d1d116",
+  "text": "Any knight move gives check from the rook."
+ },
+ {
+  "key": "1c6757243r",
+  "text": "Apple gives web apps only its basic voices, even when a better one is downloaded, so Elias sounds simpler on iPhone than on a computer."
+ },
+ {
+  "key": "8ffbc98aj",
+  "text": "Attack both pieces!"
+ },
+ {
+  "key": "1ed64703t",
+  "text": "Attack it along the back row."
+ },
+ {
+  "key": "006b35abv",
+  "text": "Attack the king with your rook."
+ },
+ {
+  "key": "51cf00e8o",
+  "text": "Attack through the king."
+ },
+ {
+  "key": "13bbc8b2q",
+  "text": "Attack two pieces at once."
+ },
+ {
+  "key": "45a63fa8q",
+  "text": "Attack two things at once."
+ },
+ {
+  "key": "c49f886bj",
+  "text": "Attacking the king."
+ },
+ {
+  "key": "3b651fd3f",
+  "text": "Back-rank mate!"
+ },
+ {
+  "key": "b9004bc61n",
+  "text": "Before every move, look at every check, capture and threat."
+ },
+ {
+  "key": "017315da12",
+  "text": "Bishop a4 keeps the pin-like pressure."
+ },
+ {
+  "key": "2dbf70cc19",
+  "text": "Bishop b5 attacks the knight that defends e5."
+ },
+ {
+  "key": "698c268f19",
+  "text": "Bishop c4 aims at f7, Black's weakest square."
+ },
+ {
+  "key": "4dc8f286p",
+  "text": "Bishop e7 breaks the pin."
+ },
+ {
+  "key": "977d30321i",
+  "text": "Bishop f4: the bishop comes out before e3 locks it in."
+ },
+ {
+  "key": "1cf545b31e",
+  "text": "Bishop f5 develops with tempo, hitting the knight."
+ },
+ {
+  "key": "531e306f16",
+  "text": "Bishop g5 pins the knight that defends d5."
+ },
+ {
+  "key": "0b8a457er",
+  "text": "Black · a solid pawn chain."
+ },
+ {
+  "key": "699a4790u",
+  "text": "Black · fight back against e4."
+ },
+ {
+  "key": "7b497fe211",
+  "text": "Black · let White build, then strike."
+ },
+ {
+  "key": "d9452222n",
+  "text": "Black · safe and sound."
+ },
+ {
+  "key": "c119a48010",
+  "text": "Black asks the bishop what it wants."
+ },
+ {
+  "key": "b62857f2l",
+  "text": "Black breaks the pin."
+ },
+ {
+  "key": "3a0e95c6s",
+  "text": "Black challenges the centre."
+ },
+ {
+  "key": "de30118dm",
+  "text": "Black copies the idea."
+ },
+ {
+  "key": "468e0051s",
+  "text": "Black defends with a knight."
+ },
+ {
+  "key": "26fb2eban",
+  "text": "Black forgot to defend."
+ },
+ {
+  "key": "7c50a66er",
+  "text": "Black has a rook defending."
+ },
+ {
+  "key": "bff14786m",
+  "text": "Black jumped past you."
+ },
+ {
+  "key": "2750a5d915",
+  "text": "Black just played the pawn from d7 to d5."
+ },
+ {
+  "key": "79053622z",
+  "text": "Black loses the queen for a bishop."
+ },
+ {
+  "key": "57a6b8f31i",
+  "text": "Black must deal with the check, and the queen is gone."
+ },
+ {
+  "key": "6751a4c8e",
+  "text": "Black to move."
+ },
+ {
+  "key": "06b6a1531d",
+  "text": "Black will hit the centre with pawn to c5 and f6."
+ },
+ {
+  "key": "d24a91d21e",
+  "text": "Block the queen, or defend f7 with your own queen."
+ },
+ {
+  "key": "88f777768",
+  "text": "Blocked!"
+ },
+ {
+  "key": "45317abe1n",
+  "text": "Box the king in with the queen, then walk your king closer."
+ },
+ {
+  "key": "e35f07f01i",
+  "text": "Bridge built, the most important rook endgame to know."
+ },
+ {
+  "key": "53a73d7a2c",
+  "text": "Bring your king to face the enemy king (the \"opposition\"), then check along the row."
+ },
+ {
+  "key": "d46aa1e61q",
+  "text": "Build a bridge with your rook so the king can come out safely!"
+ },
+ {
+  "key": "e62dd563f",
+  "text": "Bye-bye, piece!"
+ },
+ {
+  "key": "7ab3d564j",
+  "text": "c3 holds d4 firmly."
+ },
+ {
+  "key": "0087809aw",
+  "text": "c3 prepares d4 for a big centre."
+ },
+ {
+  "key": "ae02598d1e",
+  "text": "c4 is the gambit: it attacks d5 to win the centre."
+ },
+ {
+  "key": "8095ebe21g",
+  "text": "c5 fights for d4 from the side, not a copy of White."
+ },
+ {
+  "key": "680717f61c",
+  "text": "c6 prepares d5, and keeps the light bishop free."
+ },
+ {
+  "key": "f6c8f82bn",
+  "text": "Can he catch the queen?"
+ },
+ {
+  "key": "cd2495c2s",
+  "text": "Can the king catch the pawn?"
+ },
+ {
+  "key": "76a260des",
+  "text": "Can the rook reach that row?"
+ },
+ {
+  "key": "47ef5a5bv",
+  "text": "Can White castle kingside here?"
+ },
+ {
+  "key": "fdc18a9cu",
+  "text": "Can you checkmate in one move?"
+ },
+ {
+  "key": "3460c97817",
+  "text": "Can you get every star in just a few moves?"
+ },
+ {
+  "key": "c78adde3u",
+  "text": "Can you hop to all four stars?"
+ },
+ {
+  "key": "d0015bc1q",
+  "text": "Can you still mate in one?"
+ },
+ {
+  "key": "72f5d4ee17",
+  "text": "Capture all the black pawns with your pawn."
+ },
+ {
+  "key": "edd9acb5j",
+  "text": "Capture en passant!"
+ },
+ {
+  "key": "d4ffdcb115",
+  "text": "Capture every black piece with your rook."
+ },
+ {
+  "key": "7584bae21a",
+  "text": "Capture on f7, the bishop protects your queen."
+ },
+ {
+  "key": "0f9b77c8l",
+  "text": "Capture the attacker!"
+ },
+ {
+  "key": "e6dc9a2210",
+  "text": "Capturing the defender is also mate."
+ },
+ {
+  "key": "70bbf1142o",
+  "text": "Careful: when you are winning, leave the enemy king a square to move to until you can checkmate."
+ },
+ {
+  "key": "acb9f60c1h",
+  "text": "Castle early: the king is safe and the rook joins in."
+ },
+ {
+  "key": "473bb234d",
+  "text": "Castle early."
+ },
+ {
+  "key": "4e021e4cx",
+  "text": "Castle kingside (the short side)."
+ },
+ {
+  "key": "867a0c89p",
+  "text": "Castle on the short side!"
+ },
+ {
+  "key": "ab65f7f28",
+  "text": "Castled!"
+ },
+ {
+  "key": "a97002453c",
+  "text": "Castling is a special move: the king moves two squares towards a rook, and the rook jumps to the other side of the king."
+ },
+ {
+  "key": "0cf74142r",
+  "text": "Castling is a special move!"
+ },
+ {
+  "key": "874bd4f3q",
+  "text": "Catch all the black pawns!"
+ },
+ {
+  "key": "d9e6e42516",
+  "text": "Catch all the black pieces with your rook!"
+ },
+ {
+  "key": "fc74e9edk",
+  "text": "Catch it en passant!"
+ },
+ {
+  "key": "99ecc8fa15",
+  "text": "Catch the pawn before it becomes a queen."
+ },
+ {
+  "key": "e3c41f0118",
+  "text": "Catch the pawn before it turns into a queen!"
+ },
+ {
+  "key": "b873784df",
+  "text": "Catch them all."
+ },
+ {
+  "key": "874fe879a",
+  "text": "Caught it!"
+ },
+ {
+  "key": "7cbc268e15",
+  "text": "Centre first, then knights, then bishops."
+ },
+ {
+  "key": "b00c0174x",
+  "text": "Centre, development, king safety."
+ },
+ {
+  "key": "336186fe10",
+  "text": "Check, and next move the rook falls."
+ },
+ {
+  "key": "27232eb26",
+  "text": "Check!"
+ },
+ {
+  "key": "84498ca1m",
+  "text": "Checkmate in one move!"
+ },
+ {
+  "key": "4a49d76513",
+  "text": "Checkmate in one, and do not stalemate!"
+ },
+ {
+  "key": "5d591efb1a",
+  "text": "Checkmate in one, but watch out for stalemate!"
+ },
+ {
+  "key": "50dc4d5e18",
+  "text": "Checkmate in one, your king helps the queen."
+ },
+ {
+  "key": "4d1ecd40h",
+  "text": "Checkmate in one!"
+ },
+ {
+  "key": "5c1ee4ddh",
+  "text": "Checkmate in one."
+ },
+ {
+  "key": "637ea588n",
+  "text": "Checkmate in two moves!"
+ },
+ {
+  "key": "627ea3f5n",
+  "text": "Checkmate in two moves."
+ },
+ {
+  "key": "849cea263g",
+  "text": "checkmate is check with no way out: the king cannot move, the attack cannot be blocked, and the attacker cannot be captured."
+ },
+ {
+  "key": "7f82dcac1q",
+  "text": "checkmate means the king is attacked and cannot escape at all."
+ },
+ {
+  "key": "d2fa97e918",
+  "text": "Checkmate the lone king with your two rooks."
+ },
+ {
+  "key": "a94a183ao",
+  "text": "Checkmate wins the game."
+ },
+ {
+  "key": "5538d5f8u",
+  "text": "Checkmate with king and queen."
+ },
+ {
+  "key": "8a3539e5t",
+  "text": "Checkmate with king and rook."
+ },
+ {
+  "key": "551e2713p",
+  "text": "Checkmate, not stalemate."
+ },
+ {
+  "key": "c0c42e14p",
+  "text": "Checkmate, or just check?"
+ },
+ {
+  "key": "4dc9dfb02q",
+  "text": "Checkmate: the king's own pawns block every escape square, and nothing can block or take the rook."
+ },
+ {
+  "key": "4a583201a",
+  "text": "Checkmate!"
+ },
+ {
+  "key": "15047063n",
+  "text": "Collect all four stars."
+ },
+ {
+  "key": "bc3bc4f81d",
+  "text": "Collect all the stars in as few moves as you can."
+ },
+ {
+  "key": "729eb8bfy",
+  "text": "Collect every star with the queen."
+ },
+ {
+  "key": "b67efedfy",
+  "text": "Collect the stars with the bishop."
+ },
+ {
+  "key": "21376928h",
+  "text": "Collect them all."
+ },
+ {
+  "key": "b61edd54h",
+  "text": "Computer to move…"
+ },
+ {
+  "key": "fa5dffad8",
+  "text": "Correct."
+ },
+ {
+  "key": "afabba631v",
+  "text": "Cut the king off with the rook, then bring your king up to face it."
+ },
+ {
+  "key": "0b463509f",
+  "text": "d3 protects e4."
+ },
+ {
+  "key": "bd158619k",
+  "text": "d4 takes the centre."
+ },
+ {
+  "key": "9a6c9db113",
+  "text": "d4, then the dark-squared bishop to f4."
+ },
+ {
+  "key": "4e20f6f0p",
+  "text": "d5 challenges the centre."
+ },
+ {
+  "key": "47b91f99m",
+  "text": "d5 strikes the centre."
+ },
+ {
+  "key": "131d8931p",
+  "text": "d6 keeps things flexible."
+ },
+ {
+  "key": "f6b8bbeb12",
+  "text": "d6 prepares Knight f6 and controls e5."
+ },
+ {
+  "key": "c0ee38629",
+  "text": "Defended."
+ },
+ {
+  "key": "84b899b617",
+  "text": "Diagonals only, and always the same colour."
+ },
+ {
+  "key": "3244e4aah",
+  "text": "Discovered check!"
+ },
+ {
+  "key": "581e13d71i",
+  "text": "Don't forget: leave him one square, or it's stalemate!"
+ },
+ {
+  "key": "0e0b896516",
+  "text": "Don't let White make a queen for 10 moves!"
+ },
+ {
+  "key": "fd122a9cs",
+  "text": "Drag the king from e1 to c1."
+ },
+ {
+  "key": "c9770548s",
+  "text": "Drag the king from e1 to g1."
+ },
+ {
+  "key": "6608a8ac1r",
+  "text": "Draw an imaginary square from the pawn to the end of the board."
+ },
+ {
+  "key": "1d2fe7a51a",
+  "text": "Draw held, the Philidor saves countless games."
+ },
+ {
+  "key": "5e07911011",
+  "text": "Drive the rook to grab all the stars!"
+ },
+ {
+  "key": "0916eab8q",
+  "text": "e3 opens the other bishop."
+ },
+ {
+  "key": "33260a491f",
+  "text": "e4 takes the centre and frees the queen and bishop."
+ },
+ {
+  "key": "4bb742f32w",
+  "text": "e4 takes the centre and opens lines for the queen and bishop. h4 and Knight a3 do little for the centre."
+ },
+ {
+  "key": "869caae5f",
+  "text": "e6 prepares d5."
+ },
+ {
+  "key": "7b9cca432h",
+  "text": "Early queen moves get chased around, and King e2 blocks the bishop and gives up castling."
+ },
+ {
+  "key": "677a0c9b46",
+  "text": "En passant (\"in passing\"): if an enemy pawn moves two squares and lands right beside your pawn, you may capture it as if it had moved only one square."
+ },
+ {
+  "key": "016e9659s",
+  "text": "Even a little pawn can fork!"
+ },
+ {
+  "key": "5778659cl",
+  "text": "Even a pawn can fork."
+ },
+ {
+  "key": "60c11b8a1w",
+  "text": "f7 is Black's weakest square at the start: only the king defends it."
+ },
+ {
+  "key": "6e5f59eeh",
+  "text": "Find a checkmate."
+ },
+ {
+  "key": "2ab5fcd918",
+  "text": "Find the knight jump that attacks e7 and d8."
+ },
+ {
+  "key": "01871a721o",
+  "text": "First cut off the 7th row with a rook, then mate on the 8th."
+ },
+ {
+  "key": "7bf7fc78v",
+  "text": "Fly the queen to all the stars!"
+ },
+ {
+  "key": "1dabb7dat",
+  "text": "Follow the moves, one by one."
+ },
+ {
+  "key": "8a0d109e65",
+  "text": "For a more natural Elias: search your phone's Settings for \"Text-to-speech\", open the settings of Speech Services by Google, choose Install voice data › English (United Kingdom) and download a voice, then reopen NextMove."
+ },
+ {
+  "key": "495084d9s",
+  "text": "Fork the king and the queen."
+ },
+ {
+  "key": "1d74c23712",
+  "text": "Forward one, or two on its first move."
+ },
+ {
+  "key": "4fc9519ap",
+  "text": "g6 prepares a fianchetto."
+ },
+ {
+  "key": "3dd9d35di",
+  "text": "Get all the stars!"
+ },
+ {
+  "key": "393876b712",
+  "text": "Give check along the back row instead."
+ },
+ {
+  "key": "939ba9dd18",
+  "text": "Go back and win three stars on every lesson!"
+ },
+ {
+  "key": "126e7483d",
+  "text": "Goal reached!"
+ },
+ {
+  "key": "97c462c4a",
+  "text": "Great job!"
+ },
+ {
+  "key": "2bfde1c623",
+  "text": "He is the most important piece: if your king is trapped, you lose the game."
+ },
+ {
+  "key": "a40ce6b615",
+  "text": "Head towards the pawn diagonally, d4, c3…"
+ },
+ {
+  "key": "c2109fbfh",
+  "text": "Hello, my friend."
+ },
+ {
+  "key": "11098dc6n",
+  "text": "Hello, my young friend!"
+ },
+ {
+  "key": "bf73cdbek",
+  "text": "Hello, young friend!"
+ },
+ {
+  "key": "43f19c3729",
+  "text": "Here the square is a5, e5, e1, a1, and the white king on e3 is already inside it."
+ },
+ {
+  "key": "31316cb7r",
+  "text": "Hold the draw for 10 moves."
+ },
+ {
+  "key": "b2702e88s",
+  "text": "Hop the knight to each star."
+ },
+ {
+  "key": "8d062a83t",
+  "text": "Hop, hop, hop, get the stars!"
+ },
+ {
+  "key": "5a3b3793l",
+  "text": "I am so proud of you!"
+ },
+ {
+  "key": "352a66df26",
+  "text": "I have played chess for seventy years, and I will teach you everything I know."
+ },
+ {
+  "key": "120de91910",
+  "text": "I'm Elias, and I'll be your teacher."
+ },
+ {
+  "key": "98b68b56a",
+  "text": "I'm Elias."
+ },
+ {
+  "key": "8171545b2m",
+  "text": "If a pawn jumps two squares and lands next to your pawn, you can catch it by moving behind it."
+ },
+ {
+  "key": "33205bbd2e",
+  "text": "If it's your turn, you're not in check, but you can't move anything, that's stalemate."
+ },
+ {
+  "key": "e9a9a00517",
+  "text": "If she takes the rook, your king takes her."
+ },
+ {
+  "key": "582416971x",
+  "text": "If the defending king can step into that square, it catches the pawn."
+ },
+ {
+  "key": "20274f841o",
+  "text": "If the king can step inside the square, he catches the pawn!"
+ },
+ {
+  "key": "88d3253921",
+  "text": "If the king comes close to a rook, move that rook far away along its row."
+ },
+ {
+  "key": "cd02fb1f2p",
+  "text": "If the player to move is not in check but has no legal move, it is stalemate, the game is a draw."
+ },
+ {
+  "key": "90c9a5541g",
+  "text": "Imagine a square from the pawn to its promotion row."
+ },
+ {
+  "key": "f49b3698r",
+  "text": "Is the black king in check?"
+ },
+ {
+  "key": "f7d0adddl",
+  "text": "Is the king in check?"
+ },
+ {
+  "key": "3b35f838u",
+  "text": "It can jump over other pieces!"
+ },
+ {
+  "key": "560112e0x",
+  "text": "It cannot jump over other pieces."
+ },
+ {
+  "key": "0b803b091b",
+  "text": "It is the only piece that can jump over others."
+ },
+ {
+  "key": "9c644af310",
+  "text": "It keeps knights and bishops off b5."
+ },
+ {
+  "key": "fb989a4a11",
+  "text": "It keeps the king safe in his castle."
+ },
+ {
+  "key": "281d18501o",
+  "text": "It tucks the king away safely and brings the rook into play."
+ },
+ {
+  "key": "a460885dq",
+  "text": "Just a little slip or two."
+ },
+ {
+  "key": "cbe1ed4b1r",
+  "text": "Just check: the pawn moved to h6, so the king can escape to h7."
+ },
+ {
+  "key": "bdfd0351b",
+  "text": "Keep going!"
+ },
+ {
+  "key": "82da1bf91a",
+  "text": "Keep him safe, he is the most important piece!"
+ },
+ {
+  "key": "d157efd22a",
+  "text": "Keep the rook on the sixth row until the pawn moves to e6, then check from behind."
+ },
+ {
+  "key": "ee075e581y",
+  "text": "Keep your king in front of or beside the pawn, and use the opposition."
+ },
+ {
+  "key": "29d65819o",
+  "text": "King and queen together."
+ },
+ {
+  "key": "0704e4011p",
+  "text": "Kings can capture too, as long as the piece is not protected."
+ },
+ {
+  "key": "80b7c685z",
+  "text": "Knight b to d2 supports the centre."
+ },
+ {
+  "key": "783506f1u",
+  "text": "Knight c3 adds pressure on d5."
+ },
+ {
+  "key": "bf82123e16",
+  "text": "Knight f3 develops a piece and attacks e5."
+ },
+ {
+  "key": "569a0327y",
+  "text": "Knight f3 develops and attacks e5."
+ },
+ {
+  "key": "3ee7bac7j",
+  "text": "Knight f3 develops."
+ },
+ {
+  "key": "4e78d9ae11",
+  "text": "Knight f3: development complete soon."
+ },
+ {
+  "key": "6a09fd01u",
+  "text": "Knight f6 adds pressure on e4."
+ },
+ {
+  "key": "c3665028l",
+  "text": "Knight f6 attacks e4."
+ },
+ {
+  "key": "883ab61bm",
+  "text": "Knight f6 controls e4."
+ },
+ {
+  "key": "c77faaf31z",
+  "text": "Knight to f6, then fianchetto the bishop with pawn to g6 and Bishop g7."
+ },
+ {
+  "key": "e17c560ct",
+  "text": "Knights are the best forkers."
+ },
+ {
+  "key": "a9de235cr",
+  "text": "Knights can give check too."
+ },
+ {
+  "key": "0c8f8991m",
+  "text": "Knights take practice."
+ },
+ {
+  "key": "aef18c25c",
+  "text": "Ladder mate!"
+ },
+ {
+  "key": "018ed102o",
+  "text": "Leave the king a square."
+ },
+ {
+  "key": "90f34d9ag",
+  "text": "Lesson complete."
+ },
+ {
+  "key": "3f4acf299",
+  "text": "Let's go!"
+ },
+ {
+  "key": "7a31dfb411",
+  "text": "Let's start with how the pieces move!"
+ },
+ {
+  "key": "1a1902ddl",
+  "text": "Look again carefully."
+ },
+ {
+  "key": "df3ad7776",
+  "text": "Magic!"
+ },
+ {
+  "key": "702a14ebh",
+  "text": "Make a new queen!"
+ },
+ {
+  "key": "807d44931p",
+  "text": "Make the move shown in the notes, or try to find it yourself."
+ },
+ {
+  "key": "efdcef30s",
+  "text": "March the pawn to the stars."
+ },
+ {
+  "key": "2603d678q",
+  "text": "March, little pawn, march!"
+ },
+ {
+  "key": "8f381e7822",
+  "text": "Move one piece out of the way and, surprise!, the piece behind it attacks!"
+ },
+ {
+  "key": "edc8b325w",
+  "text": "Move one piece, unleash another."
+ },
+ {
+  "key": "3be20cc3o",
+  "text": "Move the king to safety."
+ },
+ {
+  "key": "447725a81d",
+  "text": "Move the king two squares towards the other rook."
+ },
+ {
+  "key": "6209765617",
+  "text": "Move the king two squares towards the rook."
+ },
+ {
+  "key": "397ef57f1n",
+  "text": "Move the knight with a discovered check, and win the queen."
+ },
+ {
+  "key": "b011499e10",
+  "text": "Move the rook to collect every star."
+ },
+ {
+  "key": "c5430e02z",
+  "text": "Move your e5 pawn diagonally to d6."
+ },
+ {
+  "key": "5212f18e14",
+  "text": "Move your king two squares to the right."
+ },
+ {
+  "key": "5a357d06n",
+  "text": "Move, block or capture."
+ },
+ {
+  "key": "e65ee6cbr",
+  "text": "Next: Bishop d3 and castle."
+ },
+ {
+  "key": "de7da7e317",
+  "text": "Next: castle and bring out the last pieces."
+ },
+ {
+  "key": "9621731713",
+  "text": "Next: e6, Knight d7 and Knight g to f6."
+ },
+ {
+  "key": "d0ce015aw",
+  "text": "No, the bishop on c4 attacks f1."
+ },
+ {
+  "key": "1a1f3db71r",
+  "text": "No, the black pawn on e7 blocks the queen, so the king is safe."
+ },
+ {
+  "key": "d27c6eb4c",
+  "text": "Nobody wins!"
+ },
+ {
+  "key": "e461003fl",
+  "text": "Not a single mistake."
+ },
+ {
+  "key": "9592c2b4l",
+  "text": "Not quite, try again!"
+ },
+ {
+  "key": "6fc35f5aa",
+  "text": "Not quite."
+ },
+ {
+  "key": "71be37c7e",
+  "text": "Not this time."
+ },
+ {
+  "key": "25725ccd13",
+  "text": "Nothing can block or capture this rook."
+ },
+ {
+  "key": "4b81a754y",
+  "text": "Now attack the king along its row."
+ },
+ {
+  "key": "2525581b18",
+  "text": "Now Black strikes at the centre White built."
+ },
+ {
+  "key": "1b3ae58511",
+  "text": "Now castle queenside (the long side)."
+ },
+ {
+  "key": "caa0d73ci",
+  "text": "Now the long side!"
+ },
+ {
+  "key": "0877f47c13",
+  "text": "Now try to win three stars on each one."
+ },
+ {
+  "key": "41ce10e511",
+  "text": "Now with the queen: capture them all."
+ },
+ {
+  "key": "1fc7af79i",
+  "text": "Now you are Black."
+ },
+ {
+  "key": "c9030448q",
+  "text": "Oh no, you got checkmated!"
+ },
+ {
+  "key": "302864c813",
+  "text": "On its very first move it may move two."
+ },
+ {
+  "key": "acfe83ee1h",
+  "text": "On Windows, Microsoft Edge has the most natural ones."
+ },
+ {
+  "key": "3242322016",
+  "text": "One step at a time, and never into danger."
+ },
+ {
+  "key": "c8e8bd2219",
+  "text": "Only a slip or two, you are learning quickly."
+ },
+ {
+  "key": "c8f72bb0g",
+  "text": "Only right away!"
+ },
+ {
+  "key": "2d4534f0h",
+  "text": "Opponent to move…"
+ },
+ {
+  "key": "591c2d61d",
+  "text": "Out of moves!"
+ },
+ {
+  "key": "d1608fa1e",
+  "text": "Patience wins."
+ },
+ {
+  "key": "db8de525w",
+  "text": "Pawns attack diagonally forward."
+ },
+ {
+  "key": "9673290524",
+  "text": "Pawns capture differently from how they move: one square diagonally forward."
+ },
+ {
+  "key": "6d97db681u",
+  "text": "Pawns catch other pieces diagonally, one step forward to the side."
+ },
+ {
+  "key": "4ef71d9c1w",
+  "text": "Pawns march forward one step, or two steps on their very first move."
+ },
+ {
+  "key": "b75649fdr",
+  "text": "Pawns never move backwards."
+ },
+ {
+  "key": "b3e788bd8",
+  "text": "Perfect!"
+ },
+ {
+  "key": "d2efe562q",
+  "text": "Pin the queen to the king."
+ },
+ {
+  "key": "c3c8ddabv",
+  "text": "Pin the queen with your bishop."
+ },
+ {
+  "key": "374f528a7",
+  "text": "Pinned!"
+ },
+ {
+  "key": "101983f3l",
+  "text": "Plan two moves ahead."
+ },
+ {
+  "key": "7b646b15s",
+  "text": "Play the Caro-Kann as Black."
+ },
+ {
+  "key": "5ee81be3x",
+  "text": "Play the French Defence as Black."
+ },
+ {
+  "key": "826bd367v",
+  "text": "Play the Italian Game as White."
+ },
+ {
+  "key": "ab9e5989m",
+  "text": "Play the Italian Game!"
+ },
+ {
+  "key": "13423ed714",
+  "text": "Play the King's Indian Defence as Black."
+ },
+ {
+  "key": "7a0e3c96w",
+  "text": "Play the London System as White."
+ },
+ {
+  "key": "6b66b7e7x",
+  "text": "Play the Queen's Gambit as White."
+ },
+ {
+  "key": "f7c90c6817",
+  "text": "Play the Ruy Lopez (Spanish Game) as White."
+ },
+ {
+  "key": "981a054fz",
+  "text": "Play the Sicilian Defence as Black."
+ },
+ {
+  "key": "a6e134c21r",
+  "text": "Practice makes permanent, try it once more for all three stars."
+ },
+ {
+  "key": "61645f18s",
+  "text": "Promote the pawn to a queen."
+ },
+ {
+  "key": "a631d148h",
+  "text": "Promote the pawn."
+ },
+ {
+  "key": "4f68fd7315",
+  "text": "Push the pawn to e8, then pick the queen."
+ },
+ {
+  "key": "34d5e35b1u",
+  "text": "Put one rook on the 4th row, then check on the 5th, keep climbing."
+ },
+ {
+  "key": "ef2f2c281n",
+  "text": "Put the rook next to the king where the knight protects it."
+ },
+ {
+  "key": "e4487f3f1g",
+  "text": "Put the rook on the same file as the queen and king."
+ },
+ {
+  "key": "b03005f01b",
+  "text": "Put your bishop in the way to protect the king!"
+ },
+ {
+  "key": "89d1f2351k",
+  "text": "Queen and bishop can attack it together, Scholar's mate."
+ },
+ {
+  "key": "9125cc65s",
+  "text": "Queen c7 would be stalemate."
+ },
+ {
+  "key": "77a22f5f1s",
+  "text": "Queen fork: check the king and attack the rook at the same time."
+ },
+ {
+  "key": "5fb67b99b",
+  "text": "Queen time!"
+ },
+ {
+  "key": "1faae3d515",
+  "text": "Queenside castling: the rook lands on d1."
+ },
+ {
+  "key": "0d007d532c",
+  "text": "Remember Scholar's mate: Queen takes f7, checkmate works only when the bishop helps."
+ },
+ {
+  "key": "87feddebn",
+  "text": "Repeat until checkmate."
+ },
+ {
+  "key": "71a2f89913",
+  "text": "Repeat until the king reaches the edge."
+ },
+ {
+  "key": "957cd2a91a",
+  "text": "Replay any lesson to polish it to three stars."
+ },
+ {
+  "key": "d1380d091b",
+  "text": "Replay lessons to earn three stars on each one."
+ },
+ {
+  "key": "9b5e054b18",
+  "text": "Rook and bishop in one, the strongest piece."
+ },
+ {
+  "key": "1defcc6d1g",
+  "text": "Rook e1 protects e4 and prepares to open the centre."
+ },
+ {
+  "key": "0592a9ae1i",
+  "text": "Rook mate, the technique that wins countless endgames."
+ },
+ {
+  "key": "b03764de2h",
+  "text": "Rook to the fourth row (Rook d4), then bring the king out and block checks with the rook."
+ },
+ {
+  "key": "684d9df1f",
+  "text": "Run, king, run!"
+ },
+ {
+  "key": "b497da1b5",
+  "text": "Safe!"
+ },
+ {
+  "key": "5aa474cef",
+  "text": "Scholar's mate."
+ },
+ {
+  "key": "c7cc18d91k",
+  "text": "She is your most powerful piece, worth about nine pawns."
+ },
+ {
+  "key": "85b63f0016",
+  "text": "She moves in straight lines and diagonals."
+ },
+ {
+  "key": "dd844371q",
+  "text": "Skewer the king and queen."
+ },
+ {
+  "key": "6f1b3b63v",
+  "text": "Slide the bishop to every star!"
+ },
+ {
+  "key": "f987eed82i",
+  "text": "Slide the queen along the long diagonal to a square that checks the king and also eyes a8."
+ },
+ {
+  "key": "6bb79fc6m",
+  "text": "Smothered mate in one."
+ },
+ {
+  "key": "855e92dfa",
+  "text": "Smothered!"
+ },
+ {
+  "key": "aaf2a1dbe",
+  "text": "Splendid work."
+ },
+ {
+  "key": "83aa853ai",
+  "text": "Stalemate, a draw."
+ },
+ {
+  "key": "3fe7ba18m",
+  "text": "Stalemate, it's a tie!"
+ },
+ {
+  "key": "192c4ded2f",
+  "text": "Stalemate: the black king is not in check, but every square it could go to is attacked."
+ },
+ {
+  "key": "4d5365e6b",
+  "text": "Start here!"
+ },
+ {
+  "key": "bd5610fd15",
+  "text": "Step by step, walk the king to the stars!"
+ },
+ {
+  "key": "4fe9e5f113",
+  "text": "Step off the row the rook is attacking."
+ },
+ {
+  "key": "662327e0m",
+  "text": "Step up to the second."
+ },
+ {
+  "key": "f3939bc59",
+  "text": "Stop her!"
+ },
+ {
+  "key": "ab2298398",
+  "text": "Stop it!"
+ },
+ {
+  "key": "52e3a182z",
+  "text": "Straight lines, as far as it likes."
+ },
+ {
+  "key": "57ed0927a",
+  "text": "Superstar!"
+ },
+ {
+  "key": "156f5d019",
+  "text": "Surprise!"
+ },
+ {
+  "key": "5e8f28a2m",
+  "text": "Take the enemy pieces."
+ },
+ {
+  "key": "5f4ce9b5e",
+  "text": "Take the pawn."
+ },
+ {
+  "key": "f09362181g",
+  "text": "Take your time, every lesson is played on the board."
+ },
+ {
+  "key": "2acff239j",
+  "text": "That wins the game!"
+ },
+ {
+  "key": "0ad434612a",
+  "text": "The \"kiss of death\": a queen right next to the enemy king, protected by your king."
+ },
+ {
+  "key": "de1566aa1i",
+  "text": "The Arabian mate, one of the oldest patterns in chess."
+ },
+ {
+  "key": "0b93ca71h",
+  "text": "The Arabian mate."
+ },
+ {
+  "key": "ecd0415az",
+  "text": "The b3 pawn will guard your bishop."
+ },
+ {
+  "key": "4cba64c51c",
+  "text": "The bishop moves diagonally, as far as it likes."
+ },
+ {
+  "key": "dc0d3f5a19",
+  "text": "The bishop on g7 aims down the long diagonal."
+ },
+ {
+  "key": "5eb20dcfs",
+  "text": "The bishop shields the king."
+ },
+ {
+  "key": "253608bc1z",
+  "text": "The bishop slides on diagonals, and it always stays on the same colour!"
+ },
+ {
+  "key": "ae73da4013",
+  "text": "The bishop steps back but stays active."
+ },
+ {
+  "key": "9af5a75719",
+  "text": "The black king is stuck behind its own pawns."
+ },
+ {
+  "key": "55c6fddb10",
+  "text": "The captured piece leaves the board."
+ },
+ {
+  "key": "564ea0d210",
+  "text": "The Caro-Kann, a rock-solid defence."
+ },
+ {
+  "key": "0a8e34eal",
+  "text": "The computer defends."
+ },
+ {
+  "key": "8322effdp",
+  "text": "The computer is thinking…"
+ },
+ {
+  "key": "b90edc0cw",
+  "text": "The computer will try to escape."
+ },
+ {
+  "key": "09217cdcy",
+  "text": "The computer will try to stop you."
+ },
+ {
+  "key": "70a54f6815",
+  "text": "The d5 pawn is gone, captured in passing."
+ },
+ {
+  "key": "52511847y",
+  "text": "The enemy king cannot capture her."
+ },
+ {
+  "key": "dcfd9b1c16",
+  "text": "The f7 pawn is only protected by the king."
+ },
+ {
+  "key": "4d8e42ea13",
+  "text": "The four-move trap, and how to stop it."
+ },
+ {
+  "key": "f255568c16",
+  "text": "The French, solid and full of counterplay."
+ },
+ {
+  "key": "3512fb4ap",
+  "text": "The game ended in a draw."
+ },
+ {
+  "key": "a43cc4dfl",
+  "text": "The goal of the game."
+ },
+ {
+  "key": "1bee0312v",
+  "text": "The key defensive rook endgame."
+ },
+ {
+  "key": "d7a0ce5bt",
+  "text": "The key winning rook endgame."
+ },
+ {
+  "key": "507457cc16",
+  "text": "The king and queen stand on the same file."
+ },
+ {
+  "key": "b342e5cdy",
+  "text": "The king and queen work as a team."
+ },
+ {
+  "key": "485acb04w",
+  "text": "The king and rook move together."
+ },
+ {
+  "key": "c61bb414s",
+  "text": "The king captured the queen."
+ },
+ {
+  "key": "845a6179r",
+  "text": "The king is on the 8th row."
+ },
+ {
+  "key": "30cfb60213",
+  "text": "The king is safe and the rook is ready."
+ },
+ {
+  "key": "7f24ef42n",
+  "text": "The king leads the way."
+ },
+ {
+  "key": "5bb806be1d",
+  "text": "The king may not pass through an attacked square."
+ },
+ {
+  "key": "c70c271e17",
+  "text": "The king moves one square in any direction."
+ },
+ {
+  "key": "85a17bd5w",
+  "text": "The king must escape right away."
+ },
+ {
+  "key": "dbf5825518",
+  "text": "The king must move, then you take the queen."
+ },
+ {
+  "key": "d853cd53p",
+  "text": "The king must now escape."
+ },
+ {
+  "key": "dd18854a1j",
+  "text": "The king slides two squares and the rook hops over him."
+ },
+ {
+  "key": "c6b1045618",
+  "text": "The king steps aside and the queen is yours."
+ },
+ {
+  "key": "9387a0101b",
+  "text": "The king takes one small step in any direction."
+ },
+ {
+  "key": "0731510dy",
+  "text": "The king trapped by its own pawns."
+ },
+ {
+  "key": "0c07b4b81f",
+  "text": "The King's Indian, Kasparov's and Fischer's weapon."
+ },
+ {
+  "key": "8f7260a82a",
+  "text": "The kings facing each other with one square between them is called the opposition."
+ },
+ {
+  "key": "522b6778s",
+  "text": "The knight guards g8 and h7."
+ },
+ {
+  "key": "c5b378a91r",
+  "text": "The knight hops in an L shape: two steps, then one to the side."
+ },
+ {
+  "key": "b8855743x",
+  "text": "The knight mates a boxed-in king."
+ },
+ {
+  "key": "9a5901f82e",
+  "text": "The knight moves in an \"L\": two squares in one direction, then one square to the side."
+ },
+ {
+  "key": "4924bcd5m",
+  "text": "The knight steps back."
+ },
+ {
+  "key": "a0678482i",
+  "text": "The L-shaped jump."
+ },
+ {
+  "key": "af3979c9g",
+  "text": "The ladder mate."
+ },
+ {
+  "key": "db89264c23",
+  "text": "The ladder: one rook cuts off a row, the other gives check on the next row."
+ },
+ {
+  "key": "e2f3adb015",
+  "text": "The London: easy to learn, hard to break."
+ },
+ {
+  "key": "9ab9382e2j",
+  "text": "The Lucena position: your pawn is on the seventh row and your king is stuck in front of it."
+ },
+ {
+  "key": "1a807ea82n",
+  "text": "The moment the pawn steps onto that row, swing your rook to the far side and check from behind."
+ },
+ {
+  "key": "bef8dc0eu",
+  "text": "The most important basic mate."
+ },
+ {
+  "key": "2951b14ao",
+  "text": "The pawn became a queen."
+ },
+ {
+  "key": "67a84f74i",
+  "text": "The pawn promoted."
+ },
+ {
+  "key": "0d006193m",
+  "text": "The pawn was captured."
+ },
+ {
+  "key": "a87f0a812x",
+  "text": "The Philidor defence: keep your rook on the sixth row (your third) so the enemy king cannot come forward."
+ },
+ {
+  "key": "ae09c10f1h",
+  "text": "The player in check must get out of it straight away."
+ },
+ {
+  "key": "bb592db31a",
+  "text": "The queen and bishop can team up to attack it!"
+ },
+ {
+  "key": "8001cfef18",
+  "text": "The queen and king are on the same diagonal."
+ },
+ {
+  "key": "6f53cb56k",
+  "text": "The queen is pinned."
+ },
+ {
+  "key": "74a07feb1r",
+  "text": "The queen is right next to your king, and nothing protects her."
+ },
+ {
+  "key": "c2111e8e10",
+  "text": "The queen is the superhero of chess!"
+ },
+ {
+  "key": "ec1c6e0d2c",
+  "text": "The queen moves like a rook and a bishop: straight or diagonal, as far as she likes."
+ },
+ {
+  "key": "78bf6f8d20",
+  "text": "The queen sits right next to the enemy king, and your king protects her."
+ },
+ {
+  "key": "3118774613",
+  "text": "The queen wants to checkmate you on f7."
+ },
+ {
+  "key": "1e83b931x",
+  "text": "The queen, supported by her king."
+ },
+ {
+  "key": "af6bde8018",
+  "text": "The Queen's Gambit Declined: Black holds d5."
+ },
+ {
+  "key": "ed48e4301d",
+  "text": "The Queen's Gambit, a classic of top-level chess."
+ },
+ {
+  "key": "78028d9cy",
+  "text": "The rook attacks along the e-file."
+ },
+ {
+  "key": "650aad1011",
+  "text": "The rook attacks the whole first row."
+ },
+ {
+  "key": "0fba2503n",
+  "text": "The rook builds a wall."
+ },
+ {
+  "key": "210636181b",
+  "text": "The rook cuts the king off along a row or file."
+ },
+ {
+  "key": "d5ed1c9fl",
+  "text": "The rook gives check."
+ },
+ {
+  "key": "273a6baa2f",
+  "text": "The rook moves in straight lines, up, down, left or right, as many squares as it likes."
+ },
+ {
+  "key": "1615761b1e",
+  "text": "The rook zooms in straight lines, like a race car!"
+ },
+ {
+  "key": "3a6b74531y",
+  "text": "The Ruy Lopez, over 450 years old and still played by world champions."
+ },
+ {
+  "key": "df9ccf6c19",
+  "text": "The same setup works against almost anything."
+ },
+ {
+  "key": "673bf6e917",
+  "text": "The Sicilian, the most popular reply to e4."
+ },
+ {
+  "key": "1eb40a39o",
+  "text": "The sneaky pawn capture."
+ },
+ {
+  "key": "4b9b96b2k",
+  "text": "The two-rook ladder."
+ },
+ {
+  "key": "9b80a0c83n",
+  "text": "The winning plan is to \"build a bridge\": put your rook on the fourth row, walk your king out, and use the rook to block the checks."
+ },
+ {
+  "key": "f2dbaa2at",
+  "text": "Then bring your king to help."
+ },
+ {
+  "key": "469d29c944",
+  "text": "There are three ways to get out of check: 1) move the king to a safe square, 2) block the attack with another piece, 3) capture the attacking piece."
+ },
+ {
+  "key": "269b4f21n",
+  "text": "They can never go back!"
+ },
+ {
+  "key": "ec2c37f113",
+  "text": "This bishop lives on the light squares."
+ },
+ {
+  "key": "e4bc6eabw",
+  "text": "This bishop loves light squares."
+ },
+ {
+  "key": "d928c9a416",
+  "text": "This pattern is called the back-rank mate."
+ },
+ {
+  "key": "7887553a11",
+  "text": "This time, block it with your bishop."
+ },
+ {
+  "key": "cb3b12931p",
+  "text": "Three golden rules: 1) Fight for the centre (e4, d4, e5, d5)."
+ },
+ {
+  "key": "416c5bd13c",
+  "text": "Three golden rules: take the middle of the board, bring out your knights and bishops, and castle to keep your king safe!"
+ },
+ {
+  "key": "429e67db12",
+  "text": "Three stars, without a single mistake."
+ },
+ {
+  "key": "a9f10dc1c",
+  "text": "Three stars!"
+ },
+ {
+  "key": "3d0f908c2q",
+  "text": "Three ways to escape check: run away with the king, put a piece in the way, or catch the attacker!"
+ },
+ {
+  "key": "e293082912",
+  "text": "To castle, move your king two squares."
+ },
+ {
+  "key": "e2dfd5421a",
+  "text": "To catch an enemy piece, move onto its square."
+ },
+ {
+  "key": "cefadef3v",
+  "text": "Today's lesson: Back-rank mate."
+ },
+ {
+  "key": "c35c846bq",
+  "text": "Today's lesson: Capturing."
+ },
+ {
+  "key": "ed13712eq",
+  "text": "Today's lesson: Caro-Kann."
+ },
+ {
+  "key": "d5b049b1p",
+  "text": "Today's lesson: Castling."
+ },
+ {
+  "key": "58ebf678m",
+  "text": "Today's lesson: Check."
+ },
+ {
+  "key": "c5e36b7fq",
+  "text": "Today's lesson: Checkmate."
+ },
+ {
+  "key": "7894ef26y",
+  "text": "Today's lesson: Discovered attack."
+ },
+ {
+  "key": "79ed99b7r",
+  "text": "Today's lesson: En passant."
+ },
+ {
+  "key": "afa1dd80v",
+  "text": "Today's lesson: French Defence."
+ },
+ {
+  "key": "752c915711",
+  "text": "Today's lesson: Getting out of check."
+ },
+ {
+  "key": "2e3c21e2t",
+  "text": "Today's lesson: Italian Game."
+ },
+ {
+  "key": "1beb8914u",
+  "text": "Today's lesson: King and pawn."
+ },
+ {
+  "key": "01c839b4u",
+  "text": "Today's lesson: King's Indian."
+ },
+ {
+  "key": "292da1e1u",
+  "text": "Today's lesson: London System."
+ },
+ {
+  "key": "974de1cc13",
+  "text": "Today's lesson: Lucena: build a bridge."
+ },
+ {
+  "key": "146e687es",
+  "text": "Today's lesson: Mate in two."
+ },
+ {
+  "key": "fb427767z",
+  "text": "Today's lesson: Opening principles."
+ },
+ {
+  "key": "683a3f9f14",
+  "text": "Today's lesson: Philidor: hold the draw."
+ },
+ {
+  "key": "bdbf8443q",
+  "text": "Today's lesson: Promotion."
+ },
+ {
+  "key": "ce1edcc2v",
+  "text": "Today's lesson: Queen and king."
+ },
+ {
+  "key": "26d89546v",
+  "text": "Today's lesson: Queen's Gambit."
+ },
+ {
+  "key": "b68b5c25u",
+  "text": "Today's lesson: Rook and king."
+ },
+ {
+  "key": "ad0d9b7bw",
+  "text": "Today's lesson: Rook and knight."
+ },
+ {
+  "key": "d2342da8q",
+  "text": "Today's lesson: Ruy Lopez."
+ },
+ {
+  "key": "2f1580dfv",
+  "text": "Today's lesson: Scholar's mate."
+ },
+ {
+  "key": "bca14350x",
+  "text": "Today's lesson: Sicilian Defence."
+ },
+ {
+  "key": "b2a311c4v",
+  "text": "Today's lesson: Smothered mate."
+ },
+ {
+  "key": "e02afe30q",
+  "text": "Today's lesson: Stalemate."
+ },
+ {
+  "key": "0cd4a180r",
+  "text": "Today's lesson: The bishop."
+ },
+ {
+  "key": "ba9f57bfp",
+  "text": "Today's lesson: The fork."
+ },
+ {
+  "key": "e735e45ep",
+  "text": "Today's lesson: The king."
+ },
+ {
+  "key": "0013395cr",
+  "text": "Today's lesson: The knight."
+ },
+ {
+  "key": "0fec8c29p",
+  "text": "Today's lesson: The pawn."
+ },
+ {
+  "key": "a3f0ac10o",
+  "text": "Today's lesson: The pin."
+ },
+ {
+  "key": "38fbf177q",
+  "text": "Today's lesson: The queen."
+ },
+ {
+  "key": "f30fee94p",
+  "text": "Today's lesson: The rook."
+ },
+ {
+  "key": "968b255e13",
+  "text": "Today's lesson: The rule of the square."
+ },
+ {
+  "key": "55ad0578r",
+  "text": "Today's lesson: The skewer."
+ },
+ {
+  "key": "00ff29a8q",
+  "text": "Today's lesson: Two rooks."
+ },
+ {
+  "key": "ae1e228d1g",
+  "text": "Together they push the king to the edge and mate it."
+ },
+ {
+  "key": "201dfb6816",
+  "text": "Trade a side pawn for White's centre pawn."
+ },
+ {
+  "key": "b6652a327",
+  "text": "Tricky!"
+ },
+ {
+  "key": "307e08c1a",
+  "text": "Try again!"
+ },
+ {
+  "key": "297dfdbca",
+  "text": "Try again."
+ },
+ {
+  "key": "2a3e90e11e",
+  "text": "Try it once more and you will shine even brighter."
+ },
+ {
+  "key": "519e96d7s",
+  "text": "Turn your pawn into a queen!"
+ },
+ {
+  "key": "88e44fb21z",
+  "text": "Two rooks climb like a ladder: one blocks a row, the other gives check."
+ },
+ {
+  "key": "8e9909feq",
+  "text": "Up and up until checkmate!"
+ },
+ {
+  "key": "bd437d9f18",
+  "text": "Up, down, left or right, as far as it wants."
+ },
+ {
+  "key": "152f58f62i",
+  "text": "Use the ladder: one rook blocks, the other checks, push the king to the edge of the board!"
+ },
+ {
+  "key": "f8bebb6fk",
+  "text": "Use the open e-file."
+ },
+ {
+  "key": "72f7a5321l",
+  "text": "Use the queen to make the king's box smaller and smaller."
+ },
+ {
+  "key": "ac4762e122",
+  "text": "Use the queen to shrink the king's box, stay a knight's move away from it."
+ },
+ {
+  "key": "45754c79a",
+  "text": "Very good!"
+ },
+ {
+  "key": "4e755aa4a",
+  "text": "Very good."
+ },
+ {
+  "key": "c9d3723922",
+  "text": "Voices come from your device, so they differ between phones and computers."
+ },
+ {
+  "key": "c0e85880t",
+  "text": "Voices come from your iPhone."
+ },
+ {
+  "key": "d28d850ds",
+  "text": "Voices come from your phone."
+ },
+ {
+  "key": "cf141ceas",
+  "text": "Walk the king to every star."
+ },
+ {
+  "key": "94257f2721",
+  "text": "We start with how the pieces move and finish with real endgame technique."
+ },
+ {
+  "key": "1ecb44878",
+  "text": "Welcome."
+ },
+ {
+  "key": "6b3efd82a",
+  "text": "Well done!"
+ },
+ {
+  "key": "ce8533dfb",
+  "text": "What is it?"
+ },
+ {
+  "key": "f4b3f08539",
+  "text": "When a pawn reaches the far end of the board it is promoted: it becomes a queen, rook, bishop or knight, your choice."
+ },
+ {
+  "key": "de9989112g",
+  "text": "When a pawn reaches the very end of the board, it turns into a queen (or another piece)!"
+ },
+ {
+  "key": "7fbad30e1g",
+  "text": "When a piece attacks the king, the king is in check."
+ },
+ {
+  "key": "bd1b616d18",
+  "text": "When a piece attacks the king, we say check!"
+ },
+ {
+  "key": "87f829cfh",
+  "text": "When nobody wins."
+ },
+ {
+  "key": "a349dcf42b",
+  "text": "When the hidden piece gives check, the piece that moved can grab anything it likes."
+ },
+ {
+  "key": "89d75fe81k",
+  "text": "When the king hides behind his own pawns, he gets stuck!"
+ },
+ {
+  "key": "c65def983b",
+  "text": "When the king is completely surrounded by its own pieces, a single knight can checkmate it, nothing can block a knight."
+ },
+ {
+  "key": "8eeb31aa26",
+  "text": "When the king is on the edge, bring your own king up to help and deliver mate."
+ },
+ {
+  "key": "d4da65492c",
+  "text": "When the king is squished by his own pieces, a knight can jump in and checkmate him!"
+ },
+ {
+  "key": "3f612b9c1f",
+  "text": "When the pawn moves up, check the king from behind!"
+ },
+ {
+  "key": "0f0e4d4e19",
+  "text": "Which first move follows the principles best?"
+ },
+ {
+  "key": "2f75c10do",
+  "text": "Which one also captures?"
+ },
+ {
+  "key": "8ff6b7771e",
+  "text": "Which square can the knight reach that attacks h8?"
+ },
+ {
+  "key": "fa1cf3ads",
+  "text": "Which square hits c5 and e5?"
+ },
+ {
+  "key": "2ed0665f1c",
+  "text": "Which square on that file can your bishop reach?"
+ },
+ {
+  "key": "d6524f3cm",
+  "text": "White · a solid setup."
+ },
+ {
+  "key": "6e320254i",
+  "text": "White · aim at f7."
+ },
+ {
+  "key": "f690b80f10",
+  "text": "White · offer a pawn for the centre."
+ },
+ {
+  "key": "c2f0d623n",
+  "text": "White · pressure on e5."
+ },
+ {
+  "key": "2ea9b63a16",
+  "text": "White threatens Queen takes f7, checkmate."
+ },
+ {
+  "key": "96e52202q",
+  "text": "Win by promoting the pawn."
+ },
+ {
+  "key": "229733cc13",
+  "text": "Winners must be careful not to do this."
+ },
+ {
+  "key": "e38bc8e724",
+  "text": "With king and pawn against king, your king should walk IN front of the pawn."
+ },
+ {
+  "key": "56ff1ce73a",
+  "text": "With two rooks, use the ladder: one rook guards a row, the other checks on the next row, pushing the king to the edge."
+ },
+ {
+  "key": "1d31fc061n",
+  "text": "Yes, from d6 the knight attacks e8: one L-shaped jump away."
+ },
+ {
+  "key": "f456770a1m",
+  "text": "Yes, the bishop on b5 attacks the king along the diagonal."
+ },
+ {
+  "key": "dc811cc34",
+  "text": "Yes!"
+ },
+ {
+  "key": "0477319di",
+  "text": "You are Black now."
+ },
+ {
+  "key": "5baf6929e",
+  "text": "You are Black."
+ },
+ {
+  "key": "f9f16e61m",
+  "text": "You are learning fast!"
+ },
+ {
+  "key": "847b0c9336",
+  "text": "You can castle only if the king and rook have never moved, nothing is between them, and the king is not in danger."
+ },
+ {
+  "key": "7888b8d71k",
+  "text": "You capture by moving onto the square of an enemy piece."
+ },
+ {
+  "key": "9e1be485v",
+  "text": "You did it in the fewest moves!"
+ },
+ {
+  "key": "92f7ec51b",
+  "text": "You did it!"
+ },
+ {
+  "key": "c7fbd7eeq",
+  "text": "You finished every lesson!"
+ },
+ {
+  "key": "e37beabao",
+  "text": "You finished everything!"
+ },
+ {
+  "key": "ebb2a407z",
+  "text": "You finished the lesson, my friend."
+ },
+ {
+  "key": "47a031c7o",
+  "text": "You finished the lesson."
+ },
+ {
+  "key": "a8493de4v",
+  "text": "You have completed the Academy."
+ },
+ {
+  "key": "04ea43531r",
+  "text": "You know the Italian Game, one of the oldest openings in chess."
+ },
+ {
+  "key": "4d95878fi",
+  "text": "You lost material."
+ },
+ {
+  "key": "d7f25e9es",
+  "text": "You mastered the queen mate!"
+ },
+ {
+  "key": "3e1b4ff85i",
+  "text": "You may castle only if: the king and that rook have not moved yet, there are no pieces between them, and the king is not in check, does not pass through an attacked square, and does not land on one."
+ },
+ {
+  "key": "1b0023ff11",
+  "text": "You must do it on the very next move."
+ },
+ {
+  "key": "5e2fef72k",
+  "text": "You were checkmated."
+ },
+ {
+  "key": "70e8f412y",
+  "text": "You won the king and pawn endgame."
+ },
+ {
+  "key": "fe1c21d328",
+  "text": "Your c1 rook can capture on c8, and it is protected… or does it even need to be?"
+ },
+ {
+  "key": "f11df989z",
+  "text": "Your king already guards a7 and b7."
+ },
+ {
+  "key": "e8eea3c4v",
+  "text": "Your king covers f7, g7 and h7."
+ },
+ {
+  "key": "b175d417m",
+  "text": "Your king is attacked!"
+ },
+ {
+  "key": "e85e2364m",
+  "text": "Your king is in check."
+ },
+ {
+  "key": "c6aad2dd14",
+  "text": "Your king is stuck in front of the pawn."
+ },
+ {
+  "key": "c2853de6m",
+  "text": "Your king protects it."
+ },
+ {
+  "key": "6605d5282r",
+  "text": "Your king walks in front of the pawn, like a bodyguard, and clears the way to the end of the board."
+ },
+ {
+  "key": "fa0af20520",
+  "text": "Your king walks up to face the other king, and then the rook says check!"
+ },
+ {
+  "key": "8db8d21314",
+  "text": "Your opponent can only save one of them."
+ },
+ {
+  "key": "89f1d9c8w",
+  "text": "Your opponent can only save one."
+ },
+ {
+  "key": "d85a29b9o",
+  "text": "Your opponent is moving…"
+ },
+ {
+  "key": "d4f15405j",
+  "text": "Your pawn was lost."
+ },
+ {
+  "key": "19202fef26",
+  "text": "Your rook builds a wall on the third row so the other king cannot come closer."
+ },
+ {
+  "key": "5dccb5c410",
+  "text": "Your turn: give check with the rook."
+ },
+ {
+  "key": "5976bd3ca",
+  "text": "Your turn!"
+ }
+]

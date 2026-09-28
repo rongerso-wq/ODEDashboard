@@ -68,6 +68,7 @@ export default function SettingsSheet({ onClose }: { onClose: () => void }) {
   }, [onClose])
 
   const auto = bestVoice(voices) // what "Automatic" resolves to
+  const device = s.eliasVoice === 'device'
   // the chosen voice is stored by voiceURI (older versions stored its name)
   const chosen = s.voiceName
     ? (voices.find((v) => voiceId(v) === s.voiceName) ?? voices.find((v) => v.name === s.voiceName))
@@ -106,28 +107,34 @@ export default function SettingsSheet({ onClose }: { onClose: () => void }) {
               <p>Your teacher reads lessons, hints and explanations aloud.</p>
             </div>
           </div>
-          {!voiceSupported() ? (
-            <p className="sheet-note">This browser can't speak. Try Chrome, Edge or Safari.</p>
-          ) : (
+          <label className="sheet-row">
+            <span>Elias speaks</span>
+            <input type="checkbox" checked={s.voice} onChange={(e) => s.update({ voice: e.target.checked })} />
+          </label>
+          <label className="sheet-field">
+            <span>Voice</span>
+            <select
+              value={device ? (chosen ? voiceId(chosen) : '') : 'recorded'}
+              onChange={(e) =>
+                e.target.value === 'recorded'
+                  ? s.update({ eliasVoice: 'recorded' })
+                  : s.update({ eliasVoice: 'device', voiceName: e.target.value || null })
+              }
+            >
+              <option value="recorded">Elias (recorded voice)</option>
+              {voiceSupported() && <option value="">Device voice: Automatic{auto ? ` (${voiceLabel(auto)})` : ''}</option>}
+              {voices.map((v) => (
+                <option key={voiceId(v)} value={voiceId(v)}>
+                  Device voice: {voiceLabel(v)}
+                </option>
+              ))}
+            </select>
+          </label>
+          <button className="btn" onClick={() => speak(SAMPLE, { force: true })}>
+            🔊 Hear Elias
+          </button>
+          {device ? (
             <>
-              <label className="sheet-row">
-                <span>Elias speaks</span>
-                <input type="checkbox" checked={s.voice} onChange={(e) => s.update({ voice: e.target.checked })} />
-              </label>
-              <label className="sheet-field">
-                <span>Voice</span>
-                <select value={chosen ? voiceId(chosen) : ''} onChange={(e) => s.update({ voiceName: e.target.value || null })}>
-                  <option value="">Automatic{auto ? ` (${voiceLabel(auto)})` : ''}</option>
-                  {voices.map((v) => (
-                    <option key={voiceId(v)} value={voiceId(v)}>
-                      {voiceLabel(v)}
-                    </option>
-                  ))}
-                </select>
-              </label>
-              <button className="btn" onClick={() => speak(SAMPLE, { force: true })}>
-                🔊 Hear Elias
-              </button>
               <p className="sheet-note">{voiceTip()}</p>
               {/* For support: exactly what the device offers (Enhanced voices hid on a Hebrew iPhone). */}
               <details className="sheet-note voice-details">
@@ -142,6 +149,11 @@ export default function SettingsSheet({ onClose }: { onClose: () => void }) {
                 </ul>
               </details>
             </>
+          ) : (
+            <p className="sheet-note">
+              Elias's own voice, recorded for NextMove. It works without internet. Lines that change during a game
+              still use your device's voice for now.
+            </p>
           )}
         </section>
 

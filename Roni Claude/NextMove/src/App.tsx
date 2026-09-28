@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useLayoutEffect } from 'react'
 import { useRoute } from './lib/router'
 import { stop as stopVoice } from './lib/voice'
 import { SettingsProvider } from './lib/settings'
@@ -20,7 +20,8 @@ import CrashGuard from './components/CrashGuard'
 function Screen() {
   const route = useRoute()
   // Elias stops talking when you leave a screen.
-  useEffect(() => stopVoice(), [route])
+  // A layout effect runs before the new screen's effects, so this never cuts off its first words.
+  useLayoutEffect(() => stopVoice(), [route])
   if (route.startsWith('/learn/')) return <LessonPlayer id={route.slice('/learn/'.length)} />
   const puzzleMode = parsePuzzleRoute(route)
   if (puzzleMode) return <PuzzlePlay key={route} mode={puzzleMode} />

@@ -35,6 +35,7 @@ npm run engine               # re-copy Stockfish WASM from node_modules into pub
 node scripts/extract-pieces.mjs   # re-extract the cburnett piece SVGs into public/pieces/
 npm run icons                # regenerate public/icons/*.png (knight on brass) with sharp
 npm run licenses             # regenerate public/licenses.txt (third-party notices) after adding/updating a dependency
+npm run voice                # collect Elias's lines and record new/changed ones with OpenAI (needs OPENAI_API_KEY in .env.local)
 npm run build && npx vite preview --port 4273   # the only way to test the service worker / offline mode
 ```
 
@@ -145,7 +146,13 @@ npm run build && npx vite preview --port 4273   # the only way to test the servi
 - **Entry points:** `MistakesBanner` on Home and Puzzles (shown only when cards are due), and the "N saved" button in Review's key moments. Storage key: `mistakes`.
 
 ### Elias, the voice
-- **The voice** (`lib/voice.ts`): browser `speechSynthesis` only (free, offline, no key).
+- **Recorded voice** (2026-09-28, plan `~/.claude/plans/replicated-soaring-bubble.md`, phase 1 of 3 done: the Academy). iPhones give web pages only Apple's lowest-quality voices, so Elias has his own recordings: OpenAI `gpt-4o-mini-tts`, voice **Ash** (the user's choice), made once on this PC and shipped as `public/voice/<key>.mp3` (mono 40 kbps, silence trimmed).
+  - **Pipeline:** `scripts/voice/collect.ts` gathers every fixed sentence (lesson data in both styles, lesson intros, feedback/praise literals in LessonPlayer/Academy/Settings) → `scripts/voice/lines.json`. `scripts/voice/record.mjs` records only sentences without a file (`--limit=N` for a trial, `--prune` deletes unused clips) and writes `src/voice/manifest.json`. `npm run voice` runs both. After changing any lesson text, run it, or the new sentence falls back to the device voice (the coverage test in `scripts/voice/collect.test.ts` fails first).
+  - **Keys:** `lib/voiceText.ts` (no DOM; the app and Node share it): `sentences()` is exactly how `speak()` splits text (after `speakable()`); a sentence ends only before a capital, digit or quote. `clipKey()` = FNV-1a hash + length of the normalised sentence.
+  - **Playback** (`lib/voice.ts` + `lib/recordings.ts`): one ordered queue for everything Elias says. A text is recorded all-or-nothing (never half Elias, half device voice). Clips play through one Web Audio context, unlocked by the first tap (iPhone), with a 0.14 s breath between sentences. A clip that can't load (offline, not yet cached) falls back to the device voice. The service worker keeps played clips (`elias-voice` runtime cache).
+  - **Setting:** `eliasVoice: 'recorded' | 'device'` (default recorded), one "Voice" select in Settings; the device-voice tip and Voice details show only for a device voice.
+  - The OpenAI key lives only in `.env.local` (git-ignored; `.vercelignore` keeps `.env*` off Vercel). The app never contacts OpenAI.
+- **The device voice** (`lib/voice.ts`): browser `speechSynthesis` (free, offline, no key), for everything not recorded.
   - It picks a voice by `voiceScore`: male first (Elias is a man), then quality (natural/neural/premium/enhanced, then Google), then the `PREFERRED` names. Apple's novelty and old robotic voices (`NOVELTY`: Fred, Zarvox, Grandpa…) are never used or listed.
   - `tuning()`: only desktop neural ("Natural") voices are deepened (pitch 0.85). Every other voice keeps pitch 1 and rate 0.95, because shifting a phone voice's pitch made Elias sound like a robot (user feedback on a real phone, 2026-09-28).
   - **Voices are identified by `voiceURI`, not name** (`voiceId`, `voiceLabel`): Safari on iPhone names the downloaded Enhanced voice just "Daniel", like the basic one; only its voiceURI says `enhanced`. The saved `voiceName` setting holds a voiceURI (older saves hold a name; both are matched). On an iPhone set to another language the names are translated ("דניאל"), so the name lists are also matched against the English last part of the voiceURI (`matches`). Settings › "Voice details" lists every voice the device offers (for support).

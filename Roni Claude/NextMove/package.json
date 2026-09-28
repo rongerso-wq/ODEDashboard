@@ -13,7 +13,8 @@
     "verify:lessons": "node scripts/verify-lessons.ts",
     "puzzles": "node scripts/build-puzzles.mjs",
     "icons": "node scripts/make-icons.mjs",
-    "licenses": "node scripts/licenses.mjs"
+    "licenses": "node scripts/licenses.mjs",
+    "voice": "node scripts/voice/collect.ts && node scripts/voice/record.mjs"
   },
   "dependencies": {
     "@fontsource-variable/fraunces": "^5.3.0",
@@ -24,6 +25,7 @@
     "stockfish": "^19.0.0"
   },
   "devDependencies": {
+    "@breezystack/lamejs": "^1.2.7",
     "@types/node": "^24.13.3",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",

@@ -1,12 +1,13 @@
-// Elias's voice: the browser's built-in speech synthesis. He gets the best-sounding English male
-// voice on the device; only the natural (neural) desktop voices are deepened, because shifting the
-// pitch of a phone voice makes it sound like a robot (user feedback, 2026-09-28).
-// Swappable: everything speaks through `speak()`, so a premium voice service could replace it here.
-import { speakable } from './speakable'
+// Elias's voice. His own recordings (OpenAI "Ash", lib/recordings.ts) play wherever a sentence has
+// one; everything else uses the device's speech synthesis. For that he gets the best-sounding English
+// male voice on the device; only the natural (neural) desktop voices are deepened, because shifting
+// the pitch of a phone voice makes it sound like a robot (user feedback, 2026-09-28).
+import { clipKey, sentences } from './voiceText.ts'
+import { hasClip, playClip, preload } from './recordings.ts'
 
 let enabled = true
 let chosenName: string | null = null
-let current: SpeechSynthesisUtterance[] = []
+let useRecordings = true
 const listeners = new Set<(speaking: boolean) => void>()
 
 const synth = () => (typeof window !== 'undefined' && 'speechSynthesis' in window ? window.speechSynthesis : null)
@@ -18,6 +19,10 @@ export function setVoiceEnabled(on: boolean) {
 }
 export function setVoiceName(name: string | null) {
   chosenName = name
+}
+/** true: Elias's recorded voice where a recording exists; false: always the device voice. */
+export function setRecordedVoice(on: boolean) {
+  useRecordings = on
 }
 
 // Best "wise old man" candidates first (Edge natural voices, then Apple, Google, Windows).
@@ -103,9 +108,20 @@ export function tuning(voice: SpeechSynthesisVoice | null): { pitch: number; rat
   return voice && /natural/i.test(voice.name) ? { pitch: 0.85, rate: 0.92 } : { pitch: 1, rate: 0.95 }
 }
 
+// ---------- Playback ----------
+// One queue for everything Elias says, played in order: a sentence with a recording (public/voice,
+// made by `npm run voice`) plays that; any other sentence uses the device voice. So the two never
+// talk over each other, and the device voice is the fallback when a recording is missing.
+
+type Item = { text: string; clip: string | null }
+let queue: Item[] = []
+let busy = false
+let gen = 0 // bumped by stop(): a running queue from before it quietly ends
+let loopGen = -1 // the generation whose queue loop is running
+let active: { stop: () => void } | null = null
+
 function notify() {
-  const speaking = current.length > 0
-  for (const l of listeners) l(speaking)
+  for (const l of listeners) l(busy)
 }
 
 export function onSpeaking(fn: (speaking: boolean) => void) {
@@ -116,43 +132,75 @@ export function onSpeaking(fn: (speaking: boolean) => void) {
 }
 
 export function stop() {
-  const s = synth()
-  current = []
-  s?.cancel()
+  gen++
+  queue = []
+  active?.stop()
+  active = null
+  synth()?.cancel()
+  busy = false
   notify()
 }
 
-/**
- * Says `text`, cancelling whatever Elias was saying — or, with `queue`, after it.
- * Long texts are split into sentences, because some browsers cut off a single long utterance.
- */
-export function speak(text: string, opts: { force?: boolean; queue?: boolean } = {}) {
+/** One sentence in the device voice; resolves when it ends (or is stopped). */
+function sayDevice(text: string): Promise<void> {
   const s = synth()
-  if (!s || (!enabled && !opts.force)) return
-  const clean = speakable(text)
-  if (!clean) return
-  if (!opts.queue) {
-    s.cancel()
-    current = []
-  }
-  const voice = pickVoice()
-  const parts = clean.match(/[^.!?]+[.!?]*\s*/g) ?? [clean]
-  const added = parts.map((part) => {
-    const u = new SpeechSynthesisUtterance(part.trim())
+  if (!s) return Promise.resolve()
+  return new Promise((done) => {
+    const u = new SpeechSynthesisUtterance(text)
+    const voice = pickVoice()
     if (voice) {
       u.voice = voice
       u.lang = voice.lang
     } else u.lang = 'en-GB'
     Object.assign(u, tuning(voice))
-    u.onend = u.onerror = () => {
-      current = current.filter((x) => x !== u)
-      notify()
-    }
-    return u
+    u.onend = u.onerror = () => done()
+    active = { stop: () => done() }
+    s.speak(u)
   })
-  current = [...current, ...added]
-  for (const u of added) s.speak(u)
+}
+
+async function run() {
+  if (loopGen === gen) return // this generation's loop is already playing the queue
+  loopGen = gen
+  busy = true
   notify()
+  const my = gen
+  while (queue.length && my === gen) {
+    const item = queue.shift()!
+    let played = false
+    if (item.clip) {
+      try {
+        played = await playClip(item.clip, () => my !== gen, (a) => (active = a))
+      } catch {
+        played = false // not downloaded yet and offline, or undecodable: say it in the device voice
+      }
+    }
+    if (!played && my === gen) await sayDevice(item.text)
+  }
+  if (my === gen) {
+    busy = false
+    active = null
+    loopGen = -1 // a later speak({ queue: true }) starts a new loop
+    notify()
+  }
+}
+
+/**
+ * Says `text`, cancelling whatever Elias was saying — or, with `queue`, after it.
+ * Each sentence is a separate item, because some browsers cut off a single long utterance.
+ */
+export function speak(text: string, opts: { force?: boolean; queue?: boolean } = {}) {
+  if (!enabled && !opts.force) return
+  const parts = sentences(text)
+  if (!parts.length) return
+  if (!opts.queue) stop()
+  // A text is recorded all or nothing: one voice per text, never half Elias, half device.
+  const recorded = useRecordings && parts.every(hasClip)
+  if (!recorded && !synth()) return
+  const items = parts.map((t) => ({ text: t, clip: recorded ? clipKey(t) : null }))
+  for (const i of items) if (i.clip) preload(i.clip)
+  queue.push(...items)
+  void run()
 }
 
 /** Voices load asynchronously in Chrome; call back when the list is ready. */

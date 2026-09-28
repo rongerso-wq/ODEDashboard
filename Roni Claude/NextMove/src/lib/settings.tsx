@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react'
 import { isObj, load, save } from './storage'
 import { setSoundEnabled } from './sound'
-import { setVoiceEnabled, setVoiceName } from './voice'
+import { setRecordedVoice, setVoiceEnabled, setVoiceName } from './voice'
 
 export type Mode = 'classic' | 'kids'
 
@@ -13,11 +13,13 @@ export type Settings = {
   coach: boolean
   /** Elias reads explanations aloud */
   voice: boolean
-  /** chosen speech voice (null = pick the best available) */
+  /** chosen device voice (a voiceURI; null = pick the best available) */
   voiceName: string | null
+  /** 'recorded': Elias's own recorded voice; 'device': the device's speech voices */
+  eliasVoice: 'recorded' | 'device'
 }
 
-const DEFAULTS: Settings = { mode: 'classic', sound: true, coordinates: true, coach: true, voice: true, voiceName: null }
+const DEFAULTS: Settings = { mode: 'classic', sound: true, coordinates: true, coach: true, voice: true, voiceName: null, eliasVoice: 'recorded' }
 
 type Ctx = Settings & { update: (patch: Partial<Settings>) => void }
 
@@ -31,6 +33,7 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
     setSoundEnabled(settings.sound)
     setVoiceEnabled(settings.voice)
     setVoiceName(settings.voiceName)
+    setRecordedVoice(settings.eliasVoice !== 'device')
     save('settings', settings)
   }, [settings])
 

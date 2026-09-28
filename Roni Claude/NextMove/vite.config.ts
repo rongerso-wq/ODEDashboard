@@ -35,6 +35,15 @@ export default defineConfig({
         maximumFileSizeToCacheInBytes: 5 * 1024 * 1024, // stockfish.wasm is ~1.8 MB
         navigateFallback: 'index.html',
         cleanupOutdatedCaches: true,
+        // Elias's recordings (public/voice, ~10 MB): kept once played, so heard lessons work offline.
+        // A clip's name is a hash of its text, so a cached clip never goes stale.
+        runtimeCaching: [
+          {
+            urlPattern: ({ url }) => url.pathname.includes('/voice/') && url.pathname.endsWith('.mp3'),
+            handler: 'CacheFirst',
+            options: { cacheName: 'elias-voice', expiration: { maxEntries: 3000 } },
+          },
+        ],
       },
     }),
   ],

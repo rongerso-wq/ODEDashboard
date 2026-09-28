@@ -40,6 +40,10 @@ export function speakable(text: string): string {
         const core = whole.replace(/^\d+(?:\.{1,3}|…)\s?/, '')
         return sanToWords(core)
       })
+      // "played d7–d5": a pawn's two-square move ("the pawn from d7 to d5", which the rule below leaves alone)
+      .replace(/\b(played|play|Play)\s([a-h][1-8])[–-]([a-h][1-8])\b/g, '$1 the pawn from $2 to $3')
+      // move numbers before pawn moves ("After 1.e4 e5") would read as the end of a sentence
+      .replace(/\b\d+\.(?:\.\.)?\s?(?=[a-h][1-8]\b)/g, '')
       // single pawn moves after "Play"/"played"/"was"/"Better was" (e.g. "Better was d4.")
       .replace(/\b(Play|play|played|was|with|Next move:|Your move:)\s([a-h][1-8])\b/g, '$1 pawn to $2')
       // evaluations and symbols

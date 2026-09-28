@@ -24,3 +24,6 @@ dist-ssr
 *.sw?
 
 .vercel
+
+# voice try-outs (not shipped)
+voice-samples
