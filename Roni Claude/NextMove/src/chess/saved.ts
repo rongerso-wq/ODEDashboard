@@ -1,7 +1,7 @@
 import type { Color } from 'chess.js'
 import type { ClockState } from './clock'
 import type { OutcomeKind } from './game'
-import { load, save } from '../lib/storage'
+import { isObj, isStrings, load, loadList, save } from '../lib/storage'
 
 export type ComputerConfig = {
   botId: string
@@ -32,10 +32,15 @@ const CURRENT = 'computer-current'
 const HISTORY = 'computer-history'
 const MAX_HISTORY = 30
 
-export const loadCurrentGame = () => load<SavedComputerGame | null>(CURRENT, null)
+const validGame = (v: unknown) =>
+  isObj(v) && isStrings(v.moves) && isObj(v.config) && typeof v.config.botId === 'string' &&
+  (v.config.color === 'w' || v.config.color === 'b') && (v.clock == null || isObj(v.clock))
+
+export const loadCurrentGame = () => load<SavedComputerGame | null>(CURRENT, null, validGame)
 export const saveCurrentGame = (g: SavedComputerGame | null) => save(CURRENT, g)
 
-export const loadHistory = () => load<FinishedGame[]>(HISTORY, [])
+export const loadHistory = () =>
+  loadList<FinishedGame>(HISTORY, (g) => typeof g.botId === 'string' && typeof g.result === 'string' && typeof g.pgn === 'string')
 export function addToHistory(g: FinishedGame) {
   save(HISTORY, [g, ...loadHistory()].slice(0, MAX_HISTORY))
 }
@@ -51,7 +56,9 @@ export type ReviewGame = {
   config?: ComputerConfig
 }
 
-export const loadReviewGame = () => load<ReviewGame | null>('review-game', null)
+export const loadReviewGame = () =>
+  load<ReviewGame | null>('review-game', null, (v) =>
+    isObj(v) && isStrings(v.moves) && typeof v.white === 'string' && typeof v.black === 'string')
 export const saveReviewGame = (g: ReviewGame) => save('review-game', g)
 
 /** ids of bots the player has beaten at least once */

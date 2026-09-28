@@ -15,6 +15,7 @@ import { parsePuzzleRoute } from './puzzles/model'
 import PuzzleRush from './screens/PuzzleRush'
 import MistakesPractice from './screens/MistakesPractice'
 import UpdatePrompt from './components/UpdatePrompt'
+import CrashGuard from './components/CrashGuard'
 
 function Screen() {
   const route = useRoute()
@@ -45,12 +46,22 @@ function Screen() {
   }
 }
 
+/** A screen that throws shows CrashGuard's way out; a new route starts fresh. */
+function GuardedScreen() {
+  const route = useRoute()
+  return (
+    <CrashGuard key={route}>
+      <Screen />
+    </CrashGuard>
+  )
+}
+
 export default function App() {
   return (
     <SettingsProvider>
       {/* the one main landmark, for screen-reader "skip to content" (QA G19) */}
       <main>
-        <Screen />
+        <GuardedScreen />
       </main>
       <UpdatePrompt />
     </SettingsProvider>

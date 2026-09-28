@@ -104,3 +104,48 @@ Full QA started 2026-09-27. Areas A–L, run in four rounds. Legend: ✅ pass ·
   - **contrast:** the blunder red was 3.4:1 on the dark theme. **Kids mode's coral was 2.8:1** as text and behind white button text, and its green and red text were 3.3 and 2.7:1. New tokens: `--g-*` (grade text), `--gb-*` (badge backgrounds), `--accent-text` (accent used as text; deeper orange #c2410c in Kids). Kids buttons now use **dark text on the same bright coral (5.3:1)**, so the look stays playful. The Kids `--good`/`--danger` are darker; focus outlines use `--accent-text`. All text colours are now ≥ 4.5:1.
 - Keyboard: Tab order is sensible and the focus ring is clearly visible; `prefers-reduced-motion` is honoured.
 - ⚠️ **Open: the chessboard can't be used without a pointer.** There's no keyboard move entry, and screen readers hear only "Chess board". Blind and motor-impaired players can use menus, lessons and settings but can't move pieces. Suggested (≈45 min): arrow keys + Enter to move, with the position and moves announced to screen readers.
+
+## Round 4: offline, robustness, performance, content, legal (2026-09-28)
+
+### H20 Offline app and install ✅
+- All 42 precached files were in the cache. With the **server shut down**: a cold start, every screen, fonts, pieces, the puzzles and a game against Quinn (the engine answered in about 1 s) all worked.
+- Update: a changed service worker showed "A new version of NextMove is ready. [Update] [Later]" in the middle of a game; Update switched to the new version and the game was kept move for move.
+- Settings showed the real "Install NextMove" button (Chrome fired the install prompt).
+- A hard reload (Shift+Reload) while offline gives the browser's offline page. That's how browsers work (a hard reload skips the offline cache), not a bug.
+
+### I21 Data robustness 🐞 → fixed
+- **Bug: damaged saved data blanked whole screens.** Each saved key was set to 8 kinds of wrong data (a number, text, `{}`, `[]`, `null`, a mixed list, a wrong object, broken JSON) and the screens that read it were opened: **38 of 112 went completely white** (the saved game, game history, review, My mistakes; Home and Puzzles too for My mistakes). This can happen after an update changes a data format, or from a browser extension.
+- Fixed:
+  - every saved-data reader now checks the shape (`load(key, fallback, valid)`, `loadList`, in `lib/storage.ts`); a broken list keeps its good items
+  - one level deeper, a card with an impossible position, puzzle stats with wrong field types and star counts for lessons that don't exist are dropped too (they had shown "★ 0many3/120" and stuck My mistakes)
+  - a safety net (`components/CrashGuard.tsx`): if a screen still fails, it shows "Oops, this screen got stuck" with Back to home / Try again, instead of a blank page. Your saved data is untouched.
+  - `src/lib/storage.test.ts` covers all of it (11 tests).
+- After the fixes: **128 of 128 combinations** and all the deeper cases open normally.
+- Storage blocked (private mode, site data off): every screen works, no errors. Storage full: goes through the same safe path.
+- Robots: 400 random taps at up to 30 per second, leaving a game while the bot was thinking (4 times; the bot resumed on return and the save was always consistent), and a storm of back/forward presses: no errors, no stuck states.
+- Console: **no errors or warnings** on any screen.
+
+### J22 Performance ✅
+- Phone speed test (4× slower CPU, slow 4G), Home:
+  - **first visit: content visible after 2.4 s** (Google's "good" limit is 2.5 s), no layout shift
+  - **repeat visit (from the offline cache): 0.8 s**
+  - On a real host the files are compressed, so the first visit will be faster than this local test.
+- Long session: 30 rounds of game → review → lesson → puzzle. Memory stayed between 6 and 16 MB and fell back each time (no leak). **62 engines were started and 61 stopped**; the one left is the current game's opponent.
+
+### K23 Content quality ✅ (4 small fixes)
+- All lesson text (≈4,300 words, Classic and Kids), the coach's explanations and hints, the opponents' comments and the bot descriptions were read in full. Accurate, friendly, and suitable for children.
+- Fixed:
+  - "Ruy Lopez: played by world champions for 500 years" (there have only been world champions since 1886) → "over 450 years old and still played by world champions"
+  - "the knight on d6 jumps to e8" (it doesn't move; it attacks e8) → "from d6 the knight attacks e8: one L-shaped jump away"
+  - "toward" → "towards" twice (the app uses British spelling throughout)
+  - "a forced checkmate in 3, starting with…" → "in 3 moves"
+- `npm run verify:lessons`: 0 problems.
+
+### L24 Legal and store readiness 🐞 → fixed, ⚠️ decisions
+- **Bug: Stockfish wasn't credited anywhere in the app, and the licence notices of React, chess.js and the fonts were stripped from the build** (MIT, BSD and OFL all require them to ship with the app).
+- Fixed:
+  - `public/licenses.txt` holds all the notices and the Stockfish source links. It's generated by `npm run licenses` (`scripts/licenses.mjs`); re-run it after adding or updating a dependency.
+  - Settings has a new **Privacy** and **Credits** section, with a "Licences and source code" button.
+- **Privacy statement** (in Settings): no accounts, no ads, no tracking, everything stays on the device. One honest caveat is in it: some device voices are online voices, so the text Elias reads may go to the browser maker (Chrome's "Google" voices do this).
+- **Kids app-store rules:** the app had two links out to lichess.org (the Puzzles credit and "Puzzle #… on Lichess" after a puzzle). Apple's Kids category and Google's Families program require a parental gate before leaving the app. **Removed at the user's choice**; both credits stay as plain text. The app now has no links out.
+- ⚠️ Stockfish GPL before an app-store build (unchanged): a GPL engine in a closed-source store app needs the app's source published, or a different engine.

@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react'
-import { load, save } from './storage'
+import { isObj, load, save } from './storage'
 import { setSoundEnabled } from './sound'
 import { setVoiceEnabled, setVoiceName } from './voice'
 
@@ -24,7 +24,7 @@ type Ctx = Settings & { update: (patch: Partial<Settings>) => void }
 const SettingsContext = createContext<Ctx | null>(null)
 
 export function SettingsProvider({ children }: { children: ReactNode }) {
-  const [settings, setSettings] = useState<Settings>(() => ({ ...DEFAULTS, ...load('settings', {}) }))
+  const [settings, setSettings] = useState<Settings>(() => ({ ...DEFAULTS, ...load('settings', {}, isObj) }))
 
   useEffect(() => {
     document.documentElement.dataset.mode = settings.mode

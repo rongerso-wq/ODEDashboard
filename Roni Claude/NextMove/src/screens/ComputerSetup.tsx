@@ -16,7 +16,7 @@ import {
 import { Chess } from 'chess.js'
 import { navigate } from '../lib/router'
 import { useSettings } from '../lib/settings'
-import { load, save } from '../lib/storage'
+import { isObj, load, save } from '../lib/storage'
 import type { Color } from '../chess/game'
 import './ComputerSetup.css'
 
@@ -27,7 +27,7 @@ const RESULT_LABEL = { win: 'Won', loss: 'Lost', draw: 'Draw' } as const
 export default function ComputerSetup() {
   const { mode } = useSettings()
   const kids = mode === 'kids'
-  const last = load<Partial<ComputerConfig>>('computer-last', {})
+  const last = load<Partial<ComputerConfig>>('computer-last', {}, isObj)
   const [botId, setBotId] = useState(last.botId ?? 'pip')
   const [choice, setChoice] = useState<Choice>(last.choice ?? 'w')
   const [tc, setTc] = useState<string | null>(last.tc ?? null)

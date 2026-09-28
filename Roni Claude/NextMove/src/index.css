@@ -171,6 +171,26 @@ h3 {
 .btn-ghost {
   background: transparent;
 }
+
+/* CrashGuard: shown instead of a blank page if a screen fails */
+.crash {
+  max-width: 480px;
+  margin: 15vh auto 0;
+  padding-inline: 20px;
+  text-align: center;
+  color: var(--muted);
+}
+.crash .screen-title {
+  color: var(--text);
+  margin-bottom: 12px;
+}
+.crash-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 24px;
+}
 .icon-btn {
   width: var(--tap);
   height: var(--tap);

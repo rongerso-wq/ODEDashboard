@@ -169,11 +169,6 @@
   font-size: 13px;
   color: var(--faint);
 }
-.p-credit a {
-  color: inherit;
-  display: inline-block;
-  padding-block: 14px; /* 44px tap height for a small footer link */
-}
 
 /* Play screen */
 .p-rating-chip {
@@ -293,9 +288,6 @@
   border-top: 1px solid var(--line);
   font-size: 14px;
   color: var(--muted);
-}
-.p-info a {
-  color: var(--accent-text);
 }
 .p-chips {
   display: flex;

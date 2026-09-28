@@ -101,11 +101,7 @@ export default function PuzzlesHome() {
       </section>
 
       <p className="p-credit">
-        Puzzles from the{' '}
-        <a href="https://database.lichess.org/#puzzles" target="_blank" rel="noreferrer">
-          Lichess puzzle database
-        </a>{' '}
-        (public domain). {stats.solved.length} solved so far.
+        Puzzles from the Lichess puzzle database (public domain). {stats.solved.length} solved so far.
       </p>
     </div>
   )

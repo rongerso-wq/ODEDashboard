@@ -209,9 +209,7 @@ export default function PuzzlePlay({ mode }: { mode: Mode }) {
                     </button>
                   ))}
               </div>
-              <a href={`https://lichess.org/training/${puzzle.id}`} target="_blank" rel="noreferrer">
-                Puzzle #{puzzle.id} on Lichess
-              </a>
+              <span>Puzzle #{puzzle.id} from Lichess</span>
             </div>
           )}
         </aside>

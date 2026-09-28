@@ -1,7 +1,7 @@
 // Puzzle data, the player's puzzle rating and progress. Puzzles come from the Lichess puzzle
 // database (CC0), built by scripts/build-puzzles.mjs into puzzles.json (loaded on demand).
 import type { PieceSymbol } from 'chess.js'
-import { load, save } from '../lib/storage'
+import { isObj, load, save } from '../lib/storage'
 
 export type Puzzle = {
   id: string
@@ -71,7 +71,26 @@ export type PuzzleStats = {
 
 const START: PuzzleStats = { rating: 800, games: 0, solved: [], tried: [], history: [], streak: { days: 0, last: null }, rushBest: 0, daily: null }
 
-export const loadStats = (): PuzzleStats => ({ ...START, ...load<Partial<PuzzleStats>>('puzzle-stats', {}) })
+/** Saved stats, field by field: a field of the wrong type falls back to its start value (QA I). */
+export function loadStats(): PuzzleStats {
+  const s = load<Record<string, unknown>>('puzzle-stats', {}, isObj)
+  const num = (v: unknown, d: number) => (typeof v === 'number' && Number.isFinite(v) ? v : d)
+  const strs = (v: unknown) => (Array.isArray(v) ? v.filter((x): x is string => typeof x === 'string') : [])
+  const streak = isObj(s.streak) ? s.streak : {}
+  return {
+    rating: num(s.rating, START.rating),
+    games: num(s.games, 0),
+    solved: strs(s.solved),
+    tried: strs(s.tried),
+    history: Array.isArray(s.history)
+      ? s.history.filter((h): h is PuzzleStats['history'][number] =>
+          isObj(h) && typeof h.at === 'number' && typeof h.rating === 'number')
+      : [],
+    streak: { days: num(streak.days, 0), last: typeof streak.last === 'string' ? streak.last : null },
+    rushBest: num(s.rushBest, 0),
+    daily: isObj(s.daily) && typeof s.daily.date === 'string' ? { date: s.daily.date, solved: s.daily.solved === true } : null,
+  }
+}
 export const saveStats = (s: PuzzleStats) => save('puzzle-stats', s)
 
 /** The player's own calendar day, "YYYY-MM-DD" (local time, not UTC: the daily puzzle and the

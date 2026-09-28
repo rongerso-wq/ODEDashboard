@@ -125,7 +125,7 @@ function whatWentWrong(x: {
     const n = mateIn(evalBefore)
     return n === 1
       ? `There was checkmate in one: ${bestSan}!`
-      : `There was a forced checkmate in ${n}, starting with ${bestSan}.`
+      : `There was a forced checkmate in ${n} moves, starting with ${bestSan}.`
   }
 
   // 2. The move allows the opponent to checkmate.

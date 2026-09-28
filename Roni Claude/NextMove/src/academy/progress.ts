@@ -1,10 +1,19 @@
-import { load, save } from '../lib/storage'
+import { isObj, load, save } from '../lib/storage'
 import { CHAPTERS } from './lessons'
 
 /** Best stars (1–3) earned per lesson id. */
 export type Progress = Record<string, number>
 
-export const loadProgress = () => load<Progress>('academy-progress', {})
+const LESSON_IDS = new Set(CHAPTERS.flatMap((c) => c.lessons.map((l) => l.id)))
+
+/** Only star counts 1–3 for lessons that exist are kept, so a damaged or outdated entry can't
+ *  break the star totals (QA I). */
+export const loadProgress = (): Progress =>
+  Object.fromEntries(
+    Object.entries(load<Progress>('academy-progress', {}, isObj)).filter(
+      ([id, s]) => LESSON_IDS.has(id) && typeof s === 'number' && Number.isInteger(s) && s >= 1 && s <= 3,
+    ),
+  )
 
 export function recordLesson(id: string, stars: number): Progress {
   const p = loadProgress()

@@ -1,7 +1,8 @@
 // "My mistakes": every mistake or blunder from the player's own games becomes a card that comes
 // back on a spaced-repetition schedule until it is solved several times in a row.
 import type { Feedback } from '../coach/explain'
-import { load, save } from '../lib/storage'
+import { validateFen } from 'chess.js'
+import { loadList, save } from '../lib/storage'
 
 export type MistakeCard = {
   id: string // position + best move, so the same mistake is never stored twice
@@ -26,7 +27,11 @@ const DAY = 86_400_000
 export const INTERVALS = [0, 1 * DAY, 3 * DAY, 7 * DAY, 21 * DAY, 60 * DAY]
 export const MASTERED = 5
 
-export const loadDeck = () => load<MistakeCard[]>(KEY, [])
+export const loadDeck = () =>
+  loadList<MistakeCard>(KEY, (c) =>
+    ['id', 'fen', 'best', 'bestSan', 'played', 'why'].every((k) => typeof c[k] === 'string') &&
+    ['box', 'due'].every((k) => typeof c[k] === 'number') &&
+    validateFen(c.fen as string).ok)
 const saveDeck = (d: MistakeCard[]) => save(KEY, d)
 
 /** Turns a coach verdict into a card (null if it wasn't a real mistake). */

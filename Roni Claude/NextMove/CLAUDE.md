@@ -8,11 +8,9 @@ NextMove is a chess app for ages 0–100 whose **first purpose is teaching**. It
 
 - **Plan:** `C:\Users\litbe\.claude\plans\i-want-to-build-compiled-flute.md` (7 phases, one per turn; wait for the user's "go").
 - **Done:** phases 1–5, Elias and the opponent commentary, My mistakes (spaced repetition), the installable offline app (PWA), a cleaner Home.
-- **Full QA in progress** (the user asked for everything to be covered; areas A–L in `QA-REPORT.md`):
-  - **Rounds 1–3 done:** rules/board/clock/bots · teaching/puzzles · voice/design/accessibility. 14 bugs found and fixed so far.
-  - **Next: Round 4** — H offline app & install · I data robustness (blocked/corrupt/full storage, rapid tapping, screen switching mid-move, back/forward, console errors on every screen) · J performance (Lighthouse performance, memory over a long session) · K content quality (read all lesson/hint/explanation text for typos and age-appropriateness) · L legal/store readiness (licences credited, privacy statement, kids-store rules such as the external Lichess links). Then a final summary and commit.
-  - Report each round in `QA-REPORT.md`, fix clear bugs, list decisions, then ask to commit.
-- **Open decisions for the user:** (1) keyboard/screen-reader play on the board (≈45 min; see QA G19); (2) the Stockfish GPL licence before an app-store release (publish the source, or swap engines); (3) bot strength labels are rough until real players test.
+- **Full QA done** (areas A–L, four rounds, all in `QA-REPORT.md`): rules/board/clock/bots · teaching/puzzles · voice/design/accessibility · offline/robustness/performance/content/legal. 16 bugs found and fixed, plus small text fixes.
+- **Open decisions for the user:** (1) keyboard/screen-reader play on the board (≈45 min; see QA G19); (2) the Stockfish GPL licence before an app-store release (publish the source, or swap engines); (3) bot strength labels are rough until real players test. Keyboard play is postponed by the user (2026-09-28).
+- **No links out of the app** (kids app-store rules, QA L24): the Lichess credits are plain text. Don't add external links without a parental gate.
 - **Working style:** plain-language updates; ask before every commit (local commits only, never push); stage only `Roni Claude/NextMove` files by name (the git repo is the user's home folder).
 - **Online play (Phase 6) is dropped** by the user's decision (2026-09-27): no accounts, no backend, no Supabase. NextMove is positioned as *the free chess teacher for the whole family: no ads, no accounts, works offline*. Don't add online features or "Coming soon" teasers for them.
 - **On hold at the user's request:** a private Vercel test link and a tester scorecard for a side-by-side comparison with the Dr. Wolf app.
@@ -34,6 +32,7 @@ npm run puzzles              # rebuild src/puzzles/puzzles.json from the Lichess
 npm run engine               # re-copy Stockfish WASM from node_modules into public/engine/
 node scripts/extract-pieces.mjs   # re-extract the cburnett piece SVGs into public/pieces/
 npm run icons                # regenerate public/icons/*.png (knight on brass) with sharp
+npm run licenses             # regenerate public/licenses.txt (third-party notices) after adding/updating a dependency
 npm run build && npx vite preview --port 4273   # the only way to test the service worker / offline mode
 ```
 
@@ -73,7 +72,8 @@ npm run build && npx vite preview --port 4273   # the only way to test the servi
 **Settings and theming.** `lib/settings.tsx` persists these: `mode` (classic/kids), `sound`, `coordinates`, `coach`, `voice`, `voiceName`.
 - **Kids mode:** it's `<html data-mode="kids">`, which overrides the design tokens in `src/index.css`. It gives bigger tap targets (`--tap` 58px), a warmer palette and rounder corners, and components pick friendlier copy via a `kids` flag. Every feature must work in both modes.
 - **`:hover`:** rules live only inside `@media (hover: hover)`.
-- **Storage:** all goes through `lib/storage.ts` (try/catch, keys prefixed `nextmove:`). The keys are `settings`, `computer-current`, `computer-last`, `computer-history`, `review-game`, `academy-progress`, `puzzle-stats`, `mistakes`.
+- **Storage:** all goes through `lib/storage.ts` (try/catch, keys prefixed `nextmove:`). Every reader checks the saved shape (`load(key, fallback, valid)`, `loadList` keeps a list's good items), because damaged data once blanked whole screens (QA I21); give any new key a check and a case in `lib/storage.test.ts`.
+- **Crash safety net:** `components/CrashGuard.tsx` wraps each screen (keyed by route) and shows "Oops, this screen got stuck" instead of a blank page. The keys are `settings`, `computer-current`, `computer-last`, `computer-history`, `review-game`, `academy-progress`, `puzzle-stats`, `mistakes`.
 
 ## Subsystems
 
@@ -166,3 +166,4 @@ npm run build && npx vite preview --port 4273   # the only way to test the servi
 - **Pieces:** cburnett (CC BY-SA 3.0), credited on Home.
 - **Engine:** Stockfish (GPLv3), with its license shipped in `public/engine/COPYING.txt`. That's fine for a free web app, but a closed-source app-store build would need review.
 - **Puzzles:** Lichess (CC0), credited on the Puzzles screen.
+- **Notices:** the minified bundle drops licence comments, so `public/licenses.txt` (from `npm run licenses`) carries the MIT/BSD/OFL notices and the Stockfish source links. Settings has the Privacy statement, Credits and a link to it.

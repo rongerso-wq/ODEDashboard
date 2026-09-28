@@ -120,6 +120,24 @@ export default function SettingsSheet({ onClose }: { onClose: () => void }) {
             </>
           )}
         </section>
+
+        {/* Privacy statement and credits (QA L) */}
+        <section className="sheet-install">
+          <strong>Privacy</strong>
+          <p className="sheet-note">
+            NextMove has no accounts, no ads and no tracking. Your games, progress and settings stay on this device and are
+            never sent anywhere. Elias uses your device's voices: some of them are online voices, which send the text
+            being read to your browser's maker.
+          </p>
+          <strong>Credits</strong>
+          <p className="sheet-note">
+            Chess engine: Stockfish (GPLv3). Pieces: cburnett by Colin M.L. Burnett (CC BY-SA 3.0). Puzzles: the Lichess
+            puzzle database (public domain).
+          </p>
+          <a className="btn" href="licenses.txt" target="_blank" rel="noreferrer">
+            Licences and source code
+          </a>
+        </section>
       </div>
     </div>
   )
