@@ -190,6 +190,9 @@
   display: grid;
   place-items: center;
   padding: 16px;
+  /* clear of the iPhone status bar and home bar when installed */
+  padding-top: max(16px, env(safe-area-inset-top));
+  padding-bottom: max(16px, env(safe-area-inset-bottom));
   background: rgba(8, 5, 2, 0.55);
   backdrop-filter: blur(3px);
   animation: fade-in 0.2s ease;
