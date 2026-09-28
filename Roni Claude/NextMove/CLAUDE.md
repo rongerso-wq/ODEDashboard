@@ -13,7 +13,9 @@ NextMove is a chess app for ages 0–100 whose **first purpose is teaching**. It
 - **No links out of the app** (kids app-store rules, QA L24): the Lichess credits are plain text. Don't add external links without a parental gate.
 - **Working style:** plain-language updates; ask before every commit (local commits only, never push); stage only `Roni Claude/NextMove` files by name (the git repo is the user's home folder).
 - **Online play (Phase 6) is dropped** by the user's decision (2026-09-27): no accounts, no backend, no Supabase. NextMove is positioned as *the free chess teacher for the whole family: no ads, no accounts, works offline*. Don't add online features or "Coming soon" teasers for them.
-- **On hold at the user's request:** a private Vercel test link and a tester scorecard for a side-by-side comparison with the Dr. Wolf app.
+- **Live (public, by the user's choice, 2026-09-28):** https://nextmove-chess.vercel.app, Vercel project `nextmove-chess` (linked in `.vercel/`, git-ignored). Vercel builds it from the source: `npx vercel deploy --prod --yes` in this folder, after the checks under Verification. The name "nextmove" was taken.
+- **Not pushed to GitHub:** the home-folder repo's remote is `ODEDashboard`, and an old commit there deletes that project. The user chose to hold the push; a separate GitHub repo for NextMove is the plan.
+- **On hold at the user's request:** a tester scorecard for a side-by-side comparison with the Dr. Wolf app.
 - `README.md` is the unmodified Vite template.
 
 ## Commands
