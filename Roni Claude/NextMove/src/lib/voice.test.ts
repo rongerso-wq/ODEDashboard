@@ -20,6 +20,19 @@ describe('Elias picks a voice that sounds like a person', () => {
     expect(voiceId(enhanced)).not.toBe(voiceId(basic))
   })
 
+  it('iPhone set to Hebrew: translated names are recognised through the voiceURI', () => {
+    const he = (name: string, uri: string, lang = 'en-US') => ({ name, lang, voiceURI: uri }) as SpeechSynthesisVoice
+    const voices = [
+      he('פרד', 'com.apple.speech.synthesis.voice.Fred'),
+      he('סמנתה', 'com.apple.voice.compact.en-US.Samantha'),
+      he('סבא', 'com.apple.eloquence.en-US.Grandpa'),
+      he('דניאל', 'com.apple.voice.compact.en-GB.Daniel', 'en-GB'),
+      he('דניאל', 'com.apple.voice.enhanced.en-GB.Daniel', 'en-GB'),
+    ]
+    expect(pickVoice(voices)?.voiceURI).toBe('com.apple.voice.enhanced.en-GB.Daniel')
+    expect(pickVoice(voices.slice(0, 4))?.voiceURI).toBe('com.apple.voice.compact.en-GB.Daniel')
+  })
+
   it('iPhone with only novelty and female voices besides Daniel still picks Daniel', () => {
     expect(pickVoice([v('Bad News'), v('Trinoids'), v('Karen', 'en-AU'), v('Daniel', 'en-GB')])?.name).toBe('Daniel')
   })

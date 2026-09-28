@@ -129,6 +129,18 @@ export default function SettingsSheet({ onClose }: { onClose: () => void }) {
                 🔊 Hear Elias
               </button>
               <p className="sheet-note">{voiceTip()}</p>
+              {/* For support: exactly what the device offers (Enhanced voices hid on a Hebrew iPhone). */}
+              <details className="sheet-note voice-details">
+                <summary>Voice details</summary>
+                <ul>
+                  {voices.map((v) => (
+                    <li key={voiceId(v)}>
+                      {v.name} · {v.lang} · {v.voiceURI}
+                      {v.localService ? '' : ' · online'}
+                    </li>
+                  ))}
+                </ul>
+              </details>
             </>
           )}
         </section>

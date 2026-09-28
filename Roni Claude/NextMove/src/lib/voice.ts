@@ -49,6 +49,15 @@ const HIGH_QUALITY = /natural|neural|premium|enhanced/i
  * and stored by voiceURI, and labelled from it (user feedback, 2026-09-28).
  */
 export const voiceId = (v: SpeechSynthesisVoice) => v.voiceURI || v.name
+/**
+ * On an iPhone set to another language the names are translated ("דניאל" for Daniel), but Apple's
+ * voiceURI keeps the English name as its last part, so name lists are matched against both.
+ */
+const idName = (v: SpeechSynthesisVoice) => {
+  const uri = v.voiceURI ?? ''
+  return uri.includes('.') && !uri.includes(' ') ? (uri.split('.').pop() ?? '') : ''
+}
+const matches = (re: RegExp, v: SpeechSynthesisVoice) => re.test(v.name) || (!!idName(v) && re.test(idName(v)))
 const quality = (v: SpeechSynthesisVoice) => `${v.name} ${v.voiceURI ?? ''}`
 export function voiceLabel(v: SpeechSynthesisVoice): string {
   if (HIGH_QUALITY.test(v.name)) return v.name
@@ -59,14 +68,14 @@ export function voiceLabel(v: SpeechSynthesisVoice): string {
 /** The device's English voices, without Apple's novelty and robotic ones. */
 export function englishVoices(): SpeechSynthesisVoice[] {
   const s = synth()
-  return s ? s.getVoices().filter((v) => v.lang.toLowerCase().startsWith('en') && !NOVELTY.test(v.name)) : []
+  return s ? s.getVoices().filter((v) => v.lang.toLowerCase().startsWith('en') && !matches(NOVELTY, v)) : []
 }
 
 /** A male voice first (Elias is a man), then the best-sounding one, then the preferred names. */
 export function voiceScore(v: SpeechSynthesisVoice): number {
-  const pref = PREFERRED.findIndex((re) => re.test(v.name))
+  const pref = PREFERRED.findIndex((re) => matches(re, v))
   return (
-    (FEMALE.test(v.name) ? 0 : 1000) +
+    (matches(FEMALE, v) ? 0 : 1000) +
     (HIGH_QUALITY.test(quality(v)) ? 200 : /google/i.test(v.name) ? 100 : 0) +
     (pref < 0 ? 0 : 50 - pref) +
     (v.lang.toLowerCase() === 'en-gb' ? 5 : 0)
@@ -85,7 +94,7 @@ export function pickVoice(voices = englishVoices()): SpeechSynthesisVoice | null
 /** The voice "Automatic" means, whatever the player has chosen. */
 export function bestVoice(voices = englishVoices()): SpeechSynthesisVoice | null {
   let best: SpeechSynthesisVoice | null = null
-  for (const v of voices) if (!NOVELTY.test(v.name) && (!best || voiceScore(v) > voiceScore(best))) best = v
+  for (const v of voices) if (!matches(NOVELTY, v) && (!best || voiceScore(v) > voiceScore(best))) best = v
   return best ?? voices[0] ?? null
 }
 

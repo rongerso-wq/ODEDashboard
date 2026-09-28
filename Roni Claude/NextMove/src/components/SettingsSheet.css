@@ -84,3 +84,15 @@
   font-size: 13px;
   color: var(--muted);
 }
+.voice-details summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.voice-details ul {
+  margin: 0;
+  padding-inline-start: 18px;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
