@@ -43,6 +43,17 @@ function InstallRow() {
   )
 }
 
+/** How to get a more natural voice for Elias on this kind of device (phone voices can sound robotic). */
+function voiceTip(): string {
+  const ua = navigator.userAgent
+  const ios = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1)
+  if (ios)
+    return 'Voices come from your iPhone. For a more natural Elias: Settings › Accessibility › Spoken Content › Voices › English, download "Daniel (Enhanced)" or "Arthur (Enhanced)", then reopen NextMove.'
+  if (/Android/.test(ua))
+    return 'Voices come from your phone. For a more natural Elias: search your phone\'s Settings for "Text-to-speech", open the settings of Speech Services by Google, choose Install voice data › English (United Kingdom) and download a voice, then reopen NextMove.'
+  return 'Voices come from your device, so they differ between phones and computers. On Windows, Microsoft Edge has the most natural ones.'
+}
+
 export default function SettingsSheet({ onClose }: { onClose: () => void }) {
   const s = useSettings()
   const speaking = useSpeaking()
@@ -113,10 +124,7 @@ export default function SettingsSheet({ onClose }: { onClose: () => void }) {
               <button className="btn" onClick={() => speak(SAMPLE, { force: true })}>
                 🔊 Hear Elias
               </button>
-              <p className="sheet-note">
-                Voices come from your device, so they differ between phones and computers. On Windows, Microsoft Edge has
-                the most natural ones.
-              </p>
+              <p className="sheet-note">{voiceTip()}</p>
             </>
           )}
         </section>

@@ -1,5 +1,6 @@
-// Elias's voice: the browser's built-in speech synthesis, tuned to sound like an old, calm teacher
-// (the deepest available English male voice, lower pitch, slower pace).
+// Elias's voice: the browser's built-in speech synthesis. He gets the best-sounding English male
+// voice on the device; only the natural (neural) desktop voices are deepened, because shifting the
+// pitch of a phone voice makes it sound like a robot (user feedback, 2026-09-28).
 // Swappable: everything speaks through `speak()`, so a premium voice service could replace it here.
 import { speakable } from './speakable'
 
@@ -19,27 +20,44 @@ export function setVoiceName(name: string | null) {
   chosenName = name
 }
 
-// Best "wise old man" candidates first (Edge natural voices, macOS, Google, Windows).
+// Best "wise old man" candidates first (Edge natural voices, then Apple, Google, Windows).
 const PREFERRED = [
   /Thomas.*Natural/i, // Microsoft Thomas (UK), Edge
   /Ryan.*Natural/i,
   /Christopher.*Natural/i,
   /Guy.*Natural/i,
   /Davis.*Natural/i,
-  /^Daniel/i, // macOS / iOS en-GB
-  /^Arthur/i,
+  /^Daniel\b/i, // Apple en-GB
+  /^Arthur\b/i,
+  /^Oliver\b/i,
   /Google UK English Male/i,
   /Microsoft George/i,
-  /^Fred$/i,
+  /^(Evan|Nathan|Tom|Aaron)\b/i, // Apple en-US
   /Microsoft David/i,
   /Microsoft Mark/i,
   /^Alex$/i,
 ]
-const FEMALE = /female|zira|hazel|susan|samantha|victoria|karen|moira|tessa|fiona|aria|jenny|sonia|libby|emma|ava|allison|google us english$|google uk english female/i
+const FEMALE = /female|zira|hazel|susan|samantha|victoria|karen|moira|tessa|fiona|aria|jenny|sonia|libby|emma|ava|allison|serena|kate|martha|nicky|zoe|google us english$|google uk english female/i
+// Apple's joke voices and its old robotic synthesizers (MacInTalk, Eloquence). "Fred" once headed the list.
+const NOVELTY = /^(Albert|Bad News|Bahh|Bells|Boing|Bubbles|Cellos|Deranged|Good News|Hysterical|Jester|Junior|Organ|Pipe Organ|Princess|Ralph|Superstar|Trinoids|Whisper|Wobble|Zarvox|Fred|Kathy|Agnes|Bruce|Vicki|Eddy|Flo|Grandma|Grandpa|Reed|Rocko|Sandy|Shelley)\b/i
+// Voices that sound like a person rather than a machine.
+const HIGH_QUALITY = /natural|neural|premium|enhanced/i
 
+/** The device's English voices, without Apple's novelty and robotic ones. */
 export function englishVoices(): SpeechSynthesisVoice[] {
   const s = synth()
-  return s ? s.getVoices().filter((v) => v.lang.toLowerCase().startsWith('en')) : []
+  return s ? s.getVoices().filter((v) => v.lang.toLowerCase().startsWith('en') && !NOVELTY.test(v.name)) : []
+}
+
+/** A male voice first (Elias is a man), then the best-sounding one, then the preferred names. */
+export function voiceScore(v: SpeechSynthesisVoice): number {
+  const pref = PREFERRED.findIndex((re) => re.test(v.name))
+  return (
+    (FEMALE.test(v.name) ? 0 : 1000) +
+    (HIGH_QUALITY.test(v.name) ? 200 : /google/i.test(v.name) ? 100 : 0) +
+    (pref < 0 ? 0 : 50 - pref) +
+    (v.lang.toLowerCase() === 'en-gb' ? 5 : 0)
+  )
 }
 
 export function pickVoice(voices = englishVoices()): SpeechSynthesisVoice | null {
@@ -47,11 +65,14 @@ export function pickVoice(voices = englishVoices()): SpeechSynthesisVoice | null
     const v = voices.find((x) => x.name === chosenName)
     if (v) return v
   }
-  for (const re of PREFERRED) {
-    const v = voices.find((x) => re.test(x.name))
-    if (v) return v
-  }
-  return voices.find((v) => !FEMALE.test(v.name)) ?? voices[0] ?? null
+  let best: SpeechSynthesisVoice | null = null
+  for (const v of voices) if (!NOVELTY.test(v.name) && (!best || voiceScore(v) > voiceScore(best))) best = v
+  return best ?? voices[0] ?? null
+}
+
+/** Pitch and pace for a voice: only desktop neural voices can be deepened without sounding robotic. */
+export function tuning(voice: SpeechSynthesisVoice | null): { pitch: number; rate: number } {
+  return voice && /natural/i.test(voice.name) ? { pitch: 0.85, rate: 0.92 } : { pitch: 1, rate: 0.95 }
 }
 
 function notify() {
@@ -94,10 +115,7 @@ export function speak(text: string, opts: { force?: boolean; queue?: boolean } =
       u.voice = voice
       u.lang = voice.lang
     } else u.lang = 'en-GB'
-    // natural (neural) voices already sound mature; only deepen the plain ones
-    const natural = voice && /natural|online/i.test(voice.name)
-    u.pitch = natural ? 0.85 : 0.7
-    u.rate = natural ? 0.92 : 0.86
+    Object.assign(u, tuning(voice))
     u.onend = u.onerror = () => {
       current = current.filter((x) => x !== u)
       notify()
