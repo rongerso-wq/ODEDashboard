@@ -148,6 +148,7 @@ npm run build && npx vite preview --port 4273   # the only way to test the servi
 - **The voice** (`lib/voice.ts`): browser `speechSynthesis` only (free, offline, no key).
   - It picks a voice by `voiceScore`: male first (Elias is a man), then quality (natural/neural/premium/enhanced, then Google), then the `PREFERRED` names. Apple's novelty and old robotic voices (`NOVELTY`: Fred, Zarvox, Grandpa…) are never used or listed.
   - `tuning()`: only desktop neural ("Natural") voices are deepened (pitch 0.85). Every other voice keeps pitch 1 and rate 0.95, because shifting a phone voice's pitch made Elias sound like a robot (user feedback on a real phone, 2026-09-28).
+  - **Voices are identified by `voiceURI`, not name** (`voiceId`, `voiceLabel`): Safari on iPhone names the downloaded Enhanced voice just "Daniel", like the basic one; only its voiceURI says `enhanced`. The saved `voiceName` setting holds a voiceURI (older saves hold a name; both are matched).
   - Settings shows a per-device tip for downloading a better voice (iPhone: Spoken Content › Enhanced voices; Android: Speech Services by Google › Install voice data).
   - `speak()` cancels the current speech, or appends with `{ queue: true }`. It also splits text into sentences, because some browsers cut long utterances.
   - A premium text-to-speech service would replace only `speak()`.

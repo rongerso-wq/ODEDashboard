@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { pickVoice, tuning } from './voice'
+import { pickVoice, tuning, voiceId, voiceLabel } from './voice'
 
 const v = (name: string, lang = 'en-US') => ({ name, lang }) as SpeechSynthesisVoice
 
@@ -9,6 +9,15 @@ describe('Elias picks a voice that sounds like a person', () => {
   it('iPhone: prefers an Enhanced male voice and never a novelty one', () => {
     const ios = [v('Albert'), v('Fred'), v('Zarvox'), v('Grandpa'), v('Samantha'), v('Daniel', 'en-GB'), v('Daniel (Enhanced)', 'en-GB')]
     expect(pickVoice(ios)?.name).toBe('Daniel (Enhanced)')
+  })
+
+  it('iPhone Safari: finds the Enhanced Daniel although both voices are named "Daniel"', () => {
+    const basic = { name: 'Daniel', lang: 'en-GB', voiceURI: 'com.apple.voice.compact.en-GB.Daniel' } as SpeechSynthesisVoice
+    const enhanced = { name: 'Daniel', lang: 'en-GB', voiceURI: 'com.apple.voice.enhanced.en-GB.Daniel' } as SpeechSynthesisVoice
+    expect(pickVoice([basic, enhanced])).toBe(enhanced)
+    expect(voiceLabel(enhanced)).toBe('Daniel (Enhanced)')
+    expect(voiceLabel(basic)).toBe('Daniel')
+    expect(voiceId(enhanced)).not.toBe(voiceId(basic))
   })
 
   it('iPhone with only novelty and female voices besides Daniel still picks Daniel', () => {

@@ -3,7 +3,7 @@ import ModeSwitch from './ModeSwitch'
 import { EliasAvatar } from './Elias'
 import { useSpeaking } from '../lib/useVoice'
 import { useSettings } from '../lib/settings'
-import { englishVoices, pickVoice, speak, voiceSupported, whenVoicesReady } from '../lib/voice'
+import { bestVoice, englishVoices, speak, voiceId, voiceLabel, voiceSupported, whenVoicesReady } from '../lib/voice'
 import { canPromptInstall, isInstalled, isIOS, onInstallChange, promptInstall } from '../lib/install'
 import './SettingsSheet.css'
 
@@ -48,7 +48,7 @@ function voiceTip(): string {
   const ua = navigator.userAgent
   const ios = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1)
   if (ios)
-    return 'Voices come from your iPhone. For a more natural Elias: Settings › Accessibility › Spoken Content › Voices › English, download "Daniel (Enhanced)" or "Arthur (Enhanced)", then reopen NextMove.'
+    return 'Voices come from your iPhone. For a more natural Elias: in the iPhone Settings app, Accessibility › Read & Speak (or Spoken Content) › Voices › English, download "Daniel (Enhanced)", then close NextMove fully and reopen it.'
   if (/Android/.test(ua))
     return 'Voices come from your phone. For a more natural Elias: search your phone\'s Settings for "Text-to-speech", open the settings of Speech Services by Google, choose Install voice data › English (United Kingdom) and download a voice, then reopen NextMove.'
   return 'Voices come from your device, so they differ between phones and computers. On Windows, Microsoft Edge has the most natural ones.'
@@ -67,7 +67,11 @@ export default function SettingsSheet({ onClose }: { onClose: () => void }) {
     return () => window.removeEventListener('keydown', onKey)
   }, [onClose])
 
-  const auto = s.voiceName ? null : pickVoice(voices) // what "Automatic" currently resolves to
+  const auto = bestVoice(voices) // what "Automatic" resolves to
+  // the chosen voice is stored by voiceURI (older versions stored its name)
+  const chosen = s.voiceName
+    ? (voices.find((v) => voiceId(v) === s.voiceName) ?? voices.find((v) => v.name === s.voiceName))
+    : undefined
 
   return (
     <div className="dialog-backdrop" role="presentation" onClick={onClose}>
@@ -112,11 +116,11 @@ export default function SettingsSheet({ onClose }: { onClose: () => void }) {
               </label>
               <label className="sheet-field">
                 <span>Voice</span>
-                <select value={s.voiceName ?? ''} onChange={(e) => s.update({ voiceName: e.target.value || null })}>
-                  <option value="">Automatic{auto ? ` (${auto.name})` : ''}</option>
+                <select value={chosen ? voiceId(chosen) : ''} onChange={(e) => s.update({ voiceName: e.target.value || null })}>
+                  <option value="">Automatic{auto ? ` (${voiceLabel(auto)})` : ''}</option>
                   {voices.map((v) => (
-                    <option key={v.name} value={v.name}>
-                      {v.name}
+                    <option key={voiceId(v)} value={voiceId(v)}>
+                      {voiceLabel(v)}
                     </option>
                   ))}
                 </select>
