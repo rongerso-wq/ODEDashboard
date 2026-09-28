@@ -33,6 +33,18 @@ describe('Elias picks a voice that sounds like a person', () => {
     expect(pickVoice(voices.slice(0, 4))?.voiceURI).toBe('com.apple.voice.compact.en-GB.Daniel')
   })
 
+  it("the user's real iPhone list (Hebrew, super-compact only): Daniel, never Bad News / Good News", () => {
+    const he = (name: string, uri: string, lang: string) => ({ name, lang, voiceURI: uri }) as SpeechSynthesisVoice
+    const real = [
+      he('חדשות רעות', 'com.apple.speech.synthesis.voice.BadNews', 'en-US'),
+      he('חדשות טובות', 'com.apple.speech.synthesis.voice.GoodNews', 'en-US'),
+      he('קארן', 'com.apple.voice.super-compact.en-AU.Karen', 'en-AU'),
+      he('רישי', 'com.apple.voice.super-compact.en-IN.Rishi', 'en-IN'),
+      he('דניאל', 'com.apple.voice.super-compact.en-GB.Daniel', 'en-GB'),
+    ]
+    expect(pickVoice(real)?.voiceURI).toBe('com.apple.voice.super-compact.en-GB.Daniel')
+  })
+
   it('iPhone with only novelty and female voices besides Daniel still picks Daniel', () => {
     expect(pickVoice([v('Bad News'), v('Trinoids'), v('Karen', 'en-AU'), v('Daniel', 'en-GB')])?.name).toBe('Daniel')
   })

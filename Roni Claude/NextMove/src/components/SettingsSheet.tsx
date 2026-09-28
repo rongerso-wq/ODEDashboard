@@ -48,7 +48,7 @@ function voiceTip(): string {
   const ua = navigator.userAgent
   const ios = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1)
   if (ios)
-    return 'Voices come from your iPhone. For a more natural Elias: in the iPhone Settings app, Accessibility › Read & Speak (or Spoken Content) › Voices › English, download "Daniel (Enhanced)", then close NextMove fully and reopen it.'
+    return 'Voices come from your iPhone. Apple gives web apps only its basic voices, even when a better one is downloaded, so Elias sounds simpler on iPhone than on a computer.'
   if (/Android/.test(ua))
     return 'Voices come from your phone. For a more natural Elias: search your phone\'s Settings for "Text-to-speech", open the settings of Speech Services by Google, choose Install voice data › English (United Kingdom) and download a voice, then reopen NextMove.'
   return 'Voices come from your device, so they differ between phones and computers. On Windows, Microsoft Edge has the most natural ones.'

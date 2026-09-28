@@ -39,7 +39,7 @@ const PREFERRED = [
 ]
 const FEMALE = /female|zira|hazel|susan|samantha|victoria|karen|moira|tessa|fiona|aria|jenny|sonia|libby|emma|ava|allison|serena|kate|martha|nicky|zoe|google us english$|google uk english female/i
 // Apple's joke voices and its old robotic synthesizers (MacInTalk, Eloquence). "Fred" once headed the list.
-const NOVELTY = /^(Albert|Bad News|Bahh|Bells|Boing|Bubbles|Cellos|Deranged|Good News|Hysterical|Jester|Junior|Organ|Pipe Organ|Princess|Ralph|Superstar|Trinoids|Whisper|Wobble|Zarvox|Fred|Kathy|Agnes|Bruce|Vicki|Eddy|Flo|Grandma|Grandpa|Reed|Rocko|Sandy|Shelley)\b/i
+const NOVELTY = /^(Albert|Bad ?News|Bahh|Bells|Boing|Bubbles|Cellos|Deranged|Good ?News|Hysterical|Jester|Junior|Organ|Pipe ?Organ|Princess|Ralph|Superstar|Trinoids|Whisper|Wobble|Zarvox|Fred|Kathy|Agnes|Bruce|Vicki|Eddy|Flo|Grandma|Grandpa|Reed|Rocko|Sandy|Shelley)\b/i
 // Voices that sound like a person rather than a machine.
 const HIGH_QUALITY = /natural|neural|premium|enhanced/i
 
