@@ -1,5 +1,6 @@
-// Records Elias's lines with OpenAI text-to-speech (voice "ash") into public/voice/<key>.mp3
-// and writes src/voice/manifest.json (the keys that have a recording).
+// Records Elias's lines with OpenAI text-to-speech into public/voice/<VERSION>/<key>.mp3 and writes
+// src/voice/manifest.json ({ voice: VERSION, clips: [keys] }). A new voice or style needs a new
+// VERSION: phones keep played clips by URL, so a new folder is what makes them fetch the new voice.
 // Only new or changed sentences are recorded, so a re-run costs only what changed.
 //   npm run voice              collect + record
 //   node scripts/voice/record.mjs --prune   also delete recordings no longer used
@@ -8,13 +9,15 @@ import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync
 import { Mp3Encoder } from '@breezystack/lamejs'
 
 const root = new URL('../../', import.meta.url)
-const OUT = new URL('public/voice/', root)
+const VERSION = 'onyx-1'
+const OUT = new URL(`public/voice/${VERSION}/`, root)
 const MANIFEST = new URL('src/voice/manifest.json', root)
 
 const MODEL = 'gpt-4o-mini-tts'
-const VOICE = 'ash' // chosen by the user from six samples (2026-09-28)
+// The user's choice from samples (2026-09-28): first Ash, then "deeper and more subtle": Onyx.
+const VOICE = 'onyx'
 const INSTRUCTIONS =
-  'Warm, calm, wise elderly chess teacher. Speaks slowly and kindly, with gentle encouragement, like a grandfather teaching a child. Keep the same voice, pace and warmth in every line.'
+  'Deep, low, resonant voice. Calm and understated: speak softly and evenly, with subtle warmth and no dramatic emphasis or excitement. Unhurried pace, like a wise old grandfather quietly teaching chess. Keep the same voice, pace and warmth in every line.'
 const RATE = 24000 // OpenAI "pcm" is 24 kHz, 16-bit, mono
 const KBPS = 40
 
@@ -98,6 +101,6 @@ if (process.argv.includes('--prune')) for (const f of orphans) rmSync(new URL(f,
 else if (orphans.length) console.log(`${orphans.length} recordings are no longer used (--prune deletes them)`)
 
 const have = lines.filter((l) => existsSync(new URL(`${l.key}.mp3`, OUT))).map((l) => l.key).sort()
-writeFileSync(MANIFEST, JSON.stringify(have) + '\n')
+writeFileSync(MANIFEST, JSON.stringify({ voice: VERSION, clips: have }) + '\n')
 const bytes = have.reduce((n, k) => n + readFileSync(new URL(`${k}.mp3`, OUT)).length, 0)
 console.log(`recorded ${done}, failed ${failed}; manifest: ${have.length} clips, ${(bytes / 1e6).toFixed(1)} MB`)

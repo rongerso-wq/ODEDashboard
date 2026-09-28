@@ -1,10 +1,11 @@
-// Elias's recorded voice: MP3s in public/voice/<key>.mp3, made by `npm run voice` (OpenAI "Ash").
+// Elias's recorded voice: MP3s in public/voice/<voice>/<key>.mp3, made by `npm run voice` (OpenAI
+// "Onyx", deep and subtle).
 // Played through the Web Audio API: one AudioContext, unlocked by the first tap (iPhones allow sound
 // only after a tap), buffers decoded once and kept.
 import manifest from '../voice/manifest.json'
 import { clipKey } from './voiceText.ts'
 
-const CLIPS = new Set<string>(manifest)
+const CLIPS = new Set<string>(manifest.clips)
 
 /** Has this sentence (exactly as `sentences()` gives it) been recorded? */
 export const hasClip = (sentence: string) => CLIPS.has(clipKey(sentence))
@@ -46,7 +47,7 @@ export function preload(key: string): Promise<AudioBuffer> {
   if (!p) {
     const c = audio()
     p = c
-      ? fetch(`${import.meta.env.BASE_URL}voice/${key}.mp3`)
+      ? fetch(`${import.meta.env.BASE_URL}voice/${manifest.voice}/${key}.mp3`)
           .then((r) => {
             if (!r.ok) throw new Error(`voice clip ${key}: ${r.status}`)
             return r.arrayBuffer()

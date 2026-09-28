@@ -5,11 +5,11 @@ import { CHAPTERS } from '../../src/academy/lessons.ts'
 import { clipKey, sentences } from '../../src/lib/voiceText.ts'
 import manifest from '../../src/voice/manifest.json'
 
-const recorded = new Set<string>(manifest)
+const recorded = new Set<string>(manifest.clips)
 
 describe("Elias's recorded voice covers the Academy", () => {
   it('every collected sentence has a recording on disk', () => {
-    const missing = collectLines().filter((l) => !recorded.has(l.key) || !existsSync(`public/voice/${l.key}.mp3`))
+    const missing = collectLines().filter((l) => !recorded.has(l.key) || !existsSync(`public/voice/${manifest.voice}/${l.key}.mp3`))
     expect(missing.map((l) => l.text)).toEqual([])
   })
 
