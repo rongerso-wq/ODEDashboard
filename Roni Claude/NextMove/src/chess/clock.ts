@@ -81,9 +81,49 @@ export function useClock(initial: ClockState | null, onFlag: (c: Color) => void)
     return () => clearInterval(id)
   }, [state, running])
 
-  const moved = useCallback((mover: Color) => setState((s) => (s ? afterMove(s, mover, performance.now()) : s)), [])
-  const stop = useCallback(() => setState((s) => (s ? pause(s, performance.now()) : s)), [])
+  // Off screen (phone locked, another app): the clock pauses and picks up again on return,
+  // so a family game is never lost on time while nobody is looking (user's choice, 2026-09-29).
+  const away = useRef<{ side: Color | null } | null>(null)
+  useEffect(() => {
+    const onVisibility = () => {
+      const t = performance.now()
+      if (document.hidden) {
+        setState((s) => {
+          away.current = { side: s?.running ?? null }
+          return s ? pause(s, t) : s
+        })
+      } else if (away.current) {
+        const side = away.current.side
+        away.current = null
+        setNow(t)
+        setState((s) => (s && side && !s.running ? resume(s, side, t) : s))
+      }
+    }
+    document.addEventListener('visibilitychange', onVisibility)
+    return () => document.removeEventListener('visibilitychange', onVisibility)
+  }, [])
+
+  const moved = useCallback(
+    (mover: Color) =>
+      setState((s) => {
+        if (!s) return s
+        const t = performance.now()
+        const next = afterMove(s, mover, t)
+        // a move while away (the bot's reply): its clock starts when the player is back
+        if (away.current) {
+          away.current = { side: next.running }
+          return pause(next, t)
+        }
+        return next
+      }),
+    [],
+  )
+  const stop = useCallback(() => {
+    if (away.current) away.current = { side: null }
+    setState((s) => (s ? pause(s, performance.now()) : s))
+  }, [])
   const reset = useCallback((s: ClockState | null) => {
+    away.current = null
     setState(s)
     setNow(performance.now())
   }, [])

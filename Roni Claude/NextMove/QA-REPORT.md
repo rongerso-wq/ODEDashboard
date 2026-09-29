@@ -149,3 +149,38 @@ Full QA started 2026-09-27. Areas A–L, run in four rounds. Legend: ✅ pass ·
 - **Privacy statement** (in Settings): no accounts, no ads, no tracking, everything stays on the device. One honest caveat is in it: some device voices are online voices, so the text Elias reads may go to the browser maker (Chrome's "Google" voices do this).
 - **Kids app-store rules:** the app had two links out to lichess.org (the Puzzles credit and "Puzzle #… on Lichess" after a puzzle). Apple's Kids category and Google's Families program require a parental gate before leaving the app. **Removed at the user's choice**; both credits stay as plain text. The app now has no links out.
 - ⚠️ Stockfish GPL before an app-store build (unchanged): a GPL engine in a closed-source store app needs the app's source published, or a different engine.
+
+## Round 5: mobile (iPhone) (2026-09-29)
+
+Prompted by the user's iPhone report: a game against a strong bot "stopped" after it mated them and Safari's bars came up, the page zoomed, the screen "changed". Tested in Chrome's phone emulation (390×664 = iPhone in Safari with its bars, 375×553, 360×640, and sideways 844×390 and 667×375); a real iPhone check is still the user's.
+
+### M25 Game-over card 🐞 → fixed
+- **Bug: on short screens the game-over card was taller than the screen and couldn't scroll.** At 375×553 "See the board" and "Home" sat below the edge; swiping scrolled the page behind, which brought up Safari's bars. The game had ended; the player just couldn't reach the buttons.
+- Fixed: the backdrop scrolls (flex + `margin: auto`, so the card starts at the top when it doesn't fit) and a compact card under 740px height. All four buttons fit at 375×553.
+
+### M26 Double-tap zoom 🐞 → fixed
+- **Bug: nothing turned off iPhone double-tap zoom**, so two quick taps beside the board zoomed the page and it stayed zoomed. Fixed with `touch-action: manipulation` on every element (`:where(*)`, so the board keeps `none`). Pinch zoom still works. Form controls are ≥16px, so iOS doesn't zoom on focus.
+
+### M27 Updates on iPhone 🐞 → fixed
+- **Bug: an installed iPhone app only looked for a new version on a full reload**, which iOS rarely does (it wakes the app instead), so the phone could run an old version for days. `UpdatePrompt` now calls `registration.update()` whenever the app comes back on screen.
+
+### M28 Every game reaches its end ✅
+- Robot player (taps the board with touch pointer events; mate in one if it can, else the biggest capture, else random) at 390×664: 17 full games, all 8 bots, both colours. Every game reached the game-over card with all buttons on screen, and each added exactly one history entry. Endings seen: checkmate both ways, insufficient material, including a promotion.
+- Injected positions: stalemate (Loyd's 10-move line), time-out (1+0 with 3 s left), resign. All correct.
+
+### M29 Engine killed in the background 🐞 → fixed (the "game never finishes" bug)
+- **Bug: iOS can kill a Web Worker while the app is hidden or short of memory, with no error event.** The bot then showed "thinking…" forever, and every later search on that engine queued behind the dead one until the app was closed. Reproduced by terminating the Stockfish workers (recorded by wrapping `window.Worker` in a `navigate_page` `initScript`; importing `/src/engine/engine.ts` from a test script can give a different module instance after an HMR update, so it tests the wrong engine).
+- Fixed in `Engine` (so bots, coach, Review, lessons and My mistakes all recover): every wait has a silence limit, an `isready` check runs before each search, and coming back on screen pings the engine (3 s) and restarts it if it doesn't answer. A stalled search restarts the worker and is asked once more.
+- Measured: killed silently → bot replies in 5.8 s; killed while away → 0.6 s after returning; normal play afterwards 0.4 s; no "engine couldn't start" warning. `QA=1` coach tests pass.
+
+### M30 Clock while away (user decision) ✅
+- In a timed game the clock kept running while the phone was locked or in another app. **The user chose to pause it** (a family app shouldn't lose games on time while nobody is looking). `useClock` pauses on `visibilitychange` and resumes the same side on return; a bot reply that lands while away starts the player's clock only on return. Measured: 5 s away cost 0 s; the bot's reply while away didn't start the clock. Applies to two-player games too.
+
+### M31 Phone sideways and narrow phones 🐞 → fixed
+- **Bug: sideways, every board screen sized the board by the screen width**, so only 3 rows showed and the player had to scroll to play (Game, puzzles, Rush, My mistakes, Review, lessons).
+- Fixed (`orientation: landscape` and `max-height: 520px`): the board is sized by the height, player strips sit beside it (Game screens), Review's arrows move above the summary, the lesson card and side panels scroll on their own, and the top bar is slimmer. Checked at 844×390 and 667×375: nothing overlaps, no page scroll.
+- **Bug: Review's arrow row was 364px wide**, 4px wider than a 360px phone, so the page wiggled sideways. Tighter gaps under 400px.
+- Upright layouts unchanged (checked at 390 and 360 wide).
+
+### Still open
+- A real-iPhone check by the user (Safari and the home-screen app): mate a bot, double-tap beside the board, turn the phone, lock it mid-game.
