@@ -7,7 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 NextMove is a chess app for ages 0–100 whose **first purpose is teaching**. It has an Academy of engine-verified lessons, play against 8 computer opponents with a live coach, post-game review, and puzzles, plus a spoken teacher persona ("Elias"). Everything is free with no ads, and nothing is locked. It's built with Vite + React 19 + TypeScript and runs as a static single-page app (no backend yet).
 
 - **Plan:** `C:\Users\litbe\.claude\plans\i-want-to-build-compiled-flute.md` (7 phases, one per turn; wait for the user's "go").
-- **Done:** phases 1–5, Elias and the opponent commentary, My mistakes (spaced repetition), the installable offline app (PWA), a cleaner Home.
+- **Done:** phases 1–5, Elias and the opponent commentary, My mistakes (spaced repetition), the installable offline app (PWA), a cleaner Home, Elias's recorded voice everywhere (2026-09-29), iPhone home-screen layout fix.
 - **Full QA done** (areas A–L, four rounds, all in `QA-REPORT.md`): rules/board/clock/bots · teaching/puzzles · voice/design/accessibility · offline/robustness/performance/content/legal. 16 bugs found and fixed, plus small text fixes.
 - **Open decisions for the user:** (1) keyboard/screen-reader play on the board (≈45 min; see QA G19); (2) the Stockfish GPL licence before an app-store release (publish the source, or swap engines); (3) bot strength labels are rough until real players test. Keyboard play is postponed by the user (2026-09-28).
 - **No links out of the app** (kids app-store rules, QA L24): the Lichess credits are plain text. Don't add external links without a parental gate.
@@ -40,9 +40,10 @@ npm run build && npx vite preview --port 4273   # the only way to test the servi
 ```
 
 ## Installable offline app (PWA)
-- **Setup:** `vite-plugin-pwa` in `vite.config.ts` writes the manifest and a Workbox service worker that **precaches everything**: engine WASM (~1.8 MB, hence `maximumFileSizeToCacheInBytes` 5 MB), the puzzles chunk, fonts, pieces and icons. That's about 41 files / 3.1 MB. The whole app works with no network (verified with the server shut down: home, fonts, puzzles, and the engine playing a move).
+- **Setup:** `vite-plugin-pwa` in `vite.config.ts` writes the manifest and a Workbox service worker that **precaches everything**: engine WASM (~1.8 MB, hence `maximumFileSizeToCacheInBytes` 5 MB), the puzzles chunk, fonts, pieces and icons. That's about 43 files / 3.1 MB. **Elias's recordings (`public/voice/`, ~24 MB) are deliberately not precached** (see Elias, the voice). The whole app works with no network (verified with the server shut down: home, fonts, puzzles, and the engine playing a move).
 - **Updates:** `registerType: 'prompt'`. `components/UpdatePrompt.tsx` shows "A new version is ready [Update] [Later]" and **never reloads on its own**, so a game in progress is safe. Cache versions come from the build's content hashes, so there's no manual version bump. Verify an update by rebuilding, re-serving, reloading the old tab and checking that the toast appears and the new bundle loads after Update.
 - **Dev mode:** the service worker exists only in production builds, never in `npm run dev`. Port 4199 is used by another local project; use 4273 for previews.
+- **iPhone home screen:** `index.html` uses `black-translucent` + `viewport-fit=cover`, so the installed app draws under the clock and notch. `main`, dialog backdrops, the Settings sheet and the sticky game panel pad with `env(safe-area-inset-*)`; anything new that is fixed or sticky needs the same, or its buttons end up untappable.
 - **Install:** `lib/install.ts` captures `beforeinstallprompt` (imported first in `main.tsx`) for the "Install NextMove" button in Settings. iOS has no prompt, so it shows Share → Add to Home Screen instead. Automated/test Chrome usually doesn't fire the event, so the fallback text appears there; the real prompt needs a normal browser. iOS home-screen tags and `apple-touch-icon` are in `index.html`.
 
 ## Architecture
@@ -60,7 +61,7 @@ npm run build && npx vite preview --port 4273   # the only way to test the servi
 | `/puzzles`, `/puzzles/{daily\|rated\|theme/<id>}`, `/puzzles/rush` | Puzzles home, puzzle player, Puzzle Rush |
 
 - **Handing state between screens:** screens pass data through storage, not the URL. For example, the game-over dialog writes `review-game`, then navigates.
-- **Speech on route change:** `App` stops Elias's speech on every route change.
+- **Speech on route change:** `App` stops Elias's speech on every route change, in a `useLayoutEffect`: layout effects run before the new screen's effects, and a plain effect cut off every screen's first sentence.
 
 **The board is rules-agnostic.** `components/Board.tsx` is an SVG board (800×800 viewBox, 100 units per square).
 - **Input:** it takes `fen`, `dests` (a legal-destination map; omit it to lock the board), `lastMove`, `check`, and overlays (`arrows`, `marks`, `stars`).
@@ -72,11 +73,11 @@ npm run build && npx vite preview --port 4273   # the only way to test the servi
 - **The wrapper:** `engine/engine.ts` wraps a Web Worker with UCI. `search()` calls are serialised. `stop()` ends the running search and drops queued ones (via a generation counter).
 - **Who uses which engine:** `botEngine()` is the shared instance that plays the bots. The coach, the review and lesson goals each create **their own** `Engine`, so analysis never delays the opponent. Terminate them on unmount.
 
-**Settings and theming.** `lib/settings.tsx` persists these: `mode` (classic/kids), `sound`, `coordinates`, `coach`, `voice`, `voiceName`.
+**Settings and theming.** `lib/settings.tsx` persists these: `mode` (classic/kids), `sound`, `coordinates`, `coach`, `voice`, `voiceName`, `eliasVoice`.
 - **Kids mode:** it's `<html data-mode="kids">`, which overrides the design tokens in `src/index.css`. It gives bigger tap targets (`--tap` 58px), a warmer palette and rounder corners, and components pick friendlier copy via a `kids` flag. Every feature must work in both modes.
 - **`:hover`:** rules live only inside `@media (hover: hover)`.
-- **Storage:** all goes through `lib/storage.ts` (try/catch, keys prefixed `nextmove:`). Every reader checks the saved shape (`load(key, fallback, valid)`, `loadList` keeps a list's good items), because damaged data once blanked whole screens (QA I21); give any new key a check and a case in `lib/storage.test.ts`.
-- **Crash safety net:** `components/CrashGuard.tsx` wraps each screen (keyed by route) and shows "Oops, this screen got stuck" instead of a blank page. The keys are `settings`, `computer-current`, `computer-last`, `computer-history`, `review-game`, `academy-progress`, `puzzle-stats`, `mistakes`.
+- **Storage:** all goes through `lib/storage.ts` (try/catch, keys prefixed `nextmove:`). Every reader checks the saved shape (`load(key, fallback, valid)`, `loadList` keeps a list's good items), because damaged data once blanked whole screens (QA I21); give any new key a check and a case in `lib/storage.test.ts`. The keys are `settings`, `computer-current`, `computer-last`, `computer-history`, `review-game`, `academy-progress`, `puzzle-stats`, `mistakes`.
+- **Crash safety net:** `components/CrashGuard.tsx` wraps each screen (keyed by route) and shows "Oops, this screen got stuck" instead of a blank page.
 
 ## Subsystems
 
@@ -161,10 +162,9 @@ npm run build && npx vite preview --port 4273   # the only way to test the servi
   - It picks a voice by `voiceScore`: male first (Elias is a man), then quality (natural/neural/premium/enhanced, then Google), then the `PREFERRED` names. Apple's novelty and old robotic voices (`NOVELTY`: Fred, Zarvox, Grandpa…) are never used or listed.
   - `tuning()`: only desktop neural ("Natural") voices are deepened (pitch 0.85). Every other voice keeps pitch 1 and rate 0.95, because shifting a phone voice's pitch made Elias sound like a robot (user feedback on a real phone, 2026-09-28).
   - **Voices are identified by `voiceURI`, not name** (`voiceId`, `voiceLabel`): Safari on iPhone names the downloaded Enhanced voice just "Daniel", like the basic one; only its voiceURI says `enhanced`. The saved `voiceName` setting holds a voiceURI (older saves hold a name; both are matched). On an iPhone set to another language the names are translated ("דניאל"), so the name lists are also matched against the English last part of the voiceURI (`matches`). Settings › "Voice details" lists every voice the device offers (for support).
-  - **iPhone limit (seen on the user's phone, 2026-09-28):** web pages get only Apple's `super-compact` voices (plus novelty ones), even with "Daniel (Enhanced)" downloaded, in Safari and Chrome alike. That lowest tier is why Elias sounds robotic on iPhone, and no setting fixes it; the iPhone tip says so. A recorded voice for Elias is the real fix (proposed to the user).
-  - Settings shows a per-device tip for downloading a better voice (iPhone: Spoken Content › Enhanced voices; Android: Speech Services by Google › Install voice data).
-  - `speak()` cancels the current speech, or appends with `{ queue: true }`. It also splits text into sentences, because some browsers cut long utterances.
-  - A premium text-to-speech service would replace only `speak()`.
+  - **iPhone limit (seen on the user's phone, 2026-09-28):** web pages get only Apple's `super-compact` voices (plus novelty ones), even with "Daniel (Enhanced)" downloaded, in Safari and Chrome alike. That lowest tier is why Elias sounded robotic on iPhone and why he now has recordings; no setting fixes it, and the iPhone tip says so.
+  - Settings shows a per-device tip (only when a device voice is chosen): on Android, how to install better voices (Speech Services by Google › Install voice data); on iPhone, that Apple gives web apps only basic voices.
+  - `speak()` cancels the current speech, or appends with `{ queue: true }`, and splits text into sentences (`voiceText.sentences`); recordings and device sentences share its one queue.
 - **Notation to words** (`lib/speakable.ts`, tested): turns SAN into words ("Qxf7#" → "Queen takes f7, checkmate") and removes emoji and symbols. Any new text that contains notation goes through it automatically via `speak()`.
 - **Hooks** (`lib/useVoice.ts`): `useSay(text, key, { queue })` speaks when the text changes and stops on unmount; `useSpeaking()` reports whether he's talking.
 - **Components** (`components/Elias.tsx`): `EliasAvatar`, `Narrator` (bubble plus replay), `VoiceToggle`. Voice selection lives in `components/SettingsSheet.tsx`.
@@ -174,7 +174,7 @@ npm run build && npx vite preview --port 4273   # the only way to test the servi
 - **Before declaring a change done:** `npm run build`, `npm run lint`, `npm test`, plus `npm run verify:lessons` when lessons change.
 - **UI checks:** use Chrome DevTools MCP at 390×844 and 360 wide (no horizontal scroll) plus desktop, in both Classic and Kids mode.
 - **Driving the board from scripts:** dispatch `PointerEvent`s on `svg.board` at square centres (mirror the coordinates when the board is flipped), and **wait between taps**, because the selection must render before the second tap.
-- **Speech needs a real click:** use the MCP `click` tool, because synthetic clicks don't count as a user gesture. To see what Elias says, wrap `speechSynthesis.speak` to log `u.text`.
+- **Speech needs a real click:** use the MCP `click` tool, because synthetic clicks don't count as a user gesture (recordings stay silent until the first real tap unlocks Web Audio). To see what Elias says, wrap `speechSynthesis.speak` to log `u.text` (device voice) **and** `AudioBufferSourceNode.prototype.start` to log `this.buffer.duration` (recordings; 0.1 s buffers are move sounds). Any device-voice line while `eliasVoice` is recorded means a missing recording.
 - **Setting up states:** write the storage keys directly, e.g. `nextmove:computer-current` or `nextmove:review-game`. Navigate away first, because leaving a game saves it and would overwrite your injected save.
 - **Puzzle solutions:** in dev, `await import('/src/puzzles/puzzles.json')` plus the board's `data-puzzle` give you the answer.
 - **Robots:** `svg.board` carries `data-fen` and `data-orientation`, so a browser script can read the live position and play whole lessons, puzzles or games (import `/src/academy/lessons.ts`, `/src/engine/engine.ts`, and chess.js from `/node_modules/.vite/deps/chess__js.js` in dev). A full-Academy robot run is described in `QA-REPORT.md` (C9).
