@@ -109,6 +109,13 @@ body,
   height: 100%;
 }
 
+/* iPhone: no double-tap zoom (quick taps near the board zoomed the page and it stayed zoomed).
+   Pinch-zoom still works. On every element, because touch-action stops at scrolling boxes
+   (move list, dialogs); :where() keeps it overridable (the board uses none). */
+:where(*) {
+  touch-action: manipulation;
+}
+
 body {
   margin: 0;
   font-family: var(--font-body);

@@ -11,7 +11,16 @@ export default function UpdatePrompt() {
     needRefresh: [needRefresh, setNeedRefresh],
     offlineReady: [offlineReady, setOfflineReady],
     updateServiceWorker,
-  } = useRegisterSW()
+  } = useRegisterSW({
+    // The browser only looks for a new version on a full page load, and iOS rarely reloads a
+    // home-screen app: it just wakes it up. So also look whenever the app comes back on screen.
+    onRegisteredSW(_url, reg) {
+      if (!reg) return
+      document.addEventListener('visibilitychange', () => {
+        if (!document.hidden && navigator.onLine) reg.update().catch(() => {})
+      })
+    },
+  })
 
   // "Ready to work offline" is good news, not a question: it disappears on its own.
   useEffect(() => {

@@ -187,8 +187,11 @@
   position: fixed;
   inset: 0;
   z-index: 50;
-  display: grid;
-  place-items: center;
+  /* flex + margin:auto on the dialog: centred when it fits, scrollable from the top when it
+     doesn't (small iPhones, Safari's bars showing). Grid centring pushed the buttons off-screen. */
+  display: flex;
+  overflow-y: auto;
+  overscroll-behavior: contain;
   padding: 16px;
   /* clear of the iPhone status bar and home bar when installed */
   padding-top: max(16px, env(safe-area-inset-top));
@@ -199,6 +202,7 @@
 }
 .dialog {
   width: min(420px, 100%);
+  margin: auto;
   padding: 28px 24px 22px;
   text-align: center;
   border-radius: var(--radius-lg);
@@ -239,6 +243,38 @@
 .result-badge img {
   width: 62px;
   height: 62px;
+}
+/* Short phone screens: tighten the game-over card so every button fits without scrolling. */
+@media (max-height: 740px) {
+  .dialog {
+    padding: 18px 20px 16px;
+  }
+  .dialog h2 {
+    font-size: 24px;
+    margin-top: 8px;
+  }
+  .dialog p {
+    margin: 4px 0 14px;
+  }
+  .dialog .bot-says {
+    margin: -4px 0 14px;
+  }
+  .dialog-actions {
+    gap: 8px;
+  }
+  .dialog-actions .btn {
+    min-height: 48px;
+    padding-block: 8px;
+  }
+  .result-badge {
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
+  }
+  .result-badge img {
+    width: 36px;
+    height: 36px;
+  }
 }
 @keyframes fade-in {
   from {
