@@ -182,5 +182,5 @@ Prompted by the user's iPhone report: a game against a strong bot "stopped" afte
 - **Bug: Review's arrow row was 364px wide**, 4px wider than a 360px phone, so the page wiggled sideways. Tighter gaps under 400px.
 - Upright layouts unchanged (checked at 390 and 360 wide).
 
-### Still open
-- A real-iPhone check by the user (Safari and the home-screen app): mate a bot, double-tap beside the board, turn the phone, lock it mid-game.
+### Real iPhone ✅ (user, 2026-09-29)
+- After the deploy, the user confirmed all five on their iPhone: the game-over card after being mated, no double-tap zoom, the sideways layout, and a timed game locked mid-game (clock paused, the bot kept playing on return).
