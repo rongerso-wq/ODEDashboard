@@ -13,6 +13,12 @@
   gap: 12px;
   padding-block: 14px;
 }
+/* phone sideways: every pixel of height goes to the board */
+@media (orientation: landscape) and (max-height: 520px) {
+  .topbar {
+    padding-block: 4px;
+  }
+}
 .topbar-actions {
   display: flex;
   align-items: center;

@@ -193,6 +193,52 @@
     font-size: 18px;
   }
 }
+/* Phone turned sideways: the stacked layout made the board as wide as the screen, far taller
+   than it, so only a few rows showed. Board sized by the height instead, player strips beside it,
+   panel on the right with its own scroll. */
+@media (orientation: landscape) and (max-height: 520px) {
+  .page:has(> .game-layout) {
+    padding-block-end: 0;
+  }
+  .game-layout {
+    /* 66px top bar + 8px air below the board */
+    --board: calc(100dvh - 74px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 12px;
+    align-items: start;
+  }
+  .board-col {
+    max-width: none;
+    margin-inline: 0;
+    grid-template-columns: var(--board) clamp(100px, 18vw, 170px);
+    grid-template-rows: auto 1fr;
+    gap: 8px 10px;
+  }
+  .board-col > .board-frame {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+  }
+  .board-col > :not(.board-frame) {
+    grid-column: 2;
+    min-width: 0;
+  }
+  /* a narrow column: the clock wraps under the name instead of spilling into the panel */
+  .board-col > .player {
+    flex-wrap: wrap;
+    gap: 6px 8px;
+    padding: 6px 10px;
+  }
+  .board-col > :last-child:not(.board-frame):not(:first-child) {
+    grid-row: 2;
+    align-self: end;
+  }
+  .game-layout > .side {
+    max-height: var(--board);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+}
+
 @media (max-width: 480px) {
   .game.page {
     padding-inline: 8px;

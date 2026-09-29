@@ -256,3 +256,25 @@
     font-size: 19px;
   }
 }
+/* Phone sideways: the board fills the height, the lesson card scrolls beside it. */
+@media (orientation: landscape) and (max-height: 520px) {
+  .page:has(> .lesson-layout) {
+    padding-block-end: 0;
+  }
+  .lesson-layout:not(.no-board) {
+    /* 66px top bar, progress bar and gaps above the board, 8px air below */
+    --board: calc(100dvh - 98px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+    grid-template-columns: var(--board) minmax(0, 1fr);
+    gap: 12px;
+  }
+  .lesson-layout:not(.no-board) .lesson-board,
+  .lesson-layout:not(.no-board) .lesson-card {
+    max-width: none;
+    margin-inline: 0;
+  }
+  .lesson-layout:not(.no-board) .lesson-card {
+    max-height: var(--board);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+}

@@ -271,3 +271,46 @@
     margin-inline: auto;
   }
 }
+/* Narrow phones (360px): the arrow row was 364px wide and pushed the page sideways. */
+@media (max-width: 400px) {
+  .nav {
+    gap: 4px;
+  }
+  .nav-pos {
+    min-width: 64px;
+  }
+}
+/* Phone sideways: the board fills the height; the arrows sit above the summary on the right
+   (under the board they were wider than the board column). */
+@media (orientation: landscape) and (max-height: 520px) {
+  .page:has(> .review-layout) {
+    padding-block-end: 0;
+  }
+  .review-layout {
+    /* 66px top bar + 8px air */
+    --board: calc(100dvh - 74px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+    grid-template-columns: var(--board) minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+    gap: 10px 12px;
+  }
+  .review-board {
+    display: contents;
+  }
+  .review-board > .board-frame {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+  }
+  .review-board > .nav {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .review-side {
+    grid-column: 2;
+    grid-row: 2;
+    max-width: none;
+    margin-inline: 0;
+    max-height: calc(var(--board) - 70px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+}
