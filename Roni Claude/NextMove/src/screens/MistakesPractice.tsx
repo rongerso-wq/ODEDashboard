@@ -5,6 +5,7 @@ import { Narrator, VoiceToggle } from '../components/Elias'
 import { IconArrow, IconBack, IconBulb } from '../components/Icons'
 import { checkedKing, legalDests } from '../chess/game'
 import { hintFor } from '../coach/explain'
+import { sayHint, sayPractice } from '../coach/say'
 import { isMate, MATE_CP, scoreToCp } from '../coach/grade'
 import { Engine } from '../engine/engine'
 import { deckStats, dueCards, loadDeck, MASTERED, review, type MistakeCard } from '../mistakes/deck'
@@ -63,11 +64,18 @@ export default function MistakesPractice() {
           : kids
             ? `Nothing to practise right now. Come back ${days === 1 ? 'tomorrow' : `in ${days} days`}!`
             : `All caught up. Next review ${days === 1 ? 'tomorrow' : `in ${days} days`}.`
+    // Elias says the recorded version (numbers of solved cards are only shown)
+    const spoken =
+      deck.length === 0
+        ? text
+        : results.length
+          ? `${sayPractice.session(solvedNow === results.length)} ${sayPractice.when(days)}`
+          : `${sayPractice.nothingDue} ${sayPractice.when(days)}`
     return (
       <div className="page mistakes">
         {header}
         <section className="mk-empty">
-          <Narrator text={text} />
+          <Narrator text={text} speakText={spoken} />
           <div className="mk-stats">
             <span>
               <strong>{stats.learning}</strong> learning
@@ -124,7 +132,8 @@ function CardSolver({
   const [state, setState] = useState<State>('play')
   const [misses, setMisses] = useState(0)
   const [hint, setHint] = useState(0)
-  const [say, setSay] = useState<string | null>(null)
+  // what the card shows, and what Elias says (fixed sentences from coach/say.ts, recorded)
+  const [say, setSay] = useState<{ text: string; speak: string } | null>(null)
   const [last, setLast] = useState<{ from: Square; to: Square } | null>(null)
   const reported = useRef(false)
   const engineRef = useRef<Engine | null>(null)
@@ -133,7 +142,9 @@ function CardSolver({
   // The rules-based reason why the best move is good (same wording as the coach's hints).
   const analysis = { fen: card.fen, cp: card.evalBest, best: card.best, pv: [card.best], depth: 0 }
   const idea = hintFor(analysis, 1, 10, kids)?.text
-  const reason = (hintFor(analysis, 3, 10, kids)?.text ?? '').replace(/^Play [^.]+\.\s*/, '')
+  const hint3 = hintFor(analysis, 3, 10, kids)
+  const reason = (hint3?.text ?? '').replace(/^Play [^.]+\.\s*/, '')
+  const reasonSay = (hint3?.say ?? '').replace(`${sayHint.play} `, '')
 
   const report = (ok: boolean) => {
     if (reported.current) return
@@ -149,13 +160,14 @@ function CardSolver({
     setState('right')
     play('correct')
     report(misses === 0 && hint === 0)
-    setSay(
-      alternative
+    setSay({
+      text: alternative
         ? kids
           ? `That works too! I was thinking of ${card.bestSan}. ${reason}`
           : `${san} works as well. I had ${card.bestSan} in mind: ${reason}`
         : `${kids ? 'Yes! ' : 'Correct: '}${card.bestSan}. ${reason}`,
-    )
+      speak: `${alternative ? sayPractice.alsoWorks(kids) : sayPractice.right(kids)} ${reasonSay}`,
+    })
   }
 
   function miss() {
@@ -163,13 +175,16 @@ function CardSolver({
     const n = misses + 1
     setMisses(n)
     if (n >= 2) showAnswer()
-    else setSay(kids ? 'Not quite. Try again!' : 'Not quite. Look again.')
+    else {
+      const t = kids ? 'Not quite. Try again!' : 'Not quite. Look again.'
+      setSay({ text: t, speak: t })
+    }
   }
 
   function showAnswer() {
     report(false)
     setState('shown')
-    setSay(`${kids ? 'The move was' : 'The answer is'} ${card.bestSan}. ${reason}`)
+    setSay({ text: `${kids ? 'The move was' : 'The answer is'} ${card.bestSan}. ${reason}`, speak: `${sayPractice.shown(kids)} ${reasonSay}` })
   }
 
   async function onMove(m: BoardMove) {
@@ -230,7 +245,7 @@ function CardSolver({
         </div>
       </div>
       <aside className="side mk-side">
-        <Narrator text={say ?? intro} />
+        <Narrator text={say?.text ?? intro} speakText={say?.speak ?? sayPractice.intro(card.opponent, kids)} />
         {state === 'checking' && <p className="mk-wait">{kids ? 'Let me think about that move…' : 'Checking your move…'}</p>}
         {hint >= 1 && !done && idea && (
           <p className="mk-hint">

@@ -4,7 +4,6 @@ import type { Comment } from '../coach/commentary'
 import { IconBulb } from './Icons'
 import { EliasAvatar } from './Elias'
 import { useSay, useSpeaking } from '../lib/useVoice'
-import { spokenMove } from '../lib/speakable'
 import './CoachCard.css'
 
 const GRADE_BADGE: Record<Grade, string> = { best: '★', good: '✓', inaccuracy: '?!', mistake: '?', blunder: '??' }
@@ -42,11 +41,12 @@ export default function CoachCard(p: Props) {
   const speaking = useSpeaking()
   // Elias says each verdict, then his comment on the reply (queued so neither cuts the other off);
   // a hint interrupts, because the player asked for it.
-  const san = p.feedback?.san ?? ''
-  const spokenSan = san ? spokenMove(san) : ''
-  useSay(p.enabled && p.feedback ? `${spokenSan}. ${p.feedback.title}. ${p.feedback.text}` : null, undefined, { queue: true })
-  useSay(p.enabled && p.commentary ? p.commentary.comment.text : null, p.commentary?.ply, { queue: true })
-  useSay(p.hint?.text)
+  // He speaks the fixed `say` sentences (recorded in his own voice); the card shows the detail.
+  useSay(p.enabled && p.feedback ? `${p.feedback.title}. ${p.feedback.say}` : null, p.feedback ? `${p.feedback.san}:${p.feedback.after}` : undefined, {
+    queue: true,
+  })
+  useSay(p.enabled && p.commentary ? p.commentary.comment.say : null, p.commentary?.ply, { queue: true })
+  useSay(p.hint?.say)
   const bad = p.feedback && (p.feedback.grade === 'inaccuracy' || p.feedback.grade === 'mistake' || p.feedback.grade === 'blunder')
   const hintLabel = p.hint ? (p.hint.level < 3 ? 'Next hint' : 'Hint shown') : p.kids ? 'Help me!' : 'Hint'
 

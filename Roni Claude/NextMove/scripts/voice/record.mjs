@@ -9,15 +9,25 @@ import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync
 import { Mp3Encoder } from '@breezystack/lamejs'
 
 const root = new URL('../../', import.meta.url)
-const VERSION = 'onyx-1'
+const VERSION = 'cedar-1'
 const OUT = new URL(`public/voice/${VERSION}/`, root)
 const MANIFEST = new URL('src/voice/manifest.json', root)
 
 const MODEL = 'gpt-4o-mini-tts'
-// The user's choice from samples (2026-09-28): first Ash, then "deeper and more subtle": Onyx.
-const VOICE = 'onyx'
+// The user's choice from samples (2026-09-28): Ash, then Onyx "deep and subtle" (found boring),
+// then Cedar, "playful storyteller".
+const VOICE = 'cedar'
 const INSTRUCTIONS =
-  'Deep, low, resonant voice. Calm and understated: speak softly and evenly, with subtle warmth and no dramatic emphasis or excitement. Unhurried pace, like a wise old grandfather quietly teaching chess. Keep the same voice, pace and warmth in every line.'
+  'A wise, playful old storyteller sharing the secrets of chess. Expressive and fun: build a little suspense before a surprise, sound amazed at the clever move, and let a warm chuckle into the voice when praising. Keep it natural and kind, and the same voice in every line.'
+
+/**
+ * OpenAI sometimes returns a line cut short (one sample came back as 4 s of a 14 s text), or,
+ * rarely, rambling. At a teacher's pace a character takes about 70 ms; far outside that is retried.
+ */
+function plausible(text, samples) {
+  const secs = samples / RATE
+  return secs >= text.length * 0.035 && secs <= text.length * 0.2 + 3
+}
 const RATE = 24000 // OpenAI "pcm" is 24 kHz, 16-bit, mono
 const KBPS = 40
 
@@ -53,17 +63,25 @@ function mp3(pcm) {
 
 async function speak(text, key) {
   for (let attempt = 1; ; attempt++) {
-    const r = await fetch('https://api.openai.com/v1/audio/speech', {
-      method: 'POST',
-      headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ model: MODEL, voice: VOICE, input: text, instructions: INSTRUCTIONS, response_format: 'pcm' }),
-    })
-    if (r.ok) {
-      const bytes = Buffer.from(await r.arrayBuffer())
-      return new Int16Array(bytes.buffer, bytes.byteOffset, bytes.length >> 1)
+    let status = 0
+    try {
+      const r = await fetch('https://api.openai.com/v1/audio/speech', {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ model: MODEL, voice: VOICE, input: text, instructions: INSTRUCTIONS, response_format: 'pcm' }),
+      })
+      if (r.ok) {
+        // a download cut off halfway ("terminated") throws here and is retried
+        const bytes = Buffer.from(await r.arrayBuffer())
+        return new Int16Array(bytes.buffer, bytes.byteOffset, bytes.length >> 1)
+      }
+      status = r.status
+      if (attempt >= 5 || (status !== 429 && status < 500)) throw new Error(`${status} ${(await r.text()).slice(0, 200)}`)
+    } catch (e) {
+      // network drops ("fetch failed", "terminated") are retried like 429/5xx; API refusals are not
+      if (attempt >= 5 || (status && status !== 429 && status < 500)) throw e
     }
-    if (attempt >= 4 || (r.status !== 429 && r.status < 500)) throw new Error(`${r.status} ${(await r.text()).slice(0, 200)}`)
-    await new Promise((res) => setTimeout(res, 2000 * attempt))
+    await new Promise((res) => setTimeout(res, 3000 * attempt))
   }
 }
 
@@ -81,10 +99,16 @@ let done = 0
 let failed = 0
 const queue = [...todo]
 await Promise.all(
-  Array.from({ length: 4 }, async () => {
+  Array.from({ length: 6 }, async () => {
     for (let l = queue.shift(); l; l = queue.shift()) {
       try {
-        writeFileSync(new URL(`${l.key}.mp3`, OUT), mp3(trim(await speak(l.text, key))))
+        let pcm = await speak(l.text, key)
+        for (let tries = 1; !plausible(l.text, pcm.length) && tries < 3; tries++) {
+          console.log(`  retry (${(pcm.length / RATE).toFixed(1)} s for ${l.text.length} characters): "${l.text.slice(0, 60)}"`)
+          pcm = await speak(l.text, key)
+        }
+        if (!plausible(l.text, pcm.length)) throw new Error(`length still implausible after 3 tries`)
+        writeFileSync(new URL(`${l.key}.mp3`, OUT), mp3(trim(pcm)))
         if (++done % 25 === 0) console.log(`  ${done}/${todo.length}`)
       } catch (e) {
         failed++
@@ -101,6 +125,7 @@ if (process.argv.includes('--prune')) for (const f of orphans) rmSync(new URL(f,
 else if (orphans.length) console.log(`${orphans.length} recordings are no longer used (--prune deletes them)`)
 
 const have = lines.filter((l) => existsSync(new URL(`${l.key}.mp3`, OUT))).map((l) => l.key).sort()
-writeFileSync(MANIFEST, JSON.stringify({ voice: VERSION, clips: have }) + '\n')
 const bytes = have.reduce((n, k) => n + readFileSync(new URL(`${k}.mp3`, OUT)).length, 0)
+// `mb` is shown on the offline-download button in Settings
+writeFileSync(MANIFEST, JSON.stringify({ voice: VERSION, mb: Math.round(bytes / 1e6), clips: have }) + '\n')
 console.log(`recorded ${done}, failed ${failed}; manifest: ${have.length} clips, ${(bytes / 1e6).toFixed(1)} MB`)

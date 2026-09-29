@@ -3,6 +3,7 @@ import { IconArrow, IconBack, IconBulb } from '../components/Icons'
 import PuzzleBoard, { type PuzzleStatus } from '../components/PuzzleBoard'
 import { VoiceToggle } from '../components/Elias'
 import { useSay } from '../lib/useVoice'
+import { sayPuzzle } from '../coach/say'
 import {
   dailyPuzzle,
   loadPuzzles,
@@ -91,7 +92,7 @@ export default function PuzzlePlay({ mode }: { mode: Mode }) {
   const solvedCount = set ? set.filter((p) => loadStats().solved.includes(p.id)).length : 0
 
   // Elias reads the task when the puzzle starts, then each reaction.
-  const prompt = kids ? `You are ${color}. Find the best move!` : `${color} to move. Find the best move.`
+  const prompt = color ? sayPuzzle.prompt(color, kids) : ''
   useSay(status === 'starting' ? null : status === 'play' && !message ? prompt : message, round)
 
   return (

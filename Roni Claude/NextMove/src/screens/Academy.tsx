@@ -6,6 +6,7 @@ import { pieceUrl } from '../chess/pieces'
 import { navigate } from '../lib/router'
 import { useSettings } from '../lib/settings'
 import { Narrator, VoiceToggle } from '../components/Elias'
+import { sayAcademy } from '../coach/say'
 import './Academy.css'
 
 /** The Academy map: chapters as winding paths of lessons, with stars and chapter badges. */
@@ -53,6 +54,8 @@ export default function Academy() {
                   ? 'You finished every lesson! Now try to win three stars on each one.'
                   : 'You have completed the Academy. Replay any lesson to polish it to three stars.'
           }
+          // spoken without the lesson's subtitle, as recorded sentences (coach/say.ts)
+          speakText={earned && next ? `${kids ? 'Welcome back!' : 'Welcome back.'} ${sayAcademy.stars(earned)} ${sayAcademy.nextUp(next.title)}` : undefined}
         />
       </div>
 

@@ -15,6 +15,11 @@ import {
   pieceAt,
   winsMaterial,
 } from './tactics'
+import { EVAL_WORDS, sayGood, sayHint, sayWrong, type PieceName } from './say'
+
+/** Screen text and what Elias says (coach/say.ts: fixed sentences he has recorded). */
+type Said = { text: string; say: string }
+const P = (t: keyof typeof NAME) => NAME[t] as PieceName
 
 /** Who is being talked about. Live coaching: "You" vs "Pip"; local-game review: "White" vs "Black". */
 export type Voice = { kids: boolean; your: string; opp: string }
@@ -25,6 +30,8 @@ export type Feedback = {
   grade: Grade
   title: string
   text: string
+  /** what Elias says about it (fixed, recorded sentences; `text` has the detail) */
+  say: string
   san: string
   playedUci: string
   bestUci: string | null
@@ -48,20 +55,20 @@ const TITLES: Record<Grade, { classic: string; kids: string }> = {
 export const gradeTitle = (g: Grade, kids: boolean) => (kids ? TITLES[g].kids : TITLES[g].classic)
 
 /** Why a (good) move is good, in one short sentence; null if nothing specific stands out. */
-function whyGood(before: string, m: Move, ply: number, voice: Voice): string | null {
-  if (m.san.includes('#')) return voice.kids ? 'Checkmate! You did it! 🎉' : 'Checkmate.'
+function whyGood(before: string, m: Move, ply: number, voice: Voice): Said | null {
+  const same = (s: string) => ({ text: s, say: s })
+  if (m.san.includes('#')) return { text: voice.kids ? 'Checkmate! You did it! 🎉' : 'Checkmate.', say: sayGood.mate(voice.kids) }
   const threat = mateThreat(before)
-  if (threat && !mateInOne(m.after)) return `That stops the checkmate threat ${threat.san}.`
+  if (threat && !mateInOne(m.after)) return { text: `That stops the checkmate threat ${threat.san}.`, say: sayGood.stopsThreat }
   const fork = isFork(m.after, m)
-  if (fork) return `A fork! The ${NAME[m.piece]} attacks the ${listPieces(fork)} at the same time.`
+  if (fork) return { text: `A fork! The ${NAME[m.piece]} attacks the ${listPieces(fork)} at the same time.`, say: sayGood.fork(P(m.piece)) }
   const won = winsMaterial(before, m)
-  if (won) return `That wins a ${NAME[won.type]}.`
+  if (won) return same(sayGood.wins(P(won.type)))
   const inDanger = hangingPieces(new Chess(before), m.color).some((t) => t.square === m.from)
-  if (inDanger && !hangingPieces(new Chess(m.after), m.color).some((t) => t.square === m.to))
-    return `That gets the ${NAME[m.piece]} out of danger.`
-  if (m.isKingsideCastle() || m.isQueensideCastle()) return 'Castling tucks the king away safely and brings the rook into play.'
-  if (isDevelopment(m, ply)) return 'Good development — a new piece joins the game.'
-  if (m.san.includes('+')) return 'A check that keeps the pressure on.'
+  if (inDanger && !hangingPieces(new Chess(m.after), m.color).some((t) => t.square === m.to)) return same(sayGood.saves(P(m.piece)))
+  if (m.isKingsideCastle() || m.isQueensideCastle()) return same(sayGood.castle)
+  if (isDevelopment(m, ply)) return { text: 'Good development — a new piece joins the game.', say: sayGood.develop }
+  if (m.san.includes('+')) return same(sayGood.check)
   return null
 }
 
@@ -80,19 +87,23 @@ export function explainMove(p: { move: Move; ply: number; before: Analysis; afte
   const reply = after.best ? moveFromUci(after.fen, after.best) : null
   const replySan = reply?.san ?? null
 
-  let text: string
+  let said: Said
   if (grade === 'best' || grade === 'good') {
     const why = whyGood(before.fen, m, ply, voice)
-    if (grade === 'best') text = why ?? (voice.kids ? "That's exactly what a champion would play!" : "That's the move a strong player would choose.")
-    else text = `${why ? why + ' ' : 'Solid. '}${bestSan ? `${bestSan} was slightly stronger.` : ''}`.trim()
+    if (grade === 'best') said = why ?? { text: sayGood.best(voice.kids), say: sayGood.best(voice.kids) }
+    else
+      said = {
+        text: `${why ? why.text + ' ' : 'Solid. '}${bestSan ? `${bestSan} was slightly stronger.` : ''}`.trim(),
+        say: `${why ? why.say : sayGood.solid}${bestSan ? ` ${sayGood.slightlyBetter}` : ''}`,
+      }
   } else {
-    text = whatWentWrong({ m, ply, before, after, best, bestSan, reply, replySan, evalBefore, evalAfter, voice })
+    said = whatWentWrong({ m, ply, before, after, best, bestSan, reply, replySan, evalBefore, evalAfter, voice })
   }
 
   return {
     grade,
     title: gradeTitle(grade, voice.kids),
-    text,
+    ...said,
     san: m.san,
     playedUci,
     bestUci: before.best,
@@ -116,52 +127,64 @@ function whatWentWrong(x: {
   evalBefore: number
   evalAfter: number
   voice: Voice
-}): string {
+}): Said {
   const { m, after, best, bestSan, reply, replySan, evalBefore, evalAfter, voice } = x
   const better = bestSan ? ` Better was ${bestSan}.` : ''
+  const sayBetter = bestSan ? ` ${sayWrong.better}` : ''
 
   // 1. A checkmate was there and was missed.
   if (isMate(evalBefore) && evalBefore > 0 && !(isMate(evalAfter) && evalAfter > 0)) {
     const n = mateIn(evalBefore)
     return n === 1
-      ? `There was checkmate in one: ${bestSan}!`
-      : `There was a forced checkmate in ${n} moves, starting with ${bestSan}.`
+      ? { text: `There was checkmate in one: ${bestSan}!`, say: sayWrong.missedMate1 }
+      : { text: `There was a forced checkmate in ${n} moves, starting with ${bestSan}.`, say: sayWrong.missedMate }
   }
 
   // 2. The move allows the opponent to checkmate.
   if (isMate(after.cp) && after.cp > 0) {
     const n = mateIn(after.cp)
     return n === 1
-      ? `This lets ${voice.opp} checkmate with ${replySan}.${better}`
-      : `This lets ${voice.opp} force checkmate in ${n} moves.${better}`
+      ? { text: `This lets ${voice.opp} checkmate with ${replySan}.${better}`, say: sayWrong.allowsMate1 + sayBetter }
+      : { text: `This lets ${voice.opp} force checkmate in ${n} moves.${better}`, say: sayWrong.allowsMate + sayBetter }
   }
 
   // 3. A piece is left where it can be won.
   const hanging = hangingPieces(new Chess(after.fen), m.color)
   const taken = reply ? hanging.find((h) => h.square === reply.to) : undefined
   if (taken && reply?.captured)
-    return `${cap(voice.your)} ${pieceAt(taken)} can be taken — ${voice.opp} plays ${replySan}.${better}`
+    return {
+      text: `${cap(voice.your)} ${pieceAt(taken)} can be taken — ${voice.opp} plays ${replySan}.${better}`,
+      say: sayWrong.canBeTaken(P(taken.type)) + sayBetter,
+    }
   const moved = hanging.find((h) => h.square === m.to)
-  if (moved && moved.value >= 3) return `The ${NAME[moved.type]} on ${m.to} is left unprotected and can be captured.${better}`
+  if (moved && moved.value >= 3)
+    return { text: `The ${NAME[moved.type]} on ${m.to} is left unprotected and can be captured.${better}`, say: sayWrong.leftLoose(P(moved.type)) + sayBetter }
 
   // 4. The better move won material.
   if (best) {
     const won = winsMaterial(x.before.fen, best)
-    if (won) return `A free ${NAME[won.type]} was there: ${bestSan} wins it.`
+    if (won) return { text: `A free ${NAME[won.type]} was there: ${bestSan} wins it.`, say: sayWrong.freePiece(P(won.type)) }
     const fork = isFork(best.after, best)
-    if (fork) return `${bestSan} would have attacked the ${listPieces(fork)} at the same time.`
+    if (fork) return { text: `${bestSan} would have attacked the ${listPieces(fork)} at the same time.`, say: sayWrong.missedFork }
   }
 
   // 5. The reply wins something.
-  if (reply?.captured) return `After this, ${voice.opp} can play ${replySan}.${better}`
+  if (reply?.captured) return { text: `After this, ${voice.opp} can play ${replySan}.${better}`, say: sayWrong.replyWins + sayBetter }
 
   // 6. An opening principle was broken.
   const rule = openingPrinciple(m, x.ply, voice.kids)
-  if (rule) return `${rule}${better}`
+  if (rule) return { text: `${rule}${better}`, say: rule + sayBetter }
 
   // 7. Generic.
-  if (voice.kids) return bestSan ? `${bestSan} was a stronger move. Keep looking for checks, captures and threats!` : 'There was a stronger move here.'
-  return `${bestSan ? `${bestSan} was better` : 'There was a better move'}. The position goes from ${evalWords(evalBefore)} to ${evalWords(evalAfter)} (${formatEval(evalBefore)} → ${formatEval(evalAfter)}).`
+  if (voice.kids)
+    return {
+      text: bestSan ? `${bestSan} was a stronger move. Keep looking for checks, captures and threats!` : 'There was a stronger move here.',
+      say: sayWrong.strongerKids,
+    }
+  return {
+    text: `${bestSan ? `${bestSan} was better` : 'There was a better move'}. The position goes from ${evalWords(evalBefore)} to ${evalWords(evalAfter)} (${formatEval(evalBefore)} → ${formatEval(evalAfter)}).`,
+    say: `${sayWrong.better} ${sayWrong.now(evalWords(evalAfter))}`,
+  }
 }
 
 /** The classic opening advice a coach would give about this move, if any applies. */
@@ -181,7 +204,7 @@ function openingPrinciple(m: Move, ply: number, kids: boolean): string | null {
 }
 
 /** "about equal", "slightly better", "losing" … (for the side whose score it is) */
-export function evalWords(cp: number): string {
+export function evalWords(cp: number): (typeof EVAL_WORDS)[number] {
   if (isMate(cp)) return cp > 0 ? 'a forced checkmate' : 'getting checkmated'
   const a = Math.abs(cp)
   const side = cp > 0
@@ -192,7 +215,7 @@ export function evalWords(cp: number): string {
   return side ? 'winning' : 'losing'
 }
 
-export type Hint = { level: 1 | 2 | 3; text: string; square?: Square; arrow?: { from: Square; to: Square } }
+export type Hint = { level: 1 | 2 | 3; text: string; say: string; square?: Square; arrow?: { from: Square; to: Square } }
 
 /** Three-step hint for the side to move: an idea, then the piece, then the move. */
 export function hintFor(a: Analysis, level: 1 | 2 | 3, ply: number, kids: boolean): Hint | null {
@@ -210,10 +233,12 @@ export function hintFor(a: Analysis, level: 1 | 2 | 3, ply: number, kids: boolea
   if (level === 1) {
     let text: string
     if (mateSoon) text = kids ? "There's a checkmate hiding here! Look at every check." : "There's a forced checkmate. Look at every check."
-    else if (threat)
+    else if (threat) {
       text = kids
         ? `Watch out! Your opponent wants to checkmate you with ${threat.san}. How can you stop it?`
         : `Careful: your opponent threatens checkmate with ${threat.san}. How do you stop it?`
+      return { level, text, say: kids ? sayHint.threatKids : sayHint.threat }
+    }
     else if (won) text = kids ? 'Something can be captured for free! Can you find it?' : 'You can win material. Is anything of theirs unprotected?'
     else if (saving) text = kids ? 'One of your pieces is in danger! Can you save it?' : 'One of your pieces is under attack. Deal with the threat.'
     else if (fork) text = 'Look for a move that attacks two pieces at once.'
@@ -221,19 +246,24 @@ export function hintFor(a: Analysis, level: 1 | 2 | 3, ply: number, kids: boolea
     else if (castle) text = "Think about your king's safety."
     else if (isDevelopment(best, ply)) text = kids ? 'Bring a new piece out to play!' : 'Bring a new piece into the game.'
     else text = kids ? 'Look at every check, capture and threat!' : 'Look at every check, capture and threat — for both sides.'
-    return { level, text }
+    return { level, text, say: text } // every other level-1 hint is a fixed sentence
   }
-  if (level === 2) return { level, text: `Look at your ${NAME[best.piece]} on ${best.from}.`, square: best.from }
+  if (level === 2) return { level, text: `Look at your ${NAME[best.piece]} on ${best.from}.`, say: sayHint.lookAt(P(best.piece)), square: best.from }
 
-  let why = "It's the strongest move here."
-  if (best.san.includes('#')) why = "It's checkmate!"
-  else if (mateSoon) why = 'It starts a forced checkmate.'
-  else if (threat && stopsThreat) why = `It stops the checkmate threat ${threat.san}.`
-  else if (fork) why = `It attacks the ${listPieces(fork)} at once.`
-  else if (won) why = `It wins a ${NAME[won.type]}.`
-  else if (saving) why = `It saves your ${NAME[best.piece]}.`
-  else if (castle) why = 'It keeps your king safe.'
-  else if (best.san.includes('+')) why = 'It gives check.'
-  else if (isDevelopment(best, ply)) why = 'It develops a piece.'
-  return { level, text: `Play ${best.san}. ${why}`, square: best.from, arrow: { from: best.from, to: best.to } }
+  let why = sayHint.whyStrongest
+  let whySay = why
+  if (best.san.includes('#')) why = whySay = sayHint.whyMate
+  else if (mateSoon) why = whySay = sayHint.whyMateSoon
+  else if (threat && stopsThreat) {
+    why = `It stops the checkmate threat ${threat.san}.`
+    whySay = sayHint.whyStops
+  } else if (fork) {
+    why = `It attacks the ${listPieces(fork)} at once.`
+    whySay = sayHint.whyFork
+  } else if (won) why = whySay = sayHint.whyWins(P(won.type))
+  else if (saving) why = whySay = sayHint.whySaves(P(best.piece))
+  else if (castle) why = whySay = sayHint.whyCastle
+  else if (best.san.includes('+')) why = whySay = sayHint.whyCheck
+  else if (isDevelopment(best, ply)) why = whySay = sayHint.whyDevelop
+  return { level, text: `Play ${best.san}. ${why}`, say: `${sayHint.play} ${whySay}`, square: best.from, arrow: { from: best.from, to: best.to } }
 }

@@ -5,7 +5,7 @@ import { GradeBadge } from '../components/CoachCard'
 import EvalGraph from '../components/EvalGraph'
 import { VoiceToggle } from '../components/Elias'
 import { useSay } from '../lib/useVoice'
-import { spokenMove } from '../lib/speakable'
+import { sayReview, sayWrong } from '../coach/say'
 import { addCards, cardFromFeedback } from '../mistakes/deck'
 import { IconBack, IconFirst, IconLast, IconNext, IconPrev } from '../components/Icons'
 import { analyse, REVIEW, uciToSan, type Analysis } from '../coach/analysis'
@@ -168,16 +168,21 @@ function ReviewScreen({ game }: { game: ReviewGame }) {
   // Elias: a summary once the analysis is done, then the verdict on each move you step to.
   const me = game.me ? summary.find((s) => s.c === game.me) : null
   const mistakesOfMine = me ? me.mistake + me.blunder : keyMoments.length
+  // Elias speaks fixed sentences (recorded in his voice); the screen shows moves and numbers.
   useSay(
     complete && ply === 0
-      ? `${game.result}. ${me?.acc != null ? `Your accuracy was ${Math.round(me.acc)} percent. ` : ''}${
-          mistakesOfMine === 0
-            ? 'No serious mistakes. Well played!'
-            : `There ${mistakesOfMine === 1 ? 'was one moment' : `were ${mistakesOfMine} moments`} worth a closer look. Let us step through them together.`
-        }`
+      ? [
+          sayReview.start,
+          me?.acc != null ? sayReview.accuracy(Math.round(me.acc)) : '',
+          mistakesOfMine === 0 ? sayReview.clean : `${sayReview.moments(Math.min(mistakesOfMine, 60))} ${sayReview.stepThrough}`,
+        ]
+          .filter(Boolean)
+          .join(' ')
       : null,
   )
-  useSay(fb && move ? `${mover}, ${spokenMove(fb.san)}. ${gradeTitle(fb.grade, kids)}. ${shownText}` : null, ply)
+  const spoken =
+    !move || !fb ? null : isMine(move) ? fb.say : BAD.includes(fb.grade) ? (fb.bestSan ? sayWrong.better : '') : sayReview.playedWell
+  useSay(fb && move ? `${gradeTitle(fb.grade, kids)}. ${spoken}` : null, ply)
 
   return (
     <div className="page review">

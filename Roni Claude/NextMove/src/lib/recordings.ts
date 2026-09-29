@@ -15,6 +15,10 @@ function audio(): AudioContext | null {
   if (!ctx) {
     const AC = window.AudioContext ?? (window as unknown as { webkitAudioContext?: typeof AudioContext }).webkitAudioContext
     if (!AC) return null
+    // iPhones mute Web Audio with the silent switch (the device voice isn't); "playback" keeps
+    // Elias audible, like any audio app (Safari 17+; elsewhere the property doesn't exist)
+    const session = (navigator as unknown as { audioSession?: { type: string } }).audioSession
+    if (session) session.type = 'playback'
     ctx = new AC()
   }
   return ctx
@@ -103,3 +107,49 @@ export async function playClip(
     src.start()
   })
 }
+
+// ---------- Offline download ----------
+// Played clips are kept by the service worker (runtime cache "elias-voice"). All of them together
+// are ~24 MB, too much to fetch silently on mobile data, so Settings offers a one-tap download.
+
+const CACHE = 'elias-voice'
+const clipUrl = (key: string) => new URL(`${import.meta.env.BASE_URL}voice/${manifest.voice}/${key}.mp3`, location.href).href
+
+/** How many of Elias's clips are already stored on this device (0 when storage is unavailable). */
+export async function offlineCount(): Promise<number> {
+  try {
+    if (!('caches' in window) || !(await caches.has(CACHE))) return 0
+    const stored = new Set((await (await caches.open(CACHE)).keys()).map((r) => r.url))
+    return manifest.clips.filter((k) => stored.has(clipUrl(k))).length
+  } catch {
+    return 0
+  }
+}
+
+export const clipTotal = manifest.clips.length
+
+/**
+ * Stores every clip for offline use, a few at a time. Each fetch goes through the service worker,
+ * which keeps it; without one (dev), clips are put in the cache here. Resolves with the number stored.
+ */
+export async function downloadAll(onProgress: (done: number) => void): Promise<number> {
+  const cache = await caches.open(CACHE)
+  const stored = new Set((await cache.keys()).map((r) => r.url))
+  const todo = manifest.clips.filter((k) => !stored.has(clipUrl(k)))
+  let done = clipTotal - todo.length
+  onProgress(done)
+  const worker = async () => {
+    for (let k = todo.shift(); k; k = todo.shift()) {
+      try {
+        const r = await fetch(clipUrl(k))
+        if (r.ok && !navigator.serviceWorker?.controller) await cache.put(clipUrl(k), r)
+        if (r.ok) onProgress(++done)
+      } catch {
+        /* offline half-way: the next tap continues where this stopped */
+      }
+    }
+  }
+  await Promise.all(Array.from({ length: 6 }, worker))
+  return done
+}
+export const voiceMb = manifest.mb

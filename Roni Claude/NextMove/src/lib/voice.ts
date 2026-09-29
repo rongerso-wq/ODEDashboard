@@ -211,3 +211,6 @@ export function whenVoicesReady(fn: () => void) {
   s.addEventListener('voiceschanged', fn)
   return () => s.removeEventListener('voiceschanged', fn)
 }
+
+// Leaving the app (home button, another app, locking the phone) ends what Elias was saying.
+if (typeof document !== 'undefined') document.addEventListener('visibilitychange', () => document.hidden && stop())

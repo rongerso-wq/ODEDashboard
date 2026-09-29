@@ -14,6 +14,7 @@ import { useSettings } from '../lib/settings'
 import { play } from '../lib/sound'
 import { Narrator, VoiceToggle } from '../components/Elias'
 import { useSay } from '../lib/useVoice'
+import { sayLesson } from '../coach/say'
 import './LessonPlayer.css'
 
 type StepProps<S extends Step> = {
@@ -265,10 +266,10 @@ function CollectView({ step, kids, intro, coordinates, onDone, onMistake }: Step
               text: perfect
                 ? kids
                   ? 'Perfect! You did it in the fewest moves! ⭐'
-                  : `Perfect — ${total} moves, the fewest possible.`
+                  : sayLesson.perfect(total)
                 : kids
-                  ? `You did it in ${total} moves! It can be done in ${best}.`
-                  : `Done in ${total} moves. It can be done in ${best} — try again for a perfect score, or continue.`,
+                  ? `${sayLesson.movesDone(total)} ${sayLesson.canBeDone(best ?? total)}`
+                  : `${sayLesson.done(total)} ${sayLesson.tryForPerfect(best ?? total)}`,
             }}
           />
           <div className="lesson-actions">
@@ -512,7 +513,7 @@ function GoalView({ step, kids, intro, coordinates, onDone, onMistake }: StepPro
     }
     if (lastBy === them && step.within && moveCount >= step.within) {
       if (g === 'hold') win()
-      else lose(kids ? 'Out of moves! Try again.' : `You have used your ${step.within} moves. Try again.`)
+      else lose(kids ? 'Out of moves! Try again.' : `${sayLesson.usedMoves(step.within ?? 0)} Try again.`)
       return true
     }
     return false

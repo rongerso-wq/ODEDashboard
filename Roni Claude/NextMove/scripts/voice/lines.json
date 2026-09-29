@@ -1,5 +1,13 @@
 [
  {
+  "key": "8941f7321t",
+  "text": "\"A knight on the rim is dim\", knights are stronger in the middle."
+ },
+ {
+  "key": "14887a241w",
+  "text": "\"A knight on the rim is dim\": on the edge it controls fewer squares."
+ },
+ {
   "key": "b872b05d14",
   "text": "(A rook can never take back diagonally!)"
  },
@@ -24,6 +32,10 @@
   "text": "A brand-new queen!"
  },
  {
+  "key": "f3226872z",
+  "text": "A check that keeps the pressure on."
+ },
+ {
   "key": "ad0cbcbe1t",
   "text": "A discovered attack: moving one piece opens the line for another."
  },
@@ -36,12 +48,40 @@
   "text": "A fork is when one piece attacks two pieces at once, like a fork with two prongs!"
  },
  {
+  "key": "68bdc3c37",
+  "text": "A fork!"
+ },
+ {
+  "key": "d3266103v",
+  "text": "A free bishop was there to win."
+ },
+ {
+  "key": "03961e07v",
+  "text": "A free knight was there to win."
+ },
+ {
+  "key": "2e1b82c8t",
+  "text": "A free pawn was there to win."
+ },
+ {
+  "key": "ab94a404u",
+  "text": "A free queen was there to win."
+ },
+ {
+  "key": "68ee1f3bt",
+  "text": "A free rook was there to win."
+ },
+ {
   "key": "4d698fa91n",
   "text": "A king behind an unmoved row of pawns has no escape square."
  },
  {
   "key": "f16078ce2c",
   "text": "A king on the sixth row in front of its pawn always wins (except with an edge pawn)."
+ },
+ {
+  "key": "2a2c902ar",
+  "text": "A new piece joins the game."
  },
  {
   "key": "9e1d2d95n",
@@ -92,6 +132,10 @@
   "text": "A sneaky rule!"
  },
  {
+  "key": "ce6cf19d1k",
+  "text": "A wrong move or a hint counts as a miss for your rating."
+ },
+ {
   "key": "2f0bd19c1c",
   "text": "a6: the Najdorf, a favourite of world champions."
  },
@@ -108,12 +152,28 @@
   "text": "After Knight f3 and Knight c6, the bishop goes to b5."
  },
  {
+  "key": "cdfc1c1417",
+  "text": "After this, your opponent can win material."
+ },
+ {
+  "key": "d590ecb6s",
+  "text": "Aim to castle early instead."
+ },
+ {
+  "key": "998b3e931x",
+  "text": "All of it is saved on this device, so he speaks without internet too."
+ },
+ {
   "key": "ce0a8486u",
   "text": "Almost always, choose a queen."
  },
  {
   "key": "6a6c46aa18",
   "text": "Always ask: what is my opponent threatening?"
+ },
+ {
+  "key": "87c9838az",
+  "text": "Always check which pieces are safe!"
  },
  {
   "key": "72f724d31w",
@@ -184,8 +244,152 @@
   "text": "Back-rank mate!"
  },
  {
+  "key": "022383731m",
+  "text": "Before each move, check which of your pieces are defended."
+ },
+ {
   "key": "b9004bc61n",
   "text": "Before every move, look at every check, capture and threat."
+ },
+ {
+  "key": "33c8c912q",
+  "text": "Benny brings out a bishop."
+ },
+ {
+  "key": "29f3d4a6q",
+  "text": "Benny brings out a knight."
+ },
+ {
+  "key": "dd47fc04x",
+  "text": "Benny brings the queen out early."
+ },
+ {
+  "key": "3b2483cey",
+  "text": "Benny brought the queen out early."
+ },
+ {
+  "key": "8078485fr",
+  "text": "Benny captured your bishop."
+ },
+ {
+  "key": "882fbb8br",
+  "text": "Benny captured your knight."
+ },
+ {
+  "key": "ab6c0c9ep",
+  "text": "Benny captured your pawn."
+ },
+ {
+  "key": "f3d3abb2q",
+  "text": "Benny captured your queen."
+ },
+ {
+  "key": "bd414b67p",
+  "text": "Benny captured your rook."
+ },
+ {
+  "key": "8c3fff8810",
+  "text": "Benny castled to keep the king safe."
+ },
+ {
+  "key": "9bad8135q",
+  "text": "Benny develops the bishop."
+ },
+ {
+  "key": "f3826fd1q",
+  "text": "Benny develops the knight."
+ },
+ {
+  "key": "5d035db5s",
+  "text": "Benny fights for the centre."
+ },
+ {
+  "key": "f124b8c51c",
+  "text": "Benny took your bishop, but you can win it back!"
+ },
+ {
+  "key": "aaaa8900n",
+  "text": "Benny took your bishop."
+ },
+ {
+  "key": "bf1a40d91c",
+  "text": "Benny took your knight, but you can win it back!"
+ },
+ {
+  "key": "9de920dcn",
+  "text": "Benny took your knight."
+ },
+ {
+  "key": "5cae85e21a",
+  "text": "Benny took your pawn, but you can win it back!"
+ },
+ {
+  "key": "81eb47a9l",
+  "text": "Benny took your pawn."
+ },
+ {
+  "key": "b57a21cc1b",
+  "text": "Benny took your queen, but you can win it back!"
+ },
+ {
+  "key": "2cfd1bf7m",
+  "text": "Benny took your queen."
+ },
+ {
+  "key": "772191311a",
+  "text": "Benny took your rook, but you can win it back!"
+ },
+ {
+  "key": "650eaa14l",
+  "text": "Benny took your rook."
+ },
+ {
+  "key": "13f4f033t",
+  "text": "Benny wants to checkmate you."
+ },
+ {
+  "key": "dec59a9c16",
+  "text": "Benny won your bishop: it was unprotected."
+ },
+ {
+  "key": "df598a5d1c",
+  "text": "Benny won your bishop: nobody was protecting it."
+ },
+ {
+  "key": "c9dd083816",
+  "text": "Benny won your knight: it was unprotected."
+ },
+ {
+  "key": "275009791c",
+  "text": "Benny won your knight: nobody was protecting it."
+ },
+ {
+  "key": "bae8f27d14",
+  "text": "Benny won your pawn: it was unprotected."
+ },
+ {
+  "key": "f90d76481a",
+  "text": "Benny won your pawn: nobody was protecting it."
+ },
+ {
+  "key": "8aeb3c1115",
+  "text": "Benny won your queen: it was unprotected."
+ },
+ {
+  "key": "93b959fc1b",
+  "text": "Benny won your queen: nobody was protecting it."
+ },
+ {
+  "key": "39394c4414",
+  "text": "Benny won your rook: it was unprotected."
+ },
+ {
+  "key": "6d2b30151a",
+  "text": "Benny won your rook: nobody was protecting it."
+ },
+ {
+  "key": "bb46784ea",
+  "text": "Best move."
  },
  {
   "key": "017315da12",
@@ -292,6 +496,10 @@
   "text": "Blocked!"
  },
  {
+  "key": "0ee0e4638",
+  "text": "Blunder."
+ },
+ {
   "key": "45317abe1n",
   "text": "Box the king in with the queen, then walk your king closer."
  },
@@ -300,8 +508,28 @@
   "text": "Bridge built, the most important rook endgame to know."
  },
  {
+  "key": "f8f76715w",
+  "text": "Bring a new piece into the game."
+ },
+ {
+  "key": "27619fe0u",
+  "text": "Bring a new piece out to play!"
+ },
+ {
+  "key": "646b4c5710",
+  "text": "Bring out knights and bishops first!"
+ },
+ {
+  "key": "7a3248e2q",
+  "text": "Bring out your pieces too!"
+ },
+ {
   "key": "53a73d7a2c",
   "text": "Bring your king to face the enemy king (the \"opposition\"), then check along the row."
+ },
+ {
+  "key": "bc5382e622",
+  "text": "Bringing the queen out early lets the opponent attack it while developing."
  },
  {
   "key": "d46aa1e61q",
@@ -348,8 +576,20 @@
   "text": "Can White castle kingside here?"
  },
  {
+  "key": "bacc10f51d",
+  "text": "Can you chase her while bringing out your pieces?"
+ },
+ {
   "key": "fdc18a9cu",
   "text": "Can you checkmate in one move?"
+ },
+ {
+  "key": "dcf7b8f6r",
+  "text": "Can you find a better move?"
+ },
+ {
+  "key": "2e71fe27g",
+  "text": "Can you find it?"
  },
  {
   "key": "3460c97817",
@@ -360,8 +600,16 @@
   "text": "Can you hop to all four stars?"
  },
  {
+  "key": "4d1ea225g",
+  "text": "Can you save it?"
+ },
+ {
   "key": "d0015bc1q",
   "text": "Can you still mate in one?"
+ },
+ {
+  "key": "8a4f6054g",
+  "text": "Can you stop it?"
  },
  {
   "key": "72f5d4ee17",
@@ -388,8 +636,52 @@
   "text": "Capturing the defender is also mate."
  },
  {
+  "key": "3e89b9acz",
+  "text": "Careful: Benny threatens checkmate."
+ },
+ {
+  "key": "1ab443f81a",
+  "text": "Careful: Grandmaster Nova threatens checkmate."
+ },
+ {
+  "key": "6405f74c18",
+  "text": "Careful: Master Kasimir threatens checkmate."
+ },
+ {
+  "key": "71a03d50y",
+  "text": "Careful: Nora threatens checkmate."
+ },
+ {
+  "key": "99a47f3fx",
+  "text": "Careful: Pip threatens checkmate."
+ },
+ {
+  "key": "66c3df83z",
+  "text": "Careful: Quinn threatens checkmate."
+ },
+ {
+  "key": "0a42d9b3y",
+  "text": "Careful: Rosa threatens checkmate."
+ },
+ {
+  "key": "07185c7a17",
+  "text": "Careful: The Professor threatens checkmate."
+ },
+ {
   "key": "70bbf1142o",
   "text": "Careful: when you are winning, leave the enemy king a square to move to until you can checkmate."
+ },
+ {
+  "key": "a2194e4817",
+  "text": "Careful: your opponent threatens checkmate."
+ },
+ {
+  "key": "f2bbb42817",
+  "text": "Careful: Your opponent threatens checkmate."
+ },
+ {
+  "key": "4e8f85128",
+  "text": "Careful!"
  },
  {
   "key": "acb9f60c1h",
@@ -418,6 +710,10 @@
  {
   "key": "0cf74142r",
   "text": "Castling is a special move!"
+ },
+ {
+  "key": "c44e2ac21u",
+  "text": "Castling tucks the king away safely and brings the rook into play."
  },
  {
   "key": "874bd4f3q",
@@ -456,12 +752,44 @@
   "text": "Centre, development, king safety."
  },
  {
+  "key": "8a59ffcem",
+  "text": "Check from the bishop!"
+ },
+ {
+  "key": "02b90778k",
+  "text": "Check from the king!"
+ },
+ {
+  "key": "4b590882m",
+  "text": "Check from the knight!"
+ },
+ {
+  "key": "297e51cfk",
+  "text": "Check from the pawn!"
+ },
+ {
+  "key": "7c6f0c5bl",
+  "text": "Check from the queen!"
+ },
+ {
+  "key": "12c95446k",
+  "text": "Check from the rook!"
+ },
+ {
+  "key": "352bb5c0i",
+  "text": "Check, and a fork!"
+ },
+ {
   "key": "336186fe10",
   "text": "Check, and next move the rook falls."
  },
  {
   "key": "27232eb26",
   "text": "Check!"
+ },
+ {
+  "key": "a9e1b8b1j",
+  "text": "Checking your move…"
  },
  {
   "key": "84498ca1m",
@@ -528,12 +856,20 @@
   "text": "Checkmate, or just check?"
  },
  {
+  "key": "14ba3e42i",
+  "text": "Checkmate, solved!"
+ },
+ {
   "key": "4dc9dfb02q",
   "text": "Checkmate: the king's own pawns block every escape square, and nothing can block or take the rook."
  },
  {
   "key": "4a583201a",
   "text": "Checkmate!"
+ },
+ {
+  "key": "435826fca",
+  "text": "Checkmate."
  },
  {
   "key": "15047063n",
@@ -558,6 +894,10 @@
  {
   "key": "b61edd54h",
   "text": "Computer to move…"
+ },
+ {
+  "key": "b5a5574ck",
+  "text": "Correct, keep going."
  },
  {
   "key": "fa5dffad8",
@@ -596,8 +936,20 @@
   "text": "d6 prepares Knight f6 and controls e5."
  },
  {
+  "key": "b89c2d3el",
+  "text": "Deal with that first."
+ },
+ {
+  "key": "56e93b58l",
+  "text": "Deal with the threat."
+ },
+ {
   "key": "c0ee38629",
   "text": "Defended."
+ },
+ {
+  "key": "96914205y",
+  "text": "Develop knights and bishops first."
  },
  {
   "key": "84b899b617",
@@ -614,6 +966,170 @@
  {
   "key": "0e0b896516",
   "text": "Don't let White make a queen for 10 moves!"
+ },
+ {
+  "key": "7870a5fdg",
+  "text": "Done in 1 moves."
+ },
+ {
+  "key": "f231b1f7h",
+  "text": "Done in 10 moves."
+ },
+ {
+  "key": "f844f5aeh",
+  "text": "Done in 11 moves."
+ },
+ {
+  "key": "df6c825dh",
+  "text": "Done in 12 moves."
+ },
+ {
+  "key": "ff13785ch",
+  "text": "Done in 13 moves."
+ },
+ {
+  "key": "5a25f923h",
+  "text": "Done in 14 moves."
+ },
+ {
+  "key": "2e5b19fah",
+  "text": "Done in 15 moves."
+ },
+ {
+  "key": "7202aac9h",
+  "text": "Done in 16 moves."
+ },
+ {
+  "key": "37935398h",
+  "text": "Done in 17 moves."
+ },
+ {
+  "key": "c9011b6fh",
+  "text": "Done in 18 moves."
+ },
+ {
+  "key": "04ee5406h",
+  "text": "Done in 19 moves."
+ },
+ {
+  "key": "ac2661ceg",
+  "text": "Done in 2 moves."
+ },
+ {
+  "key": "0ed4d3eah",
+  "text": "Done in 20 moves."
+ },
+ {
+  "key": "7d859693h",
+  "text": "Done in 21 moves."
+ },
+ {
+  "key": "ae970e88h",
+  "text": "Done in 22 moves."
+ },
+ {
+  "key": "9d84caf9h",
+  "text": "Done in 23 moves."
+ },
+ {
+  "key": "137927deh",
+  "text": "Done in 24 moves."
+ },
+ {
+  "key": "6b6c8827h",
+  "text": "Done in 25 moves."
+ },
+ {
+  "key": "404a1b0ch",
+  "text": "Done in 26 moves."
+ },
+ {
+  "key": "a12cdb4dh",
+  "text": "Done in 27 moves."
+ },
+ {
+  "key": "66a74b62h",
+  "text": "Done in 28 moves."
+ },
+ {
+  "key": "df39304bh",
+  "text": "Done in 29 moves."
+ },
+ {
+  "key": "4d5ae117g",
+  "text": "Done in 3 moves."
+ },
+ {
+  "key": "e78b95d5h",
+  "text": "Done in 30 moves."
+ },
+ {
+  "key": "ecb83ff4h",
+  "text": "Done in 31 moves."
+ },
+ {
+  "key": "fae6170fh",
+  "text": "Done in 32 moves."
+ },
+ {
+  "key": "64dd0f26h",
+  "text": "Done in 33 moves."
+ },
+ {
+  "key": "7ae5af81h",
+  "text": "Done in 34 moves."
+ },
+ {
+  "key": "57163e10h",
+  "text": "Done in 35 moves."
+ },
+ {
+  "key": "ba6cfdbbh",
+  "text": "Done in 36 moves."
+ },
+ {
+  "key": "5fd8ebd2h",
+  "text": "Done in 37 moves."
+ },
+ {
+  "key": "d0bdcf7dh",
+  "text": "Done in 38 moves."
+ },
+ {
+  "key": "7063fbfch",
+  "text": "Done in 39 moves."
+ },
+ {
+  "key": "42568e38g",
+  "text": "Done in 4 moves."
+ },
+ {
+  "key": "c73b3480h",
+  "text": "Done in 40 moves."
+ },
+ {
+  "key": "34c830e9g",
+  "text": "Done in 5 moves."
+ },
+ {
+  "key": "0bf56e1ag",
+  "text": "Done in 6 moves."
+ },
+ {
+  "key": "33bdcb43g",
+  "text": "Done in 7 moves."
+ },
+ {
+  "key": "946b1674g",
+  "text": "Done in 8 moves."
+ },
+ {
+  "key": "8f3e6c55g",
+  "text": "Done in 9 moves."
+ },
+ {
+  "key": "c66d4b041m",
+  "text": "Download the rest to hear him everywhere without internet."
  },
  {
   "key": "fd122a9cs",
@@ -652,6 +1168,10 @@
   "text": "e6 prepares d5."
  },
  {
+  "key": "763145be1m",
+  "text": "Early on, move the middle pawns and bring out your pieces."
+ },
+ {
   "key": "7b9cca432h",
   "text": "Early queen moves get chased around, and King e2 blocks the bishop and gives up castling."
  },
@@ -668,6 +1188,14 @@
   "text": "Even a pawn can fork."
  },
  {
+  "key": "08032b403j",
+  "text": "Every mistake or blunder the coach spots in your games against the computer lands here, and comes back until you have it right."
+ },
+ {
+  "key": "9f17ecbcy",
+  "text": "Every one solved at the first try."
+ },
+ {
   "key": "60c11b8a1w",
   "text": "f7 is Black's weakest square at the start: only the king defends it."
  },
@@ -676,12 +1204,24 @@
   "text": "Find a checkmate."
  },
  {
+  "key": "2a1d5591j",
+  "text": "Find the best move!"
+ },
+ {
+  "key": "231d4a8cj",
+  "text": "Find the best move."
+ },
+ {
   "key": "2ab5fcd918",
   "text": "Find the knight jump that attacks e7 and d8."
  },
  {
   "key": "01871a721o",
   "text": "First cut off the 7th row with a rook, then mate on the 8th."
+ },
+ {
+  "key": "e60f30d5u",
+  "text": "First try, your score went up!"
  },
  {
   "key": "7bf7fc78v",
@@ -724,8 +1264,168 @@
   "text": "Goal reached!"
  },
  {
+  "key": "2dc907f219",
+  "text": "Good development, a new piece joins the game."
+ },
+ {
+  "key": "75070fe5h",
+  "text": "Good development."
+ },
+ {
+  "key": "d58e6e3ca",
+  "text": "Good move!"
+ },
+ {
+  "key": "dc8e7941a",
+  "text": "Good move."
+ },
+ {
+  "key": "0d5617909",
+  "text": "Good try!"
+ },
+ {
+  "key": "7295436611",
+  "text": "Grandmaster Nova brings out a bishop."
+ },
+ {
+  "key": "86c79bda11",
+  "text": "Grandmaster Nova brings out a knight."
+ },
+ {
+  "key": "c945b75818",
+  "text": "Grandmaster Nova brings the queen out early."
+ },
+ {
+  "key": "3b18826a19",
+  "text": "Grandmaster Nova brought the queen out early."
+ },
+ {
+  "key": "1f1ac66312",
+  "text": "Grandmaster Nova captured your bishop."
+ },
+ {
+  "key": "64d1eb5f12",
+  "text": "Grandmaster Nova captured your knight."
+ },
+ {
+  "key": "9a89360a10",
+  "text": "Grandmaster Nova captured your pawn."
+ },
+ {
+  "key": "96e148e611",
+  "text": "Grandmaster Nova captured your queen."
+ },
+ {
+  "key": "ae31b04310",
+  "text": "Grandmaster Nova captured your rook."
+ },
+ {
+  "key": "46718ecc1b",
+  "text": "Grandmaster Nova castled to keep the king safe."
+ },
+ {
+  "key": "81868b4111",
+  "text": "Grandmaster Nova develops the bishop."
+ },
+ {
+  "key": "578406ed11",
+  "text": "Grandmaster Nova develops the knight."
+ },
+ {
+  "key": "dc9859e113",
+  "text": "Grandmaster Nova fights for the centre."
+ },
+ {
+  "key": "f62fab891n",
+  "text": "Grandmaster Nova took your bishop, but you can win it back!"
+ },
+ {
+  "key": "e9ee066cy",
+  "text": "Grandmaster Nova took your bishop."
+ },
+ {
+  "key": "ed27539d1n",
+  "text": "Grandmaster Nova took your knight, but you can win it back!"
+ },
+ {
+  "key": "491060f8y",
+  "text": "Grandmaster Nova took your knight."
+ },
+ {
+  "key": "097f5eae1l",
+  "text": "Grandmaster Nova took your pawn, but you can win it back!"
+ },
+ {
+  "key": "6079b6bdw",
+  "text": "Grandmaster Nova took your pawn."
+ },
+ {
+  "key": "47b4bb901m",
+  "text": "Grandmaster Nova took your queen, but you can win it back!"
+ },
+ {
+  "key": "d14c71e3x",
+  "text": "Grandmaster Nova took your queen."
+ },
+ {
+  "key": "ea80955d1l",
+  "text": "Grandmaster Nova took your rook, but you can win it back!"
+ },
+ {
+  "key": "deef9438w",
+  "text": "Grandmaster Nova took your rook."
+ },
+ {
+  "key": "01777d6714",
+  "text": "Grandmaster Nova wants to checkmate you."
+ },
+ {
+  "key": "46181ce01h",
+  "text": "Grandmaster Nova won your bishop: it was unprotected."
+ },
+ {
+  "key": "a36ef0311n",
+  "text": "Grandmaster Nova won your bishop: nobody was protecting it."
+ },
+ {
+  "key": "796016ec1h",
+  "text": "Grandmaster Nova won your knight: it was unprotected."
+ },
+ {
+  "key": "0a03d52d1n",
+  "text": "Grandmaster Nova won your knight: nobody was protecting it."
+ },
+ {
+  "key": "78689ff91f",
+  "text": "Grandmaster Nova won your pawn: it was unprotected."
+ },
+ {
+  "key": "0b4274941l",
+  "text": "Grandmaster Nova won your pawn: nobody was protecting it."
+ },
+ {
+  "key": "ebb8ae751g",
+  "text": "Grandmaster Nova won your queen: it was unprotected."
+ },
+ {
+  "key": "7dd704501m",
+  "text": "Grandmaster Nova won your queen: nobody was protecting it."
+ },
+ {
+  "key": "40bdc7601f",
+  "text": "Grandmaster Nova won your rook: it was unprotected."
+ },
+ {
+  "key": "e29346b11l",
+  "text": "Grandmaster Nova won your rook: nobody was protecting it."
+ },
+ {
   "key": "97c462c4a",
   "text": "Great job!"
+ },
+ {
+  "key": "9e6c9b8610",
+  "text": "Have you thought about castling too?"
  },
  {
   "key": "2bfde1c623",
@@ -748,8 +1448,24 @@
   "text": "Hello, young friend!"
  },
  {
+  "key": "c0be0aaej",
+  "text": "Here is the answer."
+ },
+ {
+  "key": "72e16a03h",
+  "text": "Here is the move."
+ },
+ {
+  "key": "64dc742dl",
+  "text": "Here is the solution…"
+ },
+ {
   "key": "43f19c3729",
   "text": "Here the square is a5, e5, e1, a1, and the white king on e3 is already inside it."
+ },
+ {
+  "key": "17baf00a24",
+  "text": "Hints or a wrong move count as a miss, the next one will be a little easier."
  },
  {
   "key": "31316cb7r",
@@ -762,6 +1478,14 @@
  {
   "key": "8d062a83t",
   "text": "Hop, hop, hop, get the stars!"
+ },
+ {
+  "key": "e07cd70ek",
+  "text": "How can you stop it?"
+ },
+ {
+  "key": "2842b3f9j",
+  "text": "How do you stop it?"
  },
  {
   "key": "5a3b3793l",
@@ -812,6 +1536,54 @@
   "text": "Imagine a square from the pawn to its promotion row."
  },
  {
+  "key": "6987e3622f",
+  "text": "In the opening, fight for the centre and develop pieces rather than pushing edge pawns."
+ },
+ {
+  "key": "0cfd2e211l",
+  "text": "In your game against Benny, there was a better move here."
+ },
+ {
+  "key": "c49e35931w",
+  "text": "In your game against Grandmaster Nova, there was a better move here."
+ },
+ {
+  "key": "fe3c020f1u",
+  "text": "In your game against Master Kasimir, there was a better move here."
+ },
+ {
+  "key": "90058daf1k",
+  "text": "In your game against Nora, there was a better move here."
+ },
+ {
+  "key": "cb346b2a1j",
+  "text": "In your game against Pip, there was a better move here."
+ },
+ {
+  "key": "ed65a59a1l",
+  "text": "In your game against Quinn, there was a better move here."
+ },
+ {
+  "key": "facf5ab41k",
+  "text": "In your game against Rosa, there was a better move here."
+ },
+ {
+  "key": "3456278f1t",
+  "text": "In your game against The Professor, there was a better move here."
+ },
+ {
+  "key": "31555d4d1t",
+  "text": "In your game against Your opponent, there was a better move here."
+ },
+ {
+  "key": "0ca64f37b",
+  "text": "Inaccuracy."
+ },
+ {
+  "key": "a84afd79y",
+  "text": "Is anything of theirs unprotected?"
+ },
+ {
   "key": "f49b3698r",
   "text": "Is the black king in check?"
  },
@@ -820,12 +1592,344 @@
   "text": "Is the king in check?"
  },
  {
+  "key": "dd22fa22u",
+  "text": "It attacks two pieces at once."
+ },
+ {
+  "key": "70f5a98b1s",
+  "text": "It can be done in 1, try again for a perfect score, or continue."
+ },
+ {
+  "key": "bbc72cd3k",
+  "text": "It can be done in 1."
+ },
+ {
+  "key": "2551a0fd1t",
+  "text": "It can be done in 10, try again for a perfect score, or continue."
+ },
+ {
+  "key": "f7d60b19l",
+  "text": "It can be done in 10."
+ },
+ {
+  "key": "2ec8d2201t",
+  "text": "It can be done in 11, try again for a perfect score, or continue."
+ },
+ {
+  "key": "95d3323cl",
+  "text": "It can be done in 11."
+ },
+ {
+  "key": "cd3163631t",
+  "text": "It can be done in 12, try again for a perfect score, or continue."
+ },
+ {
+  "key": "77d0c46bl",
+  "text": "It can be done in 12."
+ },
+ {
+  "key": "efe7448e1t",
+  "text": "It can be done in 13, try again for a perfect score, or continue."
+ },
+ {
+  "key": "95ceb50el",
+  "text": "It can be done in 13."
+ },
+ {
+  "key": "16680b711t",
+  "text": "It can be done in 14, try again for a perfect score, or continue."
+ },
+ {
+  "key": "77cc473dl",
+  "text": "It can be done in 14."
+ },
+ {
+  "key": "bf0fcbf41t",
+  "text": "It can be done in 15, try again for a perfect score, or continue."
+ },
+ {
+  "key": "f5c93c00l",
+  "text": "It can be done in 15."
+ },
+ {
+  "key": "fa9ae9771t",
+  "text": "It can be done in 16, try again for a perfect score, or continue."
+ },
+ {
+  "key": "17c732efl",
+  "text": "It can be done in 16."
+ },
+ {
+  "key": "16329a821t",
+  "text": "It can be done in 17, try again for a perfect score, or continue."
+ },
+ {
+  "key": "f5c4bed2l",
+  "text": "It can be done in 17."
+ },
+ {
+  "key": "3644edc51t",
+  "text": "It can be done in 18, try again for a perfect score, or continue."
+ },
+ {
+  "key": "97c1ec41l",
+  "text": "It can be done in 18."
+ },
+ {
+  "key": "02e275e81t",
+  "text": "It can be done in 19, try again for a perfect score, or continue."
+ },
+ {
+  "key": "75bf7824l",
+  "text": "It can be done in 19."
+ },
+ {
+  "key": "1caa3c881s",
+  "text": "It can be done in 2, try again for a perfect score, or continue."
+ },
+ {
+  "key": "39ca31c4k",
+  "text": "It can be done in 2."
+ },
+ {
+  "key": "108fb79c1t",
+  "text": "It can be done in 20, try again for a perfect score, or continue."
+ },
+ {
+  "key": "835b06c8l",
+  "text": "It can be done in 20."
+ },
+ {
+  "key": "bd5a1b191t",
+  "text": "It can be done in 21, try again for a perfect score, or continue."
+ },
+ {
+  "key": "e55ddfa5l",
+  "text": "It can be done in 21."
+ },
+ {
+  "key": "347ae06a1t",
+  "text": "It can be done in 22, try again for a perfect score, or continue."
+ },
+ {
+  "key": "8356899al",
+  "text": "It can be done in 22."
+ },
+ {
+  "key": "b591d2ff1t",
+  "text": "It can be done in 23, try again for a perfect score, or continue."
+ },
+ {
+  "key": "655898f7l",
+  "text": "It can be done in 23."
+ },
+ {
+  "key": "66366c881t",
+  "text": "It can be done in 24, try again for a perfect score, or continue."
+ },
+ {
+  "key": "636561c4l",
+  "text": "It can be done in 24."
+ },
+ {
+  "key": "25b600e51t",
+  "text": "It can be done in 25, try again for a perfect score, or continue."
+ },
+ {
+  "key": "8567d5e1l",
+  "text": "It can be done in 25."
+ },
+ {
+  "key": "a55930561t",
+  "text": "It can be done in 26, try again for a perfect score, or continue."
+ },
+ {
+  "key": "03604d76l",
+  "text": "It can be done in 26."
+ },
+ {
+  "key": "ba81d98b1t",
+  "text": "It can be done in 27, try again for a perfect score, or continue."
+ },
+ {
+  "key": "e5625cd3l",
+  "text": "It can be done in 27."
+ },
+ {
+  "key": "742f8a141t",
+  "text": "It can be done in 28, try again for a perfect score, or continue."
+ },
+ {
+  "key": "e36f25a0l",
+  "text": "It can be done in 28."
+ },
+ {
+  "key": "1742ef911t",
+  "text": "It can be done in 29, try again for a perfect score, or continue."
+ },
+ {
+  "key": "e571675dl",
+  "text": "It can be done in 29."
+ },
+ {
+  "key": "dc29d0e51s",
+  "text": "It can be done in 3, try again for a perfect score, or continue."
+ },
+ {
+  "key": "5bcca5e1k",
+  "text": "It can be done in 3."
+ },
+ {
+  "key": "e27d72fb1t",
+  "text": "It can be done in 30, try again for a perfect score, or continue."
+ },
+ {
+  "key": "f1f253c3l",
+  "text": "It can be done in 30."
+ },
+ {
+  "key": "823c8a461t",
+  "text": "It can be done in 31, try again for a perfect score, or continue."
+ },
+ {
+  "key": "cfefdfa6l",
+  "text": "It can be done in 31."
+ },
+ {
+  "key": "4b802cd51t",
+  "text": "It can be done in 32, try again for a perfect score, or continue."
+ },
+ {
+  "key": "51f76811l",
+  "text": "It can be done in 32."
+ },
+ {
+  "key": "345f19381t",
+  "text": "It can be done in 33, try again for a perfect score, or continue."
+ },
+ {
+  "key": "6ff558b4l",
+  "text": "It can be done in 33."
+ },
+ {
+  "key": "a7fdeaef1t",
+  "text": "It can be done in 34, try again for a perfect score, or continue."
+ },
+ {
+  "key": "71e88fe7l",
+  "text": "It can be done in 34."
+ },
+ {
+  "key": "d8fcdc9a1t",
+  "text": "It can be done in 35, try again for a perfect score, or continue."
+ },
+ {
+  "key": "4fe61bcal",
+  "text": "It can be done in 35."
+ },
+ {
+  "key": "3d656fc91t",
+  "text": "It can be done in 36, try again for a perfect score, or continue."
+ },
+ {
+  "key": "f1edd695l",
+  "text": "It can be done in 36."
+ },
+ {
+  "key": "0c0dc34c1t",
+  "text": "It can be done in 37, try again for a perfect score, or continue."
+ },
+ {
+  "key": "cfeb6278l",
+  "text": "It can be done in 37."
+ },
+ {
+  "key": "4d5ee1f31t",
+  "text": "It can be done in 38, try again for a perfect score, or continue."
+ },
+ {
+  "key": "7206a4fbl",
+  "text": "It can be done in 38."
+ },
+ {
+  "key": "69534ede1t",
+  "text": "It can be done in 39, try again for a perfect score, or continue."
+ },
+ {
+  "key": "500430del",
+  "text": "It can be done in 39."
+ },
+ {
+  "key": "eaeeb06a1s",
+  "text": "It can be done in 4, try again for a perfect score, or continue."
+ },
+ {
+  "key": "59bb599ak",
+  "text": "It can be done in 4."
+ },
+ {
+  "key": "1dec499a1t",
+  "text": "It can be done in 40, try again for a perfect score, or continue."
+ },
+ {
+  "key": "55a398cal",
+  "text": "It can be done in 40."
+ },
+ {
+  "key": "6c05a2ff1s",
+  "text": "It can be done in 5, try again for a perfect score, or continue."
+ },
+ {
+  "key": "3bbd68f7k",
+  "text": "It can be done in 5."
+ },
+ {
+  "key": "c703879c1s",
+  "text": "It can be done in 6, try again for a perfect score, or continue."
+ },
+ {
+  "key": "59bfd6c8k",
+  "text": "It can be done in 6."
+ },
+ {
+  "key": "73cdeb191s",
+  "text": "It can be done in 7, try again for a perfect score, or continue."
+ },
+ {
+  "key": "bbc2afa5k",
+  "text": "It can be done in 7."
+ },
+ {
+  "key": "fe907eae1s",
+  "text": "It can be done in 8, try again for a perfect score, or continue."
+ },
+ {
+  "key": "d9d8a52ek",
+  "text": "It can be done in 8."
+ },
+ {
+  "key": "5d1c95831s",
+  "text": "It can be done in 9, try again for a perfect score, or continue."
+ },
+ {
+  "key": "3bdb7e0bk",
+  "text": "It can be done in 9."
+ },
+ {
   "key": "3b35f838u",
   "text": "It can jump over other pieces!"
  },
  {
   "key": "560112e0x",
   "text": "It cannot jump over other pieces."
+ },
+ {
+  "key": "0f52d3c7k",
+  "text": "It develops a piece."
+ },
+ {
+  "key": "f5a5ab0cf",
+  "text": "It gives check."
  },
  {
   "key": "0b803b091b",
@@ -840,8 +1944,68 @@
   "text": "It keeps the king safe in his castle."
  },
  {
+  "key": "248f6155o",
+  "text": "It keeps your king safe."
+ },
+ {
+  "key": "04dbd68cl",
+  "text": "It saves your bishop."
+ },
+ {
+  "key": "b54dfb18l",
+  "text": "It saves your knight."
+ },
+ {
+  "key": "42f98fddj",
+  "text": "It saves your pawn."
+ },
+ {
+  "key": "16ca3283k",
+  "text": "It saves your queen."
+ },
+ {
+  "key": "dabc2258j",
+  "text": "It saves your rook."
+ },
+ {
+  "key": "ad864310t",
+  "text": "It starts a forced checkmate."
+ },
+ {
+  "key": "fe767035u",
+  "text": "It stops the checkmate threat."
+ },
+ {
   "key": "281d18501o",
   "text": "It tucks the king away safely and brings the rook into play."
+ },
+ {
+  "key": "3633c129h",
+  "text": "It wins a bishop."
+ },
+ {
+  "key": "641777a5h",
+  "text": "It wins a knight."
+ },
+ {
+  "key": "839afe2cf",
+  "text": "It wins a pawn."
+ },
+ {
+  "key": "668d39b8g",
+  "text": "It wins a queen."
+ },
+ {
+  "key": "79516ca5f",
+  "text": "It wins a rook."
+ },
+ {
+  "key": "4958ecaef",
+  "text": "It's checkmate!"
+ },
+ {
+  "key": "728c789dt",
+  "text": "It's the strongest move here."
  },
  {
   "key": "a460885dq",
@@ -852,12 +2016,28 @@
   "text": "Just check: the pawn moved to h6, so the king can escape to h7."
  },
  {
+  "key": "d95a058414",
+  "text": "Keep bringing your own pieces into play."
+ },
+ {
   "key": "bdfd0351b",
   "text": "Keep going!"
  },
  {
+  "key": "bf2f64e4b",
+  "text": "Keep going…"
+ },
+ {
   "key": "82da1bf91a",
   "text": "Keep him safe, he is the most important piece!"
+ },
+ {
+  "key": "9a01a0031a",
+  "text": "Keep looking for checks, captures and threats!"
+ },
+ {
+  "key": "e0c59402v",
+  "text": "Keep the king safe by castling!"
  },
  {
   "key": "d157efd22a",
@@ -940,16 +2120,156 @@
   "text": "Lesson complete."
  },
  {
+  "key": "d60633c7t",
+  "text": "Let me think about that move…"
+ },
+ {
+  "key": "40bda975y",
+  "text": "Let us step through them together."
+ },
+ {
   "key": "3f4acf299",
   "text": "Let's go!"
+ },
+ {
+  "key": "e0af91afw",
+  "text": "Let's look at the game together."
  },
  {
   "key": "7a31dfb411",
   "text": "Let's start with how the pieces move!"
  },
  {
+  "key": "ef10c3d219",
+  "text": "Lines he has spoken are kept for offline use."
+ },
+ {
   "key": "1a1902ddl",
   "text": "Look again carefully."
+ },
+ {
+  "key": "baed58e4b",
+  "text": "Look again."
+ },
+ {
+  "key": "bf8133431k",
+  "text": "Look at every check, capture and threat, for both sides."
+ },
+ {
+  "key": "e9c55f6014",
+  "text": "Look at every check, capture and threat!"
+ },
+ {
+  "key": "c8a6cc8ek",
+  "text": "Look at every check."
+ },
+ {
+  "key": "7960279fk",
+  "text": "Look at your bishop."
+ },
+ {
+  "key": "fa580415i",
+  "text": "Look at your king."
+ },
+ {
+  "key": "c08322cbk",
+  "text": "Look at your knight."
+ },
+ {
+  "key": "b297d8dei",
+  "text": "Look at your pawn."
+ },
+ {
+  "key": "f791b1f2j",
+  "text": "Look at your queen."
+ },
+ {
+  "key": "e03435a7i",
+  "text": "Look at your rook."
+ },
+ {
+  "key": "f6f8357e1l",
+  "text": "Look carefully: one of Benny's pieces may be unprotected."
+ },
+ {
+  "key": "40304edc1w",
+  "text": "Look carefully: one of Grandmaster Nova's pieces may be unprotected."
+ },
+ {
+  "key": "6d722c381u",
+  "text": "Look carefully: one of Master Kasimir's pieces may be unprotected."
+ },
+ {
+  "key": "45e5ce581k",
+  "text": "Look carefully: one of Nora's pieces may be unprotected."
+ },
+ {
+  "key": "9c16ba4d1j",
+  "text": "Look carefully: one of Pip's pieces may be unprotected."
+ },
+ {
+  "key": "afd7ec7d1l",
+  "text": "Look carefully: one of Quinn's pieces may be unprotected."
+ },
+ {
+  "key": "ca60927b1k",
+  "text": "Look carefully: one of Rosa's pieces may be unprotected."
+ },
+ {
+  "key": "ef66cbb81t",
+  "text": "Look carefully: one of The Professor's pieces may be unprotected."
+ },
+ {
+  "key": "5239b98a1t",
+  "text": "Look carefully: one of Your opponent's pieces may be unprotected."
+ },
+ {
+  "key": "00b002231n",
+  "text": "Look closely: one of Benny's pieces might not be protected!"
+ },
+ {
+  "key": "87235f251y",
+  "text": "Look closely: one of Grandmaster Nova's pieces might not be protected!"
+ },
+ {
+  "key": "1695dee11w",
+  "text": "Look closely: one of Master Kasimir's pieces might not be protected!"
+ },
+ {
+  "key": "dca695011m",
+  "text": "Look closely: one of Nora's pieces might not be protected!"
+ },
+ {
+  "key": "071b55801l",
+  "text": "Look closely: one of Pip's pieces might not be protected!"
+ },
+ {
+  "key": "b623b7701n",
+  "text": "Look closely: one of Quinn's pieces might not be protected!"
+ },
+ {
+  "key": "567e644a1m",
+  "text": "Look closely: one of Rosa's pieces might not be protected!"
+ },
+ {
+  "key": "d1488c611v",
+  "text": "Look closely: one of The Professor's pieces might not be protected!"
+ },
+ {
+  "key": "9e8d8e6f1v",
+  "text": "Look closely: one of Your opponent's pieces might not be protected!"
+ },
+ {
+  "key": "fb243254h",
+  "text": "Look for a check."
+ },
+ {
+  "key": "0d9dd0c61c",
+  "text": "Look for a move that attacks two pieces at once."
+ },
+ {
+  "key": "931ac5711w",
+  "text": "Look for moves that develop a piece and attack her at the same time."
  },
  {
   "key": "df3ad7776",
@@ -972,6 +2292,158 @@
   "text": "March, little pawn, march!"
  },
  {
+  "key": "db9b4f72z",
+  "text": "Master Kasimir brings out a bishop."
+ },
+ {
+  "key": "7e063586z",
+  "text": "Master Kasimir brings out a knight."
+ },
+ {
+  "key": "1dfbd56416",
+  "text": "Master Kasimir brings the queen out early."
+ },
+ {
+  "key": "12b0772e17",
+  "text": "Master Kasimir brought the queen out early."
+ },
+ {
+  "key": "8d0c1fbf10",
+  "text": "Master Kasimir captured your bishop."
+ },
+ {
+  "key": "14c2c96b10",
+  "text": "Master Kasimir captured your knight."
+ },
+ {
+  "key": "1438237ey",
+  "text": "Master Kasimir captured your pawn."
+ },
+ {
+  "key": "f2922992z",
+  "text": "Master Kasimir captured your queen."
+ },
+ {
+  "key": "7c4983c7y",
+  "text": "Master Kasimir captured your rook."
+ },
+ {
+  "key": "7841d5e819",
+  "text": "Master Kasimir castled to keep the king safe."
+ },
+ {
+  "key": "a85af415z",
+  "text": "Master Kasimir develops the bishop."
+ },
+ {
+  "key": "fdb579b1z",
+  "text": "Master Kasimir develops the knight."
+ },
+ {
+  "key": "b06e899511",
+  "text": "Master Kasimir fights for the centre."
+ },
+ {
+  "key": "095f66251l",
+  "text": "Master Kasimir took your bishop, but you can win it back!"
+ },
+ {
+  "key": "cefcc660w",
+  "text": "Master Kasimir took your bishop."
+ },
+ {
+  "key": "219d16b91l",
+  "text": "Master Kasimir took your knight, but you can win it back!"
+ },
+ {
+  "key": "28eddfbcw",
+  "text": "Master Kasimir took your knight."
+ },
+ {
+  "key": "59da13c21j",
+  "text": "Master Kasimir took your pawn, but you can win it back!"
+ },
+ {
+  "key": "a7b69a09u",
+  "text": "Master Kasimir took your pawn."
+ },
+ {
+  "key": "c47e84ac1k",
+  "text": "Master Kasimir took your queen, but you can win it back!"
+ },
+ {
+  "key": "4c102dd7v",
+  "text": "Master Kasimir took your queen."
+ },
+ {
+  "key": "73366b111j",
+  "text": "Master Kasimir took your rook, but you can win it back!"
+ },
+ {
+  "key": "5e9aeb74u",
+  "text": "Master Kasimir took your rook."
+ },
+ {
+  "key": "ca94391312",
+  "text": "Master Kasimir wants to checkmate you."
+ },
+ {
+  "key": "b0b87d7c1f",
+  "text": "Master Kasimir won your bishop: it was unprotected."
+ },
+ {
+  "key": "5c55afbd1l",
+  "text": "Master Kasimir won your bishop: nobody was protecting it."
+ },
+ {
+  "key": "73ec4b181f",
+  "text": "Master Kasimir won your knight: it was unprotected."
+ },
+ {
+  "key": "208c30d91l",
+  "text": "Master Kasimir won your knight: nobody was protecting it."
+ },
+ {
+  "key": "390064dd1d",
+  "text": "Master Kasimir won your pawn: it was unprotected."
+ },
+ {
+  "key": "4a2625281j",
+  "text": "Master Kasimir won your pawn: nobody was protecting it."
+ },
+ {
+  "key": "1e9264711e",
+  "text": "Master Kasimir won your queen: it was unprotected."
+ },
+ {
+  "key": "2675addc1k",
+  "text": "Master Kasimir won your queen: nobody was protecting it."
+ },
+ {
+  "key": "17a7af241d",
+  "text": "Master Kasimir won your rook: it was unprotected."
+ },
+ {
+  "key": "e019b6751j",
+  "text": "Master Kasimir won your rook: nobody was protecting it."
+ },
+ {
+  "key": "908704e2s",
+  "text": "Maybe you should castle too!"
+ },
+ {
+  "key": "ec9e11578",
+  "text": "Mistake."
+ },
+ {
+  "key": "d1753eccm",
+  "text": "Move it or protect it."
+ },
+ {
+  "key": "1e28e33aw",
+  "text": "Move it to safety or protect it!"
+ },
+ {
   "key": "8f381e7822",
   "text": "Move one piece out of the way and, surprise!, the piece behind it attacks!"
  },
@@ -990,6 +2462,14 @@
  {
   "key": "6209765617",
   "text": "Move the king two squares towards the rook."
+ },
+ {
+  "key": "213a93701q",
+  "text": "Move the king, block the check, or capture the checking piece."
+ },
+ {
+  "key": "405617551a",
+  "text": "Move the king, block, or capture the attacker!"
  },
  {
   "key": "397ef57f1n",
@@ -1012,6 +2492,178 @@
   "text": "Move, block or capture."
  },
  {
+  "key": "6614c6bdy",
+  "text": "Moving the king gives up castling."
+ },
+ {
+  "key": "eff7017e1c",
+  "text": "Moving the king means you can’t castle any more."
+ },
+ {
+  "key": "f397ed779",
+  "text": "Next one!"
+ },
+ {
+  "key": "4d11e3d7c",
+  "text": "Next puzzle!"
+ },
+ {
+  "key": "9cd31694o",
+  "text": "Next up: Back-rank mate."
+ },
+ {
+  "key": "02ba30d2j",
+  "text": "Next up: Capturing."
+ },
+ {
+  "key": "72a9cdcbj",
+  "text": "Next up: Caro-Kann."
+ },
+ {
+  "key": "67917616i",
+  "text": "Next up: Castling."
+ },
+ {
+  "key": "c98e8755f",
+  "text": "Next up: Check."
+ },
+ {
+  "key": "7786b29ej",
+  "text": "Next up: Checkmate."
+ },
+ {
+  "key": "c78f82abr",
+  "text": "Next up: Discovered attack."
+ },
+ {
+  "key": "da00c82ck",
+  "text": "Next up: En passant."
+ },
+ {
+  "key": "293a3857o",
+  "text": "Next up: French Defence."
+ },
+ {
+  "key": "57064f70u",
+  "text": "Next up: Getting out of check."
+ },
+ {
+  "key": "16cfcae9m",
+  "text": "Next up: Italian Game."
+ },
+ {
+  "key": "980a2509n",
+  "text": "Next up: King and pawn."
+ },
+ {
+  "key": "ca5ba545n",
+  "text": "Next up: King's Indian."
+ },
+ {
+  "key": "217e06bcn",
+  "text": "Next up: London System."
+ },
+ {
+  "key": "48f5fc37w",
+  "text": "Next up: Lucena: build a bridge."
+ },
+ {
+  "key": "009e2a4fl",
+  "text": "Next up: Mate in two."
+ },
+ {
+  "key": "45d9d190s",
+  "text": "Next up: Opening principles."
+ },
+ {
+  "key": "5da79f16x",
+  "text": "Next up: Philidor: hold the draw."
+ },
+ {
+  "key": "ccaffe36j",
+  "text": "Next up: Promotion."
+ },
+ {
+  "key": "078cdcbdo",
+  "text": "Next up: Queen and king."
+ },
+ {
+  "key": "d6cc2681o",
+  "text": "Next up: Queen's Gambit."
+ },
+ {
+  "key": "06807d60n",
+  "text": "Next up: Rook and king."
+ },
+ {
+  "key": "fb9ec57ep",
+  "text": "Next up: Rook and knight."
+ },
+ {
+  "key": "340ab3d5j",
+  "text": "Next up: Ruy Lopez."
+ },
+ {
+  "key": "d50003c8o",
+  "text": "Next up: Scholar's mate."
+ },
+ {
+  "key": "03d89fdfq",
+  "text": "Next up: Sicilian Defence."
+ },
+ {
+  "key": "9e6919bbo",
+  "text": "Next up: Smothered mate."
+ },
+ {
+  "key": "c8070cd1j",
+  "text": "Next up: Stalemate."
+ },
+ {
+  "key": "15ef8637k",
+  "text": "Next up: The bishop."
+ },
+ {
+  "key": "0beca774i",
+  "text": "Next up: The fork."
+ },
+ {
+  "key": "6ee02acdi",
+  "text": "Next up: The king."
+ },
+ {
+  "key": "e51c8f93k",
+  "text": "Next up: The knight."
+ },
+ {
+  "key": "843e0276i",
+  "text": "Next up: The pawn."
+ },
+ {
+  "key": "20a0db09h",
+  "text": "Next up: The pin."
+ },
+ {
+  "key": "5c4f941aj",
+  "text": "Next up: The queen."
+ },
+ {
+  "key": "46394c5fi",
+  "text": "Next up: The rook."
+ },
+ {
+  "key": "b920797dw",
+  "text": "Next up: The rule of the square."
+ },
+ {
+  "key": "d7855687k",
+  "text": "Next up: The skewer."
+ },
+ {
+  "key": "e4b8dc85j",
+  "text": "Next up: Two rooks."
+ },
+ {
   "key": "e65ee6cbr",
   "text": "Next: Bishop d3 and castle."
  },
@@ -1022,6 +2674,14 @@
  {
   "key": "9621731713",
   "text": "Next: e6, Knight d7 and Knight g to f6."
+ },
+ {
+  "key": "efc5b11cm",
+  "text": "No mistakes saved yet."
+ },
+ {
+  "key": "81f057f1k",
+  "text": "No serious mistakes."
  },
  {
   "key": "d0ce015aw",
@@ -1036,8 +2696,148 @@
   "text": "Nobody wins!"
  },
  {
+  "key": "c97c824ep",
+  "text": "Nora brings out a bishop."
+ },
+ {
+  "key": "3e668a92p",
+  "text": "Nora brings out a knight."
+ },
+ {
+  "key": "ef2ef0e0w",
+  "text": "Nora brings the queen out early."
+ },
+ {
+  "key": "9f6435c2x",
+  "text": "Nora brought the queen out early."
+ },
+ {
+  "key": "ee4a18ebq",
+  "text": "Nora captured your bishop."
+ },
+ {
+  "key": "3f129237q",
+  "text": "Nora captured your knight."
+ },
+ {
+  "key": "186c2732o",
+  "text": "Nora captured your pawn."
+ },
+ {
+  "key": "7e766c7ep",
+  "text": "Nora captured your queen."
+ },
+ {
+  "key": "e0965d2bo",
+  "text": "Nora captured your rook."
+ },
+ {
+  "key": "74b068c4z",
+  "text": "Nora castled to keep the king safe."
+ },
+ {
+  "key": "35a8d8e9p",
+  "text": "Nora develops the bishop."
+ },
+ {
+  "key": "d2d13d65p",
+  "text": "Nora develops the knight."
+ },
+ {
+  "key": "0c636539r",
+  "text": "Nora fights for the centre."
+ },
+ {
+  "key": "07ee18e11b",
+  "text": "Nora took your bishop, but you can win it back!"
+ },
+ {
+  "key": "eaeba264m",
+  "text": "Nora took your bishop."
+ },
+ {
+  "key": "6b2fa8451b",
+  "text": "Nora took your knight, but you can win it back!"
+ },
+ {
+  "key": "11ba1b80m",
+  "text": "Nora took your knight."
+ },
+ {
+  "key": "c1c4d44619",
+  "text": "Nora took your pawn, but you can win it back!"
+ },
+ {
+  "key": "8da9ba75k",
+  "text": "Nora took your pawn."
+ },
+ {
+  "key": "20af92981a",
+  "text": "Nora took your queen, but you can win it back!"
+ },
+ {
+  "key": "39cc31cbl",
+  "text": "Nora took your queen."
+ },
+ {
+  "key": "59baad7519",
+  "text": "Nora took your rook, but you can win it back!"
+ },
+ {
+  "key": "0bdb6050k",
+  "text": "Nora took your rook."
+ },
+ {
+  "key": "db0f356fs",
+  "text": "Nora wants to checkmate you."
+ },
+ {
+  "key": "42c2715815",
+  "text": "Nora won your bishop: it was unprotected."
+ },
+ {
+  "key": "39141f991b",
+  "text": "Nora won your bishop: nobody was protecting it."
+ },
+ {
+  "key": "036b8c3415",
+  "text": "Nora won your knight: it was unprotected."
+ },
+ {
+  "key": "ae2038851b",
+  "text": "Nora won your knight: nobody was protecting it."
+ },
+ {
+  "key": "9e74415113",
+  "text": "Nora won your pawn: it was unprotected."
+ },
+ {
+  "key": "5ca824bc19",
+  "text": "Nora won your pawn: nobody was protecting it."
+ },
+ {
+  "key": "429b511d14",
+  "text": "Nora won your queen: it was unprotected."
+ },
+ {
+  "key": "ade576e81a",
+  "text": "Nora won your queen: nobody was protecting it."
+ },
+ {
+  "key": "664e569813",
+  "text": "Nora won your rook: it was unprotected."
+ },
+ {
+  "key": "4c81e05919",
+  "text": "Nora won your rook: nobody was protecting it."
+ },
+ {
   "key": "e461003fl",
   "text": "Not a single mistake."
+ },
+ {
+  "key": "7f7d7667u",
+  "text": "Not bad, but there was better."
  },
  {
   "key": "9592c2b4l",
@@ -1048,12 +2848,20 @@
   "text": "Not quite."
  },
  {
+  "key": "a41b855ci",
+  "text": "Not the best move."
+ },
+ {
   "key": "71be37c7e",
   "text": "Not this time."
  },
  {
   "key": "25725ccd13",
   "text": "Nothing can block or capture this rook."
+ },
+ {
+  "key": "2e428cc4u",
+  "text": "Nothing to practise right now."
  },
  {
   "key": "4b81a754y",
@@ -1084,8 +2892,16 @@
   "text": "Now you are Black."
  },
  {
+  "key": "c4e22dcen",
+  "text": "Now you know the trick!"
+ },
+ {
   "key": "c9030448q",
   "text": "Oh no, you got checkmated!"
+ },
+ {
+  "key": "1304019c6",
+  "text": "Oh no!"
  },
  {
   "key": "302864c813",
@@ -1094,6 +2910,14 @@
  {
   "key": "acfe83ee1h",
   "text": "On Windows, Microsoft Edge has the most natural ones."
+ },
+ {
+  "key": "8b69d8d7w",
+  "text": "One of your pieces is in danger!"
+ },
+ {
+  "key": "6061d15az",
+  "text": "One of your pieces is under attack."
  },
  {
   "key": "3242322016",
@@ -1106,6 +2930,14 @@
  {
   "key": "c8f72bb0g",
   "text": "Only right away!"
+ },
+ {
+  "key": "59d23073j",
+  "text": "Oops, not that one!"
+ },
+ {
+  "key": "29d2a17d5",
+  "text": "Oops!"
  },
  {
   "key": "2d4534f0h",
@@ -1140,6 +2972,166 @@
   "text": "Pawns never move backwards."
  },
  {
+  "key": "4c3a2f1b12",
+  "text": "Perfect, 1 moves, the fewest possible."
+ },
+ {
+  "key": "29daba3113",
+  "text": "Perfect, 10 moves, the fewest possible."
+ },
+ {
+  "key": "0e7358ba13",
+  "text": "Perfect, 11 moves, the fewest possible."
+ },
+ {
+  "key": "a1aa71f313",
+  "text": "Perfect, 12 moves, the fewest possible."
+ },
+ {
+  "key": "626b8d9c13",
+  "text": "Perfect, 13 moves, the fewest possible."
+ },
+ {
+  "key": "4562a24d13",
+  "text": "Perfect, 14 moves, the fewest possible."
+ },
+ {
+  "key": "d8aa07e613",
+  "text": "Perfect, 15 moves, the fewest possible."
+ },
+ {
+  "key": "b57ef2ef13",
+  "text": "Perfect, 16 moves, the fewest possible."
+ },
+ {
+  "key": "f5c4b78813",
+  "text": "Perfect, 17 moves, the fewest possible."
+ },
+ {
+  "key": "123ddc3913",
+  "text": "Perfect, 18 moves, the fewest possible."
+ },
+ {
+  "key": "ac6f128213",
+  "text": "Perfect, 19 moves, the fewest possible."
+ },
+ {
+  "key": "1a306a8212",
+  "text": "Perfect, 2 moves, the fewest possible."
+ },
+ {
+  "key": "d800d13213",
+  "text": "Perfect, 20 moves, the fewest possible."
+ },
+ {
+  "key": "c14a9ae913",
+  "text": "Perfect, 21 moves, the fewest possible."
+ },
+ {
+  "key": "7c32baf413",
+  "text": "Perfect, 22 moves, the fewest possible."
+ },
+ {
+  "key": "e15c054b13",
+  "text": "Perfect, 23 moves, the fewest possible."
+ },
+ {
+  "key": "6054cf3e13",
+  "text": "Perfect, 24 moves, the fewest possible."
+ },
+ {
+  "key": "c4e7342513",
+  "text": "Perfect, 25 moves, the fewest possible."
+ },
+ {
+  "key": "9193af2013",
+  "text": "Perfect, 26 moves, the fewest possible."
+ },
+ {
+  "key": "f6922ba713",
+  "text": "Perfect, 27 moves, the fewest possible."
+ },
+ {
+  "key": "c55000aa13",
+  "text": "Perfect, 28 moves, the fewest possible."
+ },
+ {
+  "key": "4f5c3f2113",
+  "text": "Perfect, 29 moves, the fewest possible."
+ },
+ {
+  "key": "7fff343912",
+  "text": "Perfect, 3 moves, the fewest possible."
+ },
+ {
+  "key": "9af5c4fb13",
+  "text": "Perfect, 30 moves, the fewest possible."
+ },
+ {
+  "key": "334c722413",
+  "text": "Perfect, 31 moves, the fewest possible."
+ },
+ {
+  "key": "86304c9913",
+  "text": "Perfect, 32 moves, the fewest possible."
+ },
+ {
+  "key": "c030aae213",
+  "text": "Perfect, 33 moves, the fewest possible."
+ },
+ {
+  "key": "b291b01713",
+  "text": "Perfect, 34 moves, the fewest possible."
+ },
+ {
+  "key": "896567d013",
+  "text": "Perfect, 35 moves, the fewest possible."
+ },
+ {
+  "key": "ae737ad513",
+  "text": "Perfect, 36 moves, the fewest possible."
+ },
+ {
+  "key": "7762a92e13",
+  "text": "Perfect, 37 moves, the fewest possible."
+ },
+ {
+  "key": "ba3682d313",
+  "text": "Perfect, 38 moves, the fewest possible."
+ },
+ {
+  "key": "0b2f307c13",
+  "text": "Perfect, 39 moves, the fewest possible."
+ },
+ {
+  "key": "4cc05d7012",
+  "text": "Perfect, 4 moves, the fewest possible."
+ },
+ {
+  "key": "d72feb0413",
+  "text": "Perfect, 40 moves, the fewest possible."
+ },
+ {
+  "key": "8001edb712",
+  "text": "Perfect, 5 moves, the fewest possible."
+ },
+ {
+  "key": "9f36e6ce12",
+  "text": "Perfect, 6 moves, the fewest possible."
+ },
+ {
+  "key": "5949edf512",
+  "text": "Perfect, 7 moves, the fewest possible."
+ },
+ {
+  "key": "d02ce59c12",
+  "text": "Perfect, 8 moves, the fewest possible."
+ },
+ {
+  "key": "0f6bc9f312",
+  "text": "Perfect, 9 moves, the fewest possible."
+ },
+ {
   "key": "b3e788bd8",
   "text": "Perfect!"
  },
@@ -1154,6 +3146,142 @@
  {
   "key": "374f528a7",
   "text": "Pinned!"
+ },
+ {
+  "key": "5320365do",
+  "text": "Pip brings out a bishop."
+ },
+ {
+  "key": "c1b53a09o",
+  "text": "Pip brings out a knight."
+ },
+ {
+  "key": "99166ff9v",
+  "text": "Pip brings the queen out early."
+ },
+ {
+  "key": "5dac17a9w",
+  "text": "Pip brought the queen out early."
+ },
+ {
+  "key": "0e80e27ap",
+  "text": "Pip captured your bishop."
+ },
+ {
+  "key": "07455d5ep",
+  "text": "Pip captured your knight."
+ },
+ {
+  "key": "c8fb75f7n",
+  "text": "Pip captured your pawn."
+ },
+ {
+  "key": "ce19ad4do",
+  "text": "Pip captured your queen."
+ },
+ {
+  "key": "751b8d0an",
+  "text": "Pip captured your rook."
+ },
+ {
+  "key": "b56b220fy",
+  "text": "Pip castled to keep the king safe."
+ },
+ {
+  "key": "76e92b9ao",
+  "text": "Pip develops the bishop."
+ },
+ {
+  "key": "c36dcbfeo",
+  "text": "Pip develops the knight."
+ },
+ {
+  "key": "63c5059eq",
+  "text": "Pip fights for the centre."
+ },
+ {
+  "key": "95f755561a",
+  "text": "Pip took your bishop, but you can win it back!"
+ },
+ {
+  "key": "332363e5l",
+  "text": "Pip took your bishop."
+ },
+ {
+  "key": "202ca43a1a",
+  "text": "Pip took your knight, but you can win it back!"
+ },
+ {
+  "key": "9a78d0e1l",
+  "text": "Pip took your knight."
+ },
+ {
+  "key": "f02cb5f518",
+  "text": "Pip took your pawn, but you can win it back!"
+ },
+ {
+  "key": "37bef5d0j",
+  "text": "Pip took your pawn."
+ },
+ {
+  "key": "4246b58119",
+  "text": "Pip took your queen, but you can win it back!"
+ },
+ {
+  "key": "b1256384k",
+  "text": "Pip took your queen."
+ },
+ {
+  "key": "ff0c6d4218",
+  "text": "Pip took your rook, but you can win it back!"
+ },
+ {
+  "key": "c4f41a89j",
+  "text": "Pip took your rook."
+ },
+ {
+  "key": "67daea76r",
+  "text": "Pip wants to checkmate you."
+ },
+ {
+  "key": "26d09edf14",
+  "text": "Pip won your bishop: it was unprotected."
+ },
+ {
+  "key": "2fe7a6561a",
+  "text": "Pip won your bishop: nobody was protecting it."
+ },
+ {
+  "key": "ec4594eb14",
+  "text": "Pip won your knight: it was unprotected."
+ },
+ {
+  "key": "63ada9621a",
+  "text": "Pip won your knight: nobody was protecting it."
+ },
+ {
+  "key": "b4f55dc612",
+  "text": "Pip won your pawn: it was unprotected."
+ },
+ {
+  "key": "045ed32b18",
+  "text": "Pip won your pawn: nobody was protecting it."
+ },
+ {
+  "key": "2b7223f013",
+  "text": "Pip won your queen: it was unprotected."
+ },
+ {
+  "key": "483f038119",
+  "text": "Pip won your queen: nobody was protecting it."
+ },
+ {
+  "key": "d7cc852b12",
+  "text": "Pip won your rook: it was unprotected."
+ },
+ {
+  "key": "14caba2218",
+  "text": "Pip won your rook: nobody was protecting it."
  },
  {
   "key": "101983f3l",
@@ -1182,6 +3310,10 @@
  {
   "key": "7a0e3c96w",
   "text": "Play the London System as White."
+ },
+ {
+  "key": "ae7e7ca5u",
+  "text": "Play the move the arrow shows."
  },
  {
   "key": "6b66b7e7x",
@@ -1248,8 +3380,180 @@
   "text": "Queenside castling: the rook lands on d1."
  },
  {
+  "key": "b23d2d89q",
+  "text": "Quinn brings out a bishop."
+ },
+ {
+  "key": "796ccf85q",
+  "text": "Quinn brings out a knight."
+ },
+ {
+  "key": "beac18a5x",
+  "text": "Quinn brings the queen out early."
+ },
+ {
+  "key": "b22a2d7dy",
+  "text": "Quinn brought the queen out early."
+ },
+ {
+  "key": "cac4e686r",
+  "text": "Quinn captured your bishop."
+ },
+ {
+  "key": "78432a7ar",
+  "text": "Quinn captured your knight."
+ },
+ {
+  "key": "568dfeabp",
+  "text": "Quinn captured your pawn."
+ },
+ {
+  "key": "00ea90c9q",
+  "text": "Quinn captured your queen."
+ },
+ {
+  "key": "081c02aep",
+  "text": "Quinn captured your rook."
+ },
+ {
+  "key": "0671910b10",
+  "text": "Quinn castled to keep the king safe."
+ },
+ {
+  "key": "fd5f1faeq",
+  "text": "Quinn develops the bishop."
+ },
+ {
+  "key": "724927f2q",
+  "text": "Quinn develops the knight."
+ },
+ {
+  "key": "2eec09d2s",
+  "text": "Quinn fights for the centre."
+ },
+ {
+  "key": "1a0eaf021c",
+  "text": "Quinn took your bishop, but you can win it back!"
+ },
+ {
+  "key": "cae8f4c9n",
+  "text": "Quinn took your bishop."
+ },
+ {
+  "key": "c09dd5b61c",
+  "text": "Quinn took your knight, but you can win it back!"
+ },
+ {
+  "key": "921896c5n",
+  "text": "Quinn took your knight."
+ },
+ {
+  "key": "9d1027e91a",
+  "text": "Quinn took your pawn, but you can win it back!"
+ },
+ {
+  "key": "565b904cl",
+  "text": "Quinn took your pawn."
+ },
+ {
+  "key": "27bb91fd1b",
+  "text": "Quinn took your queen, but you can win it back!"
+ },
+ {
+  "key": "24ff9258m",
+  "text": "Quinn took your queen."
+ },
+ {
+  "key": "ceb305b61a",
+  "text": "Quinn took your rook, but you can win it back!"
+ },
+ {
+  "key": "75d6a6c5l",
+  "text": "Quinn took your rook."
+ },
+ {
+  "key": "be69bd82t",
+  "text": "Quinn wants to checkmate you."
+ },
+ {
+  "key": "e187126b16",
+  "text": "Quinn won your bishop: it was unprotected."
+ },
+ {
+  "key": "cbf73ae21c",
+  "text": "Quinn won your bishop: nobody was protecting it."
+ },
+ {
+  "key": "ca9292d716",
+  "text": "Quinn won your knight: it was unprotected."
+ },
+ {
+  "key": "64ca3e5e1c",
+  "text": "Quinn won your knight: nobody was protecting it."
+ },
+ {
+  "key": "02db02da14",
+  "text": "Quinn won your pawn: it was unprotected."
+ },
+ {
+  "key": "d66b657f1a",
+  "text": "Quinn won your pawn: nobody was protecting it."
+ },
+ {
+  "key": "be210bdc15",
+  "text": "Quinn won your queen: it was unprotected."
+ },
+ {
+  "key": "9f7c221d1b",
+  "text": "Quinn won your queen: nobody was protecting it."
+ },
+ {
+  "key": "e047a1bf14",
+  "text": "Quinn won your rook: it was unprotected."
+ },
+ {
+  "key": "827526361a",
+  "text": "Quinn won your rook: nobody was protecting it."
+ },
+ {
   "key": "0d007d532c",
   "text": "Remember Scholar's mate: Queen takes f7, checkmate works only when the bishop helps."
+ },
+ {
+  "key": "602501d7x",
+  "text": "Remember your game against Benny?"
+ },
+ {
+  "key": "353e624118",
+  "text": "Remember your game against Grandmaster Nova?"
+ },
+ {
+  "key": "9d64d72d16",
+  "text": "Remember your game against Master Kasimir?"
+ },
+ {
+  "key": "b55a4ebdw",
+  "text": "Remember your game against Nora?"
+ },
+ {
+  "key": "abaf2150v",
+  "text": "Remember your game against Pip?"
+ },
+ {
+  "key": "11d5e548x",
+  "text": "Remember your game against Quinn?"
+ },
+ {
+  "key": "4c320f52w",
+  "text": "Remember your game against Rosa?"
+ },
+ {
+  "key": "ecc6a44515",
+  "text": "Remember your game against The Professor?"
+ },
+ {
+  "key": "f7646dd315",
+  "text": "Remember your game against Your opponent?"
  },
  {
   "key": "87feddebn",
@@ -1284,6 +3588,142 @@
   "text": "Rook to the fourth row (Rook d4), then bring the king out and block checks with the rook."
  },
  {
+  "key": "b55c49d9p",
+  "text": "Rosa brings out a bishop."
+ },
+ {
+  "key": "10e4d0b5p",
+  "text": "Rosa brings out a knight."
+ },
+ {
+  "key": "8d9cc9b5w",
+  "text": "Rosa brings the queen out early."
+ },
+ {
+  "key": "3672f20dx",
+  "text": "Rosa brought the queen out early."
+ },
+ {
+  "key": "3e46b816q",
+  "text": "Rosa captured your bishop."
+ },
+ {
+  "key": "123a7c6aq",
+  "text": "Rosa captured your knight."
+ },
+ {
+  "key": "6d751cfbo",
+  "text": "Rosa captured your pawn."
+ },
+ {
+  "key": "64a6cc39p",
+  "text": "Rosa captured your queen."
+ },
+ {
+  "key": "5039139eo",
+  "text": "Rosa captured your rook."
+ },
+ {
+  "key": "38b035dbz",
+  "text": "Rosa castled to keep the king safe."
+ },
+ {
+  "key": "c80f403ep",
+  "text": "Rosa develops the bishop."
+ },
+ {
+  "key": "168d6122p",
+  "text": "Rosa develops the knight."
+ },
+ {
+  "key": "eecccf62r",
+  "text": "Rosa fights for the centre."
+ },
+ {
+  "key": "48ef5fd21b",
+  "text": "Rosa took your bishop, but you can win it back!"
+ },
+ {
+  "key": "c9634839m",
+  "text": "Rosa took your bishop."
+ },
+ {
+  "key": "2c40bd661b",
+  "text": "Rosa took your knight, but you can win it back!"
+ },
+ {
+  "key": "2723a295m",
+  "text": "Rosa took your knight."
+ },
+ {
+  "key": "f6257e7919",
+  "text": "Rosa took your pawn, but you can win it back!"
+ },
+ {
+  "key": "1645c5fck",
+  "text": "Rosa took your pawn."
+ },
+ {
+  "key": "0b5d9b6d1a",
+  "text": "Rosa took your queen, but you can win it back!"
+ },
+ {
+  "key": "66961068l",
+  "text": "Rosa took your queen."
+ },
+ {
+  "key": "604966a619",
+  "text": "Rosa took your rook, but you can win it back!"
+ },
+ {
+  "key": "d7e5de55k",
+  "text": "Rosa took your rook."
+ },
+ {
+  "key": "79203952s",
+  "text": "Rosa wants to checkmate you."
+ },
+ {
+  "key": "00ffeddb15",
+  "text": "Rosa won your bishop: it was unprotected."
+ },
+ {
+  "key": "6218b4121b",
+  "text": "Rosa won your bishop: nobody was protecting it."
+ },
+ {
+  "key": "d3d8036715",
+  "text": "Rosa won your knight: it was unprotected."
+ },
+ {
+  "key": "9658b8ae1b",
+  "text": "Rosa won your knight: nobody was protecting it."
+ },
+ {
+  "key": "65f9f14a13",
+  "text": "Rosa won your pawn: it was unprotected."
+ },
+ {
+  "key": "ebc91daf19",
+  "text": "Rosa won your pawn: nobody was protecting it."
+ },
+ {
+  "key": "4dc9586c14",
+  "text": "Rosa won your queen: it was unprotected."
+ },
+ {
+  "key": "f2170aad1a",
+  "text": "Rosa won your queen: nobody was protecting it."
+ },
+ {
+  "key": "f236bacf13",
+  "text": "Rosa won your rook: it was unprotected."
+ },
+ {
+  "key": "442de78619",
+  "text": "Rosa won your rook: nobody was protecting it."
+ },
+ {
   "key": "684d9df1f",
   "text": "Run, king, run!"
  },
@@ -1292,8 +3732,260 @@
   "text": "Safe!"
  },
  {
+  "key": "c83b0696k",
+  "text": "Save the king first."
+ },
+ {
+  "key": "5e3b5d6f1n",
+  "text": "Save the more valuable piece, or look for a counter-attack."
+ },
+ {
   "key": "5aa474cef",
   "text": "Scholar's mate."
+ },
+ {
+  "key": "48956209j",
+  "text": "See you in 10 days!"
+ },
+ {
+  "key": "9ca67332j",
+  "text": "See you in 11 days!"
+ },
+ {
+  "key": "7452b98bj",
+  "text": "See you in 12 days!"
+ },
+ {
+  "key": "6fbc192cj",
+  "text": "See you in 13 days!"
+ },
+ {
+  "key": "1f05efc5j",
+  "text": "See you in 14 days!"
+ },
+ {
+  "key": "3679253ej",
+  "text": "See you in 15 days!"
+ },
+ {
+  "key": "b56d2e97j",
+  "text": "See you in 16 days!"
+ },
+ {
+  "key": "f7318328j",
+  "text": "See you in 17 days!"
+ },
+ {
+  "key": "285d99b1j",
+  "text": "See you in 18 days!"
+ },
+ {
+  "key": "1ba3ad7aj",
+  "text": "See you in 19 days!"
+ },
+ {
+  "key": "05469362i",
+  "text": "See you in 2 days!"
+ },
+ {
+  "key": "e30ed23aj",
+  "text": "See you in 20 days!"
+ },
+ {
+  "key": "803e3571j",
+  "text": "See you in 21 days!"
+ },
+ {
+  "key": "52b73394j",
+  "text": "See you in 22 days!"
+ },
+ {
+  "key": "08b5c1d3j",
+  "text": "See you in 23 days!"
+ },
+ {
+  "key": "66a41506j",
+  "text": "See you in 24 days!"
+ },
+ {
+  "key": "79b8916dj",
+  "text": "See you in 25 days!"
+ },
+ {
+  "key": "a6ae21d0j",
+  "text": "See you in 26 days!"
+ },
+ {
+  "key": "a5528ebfj",
+  "text": "See you in 27 days!"
+ },
+ {
+  "key": "641197f2j",
+  "text": "See you in 28 days!"
+ },
+ {
+  "key": "e63bdec9j",
+  "text": "See you in 29 days!"
+ },
+ {
+  "key": "271f0739i",
+  "text": "See you in 3 days!"
+ },
+ {
+  "key": "06af31e3j",
+  "text": "See you in 30 days!"
+ },
+ {
+  "key": "d03c8224j",
+  "text": "See you in 31 days!"
+ },
+ {
+  "key": "09566501j",
+  "text": "See you in 32 days!"
+ },
+ {
+  "key": "6769ba4aj",
+  "text": "See you in 33 days!"
+ },
+ {
+  "key": "cfe3a80fj",
+  "text": "See you in 34 days!"
+ },
+ {
+  "key": "96b51760j",
+  "text": "See you in 35 days!"
+ },
+ {
+  "key": "df6e5a7dj",
+  "text": "See you in 36 days!"
+ },
+ {
+  "key": "77e87956j",
+  "text": "See you in 37 days!"
+ },
+ {
+  "key": "33b7021bj",
+  "text": "See you in 38 days!"
+ },
+ {
+  "key": "64b0e9bcj",
+  "text": "See you in 39 days!"
+ },
+ {
+  "key": "416735d8i",
+  "text": "See you in 4 days!"
+ },
+ {
+  "key": "0de9c2ccj",
+  "text": "See you in 40 days!"
+ },
+ {
+  "key": "4f71822bj",
+  "text": "See you in 41 days!"
+ },
+ {
+  "key": "1112ba52j",
+  "text": "See you in 42 days!"
+ },
+ {
+  "key": "1204e329j",
+  "text": "See you in 43 days!"
+ },
+ {
+  "key": "c0a10448j",
+  "text": "See you in 44 days!"
+ },
+ {
+  "key": "93066037j",
+  "text": "See you in 45 days!"
+ },
+ {
+  "key": "80e6a95ej",
+  "text": "See you in 46 days!"
+ },
+ {
+  "key": "68763a65j",
+  "text": "See you in 47 days!"
+ },
+ {
+  "key": "42c9b2f4j",
+  "text": "See you in 48 days!"
+ },
+ {
+  "key": "e37324b3j",
+  "text": "See you in 49 days!"
+ },
+ {
+  "key": "1a2ed347i",
+  "text": "See you in 5 days!"
+ },
+ {
+  "key": "4f80105dj",
+  "text": "See you in 50 days!"
+ },
+ {
+  "key": "3cfefc36j",
+  "text": "See you in 51 days!"
+ },
+ {
+  "key": "4f6e64efj",
+  "text": "See you in 52 days!"
+ },
+ {
+  "key": "09413640j",
+  "text": "See you in 53 days!"
+ },
+ {
+  "key": "fbe34d61j",
+  "text": "See you in 54 days!"
+ },
+ {
+  "key": "b2aedfaaj",
+  "text": "See you in 55 days!"
+ },
+ {
+  "key": "8b307343j",
+  "text": "See you in 56 days!"
+ },
+ {
+  "key": "a87f7c04j",
+  "text": "See you in 57 days!"
+ },
+ {
+  "key": "12adf1f5j",
+  "text": "See you in 58 days!"
+ },
+ {
+  "key": "9e52cb6ej",
+  "text": "See you in 59 days!"
+ },
+ {
+  "key": "48db716ei",
+  "text": "See you in 6 days!"
+ },
+ {
+  "key": "ae7a5c3ej",
+  "text": "See you in 60 days!"
+ },
+ {
+  "key": "bd3697f5i",
+  "text": "See you in 7 days!"
+ },
+ {
+  "key": "53082204i",
+  "text": "See you in 8 days!"
+ },
+ {
+  "key": "35b91943i",
+  "text": "See you in 9 days!"
+ },
+ {
+  "key": "4c7fe0e9h",
+  "text": "See you tomorrow!"
+ },
+ {
+  "key": "93685934h",
+  "text": "Session complete."
  },
  {
   "key": "c7cc18d91k",
@@ -1322,6 +4014,22 @@
  {
   "key": "855e92dfa",
   "text": "Smothered!"
+ },
+ {
+  "key": "a895a8ce6",
+  "text": "Solid."
+ },
+ {
+  "key": "01364dfdo",
+  "text": "Solved at the first try."
+ },
+ {
+  "key": "2f773dc77",
+  "text": "Solved!"
+ },
+ {
+  "key": "e19b14d6z",
+  "text": "Something can be captured for free!"
  },
  {
   "key": "aaf2a1dbe",
@@ -1368,6 +4076,10 @@
   "text": "Straight lines, as far as it likes."
  },
  {
+  "key": "37157958b",
+  "text": "Super move!"
+ },
+ {
   "key": "57ed0927a",
   "text": "Superstar!"
  },
@@ -1388,8 +4100,80 @@
   "text": "Take your time, every lesson is played on the board."
  },
  {
+  "key": "d17f6c6fz",
+  "text": "That gets the bishop out of danger."
+ },
+ {
+  "key": "0297ba53z",
+  "text": "That gets the knight out of danger."
+ },
+ {
+  "key": "602a711ex",
+  "text": "That gets the pawn out of danger."
+ },
+ {
+  "key": "519ff682y",
+  "text": "That gets the queen out of danger."
+ },
+ {
+  "key": "aea675efx",
+  "text": "That gets the rook out of danger."
+ },
+ {
+  "key": "507c76deh",
+  "text": "That is the move."
+ },
+ {
+  "key": "d1ff8481w",
+  "text": "That stops the checkmate threat."
+ },
+ {
+  "key": "fda981a5m",
+  "text": "That was the solution."
+ },
+ {
+  "key": "9bf66f9dj",
+  "text": "That wins a bishop."
+ },
+ {
+  "key": "eec45549j",
+  "text": "That wins a knight."
+ },
+ {
+  "key": "207e46a8h",
+  "text": "That wins a pawn."
+ },
+ {
+  "key": "b8b2b7aci",
+  "text": "That wins a queen."
+ },
+ {
+  "key": "e535be61h",
+  "text": "That wins a rook."
+ },
+ {
   "key": "2acff239j",
   "text": "That wins the game!"
+ },
+ {
+  "key": "fa08c5a8j",
+  "text": "That works as well."
+ },
+ {
+  "key": "a902259bf",
+  "text": "That works too!"
+ },
+ {
+  "key": "b7b9bc7a16",
+  "text": "That's exactly what a champion would play!"
+ },
+ {
+  "key": "10bd7f1cp",
+  "text": "That's not it, try again!"
+ },
+ {
+  "key": "248bd24519",
+  "text": "That's the move a strong player would choose."
  },
  {
   "key": "0ad434612a",
@@ -1406,6 +4190,26 @@
  {
   "key": "ecd0415az",
   "text": "The b3 pawn will guard your bishop."
+ },
+ {
+  "key": "94385dd41j",
+  "text": "The bishop attacks two of your pieces at the same time."
+ },
+ {
+  "key": "e175c1c112",
+  "text": "The bishop attacks two of your pieces."
+ },
+ {
+  "key": "bb262c5c1b",
+  "text": "The bishop attacks two pieces at the same time."
+ },
+ {
+  "key": "b04d6b45y",
+  "text": "The bishop is attacking your king."
+ },
+ {
+  "key": "2175f5491f",
+  "text": "The bishop is left unprotected and can be captured."
  },
  {
   "key": "4cba64c51c",
@@ -1504,8 +4308,24 @@
   "text": "The king and rook move together."
  },
  {
+  "key": "ddd639521h",
+  "text": "The king attacks two of your pieces at the same time."
+ },
+ {
+  "key": "fd01c4bf10",
+  "text": "The king attacks two of your pieces."
+ },
+ {
+  "key": "81dfe3a219",
+  "text": "The king attacks two pieces at the same time."
+ },
+ {
   "key": "c61bb414s",
   "text": "The king captured the queen."
+ },
+ {
+  "key": "504d64b7w",
+  "text": "The king is attacking your king."
  },
  {
   "key": "845a6179r",
@@ -1564,12 +4384,32 @@
   "text": "The kings facing each other with one square between them is called the opposition."
  },
  {
+  "key": "61cc77f81j",
+  "text": "The knight attacks two of your pieces at the same time."
+ },
+ {
+  "key": "c0de0a4d12",
+  "text": "The knight attacks two of your pieces."
+ },
+ {
+  "key": "0dbedfe01b",
+  "text": "The knight attacks two pieces at the same time."
+ },
+ {
   "key": "522b6778s",
   "text": "The knight guards g8 and h7."
  },
  {
   "key": "c5b378a91r",
   "text": "The knight hops in an L shape: two steps, then one to the side."
+ },
+ {
+  "key": "9be3f569y",
+  "text": "The knight is attacking your king."
+ },
+ {
+  "key": "669e21551f",
+  "text": "The knight is left unprotected and can be captured."
  },
  {
   "key": "b8855743x",
@@ -1612,8 +4452,28 @@
   "text": "The most important basic mate."
  },
  {
+  "key": "2e49990d1h",
+  "text": "The pawn attacks two of your pieces at the same time."
+ },
+ {
+  "key": "64c6f2fa10",
+  "text": "The pawn attacks two of your pieces."
+ },
+ {
+  "key": "181e03e119",
+  "text": "The pawn attacks two pieces at the same time."
+ },
+ {
   "key": "2951b14ao",
   "text": "The pawn became a queen."
+ },
+ {
+  "key": "b6a9b836w",
+  "text": "The pawn is attacking your king."
+ },
+ {
+  "key": "a3b7eac81d",
+  "text": "The pawn is left unprotected and can be captured."
  },
  {
   "key": "67a84f74i",
@@ -1632,12 +4492,216 @@
   "text": "The player in check must get out of it straight away."
  },
  {
+  "key": "4195ad5413",
+  "text": "The position is now a forced checkmate."
+ },
+ {
+  "key": "210edd5aw",
+  "text": "The position is now about equal."
+ },
+ {
+  "key": "2458c719r",
+  "text": "The position is now better."
+ },
+ {
+  "key": "eb6fad8213",
+  "text": "The position is now getting checkmated."
+ },
+ {
+  "key": "2a2f2ccdr",
+  "text": "The position is now losing."
+ },
+ {
+  "key": "b9bdbfa6w",
+  "text": "The position is now much better."
+ },
+ {
+  "key": "78127498v",
+  "text": "The position is now much worse."
+ },
+ {
+  "key": "cd2d5c7f10",
+  "text": "The position is now slightly better."
+ },
+ {
+  "key": "2ac038e7z",
+  "text": "The position is now slightly worse."
+ },
+ {
+  "key": "e265ddc5s",
+  "text": "The position is now winning."
+ },
+ {
+  "key": "b30d963dq",
+  "text": "The position is now worse."
+ },
+ {
+  "key": "84245f44y",
+  "text": "The Professor brings out a bishop."
+ },
+ {
+  "key": "03ab1560y",
+  "text": "The Professor brings out a knight."
+ },
+ {
+  "key": "eb712e5615",
+  "text": "The Professor brings the queen out early."
+ },
+ {
+  "key": "cce4a02816",
+  "text": "The Professor brought the queen out early."
+ },
+ {
+  "key": "b2987045z",
+  "text": "The Professor captured your bishop."
+ },
+ {
+  "key": "1c684641z",
+  "text": "The Professor captured your knight."
+ },
+ {
+  "key": "a1980e30x",
+  "text": "The Professor captured your pawn."
+ },
+ {
+  "key": "575c7464y",
+  "text": "The Professor captured your queen."
+ },
+ {
+  "key": "17fae6e9x",
+  "text": "The Professor captured your rook."
+ },
+ {
+  "key": "bb2a48a218",
+  "text": "The Professor castled to keep the king safe."
+ },
+ {
+  "key": "2e83334by",
+  "text": "The Professor develops the bishop."
+ },
+ {
+  "key": "ff084d97y",
+  "text": "The Professor develops the knight."
+ },
+ {
+  "key": "234ac12f10",
+  "text": "The Professor fights for the centre."
+ },
+ {
+  "key": "274f8cd31k",
+  "text": "The Professor took your bishop, but you can win it back!"
+ },
+ {
+  "key": "9a1a32dav",
+  "text": "The Professor took your bishop."
+ },
+ {
+  "key": "d4d9619f1k",
+  "text": "The Professor took your knight, but you can win it back!"
+ },
+ {
+  "key": "cd521e3ev",
+  "text": "The Professor took your knight."
+ },
+ {
+  "key": "8499ed2c1i",
+  "text": "The Professor took your pawn, but you can win it back!"
+ },
+ {
+  "key": "3874e357t",
+  "text": "The Professor took your pawn."
+ },
+ {
+  "key": "f41475fe1j",
+  "text": "The Professor took your queen, but you can win it back!"
+ },
+ {
+  "key": "ea41402du",
+  "text": "The Professor took your queen."
+ },
+ {
+  "key": "377ea9031i",
+  "text": "The Professor took your rook, but you can win it back!"
+ },
+ {
+  "key": "b5db806at",
+  "text": "The Professor took your rook."
+ },
+ {
+  "key": "0480c36d11",
+  "text": "The Professor wants to checkmate you."
+ },
+ {
+  "key": "96fa43961e",
+  "text": "The Professor won your bishop: it was unprotected."
+ },
+ {
+  "key": "f2357e7b1k",
+  "text": "The Professor won your bishop: nobody was protecting it."
+ },
+ {
+  "key": "4b0acc521e",
+  "text": "The Professor won your knight: it was unprotected."
+ },
+ {
+  "key": "f83596871k",
+  "text": "The Professor won your knight: nobody was protecting it."
+ },
+ {
+  "key": "600a192b1c",
+  "text": "The Professor won your pawn: it was unprotected."
+ },
+ {
+  "key": "267bae221i",
+  "text": "The Professor won your pawn: nobody was protecting it."
+ },
+ {
+  "key": "09aa5caf1d",
+  "text": "The Professor won your queen: it was unprotected."
+ },
+ {
+  "key": "281759e61j",
+  "text": "The Professor won your queen: nobody was protecting it."
+ },
+ {
+  "key": "b91029aa1c",
+  "text": "The Professor won your rook: it was unprotected."
+ },
+ {
+  "key": "57b5c48f1i",
+  "text": "The Professor won your rook: nobody was protecting it."
+ },
+ {
   "key": "bb592db31a",
   "text": "The queen and bishop can team up to attack it!"
  },
  {
   "key": "8001cfef18",
   "text": "The queen and king are on the same diagonal."
+ },
+ {
+  "key": "0675f4a11i",
+  "text": "The queen attacks two of your pieces at the same time."
+ },
+ {
+  "key": "4505067611",
+  "text": "The queen attacks two of your pieces."
+ },
+ {
+  "key": "2611a9651a",
+  "text": "The queen attacks two pieces at the same time."
+ },
+ {
+  "key": "a50a97071u",
+  "text": "The queen came out too early, the other side can chase her around."
+ },
+ {
+  "key": "fdf3de8ax",
+  "text": "The queen is attacking your king."
+ },
+ {
+  "key": "086ec4e41e",
+  "text": "The queen is left unprotected and can be captured."
  },
  {
   "key": "6f53cb56k",
@@ -1684,6 +4748,18 @@
   "text": "The rook attacks the whole first row."
  },
  {
+  "key": "5474bbf81h",
+  "text": "The rook attacks two of your pieces at the same time."
+ },
+ {
+  "key": "f4ec364d10",
+  "text": "The rook attacks two of your pieces."
+ },
+ {
+  "key": "7832a3e019",
+  "text": "The rook attacks two pieces at the same time."
+ },
+ {
   "key": "0fba2503n",
   "text": "The rook builds a wall."
  },
@@ -1694,6 +4770,14 @@
  {
   "key": "d5ed1c9fl",
   "text": "The rook gives check."
+ },
+ {
+  "key": "24276169w",
+  "text": "The rook is attacking your king."
+ },
+ {
+  "key": "a58a25551d",
+  "text": "The rook is left unprotected and can be captured."
  },
  {
   "key": "273a6baa2f",
@@ -1736,8 +4820,288 @@
   "text": "There are three ways to get out of check: 1) move the king to a safe square, 2) block the attack with another piece, 3) capture the attacking piece."
  },
  {
+  "key": "0c148962o",
+  "text": "There was a better move."
+ },
+ {
+  "key": "71ef598ct",
+  "text": "There was a checkmate in one!"
+ },
+ {
+  "key": "65800750t",
+  "text": "There was a forced checkmate!"
+ },
+ {
+  "key": "e08b7abc1j",
+  "text": "There was a fork: one move attacked two pieces at once."
+ },
+ {
+  "key": "6270b7f2z",
+  "text": "There was a slightly stronger move."
+ },
+ {
+  "key": "d9d05922v",
+  "text": "There was a stronger move here."
+ },
+ {
+  "key": "bb4b0e54q",
+  "text": "There was a stronger move."
+ },
+ {
+  "key": "dda34bc015",
+  "text": "There was one moment worth a closer look."
+ },
+ {
+  "key": "069e958e16",
+  "text": "There were 10 moments worth a closer look."
+ },
+ {
+  "key": "be6f0acb16",
+  "text": "There were 11 moments worth a closer look."
+ },
+ {
+  "key": "822e64c816",
+  "text": "There were 12 moments worth a closer look."
+ },
+ {
+  "key": "6743abcd16",
+  "text": "There were 13 moments worth a closer look."
+ },
+ {
+  "key": "f7b3130216",
+  "text": "There were 14 moments worth a closer look."
+ },
+ {
+  "key": "4190c2df16",
+  "text": "There were 15 moments worth a closer look."
+ },
+ {
+  "key": "4a47befc16",
+  "text": "There were 16 moments worth a closer look."
+ },
+ {
+  "key": "61f3c2d116",
+  "text": "There were 17 moments worth a closer look."
+ },
+ {
+  "key": "5fa4801616",
+  "text": "There were 18 moments worth a closer look."
+ },
+ {
+  "key": "edf725b316",
+  "text": "There were 19 moments worth a closer look."
+ },
+ {
+  "key": "f7eb2db315",
+  "text": "There were 2 moments worth a closer look."
+ },
+ {
+  "key": "2a69bf4316",
+  "text": "There were 20 moments worth a closer look."
+ },
+ {
+  "key": "73ca806616",
+  "text": "There were 21 moments worth a closer look."
+ },
+ {
+  "key": "9baf7d2516",
+  "text": "There were 22 moments worth a closer look."
+ },
+ {
+  "key": "d644dc8016",
+  "text": "There were 23 moments worth a closer look."
+ },
+ {
+  "key": "c40ca51716",
+  "text": "There were 24 moments worth a closer look."
+ },
+ {
+  "key": "b60c925a16",
+  "text": "There were 25 moments worth a closer look."
+ },
+ {
+  "key": "b498e42916",
+  "text": "There were 26 moments worth a closer look."
+ },
+ {
+  "key": "b2b1c33416",
+  "text": "There were 27 moments worth a closer look."
+ },
+ {
+  "key": "af31acdb16",
+  "text": "There were 28 moments worth a closer look."
+ },
+ {
+  "key": "3703b61e16",
+  "text": "There were 29 moments worth a closer look."
+ },
+ {
+  "key": "6998881615",
+  "text": "There were 3 moments worth a closer look."
+ },
+ {
+  "key": "66eb939016",
+  "text": "There were 30 moments worth a closer look."
+ },
+ {
+  "key": "82f0c0b516",
+  "text": "There were 31 moments worth a closer look."
+ },
+ {
+  "key": "05a4c8f616",
+  "text": "There were 32 moments worth a closer look."
+ },
+ {
+  "key": "17cf0e9316",
+  "text": "There were 33 moments worth a closer look."
+ },
+ {
+  "key": "0377aa4416",
+  "text": "There were 34 moments worth a closer look."
+ },
+ {
+  "key": "c245557916",
+  "text": "There were 35 moments worth a closer look."
+ },
+ {
+  "key": "16e60b2a16",
+  "text": "There were 36 moments worth a closer look."
+ },
+ {
+  "key": "664aa96716",
+  "text": "There were 37 moments worth a closer look."
+ },
+ {
+  "key": "316b9da816",
+  "text": "There were 38 moments worth a closer look."
+ },
+ {
+  "key": "1dd397ad16",
+  "text": "There were 39 moments worth a closer look."
+ },
+ {
+  "key": "d6a23e9915",
+  "text": "There were 4 moments worth a closer look."
+ },
+ {
+  "key": "199d4f1516",
+  "text": "There were 40 moments worth a closer look."
+ },
+ {
+  "key": "eb8d697016",
+  "text": "There were 41 moments worth a closer look."
+ },
+ {
+  "key": "e0cce3f316",
+  "text": "There were 42 moments worth a closer look."
+ },
+ {
+  "key": "b3146b5616",
+  "text": "There were 43 moments worth a closer look."
+ },
+ {
+  "key": "2660b4d916",
+  "text": "There were 44 moments worth a closer look."
+ },
+ {
+  "key": "75501da416",
+  "text": "There were 45 moments worth a closer look."
+ },
+ {
+  "key": "6a84004716",
+  "text": "There were 46 moments worth a closer look."
+ },
+ {
+  "key": "eb33ca0a16",
+  "text": "There were 47 moments worth a closer look."
+ },
+ {
+  "key": "d04c7c0d16",
+  "text": "There were 48 moments worth a closer look."
+ },
+ {
+  "key": "913d690816",
+  "text": "There were 49 moments worth a closer look."
+ },
+ {
+  "key": "3aada46415",
+  "text": "There were 5 moments worth a closer look."
+ },
+ {
+  "key": "bd82655a16",
+  "text": "There were 50 moments worth a closer look."
+ },
+ {
+  "key": "cb82781716",
+  "text": "There were 51 moments worth a closer look."
+ },
+ {
+  "key": "ba27963416",
+  "text": "There were 52 moments worth a closer look."
+ },
+ {
+  "key": "bc0eb72916",
+  "text": "There were 53 moments worth a closer look."
+ },
+ {
+  "key": "7b40536616",
+  "text": "There were 54 moments worth a closer look."
+ },
+ {
+  "key": "31df924316",
+  "text": "There were 55 moments worth a closer look."
+ },
+ {
+  "key": "ddbaaf8016",
+  "text": "There were 56 moments worth a closer look."
+ },
+ {
+  "key": "a325502516",
+  "text": "There were 57 moments worth a closer look."
+ },
+ {
+  "key": "1f4abb1216",
+  "text": "There were 58 moments worth a closer look."
+ },
+ {
+  "key": "3b5c48ef16",
+  "text": "There were 59 moments worth a closer look."
+ },
+ {
+  "key": "922c6a0715",
+  "text": "There were 6 moments worth a closer look."
+ },
+ {
+  "key": "d592a5af16",
+  "text": "There were 60 moments worth a closer look."
+ },
+ {
+  "key": "678095ca15",
+  "text": "There were 7 moments worth a closer look."
+ },
+ {
+  "key": "7137b3cd15",
+  "text": "There were 8 moments worth a closer look."
+ },
+ {
+  "key": "8c226cc815",
+  "text": "There were 9 moments worth a closer look."
+ },
+ {
+  "key": "badbe779w",
+  "text": "There's a checkmate hiding here!"
+ },
+ {
+  "key": "782385far",
+  "text": "There's a forced checkmate."
+ },
+ {
   "key": "269b4f21n",
   "text": "They can never go back!"
+ },
+ {
+  "key": "7cfb8686v",
+  "text": "Think about your king's safety."
  },
  {
   "key": "ec2c37f113",
@@ -1746,6 +5110,14 @@
  {
   "key": "e4bc6eabw",
   "text": "This bishop loves light squares."
+ },
+ {
+  "key": "3bb6d1ff12",
+  "text": "This lets your opponent checkmate you."
+ },
+ {
+  "key": "1a61fe1a16",
+  "text": "This lets your opponent force a checkmate."
  },
  {
   "key": "d928c9a416",
@@ -2020,16 +5392,40 @@
   "text": "Walk the king to every star."
  },
  {
+  "key": "a36c3007a",
+  "text": "Watch out!"
+ },
+ {
   "key": "94257f2721",
   "text": "We start with how the pieces move and finish with real endgame technique."
+ },
+ {
+  "key": "c17e9b05d",
+  "text": "Welcome back!"
+ },
+ {
+  "key": "c27e9c98d",
+  "text": "Welcome back."
  },
  {
   "key": "1ecb44878",
   "text": "Welcome."
  },
  {
+  "key": "7c96ede1p",
+  "text": "Well done for practising!"
+ },
+ {
   "key": "6b3efd82a",
   "text": "Well done!"
+ },
+ {
+  "key": "bad5d548h",
+  "text": "Well played here."
+ },
+ {
+  "key": "b38f50dbc",
+  "text": "Well played!"
  },
  {
   "key": "ce8533dfb",
@@ -2080,6 +5476,10 @@
   "text": "When the pawn moves up, check the king from behind!"
  },
  {
+  "key": "0a7370302x",
+  "text": "When you make a mistake in a game against the computer, I'll save it here so we can practise it together."
+ },
+ {
   "key": "0f0e4d4e19",
   "text": "Which first move follows the principles best?"
  },
@@ -2120,6 +5520,10 @@
   "text": "White threatens Queen takes f7, checkmate."
  },
  {
+  "key": "f656de6ee",
+  "text": "White to move."
+ },
+ {
   "key": "96e52202q",
   "text": "Win by promoting the pawn."
  },
@@ -2134,6 +5538,14 @@
  {
   "key": "56ff1ce73a",
   "text": "With two rooks, use the ladder: one rook guards a row, the other checks on the next row, pushing the king to the edge."
+ },
+ {
+  "key": "0687e4b4a",
+  "text": "Wonderful!"
+ },
+ {
+  "key": "82e44a23b",
+  "text": "Wrong move."
  },
  {
   "key": "1d31fc061n",
@@ -2160,12 +5572,192 @@
   "text": "You are learning fast!"
  },
  {
+  "key": "3e9bff23e",
+  "text": "You are White."
+ },
+ {
   "key": "847b0c9336",
   "text": "You can castle only if the king and rook have never moved, nothing is between them, and the king is not in danger."
  },
  {
+  "key": "10f5ec5f1d",
+  "text": "You can only save one, so save the most valuable!"
+ },
+ {
+  "key": "960dcb8f15",
+  "text": "You can recapture; check that it is safe."
+ },
+ {
+  "key": "97a768661a",
+  "text": "You can take back, but check it is safe first!"
+ },
+ {
+  "key": "b73cfde1l",
+  "text": "You can win material."
+ },
+ {
   "key": "7888b8d71k",
   "text": "You capture by moving onto the square of an enemy piece."
+ },
+ {
+  "key": "aedd062fm",
+  "text": "You did it in 1 moves!"
+ },
+ {
+  "key": "e6fca633n",
+  "text": "You did it in 10 moves!"
+ },
+ {
+  "key": "e83bdacan",
+  "text": "You did it in 11 moves!"
+ },
+ {
+  "key": "b9fd72b5n",
+  "text": "You did it in 12 moves!"
+ },
+ {
+  "key": "cc37f3e4n",
+  "text": "You did it in 13 moves!"
+ },
+ {
+  "key": "f0e0c2bfn",
+  "text": "You did it in 14 moves!"
+ },
+ {
+  "key": "2d675496n",
+  "text": "You did it in 15 moves!"
+ },
+ {
+  "key": "c0c773d1n",
+  "text": "You did it in 16 moves!"
+ },
+ {
+  "key": "8de11b70n",
+  "text": "You did it in 17 moves!"
+ },
+ {
+  "key": "a4c72fdbn",
+  "text": "You did it in 18 moves!"
+ },
+ {
+  "key": "abf44d52n",
+  "text": "You did it in 19 moves!"
+ },
+ {
+  "key": "0f6b3da0m",
+  "text": "You did it in 2 moves!"
+ },
+ {
+  "key": "8cedff66n",
+  "text": "You did it in 20 moves!"
+ },
+ {
+  "key": "47b1828fn",
+  "text": "You did it in 21 moves!"
+ },
+ {
+  "key": "b5945180n",
+  "text": "You did it in 22 moves!"
+ },
+ {
+  "key": "bc3c1521n",
+  "text": "You did it in 23 moves!"
+ },
+ {
+  "key": "f11b4e5an",
+  "text": "You did it in 24 moves!"
+ },
+ {
+  "key": "2dc16b43n",
+  "text": "You did it in 25 moves!"
+ },
+ {
+  "key": "312b4ab4n",
+  "text": "You did it in 26 moves!"
+ },
+ {
+  "key": "5ec0d5c5n",
+  "text": "You did it in 27 moves!"
+ },
+ {
+  "key": "c73b120en",
+  "text": "You did it in 28 moves!"
+ },
+ {
+  "key": "b3305b17n",
+  "text": "You did it in 29 moves!"
+ },
+ {
+  "key": "6c594fc1m",
+  "text": "You did it in 3 moves!"
+ },
+ {
+  "key": "5e5e4fb1n",
+  "text": "You did it in 30 moves!"
+ },
+ {
+  "key": "d74aacd0n",
+  "text": "You did it in 31 moves!"
+ },
+ {
+  "key": "61914d9fn",
+  "text": "You did it in 32 moves!"
+ },
+ {
+  "key": "cd789976n",
+  "text": "You did it in 33 moves!"
+ },
+ {
+  "key": "0416be95n",
+  "text": "You did it in 34 moves!"
+ },
+ {
+  "key": "419abb44n",
+  "text": "You did it in 35 moves!"
+ },
+ {
+  "key": "f41ac593n",
+  "text": "You did it in 36 moves!"
+ },
+ {
+  "key": "fa5211aan",
+  "text": "You did it in 37 moves!"
+ },
+ {
+  "key": "97aecab9n",
+  "text": "You did it in 38 moves!"
+ },
+ {
+  "key": "42601f58n",
+  "text": "You did it in 39 moves!"
+ },
+ {
+  "key": "7773e0fam",
+  "text": "You did it in 4 moves!"
+ },
+ {
+  "key": "57b12644n",
+  "text": "You did it in 40 moves!"
+ },
+ {
+  "key": "35ab5ae3m",
+  "text": "You did it in 5 moves!"
+ },
+ {
+  "key": "b5097454m",
+  "text": "You did it in 6 moves!"
+ },
+ {
+  "key": "09e78be5m",
+  "text": "You did it in 7 moves!"
+ },
+ {
+  "key": "4d93a4aem",
+  "text": "You did it in 8 moves!"
+ },
+ {
+  "key": "f58dbb37m",
+  "text": "You did it in 9 moves!"
  },
  {
   "key": "9e1be485v",
@@ -2174,6 +5766,10 @@
  {
   "key": "92f7ec51b",
   "text": "You did it!"
+ },
+ {
+  "key": "f44a5ded10",
+  "text": "You don't have any oops moments yet!"
  },
  {
   "key": "c7fbd7eeq",
@@ -2192,8 +5788,648 @@
   "text": "You finished the lesson."
  },
  {
+  "key": "6de68600q",
+  "text": "You have 10 stars already."
+ },
+ {
+  "key": "0e17ac96r",
+  "text": "You have 100 stars already."
+ },
+ {
+  "key": "78850293r",
+  "text": "You have 101 stars already."
+ },
+ {
+  "key": "ab6b8308r",
+  "text": "You have 102 stars already."
+ },
+ {
+  "key": "ff67733dr",
+  "text": "You have 103 stars already."
+ },
+ {
+  "key": "4c895a0ar",
+  "text": "You have 104 stars already."
+ },
+ {
+  "key": "d4ca5f87r",
+  "text": "You have 105 stars already."
+ },
+ {
+  "key": "d179884cr",
+  "text": "You have 106 stars already."
+ },
+ {
+  "key": "982ac111r",
+  "text": "You have 107 stars already."
+ },
+ {
+  "key": "a2b3770er",
+  "text": "You have 108 stars already."
+ },
+ {
+  "key": "4d2a830br",
+  "text": "You have 109 stars already."
+ },
+ {
+  "key": "36f21595q",
+  "text": "You have 11 stars already."
+ },
+ {
+  "key": "7777a8cdr",
+  "text": "You have 110 stars already."
+ },
+ {
+  "key": "dda9b558r",
+  "text": "You have 111 stars already."
+ },
+ {
+  "key": "f2682063r",
+  "text": "You have 112 stars already."
+ },
+ {
+  "key": "bb9fd2a6r",
+  "text": "You have 113 stars already."
+ },
+ {
+  "key": "f071c461r",
+  "text": "You have 114 stars already."
+ },
+ {
+  "key": "5a200c9cr",
+  "text": "You have 115 stars already."
+ },
+ {
+  "key": "8212ddd7r",
+  "text": "You have 116 stars already."
+ },
+ {
+  "key": "cb4cd79ar",
+  "text": "You have 117 stars already."
+ },
+ {
+  "key": "14361aa5r",
+  "text": "You have 118 stars already."
+ },
+ {
+  "key": "f1bfeb50r",
+  "text": "You have 119 stars already."
+ },
+ {
+  "key": "b9b99d8eq",
+  "text": "You have 12 stars already."
+ },
+ {
+  "key": "666c6a20r",
+  "text": "You have 120 stars already."
+ },
+ {
+  "key": "6430a98bq",
+  "text": "You have 13 stars already."
+ },
+ {
+  "key": "693c4364q",
+  "text": "You have 14 stars already."
+ },
+ {
+  "key": "3376c329q",
+  "text": "You have 15 stars already."
+ },
+ {
+  "key": "3f3d2d02q",
+  "text": "You have 16 stars already."
+ },
+ {
+  "key": "a5592a9fq",
+  "text": "You have 17 stars already."
+ },
+ {
+  "key": "c271a988q",
+  "text": "You have 18 stars already."
+ },
+ {
+  "key": "166d99bdq",
+  "text": "You have 19 stars already."
+ },
+ {
+  "key": "45954b75p",
+  "text": "You have 2 stars already."
+ },
+ {
+  "key": "354e4d2dq",
+  "text": "You have 20 stars already."
+ },
+ {
+  "key": "dc22bb38q",
+  "text": "You have 21 stars already."
+ },
+ {
+  "key": "9b214643q",
+  "text": "You have 22 stars already."
+ },
+ {
+  "key": "12d11586q",
+  "text": "You have 23 stars already."
+ },
+ {
+  "key": "48ed7b41q",
+  "text": "You have 24 stars already."
+ },
+ {
+  "key": "ccc34afcq",
+  "text": "You have 25 stars already."
+ },
+ {
+  "key": "e7ecc437q",
+  "text": "You have 26 stars already."
+ },
+ {
+  "key": "9855c17aq",
+  "text": "You have 27 stars already."
+ },
+ {
+  "key": "9d416105q",
+  "text": "You have 28 stars already."
+ },
+ {
+  "key": "8d482030q",
+  "text": "You have 29 stars already."
+ },
+ {
+  "key": "b5bb68e0p",
+  "text": "You have 3 stars already."
+ },
+ {
+  "key": "fb825f76q",
+  "text": "You have 30 stars already."
+ },
+ {
+  "key": "4f9897f3q",
+  "text": "You have 31 stars already."
+ },
+ {
+  "key": "21d2ed68q",
+  "text": "You have 32 stars already."
+ },
+ {
+  "key": "4128f99dq",
+  "text": "You have 33 stars already."
+ },
+ {
+  "key": "4771b86aq",
+  "text": "You have 34 stars already."
+ },
+ {
+  "key": "e6fadf67q",
+  "text": "You have 35 stars already."
+ },
+ {
+  "key": "340d932cq",
+  "text": "You have 36 stars already."
+ },
+ {
+  "key": "88c3f3f1q",
+  "text": "You have 37 stars already."
+ },
+ {
+  "key": "698f4e6eq",
+  "text": "You have 38 stars already."
+ },
+ {
+  "key": "2a8385ebq",
+  "text": "You have 39 stars already."
+ },
+ {
+  "key": "d9c86fffp",
+  "text": "You have 4 stars already."
+ },
+ {
+  "key": "501d802bq",
+  "text": "You have 40 stars already."
+ },
+ {
+  "key": "f4c660aeq",
+  "text": "You have 41 stars already."
+ },
+ {
+  "key": "b48c4735q",
+  "text": "You have 42 stars already."
+ },
+ {
+  "key": "c7d9c5a0q",
+  "text": "You have 43 stars already."
+ },
+ {
+  "key": "25fecbbfq",
+  "text": "You have 44 stars already."
+ },
+ {
+  "key": "879c4222q",
+  "text": "You have 45 stars already."
+ },
+ {
+  "key": "e37c9349q",
+  "text": "You have 46 stars already."
+ },
+ {
+  "key": "68ba2e84q",
+  "text": "You have 47 stars already."
+ },
+ {
+  "key": "8434fa33q",
+  "text": "You have 48 stars already."
+ },
+ {
+  "key": "486cdeb6q",
+  "text": "You have 49 stars already."
+ },
+ {
+  "key": "ee799862p",
+  "text": "You have 5 stars already."
+ },
+ {
+  "key": "a36c698cq",
+  "text": "You have 50 stars already."
+ },
+ {
+  "key": "4186fb51q",
+  "text": "You have 51 stars already."
+ },
+ {
+  "key": "522a5e4aq",
+  "text": "You have 52 stars already."
+ },
+ {
+  "key": "46af35c7q",
+  "text": "You have 53 stars already."
+ },
+ {
+  "key": "cd601d48q",
+  "text": "You have 54 stars already."
+ },
+ {
+  "key": "94ba267dq",
+  "text": "You have 55 stars already."
+ },
+ {
+  "key": "d2d255d6q",
+  "text": "You have 56 stars already."
+ },
+ {
+  "key": "739df2d3q",
+  "text": "You have 57 stars already."
+ },
+ {
+  "key": "c3ac8a24q",
+  "text": "You have 58 stars already."
+ },
+ {
+  "key": "dc216be9q",
+  "text": "You have 59 stars already."
+ },
+ {
+  "key": "3d6c2289p",
+  "text": "You have 6 stars already."
+ },
+ {
+  "key": "7dddf829q",
+  "text": "You have 60 stars already."
+ },
+ {
+  "key": "b3a37864q",
+  "text": "You have 61 stars already."
+ },
+ {
+  "key": "efc05f9fq",
+  "text": "You have 62 stars already."
+ },
+ {
+  "key": "89a46202q",
+  "text": "You have 63 stars already."
+ },
+ {
+  "key": "81594a95q",
+  "text": "You have 64 stars already."
+ },
+ {
+  "key": "b84dbb00q",
+  "text": "You have 65 stars already."
+ },
+ {
+  "key": "ae97de8bq",
+  "text": "You have 66 stars already."
+ },
+ {
+  "key": "0420d28eq",
+  "text": "You have 67 stars already."
+ },
+ {
+  "key": "f9981c91q",
+  "text": "You have 68 stars already."
+ },
+ {
+  "key": "32e6e3ccq",
+  "text": "You have 69 stars already."
+ },
+ {
+  "key": "24f740c4p",
+  "text": "You have 7 stars already."
+ },
+ {
+  "key": "9b368872q",
+  "text": "You have 70 stars already."
+ },
+ {
+  "key": "0aafa9cfq",
+  "text": "You have 71 stars already."
+ },
+ {
+  "key": "81af4394q",
+  "text": "You have 72 stars already."
+ },
+ {
+  "key": "487443d9q",
+  "text": "You have 73 stars already."
+ },
+ {
+  "key": "01a4b9feq",
+  "text": "You have 74 stars already."
+ },
+ {
+  "key": "d0d937bbq",
+  "text": "You have 75 stars already."
+ },
+ {
+  "key": "4b4b8570q",
+  "text": "You have 76 stars already."
+ },
+ {
+  "key": "54f22145q",
+  "text": "You have 77 stars already."
+ },
+ {
+  "key": "c11d25baq",
+  "text": "You have 78 stars already."
+ },
+ {
+  "key": "f2898e77q",
+  "text": "You have 79 stars already."
+ },
+ {
+  "key": "ae5b4673p",
+  "text": "You have 8 stars already."
+ },
+ {
+  "key": "31621467q",
+  "text": "You have 80 stars already."
+ },
+ {
+  "key": "91d8ed6aq",
+  "text": "You have 81 stars already."
+ },
+ {
+  "key": "d32b28f1q",
+  "text": "You have 82 stars already."
+ },
+ {
+  "key": "7e74c82cq",
+  "text": "You have 83 stars already."
+ },
+ {
+  "key": "99ffccf3q",
+  "text": "You have 84 stars already."
+ },
+ {
+  "key": "45e99476q",
+  "text": "You have 85 stars already."
+ },
+ {
+  "key": "8b902e9dq",
+  "text": "You have 86 stars already."
+ },
+ {
+  "key": "6c3a2268q",
+  "text": "You have 87 stars already."
+ },
+ {
+  "key": "c56cf67fq",
+  "text": "You have 88 stars already."
+ },
+ {
+  "key": "da1e1ee2q",
+  "text": "You have 89 stars already."
+ },
+ {
+  "key": "5a450df6p",
+  "text": "You have 9 stars already."
+ },
+ {
+  "key": "3f1710d8q",
+  "text": "You have 90 stars already."
+ },
+ {
+  "key": "d8e5044dq",
+  "text": "You have 91 stars already."
+ },
+ {
+  "key": "1d0d2e26q",
+  "text": "You have 92 stars already."
+ },
+ {
+  "key": "53d57be3q",
+  "text": "You have 93 stars already."
+ },
+ {
+  "key": "bb8d681cq",
+  "text": "You have 94 stars already."
+ },
+ {
+  "key": "51df1fe1q",
+  "text": "You have 95 stars already."
+ },
+ {
+  "key": "2cba331aq",
+  "text": "You have 96 stars already."
+ },
+ {
+  "key": "e3803957q",
+  "text": "You have 97 stars already."
+ },
+ {
+  "key": "532d46d0q",
+  "text": "You have 98 stars already."
+ },
+ {
+  "key": "75a37625q",
+  "text": "You have 99 stars already."
+ },
+ {
   "key": "a8493de4v",
   "text": "You have completed the Academy."
+ },
+ {
+  "key": "b973baccq",
+  "text": "You have one star already."
+ },
+ {
+  "key": "b342e38br",
+  "text": "You have used your 1 moves."
+ },
+ {
+  "key": "a9b45ff1s",
+  "text": "You have used your 10 moves."
+ },
+ {
+  "key": "ec125ac0s",
+  "text": "You have used your 11 moves."
+ },
+ {
+  "key": "176ee62bs",
+  "text": "You have used your 12 moves."
+ },
+ {
+  "key": "2ff9b842s",
+  "text": "You have used your 13 moves."
+ },
+ {
+  "key": "6ea71305s",
+  "text": "You have used your 14 moves."
+ },
+ {
+  "key": "cdf5ce24s",
+  "text": "You have used your 15 moves."
+ },
+ {
+  "key": "6269153fs",
+  "text": "You have used your 16 moves."
+ },
+ {
+  "key": "4b621896s",
+  "text": "You have used your 17 moves."
+ },
+ {
+  "key": "0d6f4059s",
+  "text": "You have used your 18 moves."
+ },
+ {
+  "key": "756f1268s",
+  "text": "You have used your 19 moves."
+ },
+ {
+  "key": "e09e9520r",
+  "text": "You have used your 2 moves."
+ },
+ {
+  "key": "8b5e0ed8s",
+  "text": "You have used your 20 moves."
+ },
+ {
+  "key": "53c87409s",
+  "text": "You have used your 21 moves."
+ },
+ {
+  "key": "665eb73as",
+  "text": "You have used your 22 moves."
+ },
+ {
+  "key": "0fb87163s",
+  "text": "You have used your 23 moves."
+ },
+ {
+  "key": "e0d9419cs",
+  "text": "You have used your 24 moves."
+ },
+ {
+  "key": "f031a09ds",
+  "text": "You have used your 25 moves."
+ },
+ {
+  "key": "784ec1ees",
+  "text": "You have used your 26 moves."
+ },
+ {
+  "key": "c38b4837s",
+  "text": "You have used your 27 moves."
+ },
+ {
+  "key": "727f12b0s",
+  "text": "You have used your 28 moves."
+ },
+ {
+  "key": "81b40ba1s",
+  "text": "You have used your 29 moves."
+ },
+ {
+  "key": "391d1951r",
+  "text": "You have used your 3 moves."
+ },
+ {
+  "key": "06d8fdd3s",
+  "text": "You have used your 30 moves."
+ },
+ {
+  "key": "1f99f22as",
+  "text": "You have used your 31 moves."
+ },
+ {
+  "key": "eed51d39s",
+  "text": "You have used your 32 moves."
+ },
+ {
+  "key": "e69aabc8s",
+  "text": "You have used your 33 moves."
+ },
+ {
+  "key": "64049d67s",
+  "text": "You have used your 34 moves."
+ },
+ {
+  "key": "217e021es",
+  "text": "You have used your 35 moves."
+ },
+ {
+  "key": "c87e6a8ds",
+  "text": "You have used your 36 moves."
+ },
+ {
+  "key": "e564a04cs",
+  "text": "You have used your 37 moves."
+ },
+ {
+  "key": "da91898bs",
+  "text": "You have used your 38 moves."
+ },
+ {
+  "key": "cd6462a2s",
+  "text": "You have used your 39 moves."
+ },
+ {
+  "key": "bc879876r",
+  "text": "You have used your 4 moves."
+ },
+ {
+  "key": "79d20862s",
+  "text": "You have used your 40 moves."
+ },
+ {
+  "key": "1c804c1fr",
+  "text": "You have used your 5 moves."
+ },
+ {
+  "key": "595d9884r",
+  "text": "You have used your 6 moves."
+ },
+ {
+  "key": "52c71a65r",
+  "text": "You have used your 7 moves."
+ },
+ {
+  "key": "f84b4c2ar",
+  "text": "You have used your 8 moves."
+ },
+ {
+  "key": "df8a57d3r",
+  "text": "You have used your 9 moves."
  },
  {
   "key": "04ea43531r",
@@ -2216,12 +6452,432 @@
   "text": "You must do it on the very next move."
  },
  {
+  "key": "7400f6bde",
+  "text": "You solved it!"
+ },
+ {
   "key": "5e2fef72k",
   "text": "You were checkmated."
  },
  {
   "key": "70e8f412y",
   "text": "You won the king and pawn endgame."
+ },
+ {
+  "key": "05ccdc57s",
+  "text": "Your accuracy was 0 percent."
+ },
+ {
+  "key": "455c1712s",
+  "text": "Your accuracy was 1 percent."
+ },
+ {
+  "key": "40f22f50t",
+  "text": "Your accuracy was 10 percent."
+ },
+ {
+  "key": "5bc5b82au",
+  "text": "Your accuracy was 100 percent."
+ },
+ {
+  "key": "95312015t",
+  "text": "Your accuracy was 11 percent."
+ },
+ {
+  "key": "5a7935bat",
+  "text": "Your accuracy was 12 percent."
+ },
+ {
+  "key": "98eeaa5ft",
+  "text": "Your accuracy was 13 percent."
+ },
+ {
+  "key": "2bee5f4ct",
+  "text": "Your accuracy was 14 percent."
+ },
+ {
+  "key": "3d555dc1t",
+  "text": "Your accuracy was 15 percent."
+ },
+ {
+  "key": "77422756t",
+  "text": "Your accuracy was 16 percent."
+ },
+ {
+  "key": "ddb391dbt",
+  "text": "Your accuracy was 17 percent."
+ },
+ {
+  "key": "5f89c0a8t",
+  "text": "Your accuracy was 18 percent."
+ },
+ {
+  "key": "8b92166dt",
+  "text": "Your accuracy was 19 percent."
+ },
+ {
+  "key": "c2c13a6ds",
+  "text": "Your accuracy was 2 percent."
+ },
+ {
+  "key": "6af45e7dt",
+  "text": "Your accuracy was 20 percent."
+ },
+ {
+  "key": "d29e90b8t",
+  "text": "Your accuracy was 21 percent."
+ },
+ {
+  "key": "cb339a67t",
+  "text": "Your accuracy was 22 percent."
+ },
+ {
+  "key": "436e2a22t",
+  "text": "Your accuracy was 23 percent."
+ },
+ {
+  "key": "fde83129t",
+  "text": "Your accuracy was 24 percent."
+ },
+ {
+  "key": "debc9154t",
+  "text": "Your accuracy was 25 percent."
+ },
+ {
+  "key": "18972ac3t",
+  "text": "Your accuracy was 26 percent."
+ },
+ {
+  "key": "4a636f3et",
+  "text": "Your accuracy was 27 percent."
+ },
+ {
+  "key": "f402e825t",
+  "text": "Your accuracy was 28 percent."
+ },
+ {
+  "key": "febe8020t",
+  "text": "Your accuracy was 29 percent."
+ },
+ {
+  "key": "96b8e4a8s",
+  "text": "Your accuracy was 3 percent."
+ },
+ {
+  "key": "802b2b72t",
+  "text": "Your accuracy was 30 percent."
+ },
+ {
+  "key": "6a54d8b7t",
+  "text": "Your accuracy was 31 percent."
+ },
+ {
+  "key": "8654a588t",
+  "text": "Your accuracy was 32 percent."
+ },
+ {
+  "key": "f7e8c14dt",
+  "text": "Your accuracy was 33 percent."
+ },
+ {
+  "key": "733a9a0et",
+  "text": "Your accuracy was 34 percent."
+ },
+ {
+  "key": "3e950793t",
+  "text": "Your accuracy was 35 percent."
+ },
+ {
+  "key": "28e9b1e4t",
+  "text": "Your accuracy was 36 percent."
+ },
+ {
+  "key": "4141b4f9t",
+  "text": "Your accuracy was 37 percent."
+ },
+ {
+  "key": "db992d1at",
+  "text": "Your accuracy was 38 percent."
+ },
+ {
+  "key": "bb96ca3ft",
+  "text": "Your accuracy was 39 percent."
+ },
+ {
+  "key": "5870ff33s",
+  "text": "Your accuracy was 4 percent."
+ },
+ {
+  "key": "c1098e97t",
+  "text": "Your accuracy was 40 percent."
+ },
+ {
+  "key": "77fb2952t",
+  "text": "Your accuracy was 41 percent."
+ },
+ {
+  "key": "fe0730adt",
+  "text": "Your accuracy was 42 percent."
+ },
+ {
+  "key": "7e9183e8t",
+  "text": "Your accuracy was 43 percent."
+ },
+ {
+  "key": "e6998773t",
+  "text": "Your accuracy was 44 percent."
+ },
+ {
+  "key": "f9f33deet",
+  "text": "Your accuracy was 45 percent."
+ },
+ {
+  "key": "6e9ea359t",
+  "text": "Your accuracy was 46 percent."
+ },
+ {
+  "key": "58c10944t",
+  "text": "Your accuracy was 47 percent."
+ },
+ {
+  "key": "0fcdd19ft",
+  "text": "Your accuracy was 48 percent."
+ },
+ {
+  "key": "8b6fbafat",
+  "text": "Your accuracy was 49 percent."
+ },
+ {
+  "key": "0cdff1aes",
+  "text": "Your accuracy was 5 percent."
+ },
+ {
+  "key": "72ec7454t",
+  "text": "Your accuracy was 50 percent."
+ },
+ {
+  "key": "92181429t",
+  "text": "Your accuracy was 51 percent."
+ },
+ {
+  "key": "de93523et",
+  "text": "Your accuracy was 52 percent."
+ },
+ {
+  "key": "acc70dc3t",
+  "text": "Your accuracy was 53 percent."
+ },
+ {
+  "key": "66ce73b8t",
+  "text": "Your accuracy was 54 percent."
+ },
+ {
+  "key": "ff24417dt",
+  "text": "Your accuracy was 55 percent."
+ },
+ {
+  "key": "d79e0d22t",
+  "text": "Your accuracy was 56 percent."
+ },
+ {
+  "key": "5f637d67t",
+  "text": "Your accuracy was 57 percent."
+ },
+ {
+  "key": "96bcc11ct",
+  "text": "Your accuracy was 58 percent."
+ },
+ {
+  "key": "c046f791t",
+  "text": "Your accuracy was 59 percent."
+ },
+ {
+  "key": "7751ab19s",
+  "text": "Your accuracy was 6 percent."
+ },
+ {
+  "key": "658bca51t",
+  "text": "Your accuracy was 60 percent."
+ },
+ {
+  "key": "5beddfdct",
+  "text": "Your accuracy was 61 percent."
+ },
+ {
+  "key": "6abe1b6bt",
+  "text": "Your accuracy was 62 percent."
+ },
+ {
+  "key": "3b9f4b26t",
+  "text": "Your accuracy was 63 percent."
+ },
+ {
+  "key": "110dc8e5t",
+  "text": "Your accuracy was 64 percent."
+ },
+ {
+  "key": "2b9a95e0t",
+  "text": "Your accuracy was 65 percent."
+ },
+ {
+  "key": "9a07016ft",
+  "text": "Your accuracy was 66 percent."
+ },
+ {
+  "key": "dee4fbcat",
+  "text": "Your accuracy was 67 percent."
+ },
+ {
+  "key": "f8647ae9t",
+  "text": "Your accuracy was 68 percent."
+ },
+ {
+  "key": "fee49214t",
+  "text": "Your accuracy was 69 percent."
+ },
+ {
+  "key": "0f894904s",
+  "text": "Your accuracy was 7 percent."
+ },
+ {
+  "key": "e6b38576t",
+  "text": "Your accuracy was 70 percent."
+ },
+ {
+  "key": "dde041fbt",
+  "text": "Your accuracy was 71 percent."
+ },
+ {
+  "key": "3fa829ect",
+  "text": "Your accuracy was 72 percent."
+ },
+ {
+  "key": "34a55361t",
+  "text": "Your accuracy was 73 percent."
+ },
+ {
+  "key": "fbc12ddat",
+  "text": "Your accuracy was 74 percent."
+ },
+ {
+  "key": "ac6299fft",
+  "text": "Your accuracy was 75 percent."
+ },
+ {
+  "key": "d4ab3070t",
+  "text": "Your accuracy was 76 percent."
+ },
+ {
+  "key": "a4de9fb5t",
+  "text": "Your accuracy was 77 percent."
+ },
+ {
+  "key": "747e5ccet",
+  "text": "Your accuracy was 78 percent."
+ },
+ {
+  "key": "6bb6f853t",
+  "text": "Your accuracy was 79 percent."
+ },
+ {
+  "key": "d01dce5fs",
+  "text": "Your accuracy was 8 percent."
+ },
+ {
+  "key": "71e374dbt",
+  "text": "Your accuracy was 80 percent."
+ },
+ {
+  "key": "0b720a56t",
+  "text": "Your accuracy was 81 percent."
+ },
+ {
+  "key": "d18540c1t",
+  "text": "Your accuracy was 82 percent."
+ },
+ {
+  "key": "c01e424ct",
+  "text": "Your accuracy was 83 percent."
+ },
+ {
+  "key": "2d1e8d5ft",
+  "text": "Your accuracy was 84 percent."
+ },
+ {
+  "key": "eea918bat",
+  "text": "Your accuracy was 85 percent."
+ },
+ {
+  "key": "29610315t",
+  "text": "Your accuracy was 86 percent."
+ },
+ {
+  "key": "d5221250t",
+  "text": "Your accuracy was 87 percent."
+ },
+ {
+  "key": "b571be33t",
+  "text": "Your accuracy was 88 percent."
+ },
+ {
+  "key": "69e0b0aet",
+  "text": "Your accuracy was 89 percent."
+ },
+ {
+  "key": "91a859bas",
+  "text": "Your accuracy was 9 percent."
+ },
+ {
+  "key": "65305ec8t",
+  "text": "Your accuracy was 90 percent."
+ },
+ {
+  "key": "acffd28dt",
+  "text": "Your accuracy was 91 percent."
+ },
+ {
+  "key": "103183b2t",
+  "text": "Your accuracy was 92 percent."
+ },
+ {
+  "key": "a1e8cef7t",
+  "text": "Your accuracy was 93 percent."
+ },
+ {
+  "key": "5005b524t",
+  "text": "Your accuracy was 94 percent."
+ },
+ {
+  "key": "553d7e39t",
+  "text": "Your accuracy was 95 percent."
+ },
+ {
+  "key": "b410724et",
+  "text": "Your accuracy was 96 percent."
+ },
+ {
+  "key": "ab490dd3t",
+  "text": "Your accuracy was 97 percent."
+ },
+ {
+  "key": "143d45f0t",
+  "text": "Your accuracy was 98 percent."
+ },
+ {
+  "key": "e470b535t",
+  "text": "Your accuracy was 99 percent."
+ },
+ {
+  "key": "49b30348p",
+  "text": "Your bishop can be taken!"
+ },
+ {
+  "key": "b1d0ed2015",
+  "text": "Your bishop is under attack and not safe."
+ },
+ {
+  "key": "d58d5c59s",
+  "text": "Your bishop is under attack."
  },
  {
   "key": "fe1c21d328",
@@ -2260,6 +6916,38 @@
   "text": "Your king walks up to face the other king, and then the rook says check!"
  },
  {
+  "key": "511bfcacp",
+  "text": "Your knight can be taken!"
+ },
+ {
+  "key": "bf2d071c15",
+  "text": "Your knight is under attack and not safe."
+ },
+ {
+  "key": "5567be65s",
+  "text": "Your knight is under attack."
+ },
+ {
+  "key": "50a6fc1fa",
+  "text": "Your move."
+ },
+ {
+  "key": "83e795f6y",
+  "text": "Your opponent brings out a bishop."
+ },
+ {
+  "key": "0419a1cay",
+  "text": "Your opponent brings out a knight."
+ },
+ {
+  "key": "156dd12815",
+  "text": "Your opponent brings the queen out early."
+ },
+ {
+  "key": "e4e50f7a16",
+  "text": "Your opponent brought the queen out early."
+ },
+ {
   "key": "8db8d21314",
   "text": "Your opponent can only save one of them."
  },
@@ -2268,16 +6956,176 @@
   "text": "Your opponent can only save one."
  },
  {
+  "key": "1143b033z",
+  "text": "Your opponent captured your bishop."
+ },
+ {
+  "key": "77fa148fz",
+  "text": "Your opponent captured your knight."
+ },
+ {
+  "key": "6105f11ax",
+  "text": "Your opponent captured your pawn."
+ },
+ {
+  "key": "1c2095d6y",
+  "text": "Your opponent captured your queen."
+ },
+ {
+  "key": "19b3d0b3x",
+  "text": "Your opponent captured your rook."
+ },
+ {
+  "key": "7200a45c18",
+  "text": "Your opponent castled to keep the king safe."
+ },
+ {
+  "key": "13f84351y",
+  "text": "Your opponent develops the bishop."
+ },
+ {
+  "key": "7181deddy",
+  "text": "Your opponent develops the knight."
+ },
+ {
+  "key": "b4c1e07110",
+  "text": "Your opponent fights for the centre."
+ },
+ {
   "key": "d85a29b9o",
   "text": "Your opponent is moving…"
+ },
+ {
+  "key": "7c3997191k",
+  "text": "Your opponent took your bishop, but you can win it back!"
+ },
+ {
+  "key": "b1e4499cv",
+  "text": "Your opponent took your bishop."
+ },
+ {
+  "key": "cdd6728d1k",
+  "text": "Your opponent took your knight, but you can win it back!"
+ },
+ {
+  "key": "0483f688v",
+  "text": "Your opponent took your knight."
+ },
+ {
+  "key": "3a41073e1i",
+  "text": "Your opponent took your pawn, but you can win it back!"
+ },
+ {
+  "key": "6568f2edt",
+  "text": "Your opponent took your pawn."
+ },
+ {
+  "key": "c91a4b401j",
+  "text": "Your opponent took your queen, but you can win it back!"
+ },
+ {
+  "key": "ff199b33u",
+  "text": "Your opponent took your queen."
+ },
+ {
+  "key": "c2090b0d1i",
+  "text": "Your opponent took your rook, but you can win it back!"
+ },
+ {
+  "key": "1d9cbc08t",
+  "text": "Your opponent took your rook."
+ },
+ {
+  "key": "145d4d3711",
+  "text": "Your opponent wants to checkmate you."
+ },
+ {
+  "key": "e36e5f901e",
+  "text": "Your opponent won your bishop: it was unprotected."
+ },
+ {
+  "key": "6070bc211k",
+  "text": "Your opponent won your bishop: nobody was protecting it."
+ },
+ {
+  "key": "7b67fcfc1e",
+  "text": "Your opponent won your knight: it was unprotected."
+ },
+ {
+  "key": "2a8d333d1k",
+  "text": "Your opponent won your knight: nobody was protecting it."
+ },
+ {
+  "key": "6410dba91c",
+  "text": "Your opponent won your pawn: it was unprotected."
+ },
+ {
+  "key": "10a50b841i",
+  "text": "Your opponent won your pawn: nobody was protecting it."
+ },
+ {
+  "key": "9de2c0051d",
+  "text": "Your opponent won your queen: it was unprotected."
+ },
+ {
+  "key": "07fa33e01j",
+  "text": "Your opponent won your queen: nobody was protecting it."
+ },
+ {
+  "key": "0f457ff01c",
+  "text": "Your opponent won your rook: it was unprotected."
+ },
+ {
+  "key": "5a977f811i",
+  "text": "Your opponent won your rook: nobody was protecting it."
+ },
+ {
+  "key": "42241a7bn",
+  "text": "Your pawn can be taken!"
+ },
+ {
+  "key": "ded8cedf13",
+  "text": "Your pawn is under attack and not safe."
+ },
+ {
+  "key": "4313cfecq",
+  "text": "Your pawn is under attack."
  },
  {
   "key": "d4f15405j",
   "text": "Your pawn was lost."
  },
  {
+  "key": "2d4427a7o",
+  "text": "Your queen can be taken!"
+ },
+ {
+  "key": "0f8fdd3314",
+  "text": "Your queen is under attack and not safe."
+ },
+ {
+  "key": "7ae321f0r",
+  "text": "Your queen is under attack."
+ },
+ {
   "key": "19202fef26",
   "text": "Your rook builds a wall on the third row so the other king cannot come closer."
+ },
+ {
+  "key": "1d521220n",
+  "text": "Your rook can be taken!"
+ },
+ {
+  "key": "d7c0f47813",
+  "text": "Your rook is under attack and not safe."
+ },
+ {
+  "key": "ffe7de71q",
+  "text": "Your rook is under attack."
+ },
+ {
+  "key": "62b97e24g",
+  "text": "Your turn again!"
  },
  {
   "key": "5dccb5c410",

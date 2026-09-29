@@ -11,7 +11,11 @@ describe("commentary on the opponent's move", () => {
   it('warns about a mate threat (Scholar’s mate)', () => {
     // 1.e4 e5 2.Bc4 Nc6 — now White plays 3.Qh5; the player is Black
     const c = say('r1bqkbnr/pppp1ppp/2n5/4p3/2B1P3/8/PPPP1PPP/RNBQK1NR w KQkq - 2 3', 'Qh5', 4)
-    expect(c).toEqual({ tone: 'danger', text: 'Careful: Pip threatens checkmate with Qxf7#. Deal with that first.' })
+    expect(c).toEqual({
+      tone: 'danger',
+      text: 'Careful: Pip threatens checkmate with Qxf7#. Deal with that first.',
+      say: 'Careful: Pip threatens checkmate. Deal with that first.',
+    })
   })
 
   it('explains a check', () => {

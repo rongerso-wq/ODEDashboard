@@ -17,6 +17,7 @@ const fb = (over: Partial<Feedback> = {}): Feedback => ({
   grade: 'blunder',
   title: 'Blunder',
   text: 'The queen on h5 can be taken — Pip plays gxh5. Better was d4.',
+  say: 'Your queen can be taken! There was a better move.',
   san: 'Qh5',
   playedUci: 'd1h5',
   bestUci: 'd2d4',

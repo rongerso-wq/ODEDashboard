@@ -1,11 +1,12 @@
-// Collects every fixed sentence Elias says, for the recorder (record.mjs) and the coverage test.
-// Phase 1: the Academy (all lesson text in both styles, lesson intros, feedback and praise) and
-// the Settings sample. Sentences with changing parts (numbers, moves) come in phase 2.
+// Collects every sentence Elias says, for the recorder (record.mjs) and the coverage tests: all
+// lesson text in both styles, fixed lines in the screens and the coach, and everything he says
+// during play (coach/say.ts `spokenCatalog`, with every allowed piece, opponent and number).
 // Run: node scripts/voice/collect.ts   → writes scripts/voice/lines.json
 import { readFileSync, writeFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { CHAPTERS } from '../../src/academy/lessons.ts'
 import { sentences, clipKey } from '../../src/lib/voiceText.ts'
+import { spokenCatalog } from '../../src/coach/say.ts'
 
 const src = (p: string) => readFileSync(new URL(`../../src/${p}`, import.meta.url), 'utf8')
 
@@ -43,9 +44,24 @@ export function collectTexts(): string[] {
       // the intro LessonPlayer speaks before the first step
       texts.push(`Today's lesson: ${l.title}.`, `Hello, my young friend! Today's lesson: ${l.kidsTitle ?? l.title}.`)
     }
-  for (const f of ['screens/LessonPlayer.tsx', 'screens/Academy.tsx', 'components/SettingsSheet.tsx']) texts.push(...literals(src(f)))
+  // Fixed lines in the screens and the coach (opening advice, level-1 hints, puzzle messages…)
+  for (const f of [
+    'screens/LessonPlayer.tsx',
+    'screens/Academy.tsx',
+    'components/SettingsSheet.tsx',
+    'coach/explain.ts',
+    'components/PuzzleBoard.tsx',
+    'screens/PuzzlePlay.tsx',
+    'screens/MistakesPractice.tsx',
+  ])
+    texts.push(...literals(src(f)))
   // Lesson complete: LessonPlayer speaks `${title}. ${praise}`
   for (const t of ['Lesson complete', 'Well done!', 'Perfect!', 'You did it!', 'Great job!', 'Superstar! 🌟']) texts.push(`${t}.`)
+  // Grade titles ("Best move", "Oops!"): the coach and the review speak `${title}. ${say}`
+  for (const m of src('coach/explain.ts').matchAll(/(?:classic|kids): '([^']+)'/g)) texts.push(`${m[1]}.`)
+  // Everything said during play (coach/say.ts), with every allowed piece, name and number
+  const titles = CHAPTERS.flatMap((c) => c.lessons.flatMap((l) => [l.title, l.kidsTitle ?? l.title]))
+  texts.push(...spokenCatalog([...new Set(titles)]))
   return texts
 }
 

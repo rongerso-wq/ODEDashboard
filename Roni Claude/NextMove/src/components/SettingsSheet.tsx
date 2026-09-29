@@ -5,6 +5,7 @@ import { useSpeaking } from '../lib/useVoice'
 import { useSettings } from '../lib/settings'
 import { bestVoice, englishVoices, speak, voiceId, voiceLabel, voiceSupported, whenVoicesReady } from '../lib/voice'
 import { canPromptInstall, isInstalled, isIOS, onInstallChange, promptInstall } from '../lib/install'
+import { clipTotal, downloadAll, offlineCount, voiceMb } from '../lib/recordings'
 import './SettingsSheet.css'
 
 const SAMPLE =
@@ -40,6 +41,41 @@ function InstallRow() {
       <span className="sheet-note">Put NextMove on your home screen. It works without internet.</span>
       {body}
     </section>
+  )
+}
+
+/** Elias's recorded voice without internet: lines he has said are kept; this stores all of them. */
+function OfflineVoice() {
+  const [have, setHave] = useState<number | null>(null)
+  const [busy, setBusy] = useState(false)
+  useEffect(() => {
+    let live = true
+    void offlineCount().then((n) => live && setHave(n))
+    return () => {
+      live = false
+    }
+  }, [])
+  const ready = have === clipTotal
+  async function download() {
+    setBusy(true)
+    const n = await downloadAll(setHave)
+    setHave(n)
+    setBusy(false)
+  }
+  return (
+    <>
+      <p className="sheet-note">
+        Elias's own voice, recorded for NextMove.{' '}
+        {ready
+          ? 'All of it is saved on this device, so he speaks without internet too.'
+          : 'Lines he has spoken are kept for offline use. Download the rest to hear him everywhere without internet.'}
+      </p>
+      {!ready && (
+        <button className="btn" onClick={download} disabled={busy || have === null}>
+          {busy ? `Downloading… ${Math.round(((have ?? 0) / clipTotal) * 100)}%` : `Download Elias's voice (${voiceMb} MB)`}
+        </button>
+      )}
+    </>
   )
 }
 
@@ -150,10 +186,7 @@ export default function SettingsSheet({ onClose }: { onClose: () => void }) {
               </details>
             </>
           ) : (
-            <p className="sheet-note">
-              Elias's own voice, recorded for NextMove. It works without internet. Lines that change during a game
-              still use your device's voice for now.
-            </p>
+            <OfflineVoice />
           )}
         </section>
 
@@ -162,8 +195,8 @@ export default function SettingsSheet({ onClose }: { onClose: () => void }) {
           <strong>Privacy</strong>
           <p className="sheet-note">
             NextMove has no accounts, no ads and no tracking. Your games, progress and settings stay on this device and are
-            never sent anywhere. Elias uses your device's voices: some of them are online voices, which send the text
-            being read to your browser's maker.
+            never sent anywhere. Elias's recorded voice is part of the app. If you choose a device voice instead, some
+            of those are online voices, which send the text being read to your browser's maker.
           </p>
           <strong>Credits</strong>
           <p className="sheet-note">
