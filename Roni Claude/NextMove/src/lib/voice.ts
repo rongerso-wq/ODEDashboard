@@ -76,10 +76,15 @@ export function englishVoices(): SpeechSynthesisVoice[] {
   return s ? s.getVoices().filter((v) => v.lang.toLowerCase().startsWith('en') && !matches(NOVELTY, v)) : []
 }
 
-/** A male voice first (Elias is a man), then the best-sounding one, then the preferred names. */
+/**
+ * An on-device voice first (online voices send the text being read to the browser's maker, and
+ * the automatic fallback must not do that unasked: privacy statement, QA 2026-10-01), then a male
+ * voice (Elias is a man), then the best-sounding one, then the preferred names.
+ */
 export function voiceScore(v: SpeechSynthesisVoice): number {
   const pref = PREFERRED.findIndex((re) => matches(re, v))
   return (
+    (v.localService === false ? 0 : 3000) +
     (matches(FEMALE, v) ? 0 : 1000) +
     (HIGH_QUALITY.test(quality(v)) ? 200 : /google/i.test(v.name) ? 100 : 0) +
     (pref < 0 ? 0 : 50 - pref) +

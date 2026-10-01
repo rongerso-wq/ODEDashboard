@@ -12,13 +12,7 @@
     <meta name="theme-color" content="#15100c" />
     <meta name="description" content="NextMove — learn chess from your very first move. Lessons, a coach that explains, computer opponents and puzzles. Free, no ads, works offline." />
     <title>NextMove — Learn Chess</title>
-    <script>
-      // Apply the saved Classic/Kids style before first paint (avoids a flash).
-      try {
-        var s = JSON.parse(localStorage.getItem('nextmove:settings') || '{}')
-        if (s.mode) document.documentElement.dataset.mode = s.mode
-      } catch (e) {}
-    </script>
+    <script src="/theme-init.js"></script>
   </head>
   <body>
     <div id="root"></div>

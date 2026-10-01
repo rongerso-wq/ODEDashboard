@@ -1,5 +1,14 @@
+import { readFileSync } from 'node:fs'
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
+
+// The live site's security headers (vercel.json), also served by `vite preview`, so a CSP that
+// would break something shows up locally first.
+const liveHeaders: Record<string, string> = Object.fromEntries(
+  (JSON.parse(readFileSync(new URL('./vercel.json', import.meta.url), 'utf8')).headers[0].headers as { key: string; value: string }[]).map(
+    (h) => [h.key, h.value],
+  ),
+)
 import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vite.dev/config/
@@ -11,6 +20,7 @@ export default defineConfig({
     target: ['es2020', 'safari15', 'chrome100'],
     cssTarget: ['safari15', 'chrome100'],
   },
+  preview: { headers: liveHeaders },
   plugins: [
     react(),
     // Installable, fully offline app. Everything (engine WASM, puzzles, fonts, pieces) is precached.
@@ -41,6 +51,7 @@ export default defineConfig({
         globPatterns: ['**/*.{js,css,html,svg,png,woff2,wasm,json,txt}'],
         maximumFileSizeToCacheInBytes: 5 * 1024 * 1024, // stockfish.wasm is ~1.8 MB
         navigateFallback: 'index.html',
+        navigateFallbackDenylist: [/privacy\.html$/], // the public privacy policy is its own page
         cleanupOutdatedCaches: true,
         // Elias's recordings (public/voice, ~10 MB): kept once played, so heard lessons work offline.
         // A clip's name is a hash of its text, so a cached clip never goes stale.

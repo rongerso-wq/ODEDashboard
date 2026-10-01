@@ -1,0 +1,43 @@
+/* The public privacy policy (privacy.html). A file, not inline styles: the CSP allows 'self' only. */
+:root {
+  color-scheme: light dark;
+  --bg: #fffaf3;
+  --text: #2d2238;
+  --muted: #5e5068;
+  --accent: #c2410c;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #15100c;
+    --text: #f3ebdd;
+    --muted: #c9bba6;
+    --accent: #e7b866;
+  }
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 17px/1.6 system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+main {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 32px 16px 48px;
+}
+h1 {
+  font-size: 28px;
+  line-height: 1.2;
+  margin: 0 0 4px;
+}
+h2 {
+  font-size: 19px;
+  margin: 28px 0 6px;
+}
+.updated {
+  color: var(--muted);
+  margin-top: 0;
+}
+a {
+  color: var(--accent);
+}

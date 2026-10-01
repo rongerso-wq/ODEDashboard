@@ -12,6 +12,31 @@ import './SettingsSheet.css'
 const SAMPLE =
   "Hello, my friend. I'm Elias. Before every move, look at every check, capture and threat. Remember Scholar's mate: Qxf7# works only when the bishop helps."
 
+/**
+ * The licence notices, shown inside the app: a link opened a bare text page, and an iPhone
+ * home-screen app has no Back button to return from it (kids-store rules also frown on leaving).
+ */
+const LICENCES_FILE = 'licenses.txt'
+function Licences() {
+  const [text, setText] = useState<string | null>(null)
+  const [open, setOpen] = useState(false)
+  function toggle() {
+    setOpen(!open)
+    if (text === null)
+      fetch(LICENCES_FILE)
+        .then((r) => (r.ok ? r.text() : Promise.reject(new Error(String(r.status)))))
+        .then(setText, () => setText(`The licence notices could not be loaded (${LICENCES_FILE}).`))
+  }
+  return (
+    <>
+      <button className="btn" onClick={toggle} aria-expanded={open}>
+        {open ? 'Hide licences' : 'Licences and source code'}
+      </button>
+      {open && <pre className="sheet-licences">{text ?? 'Loading…'}</pre>}
+    </>
+  )
+}
+
 /** Install NextMove as an app: a real prompt on Chrome/Edge/Android, instructions on iPhone. */
 function InstallRow() {
   const [, rerender] = useState(0)
@@ -201,17 +226,18 @@ export default function SettingsSheet({ onClose }: { onClose: () => void }) {
           <strong>Privacy</strong>
           <p className="sheet-note">
             NextMove has no accounts, no ads and no tracking. Your games, progress and settings stay on this device and are
-            never sent anywhere. Elias's recorded voice is part of the app. If you choose a device voice instead, some
-            of those are online voices, which send the text being read to your browser's maker.
+            never sent anywhere. Elias's recorded voice is part of the app. When a sentence can't be played in it, your
+            device's own voice reads it, and NextMove picks a voice that works on the device. Only if you choose an online
+            voice yourself (or your browser has no other) is the text being read sent to your browser's maker: lesson and
+            coach text, never your games or progress.
           </p>
           <strong>Credits</strong>
           <p className="sheet-note">
-            Chess engine: Stockfish (GPLv3). Pieces: cburnett by Colin M.L. Burnett (CC BY-SA 3.0). Puzzles: the Lichess
-            puzzle database (public domain).
+            Created by Dr. Roni Gershonovitch. Elias's voice is AI-generated (OpenAI text-to-speech). Chess engine:
+            Stockfish (GPLv3). Pieces: cburnett by Colin M.L. Burnett (CC BY-SA 3.0). Puzzles: the Lichess puzzle database
+            (public domain).
           </p>
-          <a className="btn" href="licenses.txt" target="_blank" rel="noreferrer">
-            Licences and source code
-          </a>
+          <Licences />
         </section>
       </div>
     </div>

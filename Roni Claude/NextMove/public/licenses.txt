@@ -6,9 +6,14 @@ work of others, credited below.
 ========================================================================
 Stockfish 19.0.0 (chess engine), via stockfish.js
 Licence: GNU General Public License v3. Full text: engine/COPYING.txt
-NextMove runs the unmodified engine. Source code:
-  https://github.com/official-stockfish/Stockfish
-  https://github.com/nmrugg/stockfish.js
+NextMove runs the unmodified engine. Source code of the exact versions used:
+  Stockfish 19: https://github.com/official-stockfish/Stockfish/tree/sf_19
+  stockfish.js 19.0.0 (the browser build): https://registry.npmjs.org/stockfish/-/stockfish-19.0.0.tgz
+  (project home: https://github.com/nmrugg/stockfish.js)
+
+========================================================================
+Elias's voice: AI-generated with OpenAI text-to-speech, recorded once and
+shipped with the app. NextMove never contacts OpenAI.
 
 ========================================================================
 Chess pieces: "cburnett" set by Colin M.L. Burnett
