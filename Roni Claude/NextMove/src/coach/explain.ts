@@ -158,12 +158,17 @@ function whatWentWrong(x: {
     }
   const moved = hanging.find((h) => h.square === m.to)
   if (moved && moved.value >= 3)
-    return { text: `The ${NAME[moved.type]} on ${m.to} is left unprotected and can be captured.${better}`, say: sayWrong.leftLoose(P(moved.type)) + sayBetter }
+    return moved.defended
+      ? { text: `The ${NAME[moved.type]} on ${m.to} can be won: a cheaper piece attacks it.${better}`, say: sayWrong.canBeTaken(P(moved.type)) + sayBetter }
+      : { text: `The ${NAME[moved.type]} on ${m.to} is left unprotected and can be captured.${better}`, say: sayWrong.leftLoose(P(moved.type)) + sayBetter }
 
   // 4. The better move won material.
   if (best) {
     const won = winsMaterial(x.before.fen, best)
-    if (won) return { text: `A free ${NAME[won.type]} was there: ${bestSan} wins it.`, say: sayWrong.freePiece(P(won.type)) }
+    if (won)
+      return won.defended
+        ? { text: `${bestSan} won material: a ${NAME[won.type]} for a ${NAME[best.piece]}.`, say: `${sayWrong.better} ${sayHint.whyWins(P(won.type))}` }
+        : { text: `A free ${NAME[won.type]} was there: ${bestSan} wins it.`, say: sayWrong.freePiece(P(won.type)) }
     const fork = isFork(best.after, best)
     if (fork) return { text: `${bestSan} would have attacked the ${listPieces(fork)} at the same time.`, say: sayWrong.missedFork }
   }
@@ -190,7 +195,8 @@ function whatWentWrong(x: {
 /** The classic opening advice a coach would give about this move, if any applies. */
 function openingPrinciple(m: Move, ply: number, kids: boolean): string | null {
   if (ply >= 16) return null
-  if (m.piece === 'q' && ply < 12)
+  // only the queen's first trip out (not a recapture with her or a retreat later)
+  if (m.piece === 'q' && ply < 12 && m.from === (m.color === 'w' ? 'd1' : 'd8') && !m.captured)
     return kids
       ? 'The queen came out too early — the other side can chase her around. Bring out knights and bishops first!'
       : 'Bringing the queen out early lets the opponent attack it while developing. Develop knights and bishops first.'
@@ -198,7 +204,8 @@ function openingPrinciple(m: Move, ply: number, kids: boolean): string | null {
     return kids ? 'Moving the king means you can’t castle any more. Keep the king safe by castling!' : 'Moving the king gives up castling. Aim to castle early instead.'
   if (m.piece === 'n' && (m.to[0] === 'a' || m.to[0] === 'h'))
     return kids ? '"A knight on the rim is dim" — knights are stronger in the middle.' : '"A knight on the rim is dim": on the edge it controls fewer squares.'
-  if (m.piece === 'p' && 'abgh'.includes(m.from[0]) && ply < 10)
+  // a- and h-pawns only: b6/g6 prepare a fianchetto, which the Academy teaches
+  if (m.piece === 'p' && 'ah'.includes(m.from[0]) && ply < 10)
     return kids ? 'Early on, move the middle pawns and bring out your pieces.' : 'In the opening, fight for the centre and develop pieces rather than pushing edge pawns.'
   return null
 }
@@ -239,7 +246,8 @@ export function hintFor(a: Analysis, level: 1 | 2 | 3, ply: number, kids: boolea
         : `Careful: your opponent threatens checkmate with ${threat.san}. How do you stop it?`
       return { level, text, say: kids ? sayHint.threatKids : sayHint.threat }
     }
-    else if (won) text = kids ? 'Something can be captured for free! Can you find it?' : 'You can win material. Is anything of theirs unprotected?'
+    // "for free" only when it really is unprotected (otherwise it's a winning trade)
+    else if (won) text = kids ? (won.defended ? 'Look at every check, capture and threat!' : 'Something can be captured for free! Can you find it?') : 'You can win material. Is anything of theirs unprotected?'
     else if (saving) text = kids ? 'One of your pieces is in danger! Can you save it?' : 'One of your pieces is under attack. Deal with the threat.'
     else if (fork) text = 'Look for a move that attacks two pieces at once.'
     else if (best.san.includes('+')) text = 'Look for a check.'

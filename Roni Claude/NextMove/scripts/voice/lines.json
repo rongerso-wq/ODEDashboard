@@ -564,6 +564,10 @@
   "text": "Can he catch the queen?"
  },
  {
+  "key": "ace85078w",
+  "text": "Can the black king take it back?"
+ },
+ {
   "key": "cd2495c2s",
   "text": "Can the king catch the pawn?"
  },
@@ -780,8 +784,8 @@
   "text": "Check, and a fork!"
  },
  {
-  "key": "336186fe10",
-  "text": "Check, and next move the rook falls."
+  "key": "44e2577fy",
+  "text": "Check, and the rook on a8 is lost!"
  },
  {
   "key": "27232eb26",
@@ -824,8 +828,8 @@
   "text": "Checkmate in two moves."
  },
  {
-  "key": "849cea263g",
-  "text": "checkmate is check with no way out: the king cannot move, the attack cannot be blocked, and the attacker cannot be captured."
+  "key": "1d0fc4903x",
+  "text": "checkmate is check with no way out: the king cannot move to a safe square, the attack cannot be blocked, and the attacker cannot be captured."
  },
  {
   "key": "7f82dcac1q",
@@ -1428,8 +1432,8 @@
   "text": "Have you thought about castling too?"
  },
  {
-  "key": "2bfde1c623",
-  "text": "He is the most important piece: if your king is trapped, you lose the game."
+  "key": "dad3895a2m",
+  "text": "He is the most important piece: if your king is attacked and cannot escape, you lose the game."
  },
  {
   "key": "a40ce6b615",
@@ -6880,8 +6884,8 @@
   "text": "Your bishop is under attack."
  },
  {
-  "key": "fe1c21d328",
-  "text": "Your c1 rook can capture on c8, and it is protected… or does it even need to be?"
+  "key": "a7608f8bv",
+  "text": "Your c1 rook can capture on c8."
  },
  {
   "key": "f11df989z",

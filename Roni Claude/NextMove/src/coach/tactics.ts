@@ -7,7 +7,9 @@ export const NAME: Record<PieceSymbol, string> = { p: 'pawn', n: 'knight', b: 'b
 
 const other = (c: Color): Color => (c === 'w' ? 'b' : 'w')
 
-export type Target = { square: Square; type: PieceSymbol; value: number }
+/** `defended`: some own piece protects it. Then it isn't "free" or "unprotected": it can only be
+ * won because something cheaper attacks it (or the capture is a good trade), so say that instead. */
+export type Target = { square: Square; type: PieceSymbol; value: number; defended?: boolean }
 
 /** Lowest-value piece of `by` attacking `sq` (Infinity if none). */
 function cheapestAttacker(chess: Chess, sq: Square, by: Color): number {
@@ -31,7 +33,7 @@ export function hangingPieces(chess: Chess, color: Color): Target[] {
       const cheapest = cheapestAttacker(chess, p.square, other(color))
       if (cheapest === Infinity) continue
       const defended = chess.attackers(p.square, color).length > 0
-      if (!defended || cheapest < VALUE[p.type]) out.push({ square: p.square, type: p.type, value: VALUE[p.type] })
+      if (!defended || cheapest < VALUE[p.type]) out.push({ square: p.square, type: p.type, value: VALUE[p.type], defended })
     }
   return out.sort((a, b) => b.value - a.value)
 }
@@ -40,9 +42,9 @@ export function hangingPieces(chess: Chess, color: Color): Target[] {
 export function winsMaterial(before: string, m: Move): Target | null {
   if (!m.captured) return null
   const chess = new Chess(before)
-  const target: Target = { square: m.to, type: m.captured, value: VALUE[m.captured] }
-  if (m.isEnPassant()) return target
+  if (m.isEnPassant()) return { square: m.to, type: m.captured, value: VALUE[m.captured], defended: false }
   const defended = chess.attackers(m.to, other(m.color)).length > 0
+  const target: Target = { square: m.to, type: m.captured, value: VALUE[m.captured], defended }
   return !defended || VALUE[m.captured] > VALUE[m.piece] ? target : null
 }
 
@@ -65,14 +67,18 @@ export function forkTargets(after: string, m: Move): Target[] {
   return out.sort((a, b) => b.value - a.value)
 }
 
-/** A real fork: two or more targets, and the forking piece can't simply be taken for free. */
+/**
+ * A real fork: two or more targets, and the forking piece can't simply be taken: not for free,
+ * and not by a piece worth no more than it (a pawn taking a defended knight ends the "fork").
+ */
 export function isFork(after: string, m: Move): Target[] | null {
   const targets = forkTargets(after, m)
   if (targets.length < 2) return null
   const chess = new Chess(after)
-  const attacked = chess.attackers(m.to, other(m.color)).length > 0
+  const cheapest = cheapestAttacker(chess, m.to, other(m.color))
+  if (cheapest === Infinity) return targets
   const defended = chess.attackers(m.to, m.color).length > 0
-  return attacked && !defended ? null : targets
+  return !defended || cheapest <= VALUE[m.piece] ? null : targets
 }
 
 /**

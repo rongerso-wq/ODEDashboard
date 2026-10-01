@@ -44,8 +44,14 @@ describe('tactics', () => {
   it('finds a hanging piece', () => {
     // White knight on e5 attacked by the d6 pawn, and undefended
     const c = new Chess('4k3/8/3p4/4N3/8/8/8/4K3 b - - 0 1')
-    expect(hangingPieces(c, 'w')).toEqual([{ square: 'e5', type: 'n', value: 3 }])
+    expect(hangingPieces(c, 'w')).toEqual([{ square: 'e5', type: 'n', value: 3, defended: false }])
     expect(hangingPieces(c, 'b')).toEqual([])
+  })
+
+  it('marks a defended piece attacked by something cheaper as defended (not "unprotected")', () => {
+    // knight on e5 defended by the d4 pawn, attacked by the d6 pawn
+    const c = new Chess('4k3/8/3p4/4N3/3P4/8/8/4K3 b - - 0 1')
+    expect(hangingPieces(c, 'w')).toEqual([{ square: 'e5', type: 'n', value: 3, defended: true }])
   })
 
   it('knows a free capture from an even trade', () => {

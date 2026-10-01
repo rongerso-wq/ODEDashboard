@@ -106,7 +106,7 @@ export const CHAPTERS: Chapter[] = [
             kind: 'info',
             fen: '8/8/8/8/4K3/8/8/8 w - - 0 1',
             marks: marks(['d5', 'e5', 'f5', 'd4', 'f4', 'd3', 'e3', 'f3']),
-            text: 'The king moves one square in any direction. He is the most important piece: if your king is trapped, you lose the game.',
+            text: 'The king moves one square in any direction. He is the most important piece: if your king is attacked and cannot escape, you lose the game.',
             kids: 'The king takes one small step in any direction. Keep him safe — he is the most important piece!',
           },
           {
@@ -333,7 +333,7 @@ export const CHAPTERS: Chapter[] = [
             fen: '3R2k1/5ppp/8/8/8/8/8/6K1 b - - 0 1',
             arrows: [arrow('d8', 'g8', 'bad')],
             marks: [mark('g8', 'bad')],
-            text: 'CHECKMATE is check with no way out: the king cannot move, the attack cannot be blocked, and the attacker cannot be captured. Checkmate wins the game.',
+            text: 'CHECKMATE is check with no way out: the king cannot move to a safe square, the attack cannot be blocked, and the attacker cannot be captured. Checkmate wins the game.',
             kids: 'CHECKMATE means the king is attacked and cannot escape at all. That wins the game!',
           },
           {
@@ -545,10 +545,10 @@ export const CHAPTERS: Chapter[] = [
           {
             kind: 'moves',
             fen: '2r3k1/5ppp/8/8/8/8/5PPP/2RR2K1 w - - 0 1',
-            line: ['Rxc8+'],
+            line: ['Rxc8#'],
             any: 'mate',
             text: 'Black has a rook defending. Can you still mate in one?',
-            hint: 'Your c1 rook can capture on c8 — and it is protected… or does it even need to be?',
+            hint: 'Your c1 rook can capture on c8. Can the black king take it back?',
             done: 'Capturing the defender is also mate.',
           },
         ],
@@ -641,7 +641,7 @@ export const CHAPTERS: Chapter[] = [
           {
             kind: 'moves',
             fen: 'r1bqkbnr/pppp1ppp/2n5/4p2Q/2B1P3/8/PPPP1PPP/RNB1K1NR b KQkq - 3 3',
-            line: ['g6|Qe7|Qf6'],
+            line: ['g6|Qe7|Qf6|Nh6'],
             verify: 'book',
             orientation: 'b',
             text: 'Now you are Black. White threatens Qxf7#. Stop it!',
@@ -720,10 +720,10 @@ export const CHAPTERS: Chapter[] = [
           {
             kind: 'moves',
             fen: 'r3k3/8/8/8/8/8/7P/4K2Q w - - 0 1',
-            line: ['Qe4+|Qc6+'],
+            line: ['Qe4+|Qc6+|Qxa8+'],
             text: 'Queen fork: check the king and attack the rook at the same time.',
             hint: 'Slide the queen along the long diagonal to a square that checks the king and also eyes a8.',
-            done: 'Check — and next move the rook falls. (A rook can never take back diagonally!)',
+            done: 'Check, and the rook on a8 is lost! (A rook can never take back diagonally!)',
           },
         ],
       },

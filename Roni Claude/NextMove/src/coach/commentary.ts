@@ -1,7 +1,7 @@
 // Elias's commentary on the OPPONENT's move: what it threatens, what it takes, what it offers.
 // Rules-only (instant, no engine), from the player's point of view. Quiet moves get no comment.
 import { Chess, type Color, type Move } from 'chess.js'
-import { hangingPieces, isDevelopment, isFork, listPieces, mateThreat, NAME, pieceAt } from './tactics'
+import { hangingPieces, isDevelopment, isFork, listPieces, mateThreat, NAME, pieceAt, VALUE } from './tactics'
 import { sayComment, type PieceName } from './say'
 
 /** `text` is shown; `say` is what Elias says (fixed, recorded sentences from coach/say.ts). */
@@ -63,9 +63,16 @@ export function commentOnMove(m: Move, ply: number, o: { bot: string; kids: bool
   if (m.captured) {
     const taken = NAME[m.captured]
     const t = taken as PieceName
-    const theirsLoose = hangingPieces(after, them).some((t) => t.square === m.to)
-    const recapture = after.moves({ verbose: true }).find((x) => x.to === m.to)
-    if (recapture && theirsLoose)
+    // The cheapest piece that can take back: the first legal recapture could be a rook where a
+    // pawn does it ("win it back with Rxe4+", then …dxe4 loses the rook).
+    const recapture = after
+      .moves({ verbose: true })
+      .filter((x) => x.to === m.to)
+      .sort((a, b) => VALUE[a.piece] - VALUE[b.piece])[0]
+    // Winning it back: their piece is unprotected, or our recapturing piece is worth less than it.
+    const theirsDefended = after.attackers(m.to, them).length > 0
+    const winsBack = !!recapture && (!theirsDefended || VALUE[recapture.piece] < VALUE[m.piece])
+    if (recapture && winsBack)
       return { tone: 'chance', text: `${who} took your ${taken} on ${m.to}, but you can win it back with ${recapture.san}.`, say: sayComment.winBack(who, t) }
     if (recapture)
       return {
@@ -101,7 +108,8 @@ export function commentOnMove(m: Move, ply: number, o: { bot: string; kids: bool
     return { tone: 'danger', text: `Your ${pieceAt(mine[0])} is under attack and not safe.`, say: sayComment.enPrise(NAME[mine[0].type] as PieceName) }
 
   // 7. The opponent left something loose: a chance, without giving the answer away.
-  const loose = hangingPieces(after, them)
+  // only truly unprotected pieces: the line says "may be unprotected"
+  const loose = hangingPieces(after, them).filter((t) => !t.defended)
   if (loose[0] && loose[0].value >= 3)
     return {
       tone: 'chance',

@@ -18,6 +18,18 @@ describe("commentary on the opponent's move", () => {
     })
   })
 
+  it('suggests the cheapest recapture, never a rook where a pawn takes back (QA 2026-10-01)', () => {
+    // …Nxe4: fxe4 wins the knight back; Rxe4+ would lose the rook to …dxe4
+    const c = say('4k3/8/5n2/3p4/4P2R/5P2/8/4K3 b - - 0 1', 'Nxe4')
+    expect(c?.text).toBe('Pip took your pawn on e4, but you can win it back with fxe4.')
+  })
+
+  it('no "fork" when the forking knight can simply be taken by a bishop (QA 2026-10-01)', () => {
+    // Nc7+ hits king and rook, but the bishop on d8 takes it: just a check
+    const c = say('r2bk3/8/1P6/3N4/8/8/8/4K3 w - - 0 1', 'Nc7+')
+    expect(c?.text).toMatch(/^Check from the knight/)
+  })
+
   it('explains a check', () => {
     const c = say('4k3/8/8/8/8/8/8/R3K3 w - - 0 1', 'Ra8+')
     expect(c?.tone).toBe('danger')
