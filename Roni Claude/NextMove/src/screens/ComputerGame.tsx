@@ -16,7 +16,7 @@ import {
 import { useChessGame } from '../chess/useChessGame'
 import { botById, randomMove } from '../engine/bots'
 import { botEngine, parseUci } from '../engine/engine'
-import { navigate } from '../lib/router'
+import { goBack, navigate } from '../lib/router'
 import { useSettings } from '../lib/settings'
 import { useConfirm } from '../lib/useConfirm'
 import CoachCard from '../components/CoachCard'
@@ -38,7 +38,7 @@ type Say = 'greet' | 'win' | 'lose' | 'draw'
 export default function ComputerGame() {
   const [saved] = useState(loadCurrentGame)
   useEffect(() => {
-    if (!saved) navigate('/play/computer')
+    if (!saved) navigate('/play/computer', { replace: true })
   }, [saved])
   return saved ? <Game saved={saved} /> : null
 }
@@ -296,14 +296,14 @@ function Game({ saved }: { saved: SavedComputerGame }) {
     <div className="page game">
       <header className="topbar">
         <div className="brand">
-          <button className="icon-btn" onClick={() => navigate('/play/computer')} aria-label="Back to opponents">
+          <button className="icon-btn" onClick={() => goBack('/play/computer')} aria-label="Back to opponents">
             <IconBack />
           </button>
           <h1 className="screen-title">vs {bot.name}</h1>
         </div>
         <div className="topbar-actions">
           <VoiceToggle />
-          <button className="btn change-opp" onClick={() => navigate('/play/computer')}>
+          <button className="btn change-opp" onClick={() => goBack('/play/computer')}>
             <IconCpu />
             <span>Change opponent</span>
           </button>
@@ -418,7 +418,7 @@ function Game({ saved }: { saved: SavedComputerGame }) {
           onAgain={rematch}
           onAnalyse={openReview}
           onReview={() => setDismissed(resultKey)}
-          onHome={() => navigate('/')}
+          onHome={() => goBack('/')}
         />
       )}
     </div>

@@ -4,6 +4,7 @@ import { formatClock } from '../chess/clock'
 import type { Grade } from '../coach/grade'
 import { colorName, other, outcomeText } from '../chess/game'
 import { pieceUrl } from '../chess/pieces'
+import { useBackToClose } from '../lib/router'
 import './GamePanels.css'
 
 export function PlayerStrip({
@@ -126,6 +127,7 @@ export function GameOverDialog({
   const detail = text.detail
   const againRef = useRef<HTMLButtonElement>(null)
   useEffect(() => againRef.current?.focus(), [])
+  useBackToClose(true, onReview) // Android Back closes the card and shows the board
   return (
     <div className="dialog-backdrop" role="presentation" onClick={onReview}>
       <div className="dialog" role="dialog" aria-modal="true" aria-labelledby="go-title" onClick={(e) => e.stopPropagation()}>

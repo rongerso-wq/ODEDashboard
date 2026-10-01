@@ -39,6 +39,11 @@ const validGame = (v: unknown) =>
 export const loadCurrentGame = () => load<SavedComputerGame | null>(CURRENT, null, validGame)
 export const saveCurrentGame = (g: SavedComputerGame | null) => save(CURRENT, g)
 
+// Play a Friend: the moves of an unfinished game (SAN), so Back or a closed app doesn't lose it.
+const LOCAL = 'local-current'
+export const loadLocalGame = () => load<string[] | null>(LOCAL, null, (v) => v === null || isStrings(v))
+export const saveLocalGame = (moves: string[] | null) => save(LOCAL, moves && moves.length ? moves : null)
+
 export const loadHistory = () =>
   loadList<FinishedGame>(HISTORY, (g) => typeof g.botId === 'string' && typeof g.result === 'string' && typeof g.pgn === 'string')
 export function addToHistory(g: FinishedGame) {

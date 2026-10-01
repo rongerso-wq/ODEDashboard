@@ -109,12 +109,15 @@ export function newRating(player: number, puzzle: number, won: boolean, games: n
 export function recordResult(p: Puzzle, success: boolean, rated: boolean): { stats: PuzzleStats; delta: number } {
   const s = loadStats()
   let delta = 0
-  if (rated && !s.tried.includes(p.id)) {
+  // Rated once per round: a new puzzle, or (after all have been played) one played long ago,
+  // i.e. in the older half of `tried`. A puzzle just played (newer half) never counts twice.
+  const at = s.tried.indexOf(p.id)
+  if (rated && (at < 0 || at < s.tried.length / 2)) {
     const r = newRating(s.rating, p.rating, success, s.games)
     delta = r - s.rating
     s.rating = r
     s.games++
-    s.tried = [...s.tried, p.id]
+    s.tried = [...s.tried.filter((id) => id !== p.id), p.id]
     s.history = [...s.history, { at: Date.now(), rating: r }].slice(-60)
   }
   if (success) {
@@ -140,7 +143,15 @@ export function nextRated(all: Puzzle[], stats: PuzzleStats, rand = Math.random)
       if (near.length) return near[Math.floor(rand() * near.length)]
     }
   }
-  return all[Math.floor(rand() * all.length)]
+  // All played (heavy players, after ~2 months): the ones played longest ago come back and count
+  // for the rating again (see recordResult), nearest the player's rating first.
+  const old = stats.tried.slice(0, Math.max(1, Math.floor(stats.tried.length / 4)))
+  const byId = new Map(all.map((p) => [p.id, p]))
+  const pool = old.map((id) => byId.get(id)).filter((p): p is Puzzle => !!p)
+  if (!pool.length) return all[Math.floor(rand() * all.length)]
+  pool.sort((a, b) => Math.abs(a.rating - stats.rating) - Math.abs(b.rating - stats.rating))
+  const best = pool.slice(0, 10)
+  return best[Math.floor(rand() * best.length)]
 }
 
 /** The same puzzle for everyone today: a popular, approachable one (rating 700–1400). */

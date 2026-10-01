@@ -14,9 +14,10 @@ import {
   type FinishedGame,
 } from '../chess/saved'
 import { Chess } from 'chess.js'
-import { navigate } from '../lib/router'
+import { goBack, navigate } from '../lib/router'
 import { useSettings } from '../lib/settings'
 import { isObj, load, save } from '../lib/storage'
+import { useConfirm } from '../lib/useConfirm'
 import type { Color } from '../chess/game'
 import './ComputerSetup.css'
 
@@ -32,6 +33,9 @@ export default function ComputerSetup() {
   const [choice, setChoice] = useState<Choice>(last.choice ?? 'w')
   const [tc, setTc] = useState<string | null>(last.tc ?? null)
   const [current, setCurrent] = useState(loadCurrentGame)
+  const unfinished = !!current && current.moves.length > 0
+  // Starting a new game or discarding replaces the unfinished one: ask once first.
+  const { pending: confirm, ask } = useConfirm<'play' | 'discard'>()
   const beaten = useMemo(() => beatenBots(), [])
   const history = useMemo(() => loadHistory().slice(0, 6), [])
   const bot = botById(botId)
@@ -68,14 +72,14 @@ export default function ComputerSetup() {
     <div className="page setup">
       <header className="topbar">
         <div className="brand">
-          <button className="icon-btn" onClick={() => navigate('/')} aria-label="Back to home">
+          <button className="icon-btn" onClick={() => goBack('/')} aria-label="Back to home">
             <IconBack />
           </button>
           <h1 className="screen-title">Play the Computer</h1>
         </div>
       </header>
 
-      {current && current.moves.length > 0 && (
+      {unfinished && current && (
         <section className="resume" aria-label="Unfinished game">
           <BotAvatar bot={botById(current.config.botId)} size={52} />
           <div className="resume-text">
@@ -89,13 +93,15 @@ export default function ComputerSetup() {
               Continue
             </button>
             <button
-              className="btn btn-ghost"
-              onClick={() => {
-                saveCurrentGame(null)
-                setCurrent(null)
-              }}
+              className={`btn btn-ghost${confirm === 'discard' ? ' confirming' : ''}`}
+              onClick={() =>
+                ask('discard', () => {
+                  saveCurrentGame(null)
+                  setCurrent(null)
+                })
+              }
             >
-              Discard
+              {confirm === 'discard' ? 'Sure? Tap again' : 'Discard'}
             </button>
           </div>
         </section>
@@ -205,9 +211,13 @@ export default function ComputerSetup() {
       )}
 
       <div className="play-bar">
-        <button className="btn btn-primary play-btn" onClick={start}>
+        <button className="btn btn-primary play-btn" onClick={() => (unfinished ? ask('play', start) : start())}>
           <BotAvatar bot={bot} size={34} />
-          {kids ? `Play with ${bot.name}!` : `Play ${bot.name}`}
+          {confirm === 'play'
+            ? 'Sure? This ends your unfinished game'
+            : kids
+              ? `Play with ${bot.name}!`
+              : `Play ${bot.name}`}
           <IconArrow />
         </button>
       </div>

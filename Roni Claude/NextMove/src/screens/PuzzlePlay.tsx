@@ -18,7 +18,7 @@ import {
   type Puzzle,
   type PuzzleMode as Mode,
 } from '../puzzles/model'
-import { navigate } from '../lib/router'
+import { goBack, navigate } from '../lib/router'
 import { useSettings } from '../lib/settings'
 import './Puzzles.css'
 
@@ -99,7 +99,7 @@ export default function PuzzlePlay({ mode }: { mode: Mode }) {
     <div className="page game puzzle-play">
       <header className="topbar">
         <div className="brand">
-          <button className="icon-btn" onClick={() => navigate('/puzzles')} aria-label="Back to puzzles">
+          <button className="icon-btn" onClick={() => goBack('/puzzles')} aria-label="Back to puzzles">
             <IconBack />
           </button>
           <h1 className="screen-title">{title}</h1>

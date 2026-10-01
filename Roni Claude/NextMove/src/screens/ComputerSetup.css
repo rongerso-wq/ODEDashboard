@@ -258,6 +258,12 @@
   font-size: 18px;
   padding-inline: 10px 22px;
 }
+/* "Sure?" step before replacing an unfinished game (same look as the game's Resign) */
+.resume .btn.confirming {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-color: transparent;
+}
 
 @media (max-width: 700px) {
   .bots {

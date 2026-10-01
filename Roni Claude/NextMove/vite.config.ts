@@ -4,6 +4,13 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vite.dev/config/
 export default defineConfig({
+  // Older phones: Vite's default target (Safari 16.4) turned `max-width` queries into range syntax
+  // (`width<=900px`), which iOS 15 ignores, so phones got the desktop layout. iOS 15 / Chrome 100
+  // keep plain min/max queries. (color-mix and dvh still need iOS 15.4–16.2: colours/heights degrade.)
+  build: {
+    target: ['es2020', 'safari15', 'chrome100'],
+    cssTarget: ['safari15', 'chrome100'],
+  },
   plugins: [
     react(),
     // Installable, fully offline app. Everything (engine WASM, puzzles, fonts, pieces) is precached.

@@ -4,7 +4,7 @@ import { IconArrow, IconBack } from '../components/Icons'
 import MistakesBanner from '../components/MistakesBanner'
 import { pieceUrl } from '../chess/pieces'
 import { dailyPuzzle, loadPuzzles, loadStats, themeSet, THEMES, today, type Puzzle } from '../puzzles/model'
-import { navigate } from '../lib/router'
+import { goBack, navigate } from '../lib/router'
 import { useSettings } from '../lib/settings'
 import './Puzzles.css'
 
@@ -26,7 +26,7 @@ export default function PuzzlesHome() {
     <div className="page puzzles">
       <header className="topbar">
         <div className="brand">
-          <button className="icon-btn" onClick={() => navigate('/')} aria-label="Back to home">
+          <button className="icon-btn" onClick={() => goBack('/')} aria-label="Back to home">
             <IconBack />
           </button>
           <h1 className="screen-title">Puzzles</h1>

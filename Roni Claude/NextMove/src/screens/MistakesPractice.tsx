@@ -9,7 +9,7 @@ import { sayHint, sayPractice } from '../coach/say'
 import { isMate, MATE_CP, scoreToCp } from '../coach/grade'
 import { Engine } from '../engine/engine'
 import { deckStats, dueCards, loadDeck, MASTERED, review, type MistakeCard } from '../mistakes/deck'
-import { navigate } from '../lib/router'
+import { goBack, navigate } from '../lib/router'
 import { useSettings } from '../lib/settings'
 import { play } from '../lib/sound'
 import './Mistakes.css'
@@ -28,16 +28,17 @@ export default function MistakesPractice() {
   const card = queue[idx]
 
   function onResult(c: MistakeCard, solved: boolean) {
-    review(c, solved)
+    const updated = review(c, solved)
     setResults((r) => [...r, solved])
-    // a missed card is practised again before the session ends
-    if (!solved) setQueue((q) => [...q, c])
+    // a missed card is practised again before the session ends: its updated copy (back in box 0),
+    // or a solved retry would count from its old box and could jump straight to "mastered"
+    if (!solved) setQueue((q) => [...q, updated])
   }
 
   const header = (
     <header className="topbar">
       <div className="brand">
-        <button className="icon-btn" onClick={() => navigate('/')} aria-label="Back to home">
+        <button className="icon-btn" onClick={() => goBack('/')} aria-label="Back to home">
           <IconBack />
         </button>
         <h1 className="screen-title">{kids ? 'My oops moments' : 'My mistakes'}</h1>

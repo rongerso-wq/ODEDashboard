@@ -37,6 +37,12 @@ describe('puzzle data', async () => {
     expect(nextRated(all, stats(1200, [p.id]), () => 0.5).id).not.toBe(p.id)
   })
 
+  it('once every puzzle is played, serves one of those played longest ago', () => {
+    const order = all.map((p) => p.id) // oldest first
+    const p = nextRated(all, stats(1200, order), () => 0.5)
+    expect(order.indexOf(p.id)).toBeLessThan(order.length / 4)
+  })
+
   it('daily puzzle is stable for a date and approachable', () => {
     const a = dailyPuzzle(all, '2026-09-27')
     expect(dailyPuzzle(all, '2026-09-27').id).toBe(a.id)

@@ -9,7 +9,7 @@ import type { ChoiceStep, CollectStep, GoalStep, InfoStep, MovesStep, Step } fro
 import { matchesExpected, satisfiesAny } from '../academy/validate'
 import { legalDests, checkedKing } from '../chess/game'
 import { Engine } from '../engine/engine'
-import { navigate } from '../lib/router'
+import { goBack, navigate } from '../lib/router'
 import { useSettings } from '../lib/settings'
 import { play } from '../lib/sound'
 import { Narrator, VoiceToggle } from '../components/Elias'
@@ -32,7 +32,7 @@ const said = (s: { text: string; kids?: string }, kids: boolean) => (kids && s.k
 export default function LessonPlayer({ id }: { id: string }) {
   const lesson = lessonById(id)
   useEffect(() => {
-    if (!lesson) navigate('/learn')
+    if (!lesson) navigate('/learn', { replace: true })
   }, [lesson])
   return lesson ? <Player key={id} id={id} /> : null
 }
@@ -65,7 +65,7 @@ function Player({ id }: { id: string }) {
     <div className="page lesson" style={{ ['--hue' as string]: lesson.chapter.hue }}>
       <header className="topbar">
         <div className="brand">
-          <button className="icon-btn" onClick={() => navigate('/learn')} aria-label="Back to the Academy">
+          <button className="icon-btn" onClick={() => goBack('/learn')} aria-label="Back to the Academy">
             <IconBack />
           </button>
           <div className="lesson-titles">
@@ -711,14 +711,14 @@ function Complete({ lessonId, stars, kids, onAgain }: { lessonId: string; stars:
       <h2>{title}</h2>
       <div className="complete-actions">
         {next && (
-          <button className="btn btn-primary" onClick={() => navigate(`/learn/${next.id}`)}>
+          <button className="btn btn-primary" onClick={() => navigate(`/learn/${next.id}`, { replace: true })}>
             Next: {kids && next.kidsTitle ? next.kidsTitle : next.title} <IconArrow />
           </button>
         )}
         <button className="btn" onClick={onAgain}>
           <IconRestart /> Play again
         </button>
-        <button className="btn btn-ghost" onClick={() => navigate('/learn')}>
+        <button className="btn btn-ghost" onClick={() => goBack('/learn')}>
           Back to the Academy
         </button>
       </div>

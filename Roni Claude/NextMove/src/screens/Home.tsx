@@ -63,7 +63,10 @@ export default function Home() {
         ))}
       </nav>
 
-      <footer className="home-foot">Pieces: cburnett (CC BY-SA 3.0)</footer>
+      <footer className="home-foot">
+        <p className="home-author">Created by: Dr. Roni Gershonovitch</p>
+        <p>Pieces: cburnett (CC BY-SA 3.0)</p>
+      </footer>
     </div>
   )
 }

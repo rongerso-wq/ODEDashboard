@@ -13,7 +13,7 @@ import { explainMove, gradeTitle, type Feedback, type Voice } from '../coach/exp
 import { formatEval, moveAccuracy, type Grade } from '../coach/grade'
 import { loadReviewGame, saveCurrentGame, type ReviewGame } from '../chess/saved'
 import { Engine } from '../engine/engine'
-import { navigate } from '../lib/router'
+import { goBack, navigate } from '../lib/router'
 import { useSettings } from '../lib/settings'
 import './Review.css'
 
@@ -22,7 +22,7 @@ const BAD: Grade[] = ['inaccuracy', 'mistake', 'blunder']
 export default function Review() {
   const [game] = useState(loadReviewGame)
   useEffect(() => {
-    if (!game) navigate('/')
+    if (!game) navigate('/', { replace: true })
   }, [game])
   return game ? <ReviewScreen game={game} /> : null
 }
@@ -188,7 +188,7 @@ function ReviewScreen({ game }: { game: ReviewGame }) {
     <div className="page review">
       <header className="topbar">
         <div className="brand">
-          <button className="icon-btn" onClick={() => navigate(game.config ? '/play/computer' : '/')} aria-label="Back">
+          <button className="icon-btn" onClick={() => goBack(game.config ? '/play/computer' : '/')} aria-label="Back">
             <IconBack />
           </button>
           <h1 className="screen-title">{kids ? 'How did I do?' : 'Game review'}</h1>

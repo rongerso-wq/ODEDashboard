@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { IconArrow, IconBack } from '../components/Icons'
 import PuzzleBoard from '../components/PuzzleBoard'
 import { loadPuzzles, loadStats, recordResult, rushPuzzle, saveStats, type Puzzle } from '../puzzles/model'
-import { navigate } from '../lib/router'
+import { goBack } from '../lib/router'
 import { useSettings } from '../lib/settings'
 import { play } from '../lib/sound'
 import './Puzzles.css'
@@ -100,7 +100,7 @@ export default function PuzzleRush() {
     <div className="page game rush">
       <header className="topbar">
         <div className="brand">
-          <button className="icon-btn" onClick={() => navigate('/puzzles')} aria-label="Back to puzzles">
+          <button className="icon-btn" onClick={() => goBack('/puzzles')} aria-label="Back to puzzles">
             <IconBack />
           </button>
           <h1 className="screen-title">Puzzle Rush</h1>
@@ -193,7 +193,7 @@ export default function PuzzleRush() {
           <button className="btn btn-primary rush-go" onClick={start}>
             {kids ? 'Play again!' : 'Play again'} <IconArrow />
           </button>
-          <button className="btn btn-ghost" onClick={() => navigate('/puzzles')}>
+          <button className="btn btn-ghost" onClick={() => goBack('/puzzles')}>
             Back to puzzles
           </button>
         </section>

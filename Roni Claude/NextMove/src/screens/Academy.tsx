@@ -3,7 +3,7 @@ import { IconArrow, IconBack } from '../components/Icons'
 import { ALL_LESSONS, CHAPTERS } from '../academy/lessons'
 import { chapterDone, loadProgress, nextLessonId } from '../academy/progress'
 import { pieceUrl } from '../chess/pieces'
-import { navigate } from '../lib/router'
+import { goBack, navigate } from '../lib/router'
 import { useSettings } from '../lib/settings'
 import { Narrator, VoiceToggle } from '../components/Elias'
 import { sayAcademy } from '../coach/say'
@@ -24,7 +24,7 @@ export default function Academy() {
     <div className="page academy">
       <header className="topbar">
         <div className="brand">
-          <button className="icon-btn" onClick={() => navigate('/')} aria-label="Back to home">
+          <button className="icon-btn" onClick={() => goBack('/')} aria-label="Back to home">
             <IconBack />
           </button>
           <h1 className="screen-title">Academy</h1>

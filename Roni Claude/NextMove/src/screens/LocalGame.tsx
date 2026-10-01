@@ -1,18 +1,19 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Board from '../components/Board'
 import { GameOverDialog, MoveList, PlayerStrip } from '../components/GamePanels'
 import { IconBack, IconFlag, IconFlip, IconHandshake, IconMute, IconRestart, IconSound, IconUndo } from '../components/Icons'
 import { colorName, material, other, outcomeText, type Color } from '../chess/game'
-import { saveReviewGame } from '../chess/saved'
+import { loadLocalGame, saveLocalGame, saveReviewGame } from '../chess/saved'
 import { useChessGame } from '../chess/useChessGame'
-import { navigate } from '../lib/router'
+import { goBack, navigate } from '../lib/router'
 import { useSettings } from '../lib/settings'
 import { useConfirm } from '../lib/useConfirm'
 import './GameScreen.css'
 
 /** Pass-and-play: two people, one device. */
 export default function LocalGame() {
-  const game = useChessGame()
+  const [saved] = useState(loadLocalGame)
+  const game = useChessGame(undefined, saved ?? [])
   const { mode, sound, coordinates, update } = useSettings()
   const kids = mode === 'kids'
   const [orientation, setOrientation] = useState<Color>('w')
@@ -26,6 +27,11 @@ export default function LocalGame() {
   const mat = material(game.chess)
   const view: Color = autoFlip && !over ? game.turn : orientation
   const top = other(view)
+
+  // Saved after every move; a finished game (mate, resign, agreed draw) is cleared.
+  useEffect(() => {
+    saveLocalGame(game.outcome ? null : game.history.map((m) => m.san))
+  }, [game.ply, game.outcome, game.history])
 
   function newGame() {
     game.reset()
@@ -46,7 +52,7 @@ export default function LocalGame() {
     <div className="page game">
       <header className="topbar">
         <div className="brand">
-          <button className="icon-btn" onClick={() => navigate('/')} aria-label="Back to home">
+          <button className="icon-btn" onClick={() => goBack('/')} aria-label="Back to home">
             <IconBack />
           </button>
           <h1 className="screen-title">Play a Friend</h1>
@@ -136,7 +142,7 @@ export default function LocalGame() {
           kids={kids}
           onAgain={newGame}
           onReview={() => setDismissed(resultKey)}
-          onHome={() => navigate('/')}
+          onHome={() => goBack('/')}
           onAnalyse={() => {
             saveReviewGame({
               moves: game.history.map((m) => m.san),

@@ -11,8 +11,10 @@ import { speakable } from './speakable.ts'
 export function sentences(text: string): string[] {
   const clean = speakable(text).replace(/([!?])\s*\./g, '$1') // "Well done!. Three stars" (title + praise)
   if (!clean) return []
+  // No lookbehind: Safari before 16.4 can't parse it, and one such regex blanks the whole app.
   return clean
-    .split(/(?<=[.!?…][)"'”’]*)\s+(?=[A-Z0-9"“(])/)
+    .replace(/([.!?…][)"'”’]*)\s+(?=[A-Z0-9"“(])/g, '$1\u0000')
+    .split('\u0000')
     .map((s) => s.trim())
     .filter(Boolean)
 }

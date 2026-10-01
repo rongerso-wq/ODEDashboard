@@ -6,6 +6,7 @@ import { useSettings } from '../lib/settings'
 import { bestVoice, englishVoices, speak, voiceId, voiceLabel, voiceSupported, whenVoicesReady } from '../lib/voice'
 import { canPromptInstall, isInstalled, isIOS, onInstallChange, promptInstall } from '../lib/install'
 import { clipTotal, downloadAll, offlineCount, voiceMb } from '../lib/recordings'
+import { useBackToClose } from '../lib/router'
 import './SettingsSheet.css'
 
 const SAMPLE =
@@ -95,6 +96,7 @@ export default function SettingsSheet({ onClose }: { onClose: () => void }) {
   const speaking = useSpeaking()
   const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([])
   const closeRef = useRef<HTMLButtonElement>(null)
+  useBackToClose(true, onClose) // Android Back closes the sheet instead of the app
   useEffect(() => whenVoicesReady(() => setVoices(englishVoices())), [])
   useEffect(() => {
     closeRef.current?.focus()
