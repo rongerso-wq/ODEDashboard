@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import Board, { type BoardMove } from '../components/Board'
 import { BotAvatar, BotSays } from '../components/BotAvatar'
 import { GameOverDialog, MoveList, PlayerStrip } from '../components/GamePanels'
-import { IconBack, IconCpu, IconFlag, IconFlip, IconMute, IconRestart, IconSound, IconUndo } from '../components/Icons'
+import { IconBack, IconChart, IconCpu, IconFlag, IconFlip, IconMute, IconRestart, IconSound, IconUndo } from '../components/Icons'
 import { newClock, pause, resume, timeControlById, useClock } from '../chess/clock'
 import { material, other, outcomeText, timeoutOutcome, type Color, type Move } from '../chess/game'
 import {
@@ -373,9 +373,12 @@ function Game({ saved }: { saved: SavedComputerGame }) {
             />
           </div>
 
-          <div className="side-moves">
-            <MoveList history={game.history} grades={coachOn ? coach.grades : undefined} />
-          </div>
+          {/* Kids: no notation list ("1. e4 e5", "?!"); the board and the coach say it in words */}
+          {!kids && (
+            <div className="side-moves">
+              <MoveList history={game.history} grades={coachOn ? coach.grades : undefined} />
+            </div>
+          )}
 
           <div className="controls">
             {!tc && (
@@ -388,14 +391,22 @@ function Game({ saved }: { saved: SavedComputerGame }) {
               <IconFlip />
               <span>Flip</span>
             </button>
-            <button
-              className={`ctrl${confirm === 'resign' ? ' confirming' : ''}`}
-              disabled={over || myMoves === 0}
-              onClick={() => ask('resign', () => game.finish({ kind: 'resign', winner: botColor }))}
-            >
-              <IconFlag />
-              <span>{confirm === 'resign' ? 'Sure?' : 'Resign'}</span>
-            </button>
+            {over ? (
+              // after the game: the review stays one tap away even when the result card is closed
+              <button className="ctrl" onClick={openReview}>
+                <IconChart />
+                <span>Review</span>
+              </button>
+            ) : (
+              <button
+                className={`ctrl${confirm === 'resign' ? ' confirming' : ''}`}
+                disabled={myMoves === 0}
+                onClick={() => ask('resign', () => game.finish({ kind: 'resign', winner: botColor }))}
+              >
+                <IconFlag />
+                <span>{confirm === 'resign' ? 'Sure?' : 'Resign'}</span>
+              </button>
+            )}
             <button
               className={`ctrl${confirm === 'new' ? ' confirming' : ''}`}
               disabled={game.ply === 0}
@@ -414,7 +425,7 @@ function Game({ saved }: { saved: SavedComputerGame }) {
           kids={kids}
           heading={heading}
           note={<BotSays bot={bot} text={sayText} />}
-          againLabel="Rematch"
+          againLabel={kids ? 'Play again!' : 'Rematch'}
           onAgain={rematch}
           onAnalyse={openReview}
           onReview={() => setDismissed(resultKey)}

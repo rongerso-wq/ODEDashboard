@@ -184,11 +184,19 @@
   color: var(--g-blunder);
 }
 .rm-eval {
+  display: grid;
+  justify-items: center;
   font-weight: 800;
   font-variant-numeric: tabular-nums;
   padding: 4px 10px;
   border-radius: 8px;
   background: var(--surface-2);
+}
+.rm-eval small {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+  white-space: nowrap;
 }
 .rm-actions {
   display: flex;

@@ -109,6 +109,19 @@ body,
   height: 100%;
 }
 
+/* Larger text (Settings): sizes are in px, so the phone's own text size doesn't reach them.
+   Scale the text areas, never the board: touch math on a zoomed board isn't reliable on
+   every browser. Pages without a playable board scale whole; board pages scale their panels. */
+/* 1. pages with no playable board: the whole page (its dialogs inherit it) */
+:root[data-text='large'] :is(.home, .page.setup, .page.academy, .page.puzzles, .page.mistakes:not(.game)) {
+  zoom: 1.18;
+}
+/* 2. board pages: their top bar, panels and dialogs only */
+:root[data-text='large'] :is(.page.game, .page.lesson, .page.review) > .topbar,
+:root[data-text='large'] :is(.page.game, .page.lesson, .page.review) :is(.side, .lesson-card, .review-side, .dialog) {
+  zoom: 1.18;
+}
+
 /* iPhone: no double-tap zoom (quick taps near the board zoomed the page and it stayed zoomed).
    Pinch-zoom still works. On every element, because touch-action stops at scrolling boxes
    (move list, dialogs); :where() keeps it overridable (the board uses none). */

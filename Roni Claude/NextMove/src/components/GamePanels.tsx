@@ -129,7 +129,8 @@ export function GameOverDialog({
   useEffect(() => againRef.current?.focus(), [])
   useBackToClose(true, onReview) // Android Back closes the card and shows the board
   return (
-    <div className="dialog-backdrop" role="presentation" onClick={onReview}>
+    // No close on an outside tap: one stray tap hid the result for good (Review is only in here).
+    <div className="dialog-backdrop" role="presentation">
       <div className="dialog" role="dialog" aria-modal="true" aria-labelledby="go-title" onClick={(e) => e.stopPropagation()}>
         <div className={`result-badge ${outcome.winner ?? 'draw'}`} aria-hidden="true">
           {outcome.winner ? <img src={pieceUrl({ type: 'k', color: outcome.winner })} alt="" /> : '½'}

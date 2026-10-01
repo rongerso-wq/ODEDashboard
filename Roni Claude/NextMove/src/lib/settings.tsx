@@ -17,9 +17,20 @@ export type Settings = {
   voiceName: string | null
   /** 'recorded': Elias's own recorded voice; 'device': the device's speech voices */
   eliasVoice: 'recorded' | 'device'
+  /** bigger text in menus, panels, lessons and dialogs (the board keeps its size) */
+  largeText: boolean
 }
 
-const DEFAULTS: Settings = { mode: 'classic', sound: true, coordinates: true, coach: true, voice: true, voiceName: null, eliasVoice: 'recorded' }
+const DEFAULTS: Settings = {
+  mode: 'classic',
+  sound: true,
+  coordinates: true,
+  coach: true,
+  voice: true,
+  voiceName: null,
+  eliasVoice: 'recorded',
+  largeText: false,
+}
 
 type Ctx = Settings & { update: (patch: Partial<Settings>) => void }
 
@@ -30,6 +41,7 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     document.documentElement.dataset.mode = settings.mode
+    document.documentElement.dataset.text = settings.largeText ? 'large' : 'normal'
     setSoundEnabled(settings.sound)
     setVoiceEnabled(settings.voice)
     setVoiceName(settings.voiceName)

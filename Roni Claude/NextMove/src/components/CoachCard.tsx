@@ -4,6 +4,7 @@ import type { Comment } from '../coach/commentary'
 import { IconBulb } from './Icons'
 import { EliasAvatar } from './Elias'
 import { useSay, useSpeaking } from '../lib/useVoice'
+import { notationToWords } from '../lib/speakable'
 import './CoachCard.css'
 
 const GRADE_BADGE: Record<Grade, string> = { best: '★', good: '✓', inaccuracy: '?!', mistake: '?', blunder: '??' }
@@ -48,6 +49,7 @@ export default function CoachCard(p: Props) {
   useSay(p.enabled && p.commentary ? p.commentary.comment.say : null, p.commentary?.ply, { queue: true })
   useSay(p.hint?.say)
   const bad = p.feedback && (p.feedback.grade === 'inaccuracy' || p.feedback.grade === 'mistake' || p.feedback.grade === 'blunder')
+  const shown = (text: string) => (p.kids ? notationToWords(text) : text) // Kids: no "Nf3", words instead
   const hintLabel = p.hint ? (p.hint.level < 3 ? 'Next hint' : 'Hint shown') : p.kids ? 'Help me!' : 'Hint'
 
   return (
@@ -67,7 +69,7 @@ export default function CoachCard(p: Props) {
         {p.hint ? (
           <div className="coach-hint">
             <span className="hint-step">Hint {p.hint.level} of 3</span>
-            <p>{p.hint.text}</p>
+            <p>{shown(p.hint.text)}</p>
           </div>
         ) : p.enabled && p.pending ? (
           <p className="coach-wait">{p.kids ? 'Let me look at your move…' : 'Looking at your move…'}</p>
@@ -75,10 +77,9 @@ export default function CoachCard(p: Props) {
           <div className={`coach-feedback g-${p.feedback.grade}`}>
             <GradeBadge grade={p.feedback.grade} />
             <div>
-              <strong>
-                {p.feedback.san} — {p.feedback.title}
-              </strong>
-              <p>{p.feedback.text}</p>
+              {/* Kids never see chess notation ("Nf3"): just the verdict */}
+              <strong>{p.kids ? p.feedback.title : `${p.feedback.san} — ${p.feedback.title}`}</strong>
+              <p>{shown(p.feedback.text)}</p>
               {(p.feedback.grade === 'mistake' || p.feedback.grade === 'blunder') && p.feedback.bestSan && (
                 <span className="saved-note">📌 {p.kids ? 'Saved to your oops moments to practise later' : 'Saved to My mistakes for practice'}</span>
               )}
@@ -96,9 +97,15 @@ export default function CoachCard(p: Props) {
         {p.enabled && p.commentary && !p.hint && (
           <div key={p.commentary.ply} className={`coach-comment t-${p.commentary.comment.tone}`}>
             <span className="comment-label">
-              {p.opponent} played <b>{p.commentary.san}</b>
+              {p.kids ? (
+                <>{p.opponent}&apos;s move</>
+              ) : (
+                <>
+                  {p.opponent} played <b>{p.commentary.san}</b>
+                </>
+              )}
             </span>
-            <p>{p.commentary.comment.text}</p>
+            <p>{shown(p.commentary.comment.text)}</p>
           </div>
         )}
       </div>

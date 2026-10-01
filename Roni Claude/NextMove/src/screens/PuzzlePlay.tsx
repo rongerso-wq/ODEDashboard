@@ -105,7 +105,7 @@ export default function PuzzlePlay({ mode }: { mode: Mode }) {
           <h1 className="screen-title">{title}</h1>
         </div>
         <div className="topbar-actions">
-          {mode.kind === 'rated' && (
+          {mode.kind === 'rated' && !kids && (
             <div className="p-rating-chip" aria-live="polite">
               {rating}
               {delta !== null && delta !== 0 && <span className={delta > 0 ? 'up' : 'down'}>{delta > 0 ? `+${delta}` : delta}</span>}
@@ -197,9 +197,11 @@ export default function PuzzlePlay({ mode }: { mode: Mode }) {
 
           {finished && puzzle && (
             <div className="p-info">
-              <span>
-                Puzzle rating <strong>{puzzle.rating}</strong>
-              </span>
+              {!kids && (
+                <span>
+                  Puzzle rating <strong>{puzzle.rating}</strong>
+                </span>
+              )}
               <div className="p-chips">
                 {puzzle.themes
                   .map((t) => THEMES.find((x) => x.id === t))

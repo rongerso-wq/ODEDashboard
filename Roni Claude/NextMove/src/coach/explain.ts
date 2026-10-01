@@ -2,7 +2,7 @@
 import { Chess, type Move, type Square } from 'chess.js'
 import type { Analysis } from './analysis'
 import { uciToSan } from './analysis'
-import { classify, formatEval, isMate, mateIn, type Grade } from './grade'
+import { classify, isMate, mateIn, type Grade } from './grade'
 import {
   hangingPieces,
   isDevelopment,
@@ -187,7 +187,8 @@ function whatWentWrong(x: {
       say: sayWrong.strongerKids,
     }
   return {
-    text: `${bestSan ? `${bestSan} was better` : 'There was a better move'}. The position goes from ${evalWords(evalBefore)} to ${evalWords(evalAfter)} (${formatEval(evalBefore)} → ${formatEval(evalAfter)}).`,
+    // words only: "(+0.40 → −1.20)" means nothing to a beginner (Review still shows the number)
+    text: `${bestSan ? `${bestSan} was better` : 'There was a better move'}. The position goes from ${evalWords(evalBefore)} to ${evalWords(evalAfter)}.`,
     say: `${sayWrong.better} ${sayWrong.now(evalWords(evalAfter))}`,
   }
 }

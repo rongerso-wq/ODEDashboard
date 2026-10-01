@@ -1132,6 +1132,10 @@
   "text": "Done in 9 moves."
  },
  {
+  "key": "a0865ae9s",
+  "text": "Dots show where it can move."
+ },
+ {
   "key": "c66d4b041m",
   "text": "Download the rest to hear him everywhere without internet."
  },
@@ -1170,6 +1174,10 @@
  {
   "key": "869caae5f",
   "text": "e6 prepares d5."
+ },
+ {
+  "key": "943defeay",
+  "text": "Each player starts with 16 pieces."
  },
  {
   "key": "763145be1m",
@@ -2140,6 +2148,10 @@
   "text": "Let's look at the game together."
  },
  {
+  "key": "b4af0091s",
+  "text": "Let's meet the pieces first."
+ },
+ {
   "key": "7a31dfb411",
   "text": "Let's start with how the pieces move!"
  },
@@ -2628,6 +2640,10 @@
   "text": "Next up: The bishop."
  },
  {
+  "key": "e4811457w",
+  "text": "Next up: The board and the goal."
+ },
+ {
   "key": "0beca774i",
   "text": "Next up: The fork."
  },
@@ -2666,6 +2682,10 @@
  {
   "key": "e4b8dc85j",
   "text": "Next up: Two rooks."
+ },
+ {
+  "key": "9f517970x",
+  "text": "Next up: Your first chess lesson."
  },
  {
   "key": "e65ee6cbr",
@@ -4104,6 +4124,10 @@
   "text": "Take your time, every lesson is played on the board."
  },
  {
+  "key": "01117ca5w",
+  "text": "Tap the rook, then tap the star."
+ },
+ {
   "key": "d17f6c6fz",
   "text": "That gets the bishop out of danger."
  },
@@ -4122,6 +4146,10 @@
  {
   "key": "aea675efx",
   "text": "That gets the rook out of danger."
+ },
+ {
+  "key": "5f07c047p",
+  "text": "That is called checkmate!"
  },
  {
   "key": "507c76deh",
@@ -4240,6 +4268,10 @@
   "text": "The black king is stuck behind its own pawns."
  },
  {
+  "key": "92d9f97f1b",
+  "text": "The board, how to move a piece, and how to win."
+ },
+ {
   "key": "55c6fddb10",
   "text": "The captured piece leaves the board."
  },
@@ -4266,6 +4298,10 @@
  {
   "key": "70a54f6815",
   "text": "The d5 pawn is gone, captured in passing."
+ },
+ {
+  "key": "c67123f0u",
+  "text": "The dots show where it can go!"
  },
  {
   "key": "52511847y",
@@ -5116,6 +5152,14 @@
   "text": "This bishop loves light squares."
  },
  {
+  "key": "decfc51ax",
+  "text": "This is a chessboard: 64 squares."
+ },
+ {
+  "key": "45508087n",
+  "text": "This is the chessboard!"
+ },
+ {
   "key": "3bb6d1ff12",
   "text": "This lets your opponent checkmate you."
  },
@@ -5158,6 +5202,18 @@
  {
   "key": "e2dfd5421a",
   "text": "To catch an enemy piece, move onto its square."
+ },
+ {
+  "key": "ab3ae3d11s",
+  "text": "To move a piece, tap it, then tap the square where it should go."
+ },
+ {
+  "key": "146e8f7f1j",
+  "text": "To move, tap a piece, then tap where you want it to go."
+ },
+ {
+  "key": "78786c441c",
+  "text": "To win, trap the other king so it cannot escape."
  },
  {
   "key": "cefadef3v",
@@ -5276,6 +5332,10 @@
   "text": "Today's lesson: The bishop."
  },
  {
+  "key": "c93a2d1413",
+  "text": "Today's lesson: The board and the goal."
+ },
+ {
   "key": "ba9f57bfp",
   "text": "Today's lesson: The fork."
  },
@@ -5316,6 +5376,10 @@
   "text": "Today's lesson: Two rooks."
  },
  {
+  "key": "b63f772514",
+  "text": "Today's lesson: Your first chess lesson."
+ },
+ {
   "key": "ae1e228d1g",
   "text": "Together they push the king to the edge and mate it."
  },
@@ -5338,6 +5402,14 @@
  {
   "key": "2a3e90e11e",
   "text": "Try it once more and you will shine even brighter."
+ },
+ {
+  "key": "4eb6b13514",
+  "text": "Try it: tap the rook, then tap the star."
+ },
+ {
+  "key": "83f82e427",
+  "text": "Try it!"
  },
  {
   "key": "519e96d7s",
@@ -5520,6 +5592,14 @@
   "text": "White · pressure on e5."
  },
  {
+  "key": "7c3667741x",
+  "text": "White always moves first, then the players take turns, one move each."
+ },
+ {
+  "key": "b698531112",
+  "text": "White goes first, then you take turns."
+ },
+ {
   "key": "2ea9b63a16",
   "text": "White threatens Queen takes f7, checkmate."
  },
@@ -5578,6 +5658,10 @@
  {
   "key": "3e9bff23e",
   "text": "You are White."
+ },
+ {
+  "key": "cd36fa16r",
+  "text": "You can also drag it there."
  },
  {
   "key": "847b0c9336",
@@ -5898,6 +5982,10 @@
  {
   "key": "3376c329q",
   "text": "You have 15 stars already."
+ },
+ {
+  "key": "99ce3caa1d",
+  "text": "You have 16 pieces, and so does the other player."
  },
  {
   "key": "3f3d2d02q",
@@ -6462,6 +6550,14 @@
  {
   "key": "5e2fef72k",
   "text": "You were checkmated."
+ },
+ {
+  "key": "a9a8def114",
+  "text": "You will learn how, one piece at a time."
+ },
+ {
+  "key": "132b455d1s",
+  "text": "You win by checkmate: attack the other king so it cannot escape."
  },
  {
   "key": "70e8f412y",

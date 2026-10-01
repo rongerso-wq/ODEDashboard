@@ -93,6 +93,12 @@
   line-height: 1.15;
 }
 
+/* "Continue your game vs …" (an unfinished bot game) */
+.resume-banner {
+  border-color: var(--accent);
+  background: var(--accent-soft), var(--surface);
+}
+
 .home-foot {
   margin-top: 28px;
   color: var(--faint);

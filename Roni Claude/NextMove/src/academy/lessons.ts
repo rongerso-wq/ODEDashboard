@@ -16,6 +16,44 @@ export const CHAPTERS: Chapter[] = [
     about: 'How each piece moves — learned by collecting stars.',
     hue: 145,
     lessons: [
+      // First of all (QA 2026-10-01): a newcomer met the rook before ever seeing the board, being
+      // told how to move a piece, or learning what the game is for.
+      {
+        id: 'board',
+        title: 'The board and the goal',
+        kidsTitle: 'Your first chess lesson',
+        piece: 'k',
+        about: 'The board, how to move a piece, and how to win.',
+        steps: [
+          {
+            kind: 'info',
+            fen: 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1',
+            text: 'This is a chessboard: 64 squares. Each player starts with 16 pieces. White always moves first, then the players take turns, one move each.',
+            kids: 'This is the chessboard! You have 16 pieces, and so does the other player. White goes first, then you take turns.',
+          },
+          {
+            kind: 'info',
+            fen: '8/8/8/8/8/8/8/R7 w - - 0 1',
+            arrows: [arrow('a1', 'a4')],
+            text: 'To move a piece, tap it, then tap the square where it should go. Dots show where it can move. You can also drag it there.',
+            kids: 'To move, tap a piece, then tap where you want it to go. The dots show where it can go!',
+          },
+          {
+            kind: 'collect',
+            fen: '8/8/8/8/8/8/8/R7 w - - 0 1',
+            stars: ['a4'],
+            text: 'Try it: tap the rook, then tap the star.',
+            kids: 'Try it! Tap the rook, then tap the star.',
+          },
+          {
+            kind: 'info',
+            fen: '3R2k1/5ppp/8/8/8/8/8/6K1 b - - 0 1',
+            marks: [mark('g8', 'bad')],
+            text: 'You win by CHECKMATE: attack the other king so it cannot escape. You will learn how, one piece at a time.',
+            kids: "To win, trap the other king so it cannot escape. That is called checkmate! Let's meet the pieces first.",
+          },
+        ],
+      },
       {
         id: 'rook',
         title: 'The rook',

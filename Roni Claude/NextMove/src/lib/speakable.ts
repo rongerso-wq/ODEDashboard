@@ -30,6 +30,20 @@ export function spokenMove(san: string): string {
   return /^[a-h][1-8][+#]?$/.test(san) ? `Pawn to ${san.replace(/[+#]/g, '')}${san.includes('#') ? ', checkmate' : san.includes('+') ? ', check' : ''}` : sanToWords(san)
 }
 
+/**
+ * Kids mode on screen: no chess notation. "with Qxf7#" -> "with queen takes f7, checkmate",
+ * "Nf3 was stronger" -> "Knight f3 was stronger", "Play d4" -> "Play pawn to d4".
+ */
+export function notationToWords(text: string): string {
+  return text
+    .replace(SAN, (whole, _m, offset: number) => {
+      const w = sanToWords(whole.replace(/^\d+(?:\.{1,3}|…)\s?/, ''))
+      const startsSentence = offset === 0 || /[.!?:]\s*$/.test(text.slice(0, offset))
+      return startsSentence ? w : w.charAt(0).toLowerCase() + w.slice(1)
+    })
+    .replace(/\b(Play|play|played|was|with|Next move:|Your move:)\s([a-h][1-8])\b(?![–-])/g, '$1 pawn to $2')
+}
+
 export function speakable(text: string): string {
   return (
     text

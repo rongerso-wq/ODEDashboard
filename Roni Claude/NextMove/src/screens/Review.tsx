@@ -5,6 +5,7 @@ import { GradeBadge } from '../components/CoachCard'
 import EvalGraph from '../components/EvalGraph'
 import { VoiceToggle } from '../components/Elias'
 import { useSay } from '../lib/useVoice'
+import { notationToWords } from '../lib/speakable'
 import { sayReview, sayWrong } from '../coach/say'
 import { addCards, cardFromFeedback } from '../mistakes/deck'
 import { IconBack, IconFirst, IconLast, IconNext, IconPrev } from '../components/Icons'
@@ -213,7 +214,9 @@ function ReviewScreen({ game }: { game: ReviewGame }) {
             <button className="icon-btn nav-big" onClick={() => go(ply - 1)} disabled={ply === 0} aria-label="Previous move">
               <IconPrev />
             </button>
-            <span className="nav-pos">{ply === 0 ? 'Start' : `${Math.ceil(ply / 2)}${ply % 2 ? '.' : '…'} ${move?.san}`}</span>
+            <span className="nav-pos">
+              {ply === 0 ? 'Start' : kids ? `Move ${Math.ceil(ply / 2)}` : `${Math.ceil(ply / 2)}${ply % 2 ? '.' : '…'} ${move?.san}`}
+            </span>
             <button className="icon-btn nav-big" onClick={() => go(ply + 1)} disabled={ply === fens.length - 1} aria-label="Next move">
               <IconNext />
             </button>
@@ -244,9 +247,14 @@ function ReviewScreen({ game }: { game: ReviewGame }) {
                   <span className="acc-label">accuracy</span>
                   <span className="acc-counts">
                     <span className="c-best">★ {s.best}</span>
-                    <span className="c-inaccuracy">?! {s.inaccuracy}</span>
-                    <span className="c-mistake">? {s.mistake}</span>
-                    <span className="c-blunder">?? {s.blunder}</span>
+                    {/* Kids: stars only; the ?! ? ?? symbols are chess notation */}
+                    {!kids && (
+                      <>
+                        <span className="c-inaccuracy">?! {s.inaccuracy}</span>
+                        <span className="c-mistake">? {s.mistake}</span>
+                        <span className="c-blunder">?? {s.blunder}</span>
+                      </>
+                    )}
                   </span>
                 </div>
               ))}
@@ -268,22 +276,22 @@ function ReviewScreen({ game }: { game: ReviewGame }) {
                 <div className="rm-head">
                   <GradeBadge grade={fb.grade} size={40} />
                   <div>
-                    <strong>
-                      {mover}: {fb.san}
-                    </strong>
+                    <strong>{kids ? (mover === 'You' ? 'Your move' : `${mover}'s move`) : `${mover}: ${fb.san}`}</strong>
                     <span className={`rm-grade g-${fb.grade}`}>{gradeTitle(fb.grade, kids)}</span>
                   </div>
                   {!kids && (
                     <span className="rm-eval" title="Evaluation (+ = White is better)">
                       {evalText}
+                      {/* phones show no tooltips: say what the number means */}
+                      <small>+ means White is ahead</small>
                     </span>
                   )}
                 </div>
-                <p>{shownText}</p>
+                <p>{kids && shownText ? notationToWords(shownText) : shownText}</p>
                 <div className="rm-actions">
                   {BAD.includes(fb.grade) && fb.bestUci && (
                     <button className="btn" onClick={() => setShowBest(!showBest)}>
-                      {showBest ? 'Back to the game' : `Show ${uciToSan(move.before, fb.bestUci) ?? 'the better move'}`}
+                      {showBest ? 'Back to the game' : kids ? 'Show the better move' : `Show ${uciToSan(move.before, fb.bestUci) ?? 'the better move'}`}
                     </button>
                   )}
                   {BAD.includes(fb.grade) && isMine(move) && game.config && (

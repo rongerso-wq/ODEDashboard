@@ -6,6 +6,9 @@ import { useSettings } from '../lib/settings'
 import Board from '../components/Board'
 import SettingsSheet from '../components/SettingsSheet'
 import MistakesBanner from '../components/MistakesBanner'
+import { BotAvatar } from '../components/BotAvatar'
+import { botById } from '../engine/bots'
+import { loadCurrentGame } from '../chess/saved'
 import './Home.css'
 
 // The Italian Game: the opening most beginners learn first.
@@ -23,6 +26,11 @@ export default function Home() {
   const { mode } = useSettings()
   const [settingsOpen, setSettingsOpen] = useState(false)
   const kids = mode === 'kids'
+  // a returning player sees their unfinished game first
+  const [unfinished] = useState(() => {
+    const g = loadCurrentGame()
+    return g && g.moves.length > 0 ? g : null
+  })
   return (
     <div className="home">
       <header className="topbar">
@@ -51,6 +59,21 @@ export default function Home() {
           <Board fen={HERO_FEN} lastMove={{ from: 'f1', to: 'c4' }} animate={false} coordinates={false} />
         </div>
       </section>
+
+      {unfinished && (
+        <button className="mk-banner resume-banner" onClick={() => navigate('/play/computer/game')}>
+          <BotAvatar bot={botById(unfinished.config.botId)} size={44} />
+          <div>
+            <strong>
+              {kids ? 'Finish your game with' : 'Continue your game vs'} {botById(unfinished.config.botId).name}
+            </strong>
+            <span>
+              Move {Math.ceil(unfinished.moves.length / 2)} · you play {unfinished.config.color === 'w' ? 'White' : 'Black'}
+            </span>
+          </div>
+          <IconArrow />
+        </button>
+      )}
 
       <MistakesBanner kids={kids} />
 

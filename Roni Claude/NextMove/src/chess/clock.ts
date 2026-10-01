@@ -3,13 +3,14 @@ import type { Color } from 'chess.js'
 
 export type TimeControl = { id: string; label: string; kind: string; minutes: number; increment: number }
 
+// Plain words, not chess jargon (Bullet/Blitz/Rapid, "3 | 2"): a parent new to chess reads these.
 export const TIME_CONTROLS: TimeControl[] = [
-  { id: '1+0', label: '1 min', kind: 'Bullet', minutes: 1, increment: 0 },
-  { id: '3+2', label: '3 | 2', kind: 'Blitz', minutes: 3, increment: 2 },
-  { id: '5+0', label: '5 min', kind: 'Blitz', minutes: 5, increment: 0 },
-  { id: '10+0', label: '10 min', kind: 'Rapid', minutes: 10, increment: 0 },
-  { id: '15+10', label: '15 | 10', kind: 'Rapid', minutes: 15, increment: 10 },
-  { id: '30+0', label: '30 min', kind: 'Classical', minutes: 30, increment: 0 },
+  { id: '1+0', label: '1 min', kind: 'Very fast', minutes: 1, increment: 0 },
+  { id: '3+2', label: '3 min + 2 s', kind: 'Fast, +2 s a move', minutes: 3, increment: 2 },
+  { id: '5+0', label: '5 min', kind: 'Fast', minutes: 5, increment: 0 },
+  { id: '10+0', label: '10 min', kind: 'Steady', minutes: 10, increment: 0 },
+  { id: '15+10', label: '15 min + 10 s', kind: 'Steady, +10 s a move', minutes: 15, increment: 10 },
+  { id: '30+0', label: '30 min', kind: 'Slow', minutes: 30, increment: 0 },
 ]
 
 export const timeControlById = (id: string | null) => TIME_CONTROLS.find((t) => t.id === id) ?? null

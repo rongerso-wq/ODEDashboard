@@ -126,7 +126,8 @@ export default function ComputerSetup() {
                     <i key={i} className={i < b.level ? 'on' : ''} />
                   ))}
                 </span>
-                {/\d/.test(b.strength) ? `≈ ${b.strength}` : b.strength}
+                {/* Kids: the level dots say enough; a rating number means nothing to a child */}
+                {/\d/.test(b.strength) ? (kids ? '' : `≈ ${b.strength}`) : b.strength}
               </span>
               {beaten.has(b.id) && <span className="beaten">✓ Beaten</span>}
             </button>

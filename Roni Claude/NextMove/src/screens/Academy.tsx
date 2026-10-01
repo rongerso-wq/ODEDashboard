@@ -73,7 +73,7 @@ export default function Academy() {
         </div>
         {next && (
           <button className="btn btn-primary" onClick={() => navigate(`/learn/${next.id}`)}>
-            {earned ? 'Continue' : kids ? "Let's go!" : 'Begin'} <IconArrow />
+            {earned ? (kids ? 'Keep going!' : 'Continue') : kids ? "Let's go!" : 'Begin'} <IconArrow />
           </button>
         )}
       </section>

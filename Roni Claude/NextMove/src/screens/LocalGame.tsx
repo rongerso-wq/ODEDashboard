@@ -86,7 +86,7 @@ export default function LocalGame() {
             {status}
           </div>
 
-          <MoveList history={game.history} />
+          {!kids && <MoveList history={game.history} />}
 
           <div className="controls">
             <button className="ctrl" onClick={() => game.undo()} disabled={game.ply === 0}>

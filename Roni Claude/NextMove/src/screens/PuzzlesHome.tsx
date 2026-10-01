@@ -5,6 +5,7 @@ import MistakesBanner from '../components/MistakesBanner'
 import { pieceUrl } from '../chess/pieces'
 import { dailyPuzzle, loadPuzzles, loadStats, themeSet, THEMES, today, type Puzzle } from '../puzzles/model'
 import { goBack, navigate } from '../lib/router'
+import { loadProgress } from '../academy/progress'
 import { useSettings } from '../lib/settings'
 import './Puzzles.css'
 
@@ -13,6 +14,8 @@ export default function PuzzlesHome() {
   const kids = mode === 'kids'
   const [all, setAll] = useState<Puzzle[] | null>(null)
   const stats = useMemo(() => loadStats(), [])
+  // No lesson finished and no puzzle solved yet: point to the Academy first.
+  const newcomer = useMemo(() => Object.keys(loadProgress()).length === 0 && loadStats().solved.length === 0, [])
   useEffect(() => {
     void loadPuzzles().then(setAll)
   }, [])
@@ -38,6 +41,16 @@ export default function PuzzlesHome() {
 
       <MistakesBanner kids={kids} />
 
+      {newcomer && (
+        <button className="p-newcomer" onClick={() => navigate('/learn')}>
+          <div>
+            <strong>{kids ? 'New to chess? Learn the pieces first!' : 'New to chess? Start with Learn.'}</strong>
+            <span>{kids ? 'Puzzles are easier once you know how every piece moves.' : 'Puzzles need the basics: how the pieces move and how checkmate works.'}</span>
+          </div>
+          <IconArrow />
+        </button>
+      )}
+
       <div className="p-top">
         <button className="p-card p-daily" onClick={() => navigate('/puzzles/daily')} disabled={!daily}>
           <span className="p-eyebrow">{kids ? "Today's puzzle" : 'Puzzle of the day'}</span>
@@ -52,11 +65,12 @@ export default function PuzzlesHome() {
         <div className="p-col">
           <button className="p-card p-rated" onClick={() => navigate('/puzzles/rated')}>
             <span className="p-eyebrow">{kids ? 'Puzzle training' : 'Rated puzzles'}</span>
-            <strong className="p-big">{stats.rating}</strong>
+            {/* Kids: puzzles solved, not a rating number */}
+            <strong className="p-big">{kids ? `⭐ ${stats.solved.length}` : stats.rating}</strong>
             <span className="p-sub">
-              {kids ? 'Your puzzle score — solve puzzles to grow it!' : 'Your puzzle rating. Puzzles adapt to your level.'}
+              {kids ? 'Puzzles you have solved. They get harder as you get better!' : 'Your puzzle rating. Puzzles adapt to your level.'}
             </span>
-            {spark.length > 1 && <Sparkline values={spark.map((h) => h.rating)} />}
+            {!kids && spark.length > 1 && <Sparkline values={spark.map((h) => h.rating)} />}
             <span className="p-cta">
               {kids ? 'Train' : 'Train'} <IconArrow />
             </span>

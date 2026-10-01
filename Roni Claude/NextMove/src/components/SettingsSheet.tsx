@@ -127,6 +127,10 @@ export default function SettingsSheet({ onClose }: { onClose: () => void }) {
           <ModeSwitch />
         </div>
         <label className="sheet-row">
+          <span>Larger text</span>
+          <input type="checkbox" checked={s.largeText} onChange={(e) => s.update({ largeText: e.target.checked })} />
+        </label>
+        <label className="sheet-row">
           <span>Sound effects</span>
           <input type="checkbox" checked={s.sound} onChange={(e) => s.update({ sound: e.target.checked })} />
         </label>
