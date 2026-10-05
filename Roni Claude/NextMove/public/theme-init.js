@@ -4,4 +4,6 @@ try {
   var s = JSON.parse(localStorage.getItem('nextmove:settings') || '{}')
   if (s.mode === 'kids' || s.mode === 'classic') document.documentElement.dataset.mode = s.mode
   if (s.largeText === true) document.documentElement.dataset.text = 'large'
-} catch (e) {}
+} catch {
+  /* storage blocked: the default style */
+}

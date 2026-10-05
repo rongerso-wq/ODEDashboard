@@ -84,6 +84,27 @@
   font-size: 13px;
   color: var(--muted);
 }
+/* Your progress: backup / restore */
+.sheet-backup {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.sheet-confirm {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--accent);
+  background: var(--accent-soft);
+}
+.sheet-confirm span {
+  flex: 1 1 100%;
+  font-weight: 600;
+}
+
 /* the licence notices, read inside the app */
 .sheet-licences {
   margin: 0;

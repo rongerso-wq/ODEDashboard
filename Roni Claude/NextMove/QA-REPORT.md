@@ -184,3 +184,39 @@ Prompted by the user's iPhone report: a game against a strong bot "stopped" afte
 
 ### Real iPhone ✅ (user, 2026-09-29)
 - After the deploy, the user confirmed all five on their iPhone: the game-over card after being mated, no double-tap zoom, the sideways layout, and a timed game locked mid-game (clock paused, the bot kept playing on return).
+
+## Round 6: independent review (2026-10-01)
+
+Five reviewers with no knowledge of rounds 1–5 read the code from one angle each (first-time family members, Android and older iPhones, months of real use, chess accuracy, safety and privacy) and reported about 50 findings. Each top finding was re-checked in the code before fixing; fixes went in five batches, each tested in the built app (`vite preview`) at 390×664.
+
+### N32 Breaks or loses progress 🐞 → fixed (batch 1)
+- **Blank app on iOS < 16.4** (iPhone 6s/7/SE-1 stay on iOS 15): two regex lookbehinds (`voiceText.ts`, `speakable.ts`) made the whole bundle unparseable. Rewritten; build/CSS target Safari 15 (plain min/max media queries instead of range syntax); `Array.prototype.at` polyfill (`lib/polyfills.ts`).
+- **Android Back trap**: redirects pushed history entries, so Back bounced between a finished game and the opponents screen. Router: `navigate(to, { replace })`, `goBack(parent)` steps back when it came from the parent, `useBackToClose` gives dialogs and the settings sheet their own entry. Verified: finished game → Back closes the card → opponents → Home; Settings closes on Back.
+- "Play" and "Discard" replaced an unfinished bot game without asking: now "Sure?". Play a Friend games are saved after every move (`local-current`).
+- My mistakes: a missed card was re-queued with its old box, so a solved retry could jump to mastered.
+- Rated puzzles: after all 1,864 were played the rating froze silently; the oldest-played now come back and count again.
+
+### N33 Elias teaching something wrong 🐞 → fixed (batch 2)
+- Commentary suggested the first legal recapture ("win it back with Rxe4+" where …dxe4 loses the rook): now the cheapest, and "win it back" only when it does.
+- "Free"/"unprotected" for defended pieces; forks whose forker can simply be taken. `Target.defended`; `isFork` drops forks taken by a piece worth no more. Spoken lines reuse recorded sentences.
+- Edge-pawn advice fired on g6/b6 (contradicting the fianchetto lesson); queen-out warning fired on recaptures.
+- Lessons: "trapped king loses" (stalemate is a draw), checkmate "cannot move to a safe square", a false back-rank hint, Qxa8+ and Nh6 now accepted. Tests recreate the reviewer's positions.
+
+### N34 First-time family members 🐞 → fixed (batch 3)
+- New first lesson "The board and the goal" (board, how to move, checkmate).
+- Kids mode: no notation or ratings (`notationToWords`, no move list, no bot ratings, puzzles show stars solved, review stars only).
+- Settings › Larger text (zoom on text areas only, never the board: touch math on a zoomed board isn't reliable everywhere; verified a tap still moves the right piece).
+- No raw engine numbers in coach text; plain clock names; game-over card no longer closes on an outside tap; Review control after a game; Home shows an unfinished game; Puzzles nudges newcomers to Learn.
+
+### N35 Safety and privacy 🐞 → fixed (batch 4)
+- No CSP or security headers (only HSTS): `vercel.json` now sets CSP (`script-src 'self' 'wasm-unsafe-eval'`, `frame-ancestors 'none'`…), nosniff, X-Frame-Options, Referrer-Policy, Permissions-Policy; `vite preview` serves the same headers. Verified locally: engine, lessons, puzzles, fonts, voice clips, service worker, no violations.
+- The automatic device-voice fallback preferred cloud voices: on-device voices first; privacy text corrected.
+- Public `privacy.html` (store requirement); AI-generated voice disclosed; licences shown in-app; Stockfish source links pinned.
+
+### N36 Months of real use 🐞 → fixed (batch 5)
+- No protection against storage loss: `navigator.storage.persist()` at start-up, and Settings › Your progress: Save a backup / Restore a backup (JSON file; only NextMove keys; tests in `backup.test.ts`).
+- Stale puzzle streak; the daily puzzle locked as failed after a missed first try; duplicate mistake cards (live coach vs Review best move); settings and mistake cards now validated field by field; practice sessions capped at 20 cards; bot games also saved on `visibilitychange`; Elias's recorded voice recovers after an app switch (iOS "interrupted" audio); device speech can no longer hang on Android.
+
+### Still open
+- Real-device checks by the user after the deploy (older iPhone if available, an Android phone's Back button, the security headers live).
+- Not done (low value or a product decision): kids versions of chapter descriptions, Settings reachable only from Home, a "beaten" badge that survives 30 newer games.

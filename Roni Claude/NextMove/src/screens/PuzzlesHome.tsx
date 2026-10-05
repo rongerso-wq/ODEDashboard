@@ -24,6 +24,13 @@ export default function PuzzlesHome() {
   const dailyDone = stats.daily?.date === today() && stats.daily.solved
   const solved = new Set(stats.solved)
   const spark = stats.history.slice(-30)
+  // A streak is alive only if the last solve was today or yesterday; after days away it is 0,
+  // not the old number (it used to show "12 days" until the next solve reset it to 1).
+  const streakDays = useMemo(() => {
+    const now = new Date()
+    const yesterday = today(new Date(now.getFullYear(), now.getMonth(), now.getDate() - 1))
+    return stats.streak.last === today() || stats.streak.last === yesterday ? stats.streak.days : 0
+  }, [stats])
 
   return (
     <div className="page puzzles">
@@ -35,7 +42,7 @@ export default function PuzzlesHome() {
           <h1 className="screen-title">Puzzles</h1>
         </div>
         <div className="p-streak" title="Days in a row with a solved puzzle">
-          🔥 {stats.streak.days} <span>{stats.streak.days === 1 ? 'day' : 'days'}</span>
+          🔥 {streakDays} <span>{streakDays === 1 ? 'day' : 'days'}</span>
         </div>
       </header>
 

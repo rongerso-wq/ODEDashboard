@@ -7,6 +7,9 @@ import './lib/install' // catch the browser's install prompt as early as possibl
 import './index.css'
 import './styles/layout.css'
 import App from './App.tsx'
+import { requestPersistentStorage } from './lib/storage'
+
+requestPersistentStorage() // ask the browser not to clear saved progress on its own
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

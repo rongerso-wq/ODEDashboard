@@ -84,6 +84,14 @@ export default function PuzzlePlay({ mode }: { mode: Mode }) {
     if (mode.kind === 'daily' && stats.daily?.date !== today()) saveStats({ ...stats, daily: { date: today(), solved: ok } })
   }
 
+  // The daily puzzle counts as done once it is solved, even after a missed first try
+  // (only the first try was recorded, so a miss locked "Solved today" out for the whole day).
+  useEffect(() => {
+    if (mode.kind !== 'daily' || status !== 'solved') return
+    const s = loadStats()
+    if (!(s.daily?.date === today() && s.daily.solved)) saveStats({ ...s, daily: { date: today(), solved: true } })
+  }, [mode.kind, status])
+
   const finished = status === 'solved' || status === 'failed'
   const title =
     mode.kind === 'rated' ? (kids ? 'Puzzle training' : 'Rated puzzles') : mode.kind === 'daily' ? (kids ? "Today's puzzle" : 'Puzzle of the day') : themeTitle(mode.theme, kids)

@@ -32,12 +32,31 @@ const DEFAULTS: Settings = {
   largeText: false,
 }
 
+/**
+ * Saved settings, field by field: a value of the wrong kind (an older version, a hand edit, a
+ * restored backup) falls back to its default instead of reaching the page (QA 2026-10-01).
+ */
+function loadSettings(): Settings {
+  const v = load<Record<string, unknown>>('settings', {}, isObj)
+  const bool = (k: keyof Settings) => (typeof v[k] === 'boolean' ? (v[k] as boolean) : (DEFAULTS[k] as boolean))
+  return {
+    mode: v.mode === 'kids' || v.mode === 'classic' ? v.mode : DEFAULTS.mode,
+    sound: bool('sound'),
+    coordinates: bool('coordinates'),
+    coach: bool('coach'),
+    voice: bool('voice'),
+    voiceName: typeof v.voiceName === 'string' ? v.voiceName : null,
+    eliasVoice: v.eliasVoice === 'device' ? 'device' : 'recorded',
+    largeText: bool('largeText'),
+  }
+}
+
 type Ctx = Settings & { update: (patch: Partial<Settings>) => void }
 
 const SettingsContext = createContext<Ctx | null>(null)
 
 export function SettingsProvider({ children }: { children: ReactNode }) {
-  const [settings, setSettings] = useState<Settings>(() => ({ ...DEFAULTS, ...load('settings', {}, isObj) }))
+  const [settings, setSettings] = useState<Settings>(loadSettings)
 
   useEffect(() => {
     document.documentElement.dataset.mode = settings.mode

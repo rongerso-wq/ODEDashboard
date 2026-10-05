@@ -20,7 +20,8 @@ const DAY = 86_400_000
 export default function MistakesPractice() {
   const { mode, coordinates } = useSettings()
   const kids = mode === 'kids'
-  const [queue, setQueue] = useState<MistakeCard[]>(() => dueCards())
+  // At most 20 cards a session: after a long break every due card at once could be 200.
+  const [queue, setQueue] = useState<MistakeCard[]>(() => dueCards().slice(0, 20))
   const [idx, setIdx] = useState(0)
   const [results, setResults] = useState<boolean[]>([])
   const [openedAt] = useState(() => Date.now()) // for "next review in N days"

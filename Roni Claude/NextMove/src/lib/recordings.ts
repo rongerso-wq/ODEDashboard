@@ -24,20 +24,19 @@ function audio(): AudioContext | null {
   return ctx
 }
 
-// iPhones keep audio suspended until a tap has played something.
+// iPhones keep audio suspended until a tap has played something, and suspend (or "interrupt")
+// it again after a call or a trip to another app. So every tap wakes it if it isn't running;
+// once it is, a tap costs nothing. (It used to stop listening after the first tap, and Elias
+// then fell back to the device voice after an app switch: QA 2026-10-01.)
 if (typeof window !== 'undefined') {
   const unlock = () => {
     const c = audio()
-    if (!c) return
-    void c.resume()
+    if (!c || c.state === 'running') return
+    void c.resume().catch(() => {})
     const src = c.createBufferSource()
     src.buffer = c.createBuffer(1, 1, 22050)
     src.connect(c.destination)
     src.start(0)
-    if (c.state === 'running') {
-      removeEventListener('pointerdown', unlock, true)
-      removeEventListener('keydown', unlock, true)
-    }
   }
   addEventListener('pointerdown', unlock, true)
   addEventListener('keydown', unlock, true)
@@ -80,7 +79,8 @@ export async function playClip(
   if (!c) return false
   const buf = await preload(key)
   if (cancelled()) return true
-  if (c.state === 'suspended') await c.resume().catch(() => {})
+  // 'suspended', or iOS's 'interrupted' after a call / app switch
+  if (c.state !== 'running') await c.resume().catch(() => {})
   if (c.state !== 'running') return false // no tap yet: the device voice has its own rules
   return new Promise((done) => {
     const src = c.createBufferSource()

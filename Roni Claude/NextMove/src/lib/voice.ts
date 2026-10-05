@@ -150,7 +150,14 @@ export function stop() {
 function sayDevice(text: string): Promise<void> {
   const s = synth()
   if (!s) return Promise.resolve()
-  return new Promise((done) => {
+  return new Promise((resolve) => {
+    // Some Android voices never fire onend (no voice data installed, an engine hiccup): then the
+    // queue stayed "speaking" for good. A generous limit from the text's length ends it anyway.
+    const limit = setTimeout(() => done(), 4000 + text.length * 120)
+    const done = () => {
+      clearTimeout(limit)
+      resolve()
+    }
     const u = new SpeechSynthesisUtterance(text)
     const voice = pickVoice()
     if (voice) {

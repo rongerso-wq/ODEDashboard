@@ -153,9 +153,13 @@ function Game({ saved }: { saved: SavedComputerGame }) {
   }, [game.ply])
   useEffect(() => {
     const onHide = () => persistRef.current()
+    // iOS may skip pagehide when it closes a backgrounded app: also save the moment it's hidden
+    const onVisibility = () => document.hidden && onHide()
     window.addEventListener('pagehide', onHide)
+    document.addEventListener('visibilitychange', onVisibility)
     return () => {
       window.removeEventListener('pagehide', onHide)
+      document.removeEventListener('visibilitychange', onVisibility)
       onHide()
     }
   }, [])

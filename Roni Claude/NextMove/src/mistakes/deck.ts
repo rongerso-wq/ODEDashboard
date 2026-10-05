@@ -5,7 +5,7 @@ import { validateFen } from 'chess.js'
 import { loadList, save } from '../lib/storage'
 
 export type MistakeCard = {
-  id: string // position + best move, so the same mistake is never stored twice
+  id: string // position + best move (duplicates are also caught by position + move played)
   fen: string // position before the mistake (the player to move)
   best: string // engine's move, UCI
   bestSan: string
@@ -27,12 +27,19 @@ const DAY = 86_400_000
 export const INTERVALS = [0, 1 * DAY, 3 * DAY, 7 * DAY, 21 * DAY, 60 * DAY]
 export const MASTERED = 5
 
-export const loadDeck = () =>
+export const loadDeck = (): MistakeCard[] =>
   loadList<MistakeCard>(KEY, (c) =>
     ['id', 'fen', 'best', 'bestSan', 'played', 'why'].every((k) => typeof c[k] === 'string') &&
     ['box', 'due'].every((k) => typeof c[k] === 'number') &&
-    validateFen(c.fen as string).ok)
+    validateFen(c.fen as string).ok,
+  // fields an older or hand-edited card may lack: a missing count would become NaN and
+  // break the "oldest first" order (QA 2026-10-01)
+  ).map((c) => ({ ...c, reviews: Number.isFinite(c.reviews) ? c.reviews : 0, at: Number.isFinite(c.at) ? c.at : c.due }))
 const saveDeck = (d: MistakeCard[]) => save(KEY, d)
+
+/** The same mistake = the same position and the same move played. (The best move in the id can
+ * differ between the live coach and the review, which analyse at different depths.) */
+const sameMistake = (c: Pick<MistakeCard, 'fen' | 'played'>) => `${c.fen.split(' ').slice(0, 4).join(' ')}|${c.played}`
 
 /** Turns a coach verdict into a card (null if it wasn't a real mistake). */
 export function cardFromFeedback(fb: Feedback, opponent: string, now = Date.now()): MistakeCard | null {
@@ -57,8 +64,13 @@ export function cardFromFeedback(fb: Feedback, opponent: string, now = Date.now(
 /** Adds cards that aren't in the deck yet; returns how many were new. */
 export function addCards(cards: MistakeCard[]): number {
   const deck = loadDeck()
-  const known = new Set(deck.map((c) => c.id))
-  const fresh = cards.filter((c) => !known.has(c.id))
+  const known = new Set(deck.flatMap((c) => [c.id, sameMistake(c)]))
+  const fresh: MistakeCard[] = []
+  for (const c of cards) {
+    if (known.has(c.id) || known.has(sameMistake(c))) continue
+    known.add(c.id).add(sameMistake(c))
+    fresh.push(c)
+  }
   if (!fresh.length) return 0
   let next = [...deck, ...fresh]
   if (next.length > MAX_CARDS) {

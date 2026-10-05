@@ -45,6 +45,15 @@ describe('mistake deck', () => {
     expect(loadDeck()).toHaveLength(1)
   })
 
+  it('the same mistake from the live coach and from Review is one card, even with another best move', () => {
+    const live = cardFromFeedback(fb({ bestUci: 'd2d4', bestSan: 'd4' }), 'Pip', 1000)!
+    const review = cardFromFeedback(fb({ bestUci: 'g1f3', bestSan: 'Nf3' }), 'Pip', 2000)!
+    expect(live.id).not.toBe(review.id)
+    expect(addCards([live])).toBe(1)
+    expect(addCards([review])).toBe(0)
+    expect(loadDeck()).toHaveLength(1)
+  })
+
   it('spaces reviews out, and a miss starts over', () => {
     const c = cardFromFeedback(fb(), 'Pip', 0)!
     addCards([c])

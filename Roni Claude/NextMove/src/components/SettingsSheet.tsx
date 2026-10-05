@@ -7,6 +7,7 @@ import { bestVoice, englishVoices, speak, voiceId, voiceLabel, voiceSupported, w
 import { canPromptInstall, isInstalled, isIOS, onInstallChange, promptInstall } from '../lib/install'
 import { clipTotal, downloadAll, offlineCount, voiceMb } from '../lib/recordings'
 import { useBackToClose } from '../lib/router'
+import ProgressBackup from './ProgressBackup'
 import './SettingsSheet.css'
 
 const SAMPLE =
@@ -220,6 +221,8 @@ export default function SettingsSheet({ onClose }: { onClose: () => void }) {
             <OfflineVoice />
           )}
         </section>
+
+        <ProgressBackup />
 
         {/* Privacy statement and credits (QA L) */}
         <section className="sheet-install">
