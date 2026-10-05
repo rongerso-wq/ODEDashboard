@@ -3,7 +3,7 @@ import Board, { type BoardMove } from '../components/Board'
 import { BotAvatar, BotSays } from '../components/BotAvatar'
 import { GameOverDialog, MoveList, PlayerStrip } from '../components/GamePanels'
 import { IconBack, IconChart, IconCpu, IconFlag, IconFlip, IconMute, IconRestart, IconSound, IconUndo } from '../components/Icons'
-import { newClock, pause, resume, timeControlById, useClock } from '../chess/clock'
+import { newClock, pause, resume, thinkTime, timeControlById, useClock } from '../chess/clock'
 import { material, other, outcomeText, timeoutOutcome, type Color, type Move } from '../chess/game'
 import {
   addToHistory,
@@ -83,11 +83,27 @@ function Game({ saved }: { saved: SavedComputerGame }) {
     let cancelled = false
     setThinking(true)
     const started = performance.now()
+    // In a clock game the bot paces itself by its own clock, like a person (see thinkTime);
+    // without a clock, a short pause reads as "thinking" and lets the player see the board.
+    const legal = game.chess.moves({ verbose: true })
+    const minDelay = tc
+      ? thinkTime({
+          remaining: clock.time(botColor),
+          increment: tc.increment * 1000,
+          ply: game.ply,
+          level: bot.level,
+          legalMoves: legal.length,
+          sharp: game.chess.inCheck() || legal.filter((m) => m.isCapture()).length >= 3,
+        })
+      : 450 + Math.random() * 550
+    // the engine never searches longer than the bot means to think
+    const search =
+      tc && bot.search.movetime ? { ...bot.search, movetime: Math.min(bot.search.movetime, minDelay) } : bot.search
 
     const pick = async (): Promise<string | null> => {
       if (Math.random() < bot.randomness) return uciOf(randomMove(game.chess))
       try {
-        const res = await engine.search(game.fen, bot.search)
+        const res = await engine.search(game.fen, search)
         return res.bestmove
       } catch {
         setEngineFailed(true)
@@ -96,8 +112,6 @@ function Game({ saved }: { saved: SavedComputerGame }) {
     }
 
     pick().then(async (uci) => {
-      // Never answer instantly: a short pause reads as "thinking" and lets the player see the board.
-      const minDelay = tc && tc.minutes <= 3 ? 150 : 450 + Math.random() * 550
       const wait = minDelay - (performance.now() - started)
       if (wait > 0) await sleep(wait)
       if (cancelled || !uci) return

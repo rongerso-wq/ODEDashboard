@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { afterMove, formatClock, newClock, pause, remaining, timeControlById } from './clock'
+import { MIN_THINK, afterMove, formatClock, newClock, pause, remaining, thinkTime, timeControlById } from './clock'
 import { parseInfo, parseUci } from '../engine/engine'
 import { randomMove } from '../engine/bots'
 import { Chess } from 'chess.js'
@@ -65,5 +65,57 @@ describe('bots', () => {
     const c = new Chess()
     for (let i = 0; i < 60 && !c.isGameOver(); i++) c.move(randomMove(c)!)
     expect(c.history().length).toBeGreaterThan(0)
+  })
+})
+
+describe('bot thinking time in clock games', () => {
+  const base = { remaining: 60_000, increment: 0, ply: 20, level: 4, legalMoves: 30, sharp: false }
+  const mid = () => 0.5
+
+  // Plays a whole game's worth of bot moves and returns the time the bot has left.
+  const leftAfter = (minutes: number, increment: number, moves: number, level: number) => {
+    let remaining = minutes * 60_000
+    let seed = 7
+    const rand = () => ((seed = (seed * 16807) % 2147483647) - 1) / 2147483646
+    for (let i = 0; i < moves && remaining > 0; i++) {
+      const t = thinkTime({ ...base, remaining, increment, ply: i * 2, level }, rand)
+      remaining = Math.max(0, remaining - t) + (remaining > t ? increment : 0)
+    }
+    return remaining
+  }
+
+  it('uses a real share of the clock: a 1-minute bot is well under half its time after 40 moves', () => {
+    for (const level of [1, 4, 8]) {
+      const left = leftAfter(1, 0, 40, level)
+      expect(left).toBeLessThan(40_000) // it used to keep ~54 s of its 60
+      expect(left).toBeGreaterThan(5_000) // and it doesn't throw the game away on time either
+    }
+  })
+
+  it('also in 3 min + 2 s and 5 min games', () => {
+    expect(leftAfter(3, 2, 40, 4)).toBeLessThan(170_000)
+    expect(leftAfter(5, 0, 40, 4)).toBeLessThan(200_000)
+  })
+
+  it('is quick in the opening and on a forced move, slower in a sharp position', () => {
+    const normal = thinkTime(base, mid)
+    expect(thinkTime({ ...base, ply: 4 }, mid)).toBeLessThan(normal)
+    expect(thinkTime({ ...base, legalMoves: 1 }, mid)).toBeLessThan(normal)
+    expect(thinkTime({ ...base, sharp: true }, mid)).toBeGreaterThan(normal)
+  })
+
+  it('the beginner bots think longest', () => {
+    expect(thinkTime({ ...base, level: 1 }, mid)).toBeGreaterThan(thinkTime({ ...base, level: 8 }, mid))
+  })
+
+  it('speeds up when short of time, but never below the floor, so it can lose on time', () => {
+    expect(thinkTime({ ...base, remaining: 8000 }, mid)).toBeLessThan(thinkTime(base, mid))
+    expect(thinkTime({ ...base, remaining: 600 }, mid)).toBe(MIN_THINK)
+    expect(leftAfter(1, 0, 400, 4)).toBe(0)
+  })
+
+  it('never keeps the player waiting long in slow games', () => {
+    for (let r = 0; r < 1; r += 0.05)
+      expect(thinkTime({ ...base, remaining: 30 * 60_000, level: 1, sharp: true }, () => r)).toBeLessThanOrEqual(10_500)
   })
 })

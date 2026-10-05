@@ -48,6 +48,35 @@ export function resume(s: ClockState, side: Color, now: number): ClockState {
   return { ...s, running: side, since: now }
 }
 
+/**
+ * How long a bot "thinks" on a move in a clock game, in ms. A fixed short delay let the bots
+ * answer in a blink, so the player always ran out of time first, even when winning (user report,
+ * 2026-10-05). Now a bot spends a share of the time it has left, like a person: quick in the
+ * opening and on forced moves, longer when the position is sharp, faster as its clock runs down.
+ * The 250 ms floor means a bot that is nearly out of time can lose on time too.
+ */
+export type ThinkInput = {
+  remaining: number // the bot's clock, ms
+  increment: number // ms
+  ply: number
+  level: number // 1–8; the beginners' bots take the longest
+  legalMoves: number
+  sharp: boolean // in check, or several captures to weigh
+}
+
+export const MIN_THINK = 250
+
+export function thinkTime(i: ThinkInput, rand: () => number = Math.random): number {
+  // about 40 moves still to play; capped at 4 s (about 10 s at the very most) so slow games don't keep the player waiting
+  let t = Math.min(i.remaining / 40 + i.increment * 0.6, 4000)
+  t *= 1.25 - (Math.min(8, Math.max(1, i.level)) - 1) * 0.065
+  if (i.ply < 12) t *= 0.4
+  if (i.legalMoves <= 1) t *= 0.25
+  else if (i.sharp) t *= 1.3
+  t *= 0.5 + rand() * 1.1
+  return Math.round(Math.max(MIN_THINK, Math.min(t, i.remaining * 0.25)))
+}
+
 /** "4:59", "0:09.3" under 10 s, "1:02:00" over an hour */
 export function formatClock(ms: number): string {
   const total = Math.max(0, ms)
